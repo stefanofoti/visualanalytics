@@ -9,6 +9,7 @@ import * as d3Axis from 'd3-axis';
   templateUrl: './medal-chart.component.html',
   styleUrls: ['./medal-chart.component.css']
 })
+
 export class MedalChartComponent implements OnInit {
 
   width: number;
@@ -18,7 +19,9 @@ export class MedalChartComponent implements OnInit {
   y: any
   svg: any
   g: any
-  golds: any = {}
+  golds: GoldEntry[] = []
+
+
 
   constructor() {
     this.width = 900 - this.margin.left - this.margin.right;
@@ -26,19 +29,7 @@ export class MedalChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initSvg()
-    this.initData()
-    this.initAxis()
-    this.drawAxis()
-    d3Sel.selectAll("rect")
-      .on("mouseover",
-        function () {
-          console.log("got hover")
-          d3Sel.select(this)
-            .attr("fill", "#f98bfc")
-        }
-      );
-
+    this.plotGraph()
   }
 
   initSvg() {
@@ -54,10 +45,8 @@ export class MedalChartComponent implements OnInit {
   initAxis() {
     this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
     this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
-    this.x.domain(Object.keys(this.golds))
-    this.y.domain([0, 3000])
-    console.log(this.x)
-    console.log(this.y)
+    this.x.domain(this.golds.map((d) => d.team));
+    this.y.domain([0, d3Array.max(this.golds, (d) => d.golds)]);
   }
 
   drawAxis() {
@@ -77,35 +66,67 @@ export class MedalChartComponent implements OnInit {
       .text('Frequency');
   }
 
-  drawBars(g, x, y, golds, height) {
-    g.selectAll('.bar')
-      .data(golds)
+  drawBars() {
+    this.g.selectAll('.bar')
+      .data(this.golds)
       .enter().append('rect')
       .attr('class', 'bar')
-      .attr('x', (d) => x("ABC"))
-      .attr('y', (d) => y(d))
-      .attr('width', x.bandwidth())
+      .attr('x', (d) => this.x(d.team))
+      .attr('y', (d) => this.y(d.golds))
+      .attr('width', this.x.bandwidth())
       .attr('fill', '#498bfc')
-      .attr('height', (d) => height - y(d));
+      .attr('height', (d) => this.height - this.y(d.golds));
+  }
+
+  plotGraph() {
+    this.initData()
+    /*d3Sel.selectAll("rect")
+      .on("mouseover",
+        function () {
+          console.log("got hover")
+          d3Sel.select(this)
+            .attr("fill", "#f98bfc")
+        }
+      );*/
+  }
+
+  onDataInitialized() {
+    console.log(this.golds)
+    this.initSvg()
+    this.initAxis()
+    this.drawAxis()
+    this.drawBars()
   }
 
   initData() {
     let golds = this.golds
     d3.csv("/assets/data/athlete_events.csv").then(function (data) {
-      for (let i = 0; i < data.length; i++) {
+      let dict: any = {}
+      for (let i = 0; i < 20000/*data.length*/; i++) {
         let team = data[i].Team || ""
-        if (!golds[team]) {
-          golds[team] = 0
+        if (!dict[team]) {
+          dict[team] = 0
         }
         if (data[i].Medal === "Gold") {
-          golds[team]++
+          dict[team]++
         }
       }
-      console.log(golds)
-    })
-    //.then(function(g, x, y, golds, height) { return this.drawBars(this.g, x, y, golds, height)})
+
+      for (let key in dict) {
+        let entry: GoldEntry = {
+          team: key,
+          golds: dict[key]
+        }
+        golds.push(entry);
+      }
+    }.bind(this)).then(this.onDataInitialized.bind(this))
   }
 
 
 
+}
+
+export interface GoldEntry {
+  team: string;
+  golds: number;
 }
