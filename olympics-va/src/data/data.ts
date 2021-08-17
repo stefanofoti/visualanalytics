@@ -1,3 +1,18 @@
+export interface Team {
+    id: number;
+    name: string;
+    isChecked: boolean;
+}
+
+export const Teams: Team[] = [
+    {id: 0, isChecked: true, name: 'Italy'},
+    {id: 1, isChecked: true, name: 'Germany'},
+    {id: 2, isChecked: false, name: 'France'},
+    {id: 3, isChecked: false, name: 'China'},
+    {id: 4, isChecked: false, name: 'USA'},
+    
+];
+
 export const StatsPieChart: any[] = [
     {party: 'BJP', electionP: 56},
     {party: 'INC', electionP: 18},

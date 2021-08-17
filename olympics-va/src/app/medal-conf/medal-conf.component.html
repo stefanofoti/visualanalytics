@@ -1,0 +1,12 @@
+<h5>Medal chart configuration</h5>
+<form [formGroup]="formTeams" (ngSubmit)="submit()">
+
+    <div class="form-group">
+        <div *ngFor="let team of teamsList">
+            <label>
+                <input [checked]="team.isChecked" type="checkbox" [value]="team.id" (change)="onCheckboxChange($event)" />
+                {{team.name}}
+            </label>
+        </div>
+    </div>
+</form>
