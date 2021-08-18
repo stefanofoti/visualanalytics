@@ -25,7 +25,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   svg: any
   g: any
   golds: GoldEntry[] = []
-
   goldsFiltered: GoldEntry[] = []
 
   @Input()
@@ -35,18 +34,19 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   constructor(private data: DataService) {
     this.width = 900 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
-    this.subscription = this.data.currentMessage.subscribe(message => {
-      this.teamsList = message
-      if (this.golds.length > 0) {
-        this.filterData()
-        this.newUpdate()
-      }
-    })
+    this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
+  }
+
+  onMessageReceived(message) {
+    this.teamsList = message
+    if (this.golds.length > 0) {
+      this.filterData()
+      this.updateChart()
+    }
   }
 
   ngOnInit(): void {
     this.plotGraph()
-
   }
 
   ngOnDestroy() {
@@ -61,42 +61,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .attr('viewBox', '0 0 900 500');
     this.g = this.svg.append('g')
       .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')');
-  }
-
-  initAxis() {
-    this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
-    this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
-    this.x.domain(this.goldsFiltered.map((d) => d.team));
-    this.y.domain([0, d3Array.max(this.goldsFiltered, (d) => d.golds)]);
-  }
-
-  drawAxis() {
-    this.g.append('g')
-      .attr('class', 'axis axis--x')
-      .attr('transform', 'translate(0,' + this.height + ')')
-      .call(d3Axis.axisBottom(this.x));
-    this.g.append('g')
-      .attr('class', 'axis axis--y')
-      .call(d3Axis.axisLeft(this.y))
-      .append('text')
-      .attr('class', 'axis-title')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', 6)
-      .attr('dy', '0.71em')
-      .attr('text-anchor', 'end')
-      .text('Frequency');
-  }
-
-  drawBars() {
-    this.g.selectAll('.bar')
-      .data(this.goldsFiltered)
-      .enter().append('rect')
-      .attr('class', 'bar')
-      .attr('x', (d) => this.x(d.team))
-      .attr('y', (d) => this.y(d.golds))
-      .attr('width', this.x.bandwidth())
-      .attr('fill', '#498bfc')
-      .attr('height', (d) => this.height - this.y(d.golds));
   }
 
   plotGraph() {
@@ -114,43 +78,26 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   onDataInitialized() {
     console.log(this.golds)
     this.filterData()
-    /*this.initSvg()
-    this.initAxis()
-    this.drawAxis()
-    this.drawBars()
-    */
-    this.newInit()
-    this.newUpdate()
+    this.initChart()
+    this.updateChart()
   }
 
   filterData() {
     this.goldsFiltered = this.golds.filter(t => this.teamsList.some(t2 => t.team == t2.name && t2.isChecked));
-    console.log(this.goldsFiltered)
   }
 
-  updateView() {
-    d3.select("#barChartMedals").selectAll(".bar")
-      .data(this.goldsFiltered)
-      .enter()
-    /*.transition().duration(1000)
-    .attr('x', (d) => this.x(d.team))
-    .attr('y', (d) => this.y(d.golds))
-    .attr('height', (d) => this.height - this.y(d.golds));*/
-  }
-
-  newInit() {
+  initChart() {
     //this.initSvg()
 
     // set the dimensions and margins of the graph
-    var margin = { top: 30, right: 30, bottom: 70, left: 60 },
-      width = 800 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+    var margin = { top: 30, right: 30, bottom: 70, left: 60 }
 
     // append the svg object to the body of the page
     this.svg = d3Sel.select("#barChartMedals")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr('width', '100%')
+      .attr('height', '100%')
+      .attr('viewBox', '0 0 900 500')
       .append("g")
       .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
@@ -170,8 +117,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   }
 
 
-  newUpdate() {
-
+  updateChart() {
     // Update the X axis
     this.x.domain(this.goldsFiltered.map(function(d) { return d.team }))
 
@@ -181,8 +127,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // Update the Y axis
     this.y.domain([0, d3Array.max(this.goldsFiltered, (d) => d.golds)]);
     this.yAxis.transition().duration(1000).call(d3.axisLeft(this.y));
-
-
 
     // this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
     // this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
@@ -197,13 +141,13 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // Create the u variable
     //var u = this.svg.select("#barChartMedals").selectAll(".bar").data(this.goldsFiltered)
     // var u = this.svg.select("#barChartMedals").data(this.goldsFiltered)
-    var u = this.svg.selectAll("#medal").data(this.goldsFiltered)
+    var u = this.svg.selectAll(".medalBar").data(this.goldsFiltered)
 
     u
       .enter()
       .append('rect')
       .attr('class', 'bar') // Add a new rect for each new elements
-      .attr('id', 'medal') // Add a new rect for each new elements
+      .attr('class', 'medalBar') // Add a new rect for each new elements
       .merge(u) // get the already existing elements as well
       .transition() // and apply changes to all of them
       .duration(1000)
