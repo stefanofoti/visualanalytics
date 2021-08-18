@@ -9,7 +9,7 @@ export const Teams: Team[] = [
     {id: 1, isChecked: true, name: 'Germany'},
     {id: 2, isChecked: false, name: 'France'},
     {id: 3, isChecked: false, name: 'China'},
-    {id: 4, isChecked: false, name: 'USA'},
+    {id: 4, isChecked: false, name: 'United States'},
     
 ];
 

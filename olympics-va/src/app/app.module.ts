@@ -9,6 +9,7 @@ import { MedalChartComponent } from './medal-chart/medal-chart.component';
 import { MedalConfComponent } from './medal-conf/medal-conf.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataService } from './data.service';
+import { MedalRegionChartComponent } from './medal-region-chart/medal-region-chart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DataService } from './data.service';
     FirstChartComponent,
     SecondChartComponent,
     MedalChartComponent,
-    MedalConfComponent
+    MedalConfComponent,
+    MedalRegionChartComponent
   ],
   imports: [
     BrowserModule,
