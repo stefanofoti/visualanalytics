@@ -4,6 +4,8 @@ export interface Team {
     isChecked: boolean;
 }
 
+export const isOlympicsDataReady: Boolean = false
+
 export const Teams: Team[] = [
     {id: 0, isChecked: true, name: 'Italy'},
     {id: 1, isChecked: true, name: 'Germany'},

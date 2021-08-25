@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataService } from './data.service';
 import { MedalRegionChartComponent } from './medal-region-chart/medal-region-chart.component';
 import { MapComponent } from './map/map.component';
+import { LoaderService } from './loader.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { MapComponent } from './map/map.component';
     MedalChartComponent,
     MedalConfComponent,
     MedalRegionChartComponent,
-    MapComponent
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,8 +30,12 @@ import { MapComponent } from './map/map.component';
     ReactiveFormsModule
   ],
   providers: [
-    DataService
+    DataService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(){
+  }
+}
