@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import * as tjson from 'topojson';
 import * as d3geo from 'd3-geo'
 import * as d3tip from 'd3-tip'
-import { color } from 'd3';
+import { color, select } from 'd3';
 import { LoaderService } from '../loader.service';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
@@ -25,25 +25,21 @@ export class MapComponent implements OnInit {
   private subscription: Subscription
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
-    this.subscription = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message, this))
+    this.subscription = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
   }
 
   ngOnInit(): void {
     this.initMap()
   }
 
-  dataReady(isReady: Boolean, context): any {
-    console.log("data ready: " + isReady)
+  dataReady(isReady: Boolean): any {
     if(isReady) {
-      //this.updateMap(context)
-      //const g = context.g
-      //console.log(context)
-      //this.g.selectAll("path").attr("fill", "#aaffaa")
+      this.updateMap()
     }
   }
 
-  updateMap(c): void {
-    console.log(c.g)
+  updateMap(): void {
+    this.g.selectAll("path").attr("fill", "#ffff00")
   }
 
   initMap(): void {
@@ -73,6 +69,8 @@ export class MapComponent implements OnInit {
 
 
     this.g = this.svg.append("g");
+    console.log("original g:")
+    console.log(this.g)
 
     d3.json("/assets/data/map2.json").then(topology => this.drawMap(topology));
     const g = this.g
@@ -90,7 +88,7 @@ export class MapComponent implements OnInit {
 
     this.svg.call(zoom);
 
-
+    console.log(this.loaderService.data)
     /*this.g.selectAll("path")
       .on("mouseover", function() {
         console.log("got hover")
@@ -100,7 +98,6 @@ export class MapComponent implements OnInit {
 
 
   drawMap(topology): void {
-    console.log(topology)
     const div = this.div
     this.g.selectAll("path")
       .data(tjson.feature(topology, topology.objects.countries).features)

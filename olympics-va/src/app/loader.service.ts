@@ -20,12 +20,13 @@ export class LoaderService {
   loadOlympicsResults(): void {
     console.log("loading olympics results")
     let d: any[] = []
-    d3.csv("/assets/data/population.csv").then(function (data) {
+    d3.csv("/assets/data/athlete_events.csv").then(function (data) {
       d = data
+    }).then(() => {
+      this.data.push(d)
+      this.isOlympicsDataReady = true
+      this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     })
-    this.data.push(d)
-    this.isOlympicsDataReady = true
-    this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
 
   }
 }
