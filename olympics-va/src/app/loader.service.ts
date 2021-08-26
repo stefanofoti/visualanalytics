@@ -8,7 +8,7 @@ import { DataService } from './data.service';
 })
 export class LoaderService {
 
-  public data: any[] = []
+  public olympicsDict: any = {}
   subscription: Subscription;
   private isOlympicsDataReady: Boolean = false
 
@@ -19,14 +19,37 @@ export class LoaderService {
 
   loadOlympicsResults(): void {
     console.log("loading olympics results")
-    let d: any[] = []
+    let rowData = []
     d3.csv("/assets/data/athlete_events.csv").then(function (data) {
-      d = data
+      rowData = data
     }).then(() => {
-      this.data.push(d)
+      let res = this.computeMedalsByNation(rowData)
+      this.olympicsDict["nations"] = res
       this.isOlympicsDataReady = true
       this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     })
 
   }
+
+  computeMedalsByNation(data) {
+    let res: any = {}
+    data.forEach(line => {
+      let team = res[line.Team]
+      if(!team) {
+        team = {
+          name: line.Team,
+          golds: 0,
+          bronze: 0,
+          silver: 0
+        }
+      }
+      line.Medal === "Bronze" && team.golds++
+      line.Medal === "Gold" && team.bronze++
+      line.Medal === "Silver" && team.silver++
+
+      res[line.Team] = team
+    });
+    return res
+  }
+
 }

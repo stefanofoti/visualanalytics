@@ -39,7 +39,14 @@ export class MapComponent implements OnInit {
   }
 
   updateMap(): void {
-    this.g.selectAll("path").attr("fill", "#ffff00")
+    let nations = this.loaderService.olympicsDict.nations
+    this.g.selectAll("path").attr("fill", function(d, event) {
+      let currentName = d.properties.name
+      let team = nations[currentName]
+      if (team && team.golds+team.silver+team.bronze > 100) return "#ff0000"
+      if(!team) return "#000000"
+      return "#00ff00"
+    })
   }
 
   initMap(): void {
@@ -88,7 +95,7 @@ export class MapComponent implements OnInit {
 
     this.svg.call(zoom);
 
-    console.log(this.loaderService.data)
+    console.log(this.loaderService.olympicsDict)
     /*this.g.selectAll("path")
       .on("mouseover", function() {
         console.log("got hover")
