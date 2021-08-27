@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import * as tjson from 'topojson';
 import * as d3geo from 'd3-geo'
 import * as d3tip from 'd3-tip'
-import { color, select } from 'd3';
+import { color, max, select } from 'd3';
 import { LoaderService } from '../loader.service';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
@@ -39,13 +39,60 @@ export class MapComponent implements OnInit {
   }
 
   updateMap(): void {
-    let nations = this.loaderService.olympicsDict.nations
+    var maxmedals = 1200
+    let NOCs = this.loaderService.olympicsDict.NOC
     this.g.selectAll("path").attr("fill", function(d, event) {
-      let currentName = d.properties.name
-      let team = nations[currentName]
-      if (team && team.golds+team.silver+team.bronze > 100) return "#ff0000"
-      if(!team) return "#000000"
-      return "#00ff00"
+      let currentNOC = d.properties.NOC
+      let team = NOCs[currentNOC]
+      if (team) {
+        var medalsum=team.golds+team.silver+team.bronze
+        var intensity = medalsum*100/maxmedals
+        if (currentNOC === "MAD") {
+          console.log (medalsum)
+          console.log (intensity)
+        }
+        if (intensity==0) {
+          return ("#000000")
+        }
+        if (intensity>0 && intensity<7.7) {
+          return ("#488f31")
+        }
+        else if (intensity>=7.7 && intensity<15.4) {
+          return ("#639c4e")
+        }
+        else if (intensity>=15.4 && intensity<23.1) {
+          return ("#7ca869")
+        }
+        else if (intensity>=23.1 && intensity<30.8) {
+          return ("#94b585")
+        }
+        else if (intensity>=30.8 && intensity<38.8) {
+          return ("#abc1a1")
+        }
+        else if (intensity>=38.8 && intensity<46.2) {
+          return ("#c3cebd")
+        }
+        else if (intensity>=46.2 && intensity<53.9) {
+          return ("#dadada")
+        }
+        else if (intensity>=53.9 && intensity<61.6) {
+          return ("#dec2c1")
+        }
+        else if (intensity>=61.6 && intensity<69.3) {
+          return ("#e0aaaa")
+        }
+        else if (intensity>=69.3 && intensity<77) {
+          return ("#e09192")
+        }
+        else if (intensity>=77 && intensity<84.7) {
+          return ("#de787c")
+        }
+        else if (intensity>=84.7 && intensity<92.4) {
+          return ("#da5d66")
+        }              
+        else return ("#de425b")
+      }
+      else return "#000000"
     })
   }
 
@@ -79,7 +126,7 @@ export class MapComponent implements OnInit {
     console.log("original g:")
     console.log(this.g)
 
-    d3.json("/assets/data/map2.json").then(topology => this.drawMap(topology));
+    d3.json("/assets/data/countries-110m-NOCs.json").then(topology => this.drawMap(topology));
     const g = this.g
 
     var zoom: any = d3.zoom()

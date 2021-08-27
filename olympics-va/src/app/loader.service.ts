@@ -24,7 +24,7 @@ export class LoaderService {
       rowData = data
     }).then(() => {
       let res = this.computeMedalsByNation(rowData)
-      this.olympicsDict["nations"] = res
+      this.olympicsDict["NOC"] = res
       this.isOlympicsDataReady = true
       this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     })
@@ -34,20 +34,20 @@ export class LoaderService {
   computeMedalsByNation(data) {
     let res: any = {}
     data.forEach(line => {
-      let team = res[line.Team]
+      let team = res[line.NOC]
       if(!team) {
         team = {
-          name: line.Team,
+          name: line.NOC,
           golds: 0,
           bronze: 0,
           silver: 0
         }
       }
-      line.Medal === "Bronze" && team.golds++
-      line.Medal === "Gold" && team.bronze++
+      line.Medal === "Gold" && team.golds++
       line.Medal === "Silver" && team.silver++
+      line.Medal === "Bronze" && team.bronze++
 
-      res[line.Team] = team
+      res[line.NOC] = team
     });
     return res
   }
