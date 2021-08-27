@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { isOlympicsDataReady, Team, Teams } from '../data/data'
+import { isOlympicsDataReady, requiredYearRange, Team, Teams } from '../data/data'
 
 @Injectable()
 export class DataService {
@@ -10,6 +10,9 @@ export class DataService {
 
   private olympicsReadinessSource = new BehaviorSubject(isOlympicsDataReady);
   olympycsReadinessMessage = this.olympicsReadinessSource.asObservable();
+
+  private yearRangeSource = new BehaviorSubject(requiredYearRange);
+  changedYearRangeMessage = this.yearRangeSource.asObservable();
 
   constructor() { }
 
@@ -21,5 +24,8 @@ export class DataService {
     this.olympicsReadinessSource.next(message)
   }
 
+  changeYearRange(message: number[]) {
+    this.yearRangeSource.next(message)
+  }
 
 }

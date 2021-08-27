@@ -4,7 +4,13 @@ export interface Team {
     isChecked: boolean;
 }
 
+export const golds = "golds"
+export const silvers = "silvers"
+export const bronzes = "bronzes"
+
 export const isOlympicsDataReady: Boolean = false
+
+export const requiredYearRange: number[] =  [1920, 2016]
 
 export const Teams: Team[] = [
     {id: 0, isChecked: true, name: 'Italy'},

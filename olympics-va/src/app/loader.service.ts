@@ -1,6 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { Subscription } from 'rxjs';
+import { bronzes, golds, silvers } from 'src/data/data';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -34,22 +35,52 @@ export class LoaderService {
   computeMedalsByNation(data) {
     let res: any = {}
     data.forEach(line => {
-      let team = res[line.NOC]
+      let yearMap = res[line.Year] || {}
+      let team = yearMap[line.NOC]
       if(!team) {
         team = {
           name: line.NOC,
           golds: 0,
-          bronze: 0,
-          silver: 0
+          bronzes: 0,
+          silvers: 0,
+          year: line.Year
         }
       }
       line.Medal === "Gold" && team.golds++
-      line.Medal === "Silver" && team.silver++
-      line.Medal === "Bronze" && team.bronze++
-
-      res[line.NOC] = team
+      line.Medal === "Silver" && team.silvers++
+      line.Medal === "Bronze" && team.bronzes++
+      yearMap[line.NOC] = team
+      res[line.Year] = yearMap
     });
     return res
+  }
+
+  computeMedalsByNationInRange(start: number, end: number, medals: string[]) {
+    let dict = this.olympicsDict["NOC"]
+    let res = {}
+    let max = 0
+    for (let i = start; i<=end; i++) {
+      let currentYear = dict[i]
+      currentYear && Object.keys(currentYear).forEach(noc => {
+        let teamStats = res[noc]
+        if(!teamStats) {
+          teamStats = {
+            name: noc,
+            golds: 0,
+            bronzes: 0,
+            silvers: 0,
+            total: 0
+          }
+        }
+        medals.includes(golds) && (teamStats.golds += currentYear[noc].golds)
+        medals.includes(bronzes) && (teamStats.bronzes += currentYear[noc].bronzes)
+        medals.includes(silvers) && (teamStats.silvers += currentYear[noc].silvers)
+        teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
+        max = teamStats.total > max ? teamStats.total : max
+        res[noc] = teamStats
+      })
+    }
+    return [res, max]
   }
 
 }
