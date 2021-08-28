@@ -87,7 +87,20 @@ export class LoaderService {
       yearMap[line.NOC] = team
       res[line.Year] = yearMap
     });
+    var totgolds = 0
+    var totsilvers = 0
+    var totbronzes = 0
+    var nation = "USA"
+    for (const year in res) {
+      if (res[year][nation] != undefined){
+        totgolds += res[year][nation].golds
+        totsilvers += res[year][nation].silvers
+        totbronzes += res[year][nation].bronzes
+      }      
+    }
+    console.log(totgolds+totsilvers+totbronzes)
     console.log(res)
+
     return res
   }
 
