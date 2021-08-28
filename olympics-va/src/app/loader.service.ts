@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { Subscription } from 'rxjs';
 import { bronzes, golds, silvers } from 'src/data/data';
 import { DataService } from './data.service';
+import * as ld from "lodash";
 
 @Injectable({
   providedIn: 'root'
@@ -31,27 +32,62 @@ export class LoaderService {
     })
 
   }
+  
+  computeSportsList(data) {
+    let res: any = {}
+    data.forEach(line => {
+      let sport = line.Event
+      if (!res[sport]) {
+        res[sport] = {
+          golds: 0,
+          silvers: 0,
+          bronzes: 0
+        }
+      }
+    })
+    console.log(res)
+    return res
+  }
 
   computeMedalsByNation(data) {
     let res: any = {}
+    let sports = this.computeSportsList(data)
     data.forEach(line => {
       let yearMap = res[line.Year] || {}
       let team = yearMap[line.NOC]
       if(!team) {
+        let sportsCP = ld.cloneDeep(sports)
         team = {
           name: line.NOC,
           golds: 0,
-          bronzes: 0,
           silvers: 0,
+          bronzes: 0,
+          sports: sportsCP,
           year: line.Year
         }
       }
-      line.Medal === "Gold" && team.golds++
-      line.Medal === "Silver" && team.silvers++
-      line.Medal === "Bronze" && team.bronzes++
+      if (line.Medal === "Gold") {
+        if (team.sports[line.Event].golds === 0) {
+          team.sports[line.Event].golds++
+          team.golds++
+        }
+      }
+      if (line.Medal === "Silver") {
+        if (team.sports[line.Event].silvers === 0) {
+          team.sports[line.Event].silvers++
+          team.silvers++
+        }
+      }
+      if (line.Medal === "Bronze") {
+        if (team.sports[line.Event].bronzes === 0) {
+          team.sports[line.Event].bronzes++
+          team.bronzes++
+        }
+      }
       yearMap[line.NOC] = team
       res[line.Year] = yearMap
     });
+    console.log(res)
     return res
   }
 
