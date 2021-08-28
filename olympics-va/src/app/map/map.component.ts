@@ -39,7 +39,7 @@ export class MapComponent implements OnInit {
   }
 
   updateMap(): void {
-    var maxmedals = 1200
+    var maxmedals = 5600
     let NOCs = this.loaderService.olympicsDict.NOC
     this.g.selectAll("path").attr("fill", function(d, event) {
       let currentNOC = d.properties.NOC
