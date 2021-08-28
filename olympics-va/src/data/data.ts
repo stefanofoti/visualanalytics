@@ -4,6 +4,23 @@ export interface Team {
     isChecked: boolean;
 }
 
+export interface Medal {
+    id: string;
+    name: string;
+    isChecked: boolean;
+}
+
+export interface Stat {
+    id: string;
+    name: string;
+    noc: string;
+    golds: number;
+    silvers: number;
+    bronzes: number;
+    from: number;
+    to: number;
+}
+
 export const golds = "golds"
 export const silvers = "silvers"
 export const bronzes = "bronzes"
@@ -19,6 +36,12 @@ export const Teams: Team[] = [
     {id: 3, isChecked: false, name: 'China'},
     {id: 4, isChecked: false, name: 'United States'},
     
+];
+
+export const Medals: Medal[] = [
+    {id: golds, isChecked: true, name: 'Golds'},
+    {id: silvers, isChecked: true, name: 'Silvers'},
+    {id: bronzes, isChecked: false, name: 'Bronzes'},
 ];
 
 export const StatsPieChart: any[] = [

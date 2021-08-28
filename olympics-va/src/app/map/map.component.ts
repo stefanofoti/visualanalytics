@@ -7,7 +7,7 @@ import { color, max, select } from 'd3';
 import { LoaderService } from '../loader.service';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
-import { bronzes, golds, silvers } from 'src/data/data';
+import { bronzes, golds, Medal, silvers, Stat } from 'src/data/data';
 
 @Component({
   selector: 'app-map',
@@ -25,12 +25,17 @@ export class MapComponent implements OnInit {
 
   private subDataReadiness: Subscription
   private subYearRangeChanged: Subscription
+  private subSelectedMedals: Subscription
   private isDataReady: Boolean = false
   private yearsRange: number[]
+  selectedMedals: string[]
+  selectedStats: Stat
+  stats: {}
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
     this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
     this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
+    this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
   }
 
   ngOnInit(): void {
@@ -45,20 +50,27 @@ export class MapComponent implements OnInit {
     }
   }
 
-  onYearRangeChanged(newRange: number[]){
-    this.yearsRange = newRange
+  onSelectedMedalsChanged(message: Medal[]) {
+    this.selectedMedals = []
+    message.forEach(m => {
+      m.isChecked && this.selectedMedals.push(m.id)
+    })
+    this.updateMap()
+  }
+
+  updateMap() {
     if(this.isDataReady) {
-      let [stats, max] = this.loaderService.computeMedalsByNationInRange(newRange[0], newRange[1], [golds])
+      let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals)
+      this.stats = stats
       let maximum = Number(max)
-      console.log("maximum amount of golds: " + maximum)
+      console.log("maximum amount of medals: " + maximum)
       this.g.selectAll("path").attr("fill", function(d, event) {
         let currentNOC = d.properties.NOC
         let team = stats[currentNOC]
         if (team) {
-          var medalsum=team.total
-          var intensity = medalsum*100/maximum
+          var intensity = team.total*100/maximum
           if (currentNOC === "MAD") {
-            console.log (medalsum)
+            console.log (team.total)
             console.log (intensity)
           }
           if (intensity==0) {
@@ -105,8 +117,15 @@ export class MapComponent implements OnInit {
         else return "#000000"
       })  
     }
+
   }
 
+  onYearRangeChanged(newRange: number[]){
+    this.yearsRange = newRange
+    this.updateMap()
+  }
+
+  /*
   updateMap(): void {
     var maxmedals = 1200
     let NOCs = this.loaderService.olympicsDict.NOC
@@ -164,6 +183,7 @@ export class MapComponent implements OnInit {
       else return "#000000"
     })
   }
+*/
 
   initMap(): void {
     console.log("initMap method")
@@ -222,22 +242,23 @@ export class MapComponent implements OnInit {
 
   drawMap(topology): void {
     const div = this.div
+    let context = this
     this.g.selectAll("path")
       .data(tjson.feature(topology, topology.objects.countries).features)
       .enter().append("path")
       .attr("d", this.path)
       //.attr("fill", "#000000")
       .on("mouseover", function(event,d) {
-        console.log(d)
-        d3.select(event.currentTarget).attr("fill", "#1010c7")
+        //console.log(d)
+        context.selectedStats = context.stats[d.properties.NOC]
+        context.selectedStats.name = d.properties && d.properties.name || ""
+        console.log(context.selectedStats)
+        d3.select(event.currentTarget).attr("opacity", "50%")
         })
       .on("mouseout", function(event, d) {
-        d3.select(event.currentTarget).attr("fill", "#000000")
+        context.selectedStats = undefined
+        d3.select(event.currentTarget).attr("opacity", "100%")
         })
-      .attr("fill", function(d){
-        if(d.properties.name === "Italy") return "#ff00fa"
-        return "#000000"
-      })
   }
 
 }

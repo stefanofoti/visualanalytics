@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import { DataService } from "../data.service";
 import { Subscription } from 'rxjs';
-import { requiredYearRange, Team, Teams } from 'src/data/data';
+import { Medal, requiredYearRange, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
@@ -13,10 +13,12 @@ import { Options } from '@angular-slider/ngx-slider';
 
 export class MedalConfComponent implements OnInit {
 
-  formTeams: FormGroup
+  formConf: FormGroup
   teamsList: Team[] = Teams
-  subscription: Subscription;
-  yearRangeSubscription: Subscription;
+  medalsList: Medal[]
+  subscription: Subscription
+  yearRangeSubscription: Subscription
+  selectedMedalsSubscription: Subscription
 
   yearRange: number[]
   sliderOptions: Options = {
@@ -25,23 +27,26 @@ export class MedalConfComponent implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder, private data: DataService) {
-    this.formTeams = this.formBuilder.group({
-      teams: this.formBuilder.array([], [Validators.required])
+    this.formConf = this.formBuilder.group({
+      teams: this.formBuilder.array([], [Validators.required]),
+      medals: this.formBuilder.array([], [Validators.required])
     })
     this.subscription = this.data.currentMessage.subscribe(message => this.teamsList = message)
     this.yearRangeSubscription = this.data.changedYearRangeMessage.subscribe(message => this.yearRange = message)
-
+    this.selectedMedalsSubscription = this.data.selectedMedalsMessage.subscribe(message => this.medalsList = message)
   }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscription.unsubscribe()
+    this.yearRangeSubscription.unsubscribe()
+    this.selectedMedalsSubscription.unsubscribe()
   }
 
   onCheckboxChange(e) {
-    const teams: FormArray = this.formTeams.get('teams') as FormArray;
+    const teams: FormArray = this.formConf.get('teams') as FormArray;
     let item = this.teamsList.find(({ id }) => id == e.target.value )
     if (e.target.checked) {
       teams.push(new FormControl(e.target.value));
@@ -52,8 +57,23 @@ export class MedalConfComponent implements OnInit {
        teams.removeAt(index);
     }  
     this.data.changeMessage(this.teamsList)
-    console.log(this.teamsList)
   }
+
+  onMedalsCheckboxChange(e) {
+    const medals: FormArray = this.formConf.get('medals') as FormArray;
+    let item = this.medalsList.find(({ id }) => id == e.target.value )
+    if (e.target.checked) {
+      medals.push(new FormControl(e.target.value));
+      item && (item.isChecked = true)
+    } else {
+       const index = medals.controls.findIndex(x => x.value === e.target.value);
+       item && (item.isChecked = false)
+       medals.removeAt(index);
+    }  
+    this.data.changeSelectedMedals(this.medalsList)
+    console.log(this.medalsList)
+  }
+
 
   onYearSliderChange(e) {
     this.data.changeYearRange(this.yearRange)
@@ -61,7 +81,7 @@ export class MedalConfComponent implements OnInit {
   }
     
   submit(){
-    console.log(this.formTeams.value);
+    console.log(this.formConf.value);
   }
 
 }
