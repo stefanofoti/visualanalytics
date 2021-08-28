@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-slider/ngx-slider": "^2.0.3",
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
@@ -26,6 +27,7 @@
     "d3-geo-projection": "^4.0.0",
     "d3-tip": "^0.9.1",
     "jquery": "^3.6.0",
+    "ngx-slider": "0.0.5",
     "rxjs": "~6.6.0",
     "topojson": "^3.0.2",
     "tslib": "^2.3.0",

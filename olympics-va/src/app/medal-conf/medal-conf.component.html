@@ -1,11 +1,19 @@
 <h5>Medal chart configuration</h5>
-<form [formGroup]="formTeams" (ngSubmit)="submit()">
-
+<form [formGroup]="formConf" (ngSubmit)="submit()">
     <div class="form-group">
         <div *ngFor="let team of teamsList">
             <label>
                 <input [checked]="team.isChecked" type="checkbox" [value]="team.id" (change)="onCheckboxChange($event)" />
                 {{team.name}}
+            </label>
+        </div>
+        <br>
+        <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions" (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>
+        <br>
+        <div *ngFor="let medal of medalsList">
+            <label>
+                <input [checked]="medal.isChecked" type="checkbox" [value]="medal.id" (change)="onMedalsCheckboxChange($event)" />
+                {{medal.name}}
             </label>
         </div>
     </div>
