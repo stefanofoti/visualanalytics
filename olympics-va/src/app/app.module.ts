@@ -13,6 +13,7 @@ import { DataService } from './data.service';
 import { MedalRegionChartComponent } from './medal-region-chart/medal-region-chart.component';
 import { MapComponent } from './map/map.component';
 import { LoaderService } from './loader.service';
+import { ParcoordsComponent } from './parcoords/parcoords.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LoaderService } from './loader.service';
     MedalConfComponent,
     MedalRegionChartComponent,
     MapComponent,
+    ParcoordsComponent,
   ],
   imports: [
     BrowserModule,

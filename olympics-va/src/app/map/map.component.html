@@ -1,5 +1,7 @@
-{{selectedStats && selectedStats.name || "Pick a country"}} 
-{{selectedStats && selectedMedals.includes("golds") ? "Golds: " + selectedStats.golds : ""}}
-{{selectedStats && selectedMedals.includes("silvers") ? "Silvers: " + selectedStats.silvers : ""}}
-{{selectedStats && selectedMedals.includes("bronzes") ? "Bronzes: " + selectedStats.bronzes : ""}}
-<svg id="mainMap" style="position: relative;"></svg>
+<p class="text-center">
+    {{selectedStats && selectedStats.name + ", " || "Pick a country"}} 
+    {{selectedStats && selectedMedals.includes("golds") ? "Golds: " + selectedStats.golds : ""}}
+    {{selectedStats && selectedMedals.includes("silvers") ? "Silvers: " + selectedStats.silvers : ""}}
+    {{selectedStats && selectedMedals.includes("bronzes") ? "Bronzes: " + selectedStats.bronzes : ""}}
+</p>
+<svg id="mainMap"></svg>

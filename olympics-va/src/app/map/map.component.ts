@@ -16,8 +16,8 @@ import { bronzes, golds, Medal, silvers, Stat } from 'src/data/data';
 })
 export class MapComponent implements OnInit {
 
-  private width = 1200
-  private height = 500
+  private width
+  private height = 400
   private svg: any
   private g: any
   private path: any
@@ -186,25 +186,28 @@ export class MapComponent implements OnInit {
 */
 
   initMap(): void {
-    console.log("initMap method")
-    var projection = d3geo.geoNaturalEarth1()
-      .scale(180)
-      .translate([this.width / 2, this.height / 2])
-
-
     /*d3.geoMercator()
       .center([-30, -20])
       .scale(80)
       .rotate([-180, 0]);
 */
     this.svg = d3.select("svg")
+      .attr("id", "svg_map")
       .attr("width", "100%")
       .attr("height", this.height);
 
+    this.width = document.getElementById("svg_map").clientWidth
+
+    var projection = d3geo.geoNaturalEarth1()
+      .scale(140)
+      .translate([this.width / 2, this.height / 2])
+
+
+    /*
     this.div = d3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
-  
+    */
   
 
     this.path = d3.geoPath()
@@ -250,7 +253,18 @@ export class MapComponent implements OnInit {
       //.attr("fill", "#000000")
       .on("mouseover", function(event,d) {
         //console.log(d)
-        context.selectedStats = context.stats[d.properties.NOC]
+        
+        context.selectedStats = context.stats[d.properties.NOC] || {
+            id: "",
+            name: d.properties.name,
+            noc: d.properties.NOC,
+            golds: 0,
+            silvers: 0,
+            bronzes: 0,
+            from: 0,
+            to: 0
+        }
+
         context.selectedStats.name = d.properties && d.properties.name || ""
         console.log(context.selectedStats)
         d3.select(event.currentTarget).attr("opacity", "50%")

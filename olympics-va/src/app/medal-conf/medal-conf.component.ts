@@ -22,7 +22,7 @@ export class MedalConfComponent implements OnInit {
 
   yearRange: number[]
   sliderOptions: Options = {
-    floor: 1920,
+    floor: 1896,
     ceil: 2016
   };
 

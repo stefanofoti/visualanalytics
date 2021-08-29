@@ -90,7 +90,7 @@ export class LoaderService {
     var totgolds = 0
     var totsilvers = 0
     var totbronzes = 0
-    var nation = "USA"
+    var nation = "FRA"
     for (const year in res) {
       if (res[year][nation] != undefined){
         totgolds += res[year][nation].golds
