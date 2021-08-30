@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
-import { Subscription } from 'rxjs';
-import { Medal, requiredYearRange, Team, Teams } from 'src/data/data';
+import { Observable, Subscription } from 'rxjs';
+import { Medal, PreCheckedSports, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
+import { of, pipe } from 'rxjs';
+import { map, filter, tap, startWith } from 'rxjs/operators'
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
+
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+
 
 @Component({
   selector: 'app-medal-conf',
@@ -19,6 +26,20 @@ export class MedalConfComponent implements OnInit {
   subscription: Subscription
   yearRangeSubscription: Subscription
   selectedMedalsSubscription: Subscription
+  selectedSportsSubscription: Subscription
+
+  sportsList: Sport[]
+
+  isOlympicsDataReady: Boolean
+
+  //---
+  sportControl = new FormControl();
+
+  selectedSports: Sport[] = new Array<Sport>();
+  filteredSports: Observable<Sport[]>;
+  lastFilter: string = '';
+  //----
+
 
   yearRange: number[]
   sliderOptions: Options = {
@@ -34,9 +55,77 @@ export class MedalConfComponent implements OnInit {
     this.subscription = this.data.currentMessage.subscribe(message => this.teamsList = message)
     this.yearRangeSubscription = this.data.changedYearRangeMessage.subscribe(message => this.yearRange = message)
     this.selectedMedalsSubscription = this.data.selectedMedalsMessage.subscribe(message => this.medalsList = message)
+    this.data.olympycsReadinessMessage.subscribe(message => {
+      console.log("medalConf got readiness message: " + message)
+      this.isOlympicsDataReady = message
+    })
+    this.selectedSportsSubscription = this.data.selectedSportsMessage.subscribe(message => {
+      this.sportsList = message
+      this.initSportsChcklist()
+    })
   }
 
+
+
+
+
+
   ngOnInit(): void {
+  }
+
+  initSportsChcklist(): void {
+    this.sportsList.forEach(s => { s.isChecked && this.selectedSports.push(s) })
+    console.log(this.selectedSports)
+    this.filteredSports = this.sportControl.valueChanges.pipe(
+      startWith<string | Sport[]>(''),
+      map(value => typeof value === 'string' ? value : this.lastFilter),
+      map(filter => this.filter(filter))
+    );
+  }
+
+  filter(filter: string): Sport[] {
+    this.lastFilter = filter;
+    if (filter) {
+      return this.sportsList.filter(sport => {
+        return sport.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0
+      })
+    } else {
+      return this.sportsList.slice();
+    }
+  }
+
+  displayFn(value: Sport[]): string | undefined {
+    let displayValue: string = "";
+    if (Array.isArray(value) && this.isOlympicsDataReady) {
+      value.forEach((sport, index) => {
+        if (index === 0) {
+          displayValue = sport.name;
+        } else {
+          displayValue += ', ' + sport.name;
+        }
+      });
+    } else {
+      console.log(PreCheckedSports)
+      PreCheckedSports.forEach((sport, index) => displayValue += (index > 0 ? ", " + sport : sport))
+    }
+    return displayValue;
+  }
+
+  optionClicked(event: Event, sport: Sport) {
+    event.stopPropagation();
+    this.toggleSelection(sport);
+  }
+
+  toggleSelection(sport: Sport) {
+    sport.isChecked = !sport.isChecked;
+    if (sport.isChecked) {
+      this.selectedSports.push(sport);
+    } else {
+      const i = this.selectedSports.findIndex(value => value.name === sport.name);
+      this.selectedSports.splice(i, 1);
+    }
+
+    this.sportControl.setValue(this.selectedSports);
   }
 
   ngOnDestroy() {
@@ -47,31 +136,31 @@ export class MedalConfComponent implements OnInit {
 
   onCheckboxChange(e) {
     const teams: FormArray = this.formConf.get('teams') as FormArray;
-    let item = this.teamsList.find(({ id }) => id == e.target.value )
+    let item = this.teamsList.find(({ id }) => id == e.target.value)
     if (e.target.checked) {
       teams.push(new FormControl(e.target.value));
       item && (item.isChecked = true)
     } else {
-       const index = teams.controls.findIndex(x => x.value === e.target.value);
-       item && (item.isChecked = false)
-       teams.removeAt(index);
-    }  
+      const index = teams.controls.findIndex(x => x.value === e.target.value);
+      item && (item.isChecked = false)
+      teams.removeAt(index);
+    }
     this.data.changeMessage(this.teamsList)
   }
 
   onMedalsCheckboxChange(e) {
     const medals: FormArray = this.formConf.get('medals') as FormArray;
-    let item = this.medalsList.find(({ id }) => id == e.target.value )
+    let item = this.medalsList.find(({ id }) => id == e.target.value)
     if (e.target.checked) {
       medals.push(new FormControl(e.target.value));
       item && (item.isChecked = true)
     } else {
-       const index = medals.controls.findIndex(x => x.value === e.target.value);
-       item && (item.isChecked = false)
-       medals.removeAt(index);
-    }  
+      const index = medals.controls.findIndex(x => x.value === e.target.value);
+      item && (item.isChecked = false)
+      medals.removeAt(index);
+    }
     this.data.changeSelectedMedals(this.medalsList)
-    console.log(this.medalsList)
+    // console.log(this.medalsList)
   }
 
 
@@ -79,8 +168,8 @@ export class MedalConfComponent implements OnInit {
     this.data.changeYearRange(this.yearRange)
     // console.log(e)
   }
-    
-  submit(){
+
+  submit() {
     console.log(this.formConf.value);
   }
 

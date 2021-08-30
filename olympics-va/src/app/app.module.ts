@@ -14,6 +14,11 @@ import { MedalRegionChartComponent } from './medal-region-chart/medal-region-cha
 import { MapComponent } from './map/map.component';
 import { LoaderService } from './loader.service';
 import { ParcoordsComponent } from './parcoords/parcoords.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatInput, MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { ParcoordsComponent } from './parcoords/parcoords.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSliderModule
+    NgxSliderModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatInputModule
   ],
   providers: [
     DataService,

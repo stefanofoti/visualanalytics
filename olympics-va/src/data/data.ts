@@ -4,6 +4,12 @@ export interface Team {
     isChecked: boolean;
 }
 
+export interface Sport {
+    id: number;
+    name: string;
+    isChecked: boolean;
+}
+
 export interface Medal {
     id: string;
     name: string;
@@ -34,9 +40,12 @@ export const Teams: Team[] = [
     {id: 1, isChecked: true, name: 'Germany'},
     {id: 2, isChecked: false, name: 'France'},
     {id: 3, isChecked: false, name: 'China'},
-    {id: 4, isChecked: false, name: 'United States'},
-    
+    {id: 4, isChecked: false, name: 'United States'},    
 ];
+
+export const Sports: Sport[] = [];
+
+export const PreCheckedSports: string[] = ["Football Men's Football", "Athletics Men's 4 x 100 metres Relay"];
 
 export const Medals: Medal[] = [
     {id: golds, isChecked: true, name: 'Golds'},

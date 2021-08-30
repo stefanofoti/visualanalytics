@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { Subscription } from 'rxjs';
-import { bronzes, golds, silvers } from 'src/data/data';
+import { ObjectUnsubscribedError, Subscription } from 'rxjs';
+import { bronzes, golds, PreCheckedSports, silvers, Sport } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -12,10 +12,15 @@ export class LoaderService {
 
   public olympicsDict: any = {}
   subscription: Subscription;
+  selectedSportsSub: Subscription;
+
+  selectedSports: Sport[]
+
   private isOlympicsDataReady: Boolean = false
 
   constructor(private dataService: DataService) {
     this.subscription = this.dataService.olympycsReadinessMessage.subscribe(message => this.isOlympicsDataReady = message)
+    this.selectedSportsSub = this.dataService.selectedSportsMessage.subscribe(message => this.selectedSports = message)
     this.loadOlympicsResults()
   }
 
@@ -35,6 +40,7 @@ export class LoaderService {
   
   computeSportsList(data) {
     let res: any = {}
+    this.selectedSports = []
     data.forEach(line => {
       let sport = line.Event
       if (!res[sport]) {
@@ -43,9 +49,15 @@ export class LoaderService {
           silvers: 0,
           bronzes: 0
         }
+        this.selectedSports.push({
+          id: this.selectedSports.length,
+          isChecked: PreCheckedSports.includes(sport),
+          name: sport
+        })
       }
     })
     console.log(res)
+    this.dataService.changeSelectedSports(this.selectedSports)
     return res
   }
 
