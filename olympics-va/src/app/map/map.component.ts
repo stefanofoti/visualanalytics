@@ -16,8 +16,8 @@ import { bronzes, golds, Medal, silvers, Stat } from 'src/data/data';
 })
 export class MapComponent implements OnInit {
 
-  private width
-  private height = 400
+  private width = 1200
+  private height = 500
   private svg: any
   private g: any
   private path: any
@@ -73,46 +73,37 @@ export class MapComponent implements OnInit {
             console.log (team.total)
             console.log (intensity)
           }
+
           if (intensity==0) {
-            return ("#000000")
+            return ("#ffffff")
           }
-          if (intensity>0 && intensity<7.7) {
-            return ("#488f31")
+          if (intensity>0 && intensity<11.1) {
+            return ("#2d7b31")
           }
-          else if (intensity>=7.7 && intensity<15.4) {
-            return ("#639c4e")
+          else if (intensity>=11.1 && intensity<22.2) {
+            return ("#3c8a3e")
           }
-          else if (intensity>=15.4 && intensity<23.1) {
-            return ("#7ca869")
+          else if (intensity>=22.2 && intensity<33.3) {
+            return ("#4a984b")
           }
-          else if (intensity>=23.1 && intensity<30.8) {
-            return ("#94b585")
+          else if (intensity>=33.3 && intensity<44.4) {
+            return ("#59a758")
           }
-          else if (intensity>=30.8 && intensity<38.8) {
-            return ("#abc1a1")
+          else if (intensity>=44.4 && intensity<55.5) {
+            return ("#67b765")
           }
-          else if (intensity>=38.8 && intensity<46.2) {
-            return ("#c3cebd")
+          else if (intensity>=55.5 && intensity<66.6) {
+            return ("#76c673")
           }
-          else if (intensity>=46.2 && intensity<53.9) {
-            return ("#dadada")
+          else if (intensity>=66.6 && intensity<77.7) {
+            return ("#84d681")
           }
-          else if (intensity>=53.9 && intensity<61.6) {
-            return ("#dec2c1")
+          else if (intensity>=77.7 && intensity<88.8) {
+            return ("#93e68f")
           }
-          else if (intensity>=61.6 && intensity<69.3) {
-            return ("#e0aaaa")
+          else {
+            return ("#a2f69d")
           }
-          else if (intensity>=69.3 && intensity<77) {
-            return ("#e09192")
-          }
-          else if (intensity>=77 && intensity<84.7) {
-            return ("#de787c")
-          }
-          else if (intensity>=84.7 && intensity<92.4) {
-            return ("#da5d66")
-          }              
-          else return ("#de425b")
         }
         else return "#000000"
       })  
@@ -186,6 +177,8 @@ export class MapComponent implements OnInit {
 */
 
   initMap(): void {
+    console.log("initMap method")
+
     /*d3.geoMercator()
       .center([-30, -20])
       .scale(80)
@@ -203,11 +196,10 @@ export class MapComponent implements OnInit {
       .translate([this.width / 2, this.height / 2])
 
 
-    /*
+    
     this.div = d3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
-    */
   
 
     this.path = d3.geoPath()
