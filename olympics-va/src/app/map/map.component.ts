@@ -7,7 +7,7 @@ import { color, max, select } from 'd3';
 import { LoaderService } from '../loader.service';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
-import { bronzes, golds, Medal, silvers, Stat } from 'src/data/data';
+import { bronzes, golds, Medal, PreCheckedSports, silvers, Sport, Stat } from 'src/data/data';
 
 @Component({
   selector: 'app-map',
@@ -26,7 +26,9 @@ export class MapComponent implements OnInit {
   private subDataReadiness: Subscription
   private subYearRangeChanged: Subscription
   private subSelectedMedals: Subscription
+  private subSelectedSports: Subscription
   private isDataReady: Boolean = false
+  private selectedSports: string[] = PreCheckedSports
   private yearsRange: number[]
   selectedMedals: string[]
   selectedStats: Stat
@@ -36,6 +38,7 @@ export class MapComponent implements OnInit {
     this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
     this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
     this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
+    this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
   }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class MapComponent implements OnInit {
     if(isReady) {
       this.isDataReady = true
       this.onYearRangeChanged(this.yearsRange)
-      // this.updateMap()
+      this.updateMap()
     }
   }
 
@@ -58,9 +61,15 @@ export class MapComponent implements OnInit {
     this.updateMap()
   }
 
+  onSelectedSportsChanged(message: Sport[]) {
+    this.selectedSports = message.map(s => s.name)
+    this.updateMap()
+  }
+
   updateMap() {
+    console.log("update map invoked")
     if(this.isDataReady) {
-      let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals)
+      let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
       this.stats = stats
       let maximum = Number(max)
       console.log("maximum amount of medals: " + maximum)
@@ -189,7 +198,7 @@ export class MapComponent implements OnInit {
       .attr("width", "100%")
       .attr("height", this.height);
 
-    this.width = document.getElementById("svg_map").clientWidth
+    this.width = document.getElementById("svg_map").clientWidth || 800
 
     var projection = d3geo.geoNaturalEarth1()
       .scale(140)

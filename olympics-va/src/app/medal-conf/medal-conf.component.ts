@@ -9,8 +9,6 @@ import { map, filter, tap, startWith } from 'rxjs/operators'
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
 
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-
 
 @Component({
   selector: 'app-medal-conf',
@@ -27,8 +25,10 @@ export class MedalConfComponent implements OnInit {
   yearRangeSubscription: Subscription
   selectedMedalsSubscription: Subscription
   selectedSportsSubscription: Subscription
+  sportsReadinessSubscription: Subscription
 
   sportsList: Sport[]
+
 
   isOlympicsDataReady: Boolean
 
@@ -56,10 +56,14 @@ export class MedalConfComponent implements OnInit {
     this.yearRangeSubscription = this.data.changedYearRangeMessage.subscribe(message => this.yearRange = message)
     this.selectedMedalsSubscription = this.data.selectedMedalsMessage.subscribe(message => this.medalsList = message)
     this.data.olympycsReadinessMessage.subscribe(message => this.isOlympicsDataReady = message)
-    this.selectedSportsSubscription = this.data.selectedSportsMessage.subscribe(message => {
+    this.sportsReadinessSubscription = this.data.sportsReadinessMessage.subscribe(message => {
       this.sportsList = message
-      this.initSportsChcklist()
+      this.initSportsChecklist()
     })
+    this.selectedSportsSubscription = this.data.selectedSportsMessage.subscribe(message => {
+      this.selectedSports = message
+    })
+
   }
 
 
@@ -70,7 +74,7 @@ export class MedalConfComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  initSportsChcklist(): void {
+  initSportsChecklist(): void {
     this.sportsList.forEach(s => { s.isChecked && this.selectedSports.push(s) })
     this.filteredSports = this.sportControl.valueChanges.pipe(
       startWith<string | Sport[]>(''),
@@ -82,9 +86,11 @@ export class MedalConfComponent implements OnInit {
   filter(filter: string): Sport[] {
     this.lastFilter = filter;
     let items = this.sportsList
+    console.log("sports length: " + this.sportsList.length)
     items.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    items.sort((a,b) => (a.group > b.group) ? 1 : ((b.group > a.group) ? -1 : 0))
     items.sort((a,b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
-
+    // TODO
     if (filter) {
       return items.filter(sport => {
         return sport.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0
@@ -125,6 +131,8 @@ export class MedalConfComponent implements OnInit {
     }
     console.log(this.selectedSports)
     this.sportControl.setValue(this.selectedSports);
+    this.data.changeSelectedSports(this.selectedSports)
+
   }
 
   ngOnDestroy() {

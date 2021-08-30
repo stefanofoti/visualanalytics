@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports, silvers, Sport } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -52,12 +52,13 @@ export class LoaderService {
         this.selectedSports.push({
           id: this.selectedSports.length,
           isChecked: PreCheckedSports.includes(sport),
-          name: sport
+          name: sport,
+          group: line.Sport
         })
       }
     })
     console.log(res)
-    this.dataService.changeSelectedSports(this.selectedSports)
+    this.dataService.onSportsDataReady(this.selectedSports)
     return res
   }
 
@@ -116,29 +117,39 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: string[]) {
+  computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[]) {
+    console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
+    if (selectedSports.length == 0) {
+      selectedSports = PreCheckedSports2 
+    }
     let dict = this.olympicsDict["NOC"]
     let res = {}
     let max = 0
     for (let i = start; i<=end; i++) {
       let currentYear = dict[i]
       currentYear && Object.keys(currentYear).forEach(noc => {
+        let data = currentYear[noc]
         let teamStats = res[noc]
-        if(!teamStats) {
-          teamStats = {
-            name: noc,
-            golds: 0,
-            bronzes: 0,
-            silvers: 0,
-            total: 0
+
+        selectedSports.forEach(sport => {
+          if(data.sports[sport]) {
+            if(!teamStats) {
+              teamStats = {
+                name: noc,
+                golds: 0,
+                bronzes: 0,
+                silvers: 0,
+                total: 0
+              }
+            }
+            medals.includes(golds) && (teamStats.golds += data.sports[sport].golds)
+            medals.includes(bronzes) && (teamStats.bronzes += data.sports[sport].bronzes)
+            medals.includes(silvers) && (teamStats.silvers += data.sports[sport].silvers)
+            teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
+            max = teamStats.total > max ? teamStats.total : max
+            res[noc] = teamStats        
           }
-        }
-        medals.includes(golds) && (teamStats.golds += currentYear[noc].golds)
-        medals.includes(bronzes) && (teamStats.bronzes += currentYear[noc].bronzes)
-        medals.includes(silvers) && (teamStats.silvers += currentYear[noc].silvers)
-        teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
-        max = teamStats.total > max ? teamStats.total : max
-        res[noc] = teamStats
+        })
       })
     }
     return [res, max]

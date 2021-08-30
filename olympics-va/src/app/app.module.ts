@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatInput, MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [

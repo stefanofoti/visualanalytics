@@ -14,6 +14,9 @@ export class DataService {
   private olympicsReadinessSource = new BehaviorSubject(isOlympicsDataReady);
   olympycsReadinessMessage = this.olympicsReadinessSource.asObservable();
 
+  private sportsReadinessSource = new BehaviorSubject(Sports);
+  sportsReadinessMessage = this.sportsReadinessSource.asObservable();
+
   private yearRangeSource = new BehaviorSubject(requiredYearRange);
   changedYearRangeMessage = this.yearRangeSource.asObservable();
 
@@ -28,6 +31,10 @@ export class DataService {
 
   onOlympicsDataReady(message: Boolean) {
     this.olympicsReadinessSource.next(message)
+  }
+
+  onSportsDataReady(message: Sport[]) {
+    this.sportsReadinessSource.next(message)
   }
 
   changeYearRange(message: number[]) {
