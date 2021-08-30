@@ -43,8 +43,8 @@ export class MedalConfComponent implements OnInit {
 
   yearRange: number[]
   sliderOptions: Options = {
-    floor: 1896,
-    ceil: 2016
+    floor: requiredYearRange[0],
+    ceil: requiredYearRange[1]
   };
 
   constructor(private formBuilder: FormBuilder, private data: DataService) {
@@ -55,10 +55,7 @@ export class MedalConfComponent implements OnInit {
     this.subscription = this.data.currentMessage.subscribe(message => this.teamsList = message)
     this.yearRangeSubscription = this.data.changedYearRangeMessage.subscribe(message => this.yearRange = message)
     this.selectedMedalsSubscription = this.data.selectedMedalsMessage.subscribe(message => this.medalsList = message)
-    this.data.olympycsReadinessMessage.subscribe(message => {
-      console.log("medalConf got readiness message: " + message)
-      this.isOlympicsDataReady = message
-    })
+    this.data.olympycsReadinessMessage.subscribe(message => this.isOlympicsDataReady = message)
     this.selectedSportsSubscription = this.data.selectedSportsMessage.subscribe(message => {
       this.sportsList = message
       this.initSportsChcklist()
@@ -75,22 +72,25 @@ export class MedalConfComponent implements OnInit {
 
   initSportsChcklist(): void {
     this.sportsList.forEach(s => { s.isChecked && this.selectedSports.push(s) })
-    console.log(this.selectedSports)
     this.filteredSports = this.sportControl.valueChanges.pipe(
       startWith<string | Sport[]>(''),
       map(value => typeof value === 'string' ? value : this.lastFilter),
       map(filter => this.filter(filter))
-    );
+    )
   }
 
   filter(filter: string): Sport[] {
     this.lastFilter = filter;
+    let items = this.sportsList
+    items.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    items.sort((a,b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
+
     if (filter) {
-      return this.sportsList.filter(sport => {
+      return items.filter(sport => {
         return sport.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0
       })
     } else {
-      return this.sportsList.slice();
+      return items.slice();
     }
   }
 
@@ -105,7 +105,6 @@ export class MedalConfComponent implements OnInit {
         }
       });
     } else {
-      console.log(PreCheckedSports)
       PreCheckedSports.forEach((sport, index) => displayValue += (index > 0 ? ", " + sport : sport))
     }
     return displayValue;
@@ -124,7 +123,7 @@ export class MedalConfComponent implements OnInit {
       const i = this.selectedSports.findIndex(value => value.name === sport.name);
       this.selectedSports.splice(i, 1);
     }
-
+    console.log(this.selectedSports)
     this.sportControl.setValue(this.selectedSports);
   }
 
