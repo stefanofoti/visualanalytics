@@ -73,14 +73,14 @@ export class MapComponent implements OnInit {
       this.stats = stats
       let maximum = Number(max)
       console.log("maximum amount of medals: " + maximum)
-      var [intensityDict, tot] = this.colorScaleCalculator()
+      let intervals = [1, 5, 12, 18, 27, 34, 69]
+      intervals = this.colorScaleCalculator()
       this.g.selectAll("path").attr("fill", function(d, event) {
         
-        let intervals = [1, 5, 12, 18, 27, 34, 69]
-        let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]        
+        //let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
+        let colorScale = ["#ffffff", "#a2f69d", "#93e68f", "#84d681", "#76c673", "#67b765", "#59a758", "#4a984b", "#3c8a3e"]            
         let currentNOC = d.properties.NOC
         let team = stats[currentNOC]
-
 
         if (team) {
           var intensity = team.total*100/maximum
@@ -129,7 +129,7 @@ export class MapComponent implements OnInit {
     var nonZeroNations = 0
     var nationsInInterval = 0
       
-    let intervals = [1, 5, 12, 18, 27, 34, 69]
+    let intervals = [1, 5, 12, 18, 27, 34, 69, 100]
     let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
        
     for (const NOC in stats){
@@ -148,14 +148,45 @@ export class MapComponent implements OnInit {
         }
       }
     }
-    nationsInInterval= Math.round(nonZeroNations/8)
+
+    nationsInInterval= Math.ceil(nonZeroNations/8)
     intervals = []
 
+    let keysarray = []    
+    for (const k in intensityDict){
+      keysarray.push(Number(k).toFixed(5))
+    }
+    keysarray = keysarray.sort(function(a,b) { return a - b;})
+    console.log(keysarray)
+
+    let weightsArray = []
+    for (let i=0; i<keysarray.length; i++){
+      weightsArray.push(keysarray[i+1]-keysarray[i])
+      if (i === 0) {
+        intensityDict[keysarray[i]]=intensityDict[keysarray[i]]*weightsArray[i]
+
+      }
+      else{
+        intensityDict[keysarray[i]]+=intensityDict[keysarray[i-1]]*weightsArray[i]
+      }
+    }
+    console.log(weightsArray)
     console.log(intensityDict)
+
+    let variableInterval=nationsInInterval
+
+    for (let i = 0; i<=keysarray.length; i++){
+      if (variableInterval/weightsArray[i]<=intensityDict[keysarray[i]]){
+        intervals.push(keysarray[i])
+        variableInterval+=nationsInInterval
+      }
+    }
+    
+    console.log("intervals array: ", intervals)
     console.log("nations with intensity > 0: ", nonZeroNations)
     console.log("intervals of", nationsInInterval, "nations for each color")
 
-    return([intensityDict, nonZeroNations])
+    return(intervals)
   }
 
   onYearRangeChanged(newRange: number[]){
