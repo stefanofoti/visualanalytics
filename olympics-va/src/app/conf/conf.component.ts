@@ -11,12 +11,12 @@ import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
 
 
 @Component({
-  selector: 'app-medal-conf',
-  templateUrl: './medal-conf.component.html',
-  styleUrls: ['./medal-conf.component.css']
+  selector: 'app-conf',
+  templateUrl: './conf.component.html',
+  styleUrls: ['./conf.component.css']
 })
 
-export class MedalConfComponent implements OnInit {
+export class ConfComponent implements OnInit {
 
   formConf: FormGroup
   teamsList: Team[] = Teams

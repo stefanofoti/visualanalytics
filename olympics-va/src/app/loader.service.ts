@@ -1,6 +1,6 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { ObjectUnsubscribedError, Subscription } from 'rxjs';
+import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
 import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
@@ -16,6 +16,8 @@ export class LoaderService {
 
   selectedSports: Sport[]
 
+  countries = {}
+
   private isOlympicsDataReady: Boolean = false
 
   constructor(private dataService: DataService) {
@@ -24,10 +26,55 @@ export class LoaderService {
     this.loadOlympicsResults()
   }
 
+
+  async loadNocCsv() {
+    let lines = await d3.csv("/assets/data/noc_regions.csv")
+    let countries = []
+    lines.forEach(l => {
+      countries[l.NOC] = {
+        continent: l.continent,
+        name: l.region,
+        NOC: l.NOC
+      }
+    })
+    return countries
+  }
+
+  async loadOlympicsCsv() {
+    let lines = await d3.csv("/assets/data/athlete_events.csv")
+    let res = this.computeMedalsByNation(lines, this)
+    return res
+  }
+
+  checkReadiness(noc_r:boolean, oly_r:boolean) {
+    if(noc_r && oly_r) {
+      this.isOlympicsDataReady = true
+      this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
+    }
+  }
+
+
   loadOlympicsResults(): void {
     console.log("loading olympics results")
     let rowData = []
-    d3.csv("/assets/data/athlete_events.csv").then(function (data) {
+    let c = this
+
+    let noc_r, oly_r = false
+
+    this.loadNocCsv().then(data => {
+      this.countries = data
+      noc_r = true
+      this.checkReadiness(noc_r, oly_r)
+    })
+
+    this.loadOlympicsCsv().then(d => {
+      this.olympicsDict["NOC"] = d
+      oly_r = true
+      this.checkReadiness(noc_r, oly_r)
+    })
+
+    // let data = await d3.csv("/assets/data/athlete_events.csv")
+    /*d3.csv("/assets/data/athlete_events.csv").then(function (data) {
       rowData = data
     }).then(() => {
       let res = this.computeMedalsByNation(rowData)
@@ -35,9 +82,9 @@ export class LoaderService {
       this.isOlympicsDataReady = true
       this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     })
-
+*/
   }
-  
+
   computeSportsList(data) {
     let res: any = {}
     this.selectedSports = []
@@ -62,13 +109,13 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNation(data) {
+  computeMedalsByNation(data, c) {
     let res: any = {}
-    let sports = this.computeSportsList(data)
+    let sports = c.computeSportsList(data)
     data.forEach(line => {
       let yearMap = res[line.Year] || {}
       let team = yearMap[line.NOC]
-      if(!team) {
+      if (!team) {
         let sportsCP = ld.cloneDeep(sports)
         team = {
           name: line.NOC,
@@ -105,13 +152,13 @@ export class LoaderService {
     var totbronzes = 0
     var nation = "FRA"
     for (const year in res) {
-      if (res[year][nation] != undefined){
+      if (res[year][nation] != undefined) {
         totgolds += res[year][nation].golds
         totsilvers += res[year][nation].silvers
         totbronzes += res[year][nation].bronzes
-      }      
+      }
     }
-    console.log(totgolds+totsilvers+totbronzes)
+    console.log(totgolds + totsilvers + totbronzes)
     console.log(res)
 
     return res
@@ -120,20 +167,21 @@ export class LoaderService {
   computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[]) {
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
-      selectedSports = PreCheckedSports2 
+      selectedSports = PreCheckedSports2
     }
     let dict = this.olympicsDict["NOC"]
     let res = {}
     let max = 0
-    for (let i = start; i<=end; i++) {
+    let maxSingleSport = 0
+    for (let i = start; i <= end; i++) {
       let currentYear = dict[i]
       currentYear && Object.keys(currentYear).forEach(noc => {
         let data = currentYear[noc]
         let teamStats = res[noc]
 
         selectedSports.forEach(sport => {
-          if(data.sports[sport]) {
-            if(!teamStats) {
+          if (data.sports[sport]) {
+            if (!teamStats) {
               teamStats = {
                 name: noc,
                 golds: 0,
@@ -143,30 +191,32 @@ export class LoaderService {
               }
             }
             let teamSportStats = teamStats[sport]
-            if(!teamSportStats) {
-                teamSportStats = {
+            if (!teamSportStats) {
+              teamSportStats = {
                 golds: 0,
                 bronzes: 0,
                 silvers: 0,
-              }  
+                total: 0
+              }
             }
 
             medals.includes(golds) && (teamSportStats.golds += data.sports[sport].golds)
             medals.includes(bronzes) && (teamSportStats.bronzes += data.sports[sport].bronzes)
             medals.includes(silvers) && (teamSportStats.silvers += data.sports[sport].silvers)
-
             medals.includes(golds) && (teamStats.golds += data.sports[sport].golds)
             medals.includes(bronzes) && (teamStats.bronzes += data.sports[sport].bronzes)
             medals.includes(silvers) && (teamStats.silvers += data.sports[sport].silvers)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
+            teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
             max = teamStats.total > max ? teamStats.total : max
+            maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
             teamStats[sport] = teamSportStats
-            res[noc] = teamStats        
+            res[noc] = teamStats
           }
         })
       })
     }
-    return [res, max as number]
+    return [res, max as number, maxSingleSport as number]
   }
 
 }
