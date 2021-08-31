@@ -142,17 +142,31 @@ export class LoaderService {
                 total: 0
               }
             }
+            let teamSportStats = teamStats[sport]
+            if(!teamSportStats) {
+                teamSportStats = {
+                golds: 0,
+                bronzes: 0,
+                silvers: 0,
+              }  
+            }
+
+            medals.includes(golds) && (teamSportStats.golds += data.sports[sport].golds)
+            medals.includes(bronzes) && (teamSportStats.bronzes += data.sports[sport].bronzes)
+            medals.includes(silvers) && (teamSportStats.silvers += data.sports[sport].silvers)
+
             medals.includes(golds) && (teamStats.golds += data.sports[sport].golds)
             medals.includes(bronzes) && (teamStats.bronzes += data.sports[sport].bronzes)
             medals.includes(silvers) && (teamStats.silvers += data.sports[sport].silvers)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
             max = teamStats.total > max ? teamStats.total : max
+            teamStats[sport] = teamSportStats
             res[noc] = teamStats        
           }
         })
       })
     }
-    return [res, max]
+    return [res, max as number]
   }
 
 }
