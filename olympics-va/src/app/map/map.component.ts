@@ -49,7 +49,7 @@ export class MapComponent implements OnInit {
     if(isReady) {
       this.isDataReady = true
       this.onYearRangeChanged(this.yearsRange)
-      this.updateMap()
+      //this.updateMap()
     }
   }
 
@@ -73,53 +73,89 @@ export class MapComponent implements OnInit {
       this.stats = stats
       let maximum = Number(max)
       console.log("maximum amount of medals: " + maximum)
-      var intensityDict = {}
+      var [intensityDict, tot] = this.colorScaleCalculator()
       this.g.selectAll("path").attr("fill", function(d, event) {
+        
+        let intervals = [1, 5, 12, 18, 27, 34, 69]
+        let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]        
         let currentNOC = d.properties.NOC
         let team = stats[currentNOC]
+
+
         if (team) {
           var intensity = team.total*100/maximum
-          console.log(currentNOC + ", " + intensity)
-          if (!intensityDict.hasOwnProperty(Math.round(intensity))) {
-            intensityDict[Math.round(intensity)]=1
-          }
-          else {
-            intensityDict[Math.round(intensity)]++
-          }
-          console.log(intensityDict)
+          //console.log(currentNOC + ", " + intensity)
 
           if (intensity==0) {
-            return ("#ffffff")
+            return (colorScale[0])
           }
-          if (intensity>0 && intensity<1) {
-            return ("#3c8a3e")
+          if (intensity>0 && intensity<intervals[0]) {
+            return (colorScale[1])
           }
-          else if (intensity>=1 && intensity<5) {
-            return ("#4a984b")
+          else if (intensity>=intervals[0] && intensity<intervals[1]) {
+            return (colorScale[2])
           }
-          else if (intensity>=5 && intensity<12) {
-            return ("#59a758")
+          else if (intensity>=intervals[1] && intensity<intervals[2]) {
+            return (colorScale[3])
           }
-          else if (intensity>=12 && intensity<18) {
-            return ("#67b765")
+          else if (intensity>=intervals[2] && intensity<intervals[3]) {
+            return (colorScale[4])
           }
-          else if (intensity>=18 && intensity<27) {
-            return ("#76c673")
+          else if (intensity>=intervals[3] && intensity<intervals[4]) {
+            return (colorScale[5])
           }
-          else if (intensity>=27 && intensity<34) {
-            return ("#84d681")
+          else if (intensity>=intervals[4] && intensity<intervals[5]) {
+            return (colorScale[6])
           }
-          else if (intensity>=34 && intensity<69) {
-            return ("#93e68f")
+          else if (intensity>=intervals[5] && intensity<intervals[6]) {
+            return (colorScale[7])
           }
           else {
-            return ("#a2f69d")
+            return (colorScale[8])
           }
         }
         else return "#000000"
-      })  
+      })
     }
 
+  }
+
+  colorScaleCalculator(){
+    let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
+    this.stats = stats
+    let maximum = Number(max)
+    console.log("maximum amount of medals: " + maximum)
+    var intensityDict = {}
+    var nonZeroNations = 0
+    var nationsInInterval = 0
+      
+    let intervals = [1, 5, 12, 18, 27, 34, 69]
+    let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
+       
+    for (const NOC in stats){
+      let currentNOC = NOC
+      let team = stats[currentNOC]
+      if (team) {
+        var intensity = team.total*100/maximum
+        if (intensity != 0){
+          if (!intensityDict.hasOwnProperty(intensity.toFixed(5))) {
+            intensityDict[intensity.toFixed(5)]=1
+          }
+          else {
+            intensityDict[intensity.toFixed(5)]++
+          }
+          nonZeroNations++
+        }
+      }
+    }
+    nationsInInterval= Math.round(nonZeroNations/8)
+    intervals = []
+
+    console.log(intensityDict)
+    console.log("nations with intensity > 0: ", nonZeroNations)
+    console.log("intervals of", nationsInInterval, "nations for each color")
+
+    return([intensityDict, nonZeroNations])
   }
 
   onYearRangeChanged(newRange: number[]){
