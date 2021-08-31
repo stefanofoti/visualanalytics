@@ -73,41 +73,43 @@ export class MapComponent implements OnInit {
       this.stats = stats
       let maximum = Number(max)
       console.log("maximum amount of medals: " + maximum)
+      var intensityDict = {}
       this.g.selectAll("path").attr("fill", function(d, event) {
         let currentNOC = d.properties.NOC
         let team = stats[currentNOC]
         if (team) {
           var intensity = team.total*100/maximum
-          if (currentNOC === "MAD") {
-            console.log (team.total)
-            console.log (intensity)
+          console.log(currentNOC + ", " + intensity)
+          if (!intensityDict.hasOwnProperty(Math.round(intensity))) {
+            intensityDict[Math.round(intensity)]=1
           }
+          else {
+            intensityDict[Math.round(intensity)]++
+          }
+          console.log(intensityDict)
 
           if (intensity==0) {
             return ("#ffffff")
           }
-          if (intensity>0 && intensity<11.1) {
-            return ("#2d7b31")
-          }
-          else if (intensity>=11.1 && intensity<22.2) {
+          if (intensity>0 && intensity<1) {
             return ("#3c8a3e")
           }
-          else if (intensity>=22.2 && intensity<33.3) {
+          else if (intensity>=1 && intensity<5) {
             return ("#4a984b")
           }
-          else if (intensity>=33.3 && intensity<44.4) {
+          else if (intensity>=5 && intensity<12) {
             return ("#59a758")
           }
-          else if (intensity>=44.4 && intensity<55.5) {
+          else if (intensity>=12 && intensity<18) {
             return ("#67b765")
           }
-          else if (intensity>=55.5 && intensity<66.6) {
+          else if (intensity>=18 && intensity<27) {
             return ("#76c673")
           }
-          else if (intensity>=66.6 && intensity<77.7) {
+          else if (intensity>=27 && intensity<34) {
             return ("#84d681")
           }
-          else if (intensity>=77.7 && intensity<88.8) {
+          else if (intensity>=34 && intensity<69) {
             return ("#93e68f")
           }
           else {
