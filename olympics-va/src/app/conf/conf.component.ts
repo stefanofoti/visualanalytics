@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
 import { Observable, Subscription } from 'rxjs';
-import { Country, Medal, PreCheckedSports, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
+import { Country, Medal, PreCheckedSports, PreCheckedSports2, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
 import { of, pipe } from 'rxjs';
 import { map, filter, tap, startWith } from 'rxjs/operators'
@@ -197,8 +197,9 @@ export class ConfComponent implements OnInit {
   }
 
   updateData() {
-    let selMedals: string[] = this.medalsList.map(m => m.name)
-    let selSports: string[] = this.selectedSports.map(s => s.name)
+    console.log("conf: Invoke updateData()")
+    let selMedals: string[] = this.medalsList.map(m => m.id)
+    let selSports: string[] = this.selectedSports.length > 0 ? this.selectedSports.map(s => s.name) : PreCheckedSports2
     let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals])
   }

@@ -55,6 +55,7 @@ export class ParcoordsComponent implements OnInit {
       this.maxSelectedSports = message[2]
       this.dimensions = message[3]
       if(this.dimensions.length == 0) this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
+      if(this.dimensions.length > 8) this.dimensions = this.dimensions.splice(8)
       this.selectedMedals = message[4]
       this.isDataReady = true
       this.firstPlot && this.plot()
@@ -198,8 +199,6 @@ export class ParcoordsComponent implements OnInit {
       c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
       c.selectedMedals.includes(bronzes) && (totMedals += d[p].bronzes)
       c.selectedMedals.includes(silvers) && (totMedals += d[p].silvers)
-
-
       return [c.x(p), c.y[p](totMedals) - c.spacing];
       return [3, 50]
     }));
