@@ -37,6 +37,8 @@ export class ParcoordsComponent implements OnInit {
   private width: number
 
 
+  private firstPlot = true
+
   currentSelected: any = {}
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
@@ -51,12 +53,11 @@ export class ParcoordsComponent implements OnInit {
     if(message && message.length == 5) {
       this.stats = message[0]
       this.maxSelectedSports = message[2]
-      // this.dimensions = message[3]
-      this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
-
+      this.dimensions = message[3]
+      if(this.dimensions.length == 0) this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
       this.selectedMedals = message[4]
       this.isDataReady = true
-      this.plot()
+      this.firstPlot && this.plot()
       this.update()
     }
   }
@@ -112,7 +113,7 @@ export class ParcoordsComponent implements OnInit {
   }
 
   plot(): void {
-
+    this.firstPlot = false
     // let data = Object.values(stats)
     let c = this
     // set the dimensions and margins of the graph
