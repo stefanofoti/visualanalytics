@@ -17,6 +17,7 @@ export class ParcoordsComponent implements OnInit {
   private subYearRangeChanged: Subscription
   private subSelectedMedals: Subscription
   private subSelectedSports: Subscription
+  private subDataUpdated: Subscription
 
   private isDataReady: boolean
   private spacing: number = 0
@@ -31,25 +32,30 @@ export class ParcoordsComponent implements OnInit {
   private svg: any
 
   private stats: any
-  private max: number
+  private maxSelectedSports: number
   private height: number
   private width: number
+
 
   currentSelected: any = {}
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
-    this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
-    this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
-    this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
-    this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
-
+    //this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
+    // this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
+    // this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
+    // this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
+    this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
   }
 
-  dataReady(isReady: Boolean): any {
-    console.log("parcoords dataReady()"+isReady)
-    if (isReady) {
+  dataReady(message): any {
+    if(message && message.length == 5) {
+      this.stats = message[0]
+      this.maxSelectedSports = message[2]
+      // this.dimensions = message[3]
+      this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
+
+      this.selectedMedals = message[4]
       this.isDataReady = true
-      this.getData()
       this.plot()
       this.update()
     }
@@ -92,6 +98,7 @@ export class ParcoordsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   getData(): void {
@@ -101,13 +108,10 @@ export class ParcoordsComponent implements OnInit {
     }
     let m
     [this.stats, , m] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.selectedMedals, PreCheckedSports2)
-    this.max = m as number
+    this.maxSelectedSports = m as number
   }
 
   plot(): void {
-    if (!this.isDataReady) {
-      return
-    }
 
     // let data = Object.values(stats)
     let c = this
@@ -206,7 +210,7 @@ export class ParcoordsComponent implements OnInit {
     for (let i in c.dimensions) {
       let name = c.dimensions[i]
       c.y[name] = d3.scaleLinear()
-        .domain([0, c.max]) // --> Same axis range for each group
+        .domain([0, c.maxSelectedSports]) // --> Same axis range for each group
         // --> different axis range for each group --> .domain( [d3.extent(data, function(d) { return +d[name]; })] )
         .range([c.height, 0])
     }
@@ -220,7 +224,7 @@ export class ParcoordsComponent implements OnInit {
   drawAxis() {
     let c = this
     var yscale = d3.scaleLinear()
-      .domain([0, c.max])
+      .domain([0, c.maxSelectedSports])
       .range([c.height - c.spacing, 0]);
 
     // Draw the axis:

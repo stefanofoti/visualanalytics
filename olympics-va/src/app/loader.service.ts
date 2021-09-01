@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -29,13 +29,15 @@ export class LoaderService {
 
   async loadNocCsv() {
     let lines = await d3.csv("/assets/data/noc_regions.csv")
-    let countries = []
+    let countries = {}
     lines.forEach(l => {
-      countries[l.NOC] = {
-        continent: l.continent,
+      let c: Country = {
+        id: l.NOC,
         name: l.region,
-        NOC: l.NOC
+        continent: l.continent,
+        isChecked: false
       }
+      countries[l.NOC] = c 
     })
     return countries
   }
@@ -63,7 +65,8 @@ export class LoaderService {
 
     this.loadNocCsv().then(data => {
       this.countries = data
-      noc_r = true
+      noc_r = true 
+      this.dataService.onCountriesDataReady(Object.values(this.countries))
       this.checkReadiness(noc_r, oly_r)
     })
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams } from '../data/data'
+import { Countries, Country, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams } from '../data/data'
 
 @Injectable()
 export class DataService {
@@ -23,6 +23,15 @@ export class DataService {
   private selectedSportSource = new BehaviorSubject(Sports);
   selectedSportsMessage = this.selectedSportSource.asObservable();
 
+  private selectedCountrySource = new BehaviorSubject(Countries);
+  selectedCountryMessage = this.selectedCountrySource.asObservable();
+
+  private countryReadinessSource = new BehaviorSubject(Countries);
+  countryReadinessMessage = this.countryReadinessSource.asObservable();
+
+  private updateReadinessSource = new BehaviorSubject([]);
+  updateReadinessMessage = this.updateReadinessSource.asObservable();
+
   constructor() { }
 
   changeMessage(message: Team[]) {
@@ -37,6 +46,10 @@ export class DataService {
     this.sportsReadinessSource.next(message)
   }
 
+  onCountriesDataReady(message: Country[]) {
+    this.countryReadinessSource.next(message)
+  }
+
   changeYearRange(message: number[]) {
     this.yearRangeSource.next(message)
   }
@@ -48,5 +61,14 @@ export class DataService {
   changeSelectedSports(message: Sport[]) {
     this.selectedSportSource.next(message)
   }
+
+  changeSelectedCountries(message: Country[]) {
+    this.selectedCountrySource.next(message)
+  }
+
+  updateNewData(message: any) {
+    this.updateReadinessSource.next(message)
+  }
+
 
 }

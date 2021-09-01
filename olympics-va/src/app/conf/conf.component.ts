@@ -2,12 +2,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
 import { Observable, Subscription } from 'rxjs';
-import { Medal, PreCheckedSports, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
+import { Country, Medal, PreCheckedSports, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
 import { of, pipe } from 'rxjs';
 import { map, filter, tap, startWith } from 'rxjs/operators'
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
+import { LoaderService } from '../loader.service';
 
 
 @Component({
@@ -26,18 +27,25 @@ export class ConfComponent implements OnInit {
   selectedMedalsSubscription: Subscription
   selectedSportsSubscription: Subscription
   sportsReadinessSubscription: Subscription
+  countryReadinessSubscription: Subscription
 
   sportsList: Sport[]
+  countryList: Country[]
 
 
   isOlympicsDataReady: Boolean
 
   //---
   sportControl = new FormControl();
+  countryControl = new FormControl();
 
   selectedSports: Sport[] = new Array<Sport>();
+  selectedCountry: Country[] = new Array<Country>();
   filteredSports: Observable<Sport[]>;
+
+  filteredCountries: Observable<Country[]>;
   lastFilter: string = '';
+  lastCountryFilter: string = '';
   //----
 
 
@@ -47,7 +55,7 @@ export class ConfComponent implements OnInit {
     ceil: requiredYearRange[1]
   };
 
-  constructor(private formBuilder: FormBuilder, private data: DataService) {
+  constructor(private formBuilder: FormBuilder, private data: DataService, private loaderService: LoaderService) {
     this.formConf = this.formBuilder.group({
       teams: this.formBuilder.array([], [Validators.required]),
       medals: this.formBuilder.array([], [Validators.required])
@@ -55,13 +63,20 @@ export class ConfComponent implements OnInit {
     this.subscription = this.data.currentMessage.subscribe(message => this.teamsList = message)
     this.yearRangeSubscription = this.data.changedYearRangeMessage.subscribe(message => this.yearRange = message)
     this.selectedMedalsSubscription = this.data.selectedMedalsMessage.subscribe(message => this.medalsList = message)
-    this.data.olympycsReadinessMessage.subscribe(message => this.isOlympicsDataReady = message)
+    this.data.olympycsReadinessMessage.subscribe(message => {
+      this.isOlympicsDataReady = message
+      this.isOlympicsDataReady && this.updateData()
+    })
     this.sportsReadinessSubscription = this.data.sportsReadinessMessage.subscribe(message => {
       this.sportsList = message
       this.initSportsChecklist()
     })
     this.selectedSportsSubscription = this.data.selectedSportsMessage.subscribe(message => {
       this.selectedSports = message
+    })
+    this.countryReadinessSubscription = this.data.countryReadinessMessage.subscribe(message => {
+      this.countryList = message
+      this.initCountryChecklist()
     })
 
   }
@@ -72,6 +87,15 @@ export class ConfComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  initCountryChecklist(): void {
+    this.countryList.forEach(c => { c.isChecked && this.selectedCountry.push(c) })
+    this.filteredCountries = this.countryControl.valueChanges.pipe(
+      startWith<string | Country[]>(''),
+      map(value => typeof value === 'string' ? value : this.lastCountryFilter),
+      map(filter => this.countryFilter(filter))
+    )
   }
 
   initSportsChecklist(): void {
@@ -100,6 +124,22 @@ export class ConfComponent implements OnInit {
     }
   }
 
+  countryFilter(filter: string): Country[] {
+    this.lastCountryFilter = filter;
+    let items = this.countryList
+    items.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    items.sort((a,b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
+
+    if (filter) {
+      return items.filter(c => {
+        return c.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0
+      })
+    } else {
+      return items.slice();
+    }
+  }
+
+
   displayFn(value: Sport[]): string | undefined {
     let displayValue: string = "";
     if (Array.isArray(value) && this.isOlympicsDataReady) {
@@ -116,9 +156,30 @@ export class ConfComponent implements OnInit {
     return displayValue;
   }
 
+  displayCountryFn(value: Country[]): string | undefined {
+    let displayValue: string = "";
+    if (Array.isArray(value) && this.isOlympicsDataReady) {
+      value.forEach((country, index) => {
+        if (index === 0) {
+          displayValue = country.name;
+        } else {
+          displayValue += ', ' + country.name;
+        }
+      });
+    } else {
+      // PreCheckedSports.forEach((sport, index) => displayValue += (index > 0 ? ", " + sport : sport))
+    }
+    return displayValue;
+  }
+
   optionClicked(event: Event, sport: Sport) {
     event.stopPropagation();
     this.toggleSelection(sport);
+  }
+
+  optionCountryClicked(event: Event, country: Country) {
+    event.stopPropagation();
+    this.toggleSelectionCountry(country);
   }
 
   toggleSelection(sport: Sport) {
@@ -131,8 +192,29 @@ export class ConfComponent implements OnInit {
     }
     console.log(this.selectedSports)
     this.sportControl.setValue(this.selectedSports);
-    this.data.changeSelectedSports(this.selectedSports)
+    // this.data.changeSelectedSports(this.selectedSports)
+    this.updateData()
+  }
 
+  updateData() {
+    let selMedals: string[] = this.medalsList.map(m => m.name)
+    let selSports: string[] = this.selectedSports.map(s => s.name)
+    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports)
+    this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals])
+  }
+
+  toggleSelectionCountry(country: Country) {
+    country.isChecked = !country.isChecked;
+    if (country.isChecked) {
+      this.selectedCountry.push(country);
+    } else {
+      const i = this.selectedCountry.findIndex(value => value.name === country.name);
+      this.selectedCountry.splice(i, 1);
+    }
+    console.log(this.selectedCountry)
+    this.countryControl.setValue(this.selectedCountry);
+    //this.data.changeSelectedCountries(this.selectedCountry)
+    this.updateData()
   }
 
   ngOnDestroy() {
@@ -152,7 +234,8 @@ export class ConfComponent implements OnInit {
       item && (item.isChecked = false)
       teams.removeAt(index);
     }
-    this.data.changeMessage(this.teamsList)
+    // this.data.changeMessage(this.teamsList)
+    this.updateData()
   }
 
   onMedalsCheckboxChange(e) {
@@ -166,13 +249,15 @@ export class ConfComponent implements OnInit {
       item && (item.isChecked = false)
       medals.removeAt(index);
     }
-    this.data.changeSelectedMedals(this.medalsList)
+    // this.data.changeSelectedMedals(this.medalsList)
+    this.updateData()
     // console.log(this.medalsList)
   }
 
 
   onYearSliderChange(e) {
-    this.data.changeYearRange(this.yearRange)
+    this.updateData()
+    // this.data.changeYearRange(this.yearRange)
     // console.log(e)
   }
 

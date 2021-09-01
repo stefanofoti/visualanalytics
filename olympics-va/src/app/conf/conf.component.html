@@ -1,11 +1,28 @@
 <h5>Medal chart configuration</h5>
 
 <mat-form-field class="search-full-width">
-    <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput [matAutocomplete]="auto" [formControl]="sportControl">
+    <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput [matAutocomplete]="auto_country" [formControl]="countryControl">
+  <mat-hint>Enter text to find countries</mat-hint>
+</mat-form-field>
+
+<mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
+    <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
+        <div (click)="optionCountryClicked($event, c)">
+            <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)" (click)="$event.stopPropagation()">
+                {{ c.name }}
+            </mat-checkbox>
+        </div>
+    </mat-option>
+</mat-autocomplete>
+<br>
+
+
+<mat-form-field class="search-full-width">
+    <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput [matAutocomplete]="auto_sport" [formControl]="sportControl">
   <mat-hint>Enter text to find sports by name</mat-hint>
 </mat-form-field>
 
-<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+<mat-autocomplete #auto_sport="matAutocomplete" [displayWith]="displayFn.bind(this)">
     <mat-option *ngFor="let sport of filteredSports | async" [value]="selectedSports">
         <div (click)="optionClicked($event, sport)">
             <mat-checkbox [checked]="sport.isChecked" (change)="toggleSelection(sport)" (click)="$event.stopPropagation()">
@@ -15,8 +32,8 @@
     </mat-option>
 </mat-autocomplete>
 
-<br><br>
 
+<br>
 
 <!--
 

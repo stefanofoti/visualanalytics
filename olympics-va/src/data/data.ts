@@ -17,6 +17,13 @@ export interface Medal {
     isChecked: boolean;
 }
 
+export interface Country {
+    id: string;
+    name: string;
+    continent: string;
+    isChecked: boolean;
+}
+
 export interface Stat {
     id: string;
     name: string;
@@ -45,6 +52,10 @@ export const Teams: Team[] = [
 ];
 
 export const Sports: Sport[] = [
+
+];
+
+export const Countries: Country[] = [
 
 ];
 
