@@ -158,6 +158,11 @@ export class ParcoordsComponent implements OnInit {
     this.computeXY()
     //this.drawAxis()
 
+    this.svg
+      .on("mouseover", (event, d) => this.highlight(event, d, c))
+      .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
+
+
     // Draw the lines
     /* this.svg.selectAll("myPath")
       .data(c.stats)
@@ -255,8 +260,8 @@ export class ParcoordsComponent implements OnInit {
       .domain(["setosa", "versicolor", "virginica"])
       .range(["#440154ff", "#21908dff", "#fde725ff"])
 
-    let selected_specie: string = d.Species
-    let colorNumb: any = color(selected_specie)
+    // let selected_specie: string = d.Species
+    // let colorNumb: any = color(selected_specie)
     // first every group turns grey
     d3.selectAll(".line")
       .transition().duration(200)
@@ -305,8 +310,6 @@ export class ParcoordsComponent implements OnInit {
       .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
       //.style("stroke", "#0000ff")
       .style("opacity", 0.5)
-      .on("mouseover", (event, d) => this.highlight(event, d, c))
-      .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
 
 
 
