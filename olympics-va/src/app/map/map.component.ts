@@ -142,7 +142,7 @@ export class MapComponent implements OnInit {
   }
 
   colorScaleCalculator(){
-    // let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
+    // let [stats, max] = this.loaderServicey.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
     // this.stats = stats
     let maximum = Number(this.max)
     console.log("maximum amount of medals: " + maximum)
@@ -291,7 +291,7 @@ export class MapComponent implements OnInit {
     this.width = document.getElementById("svg_map").clientWidth || 800
 
     var projection = d3geo.geoNaturalEarth1()
-      .scale(140)
+      .scale(160)
       .translate([this.width / 2, this.height / 2])
 
 

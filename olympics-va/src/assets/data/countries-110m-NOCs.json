@@ -58,7 +58,7 @@
           "id": "732",
           "properties": {
             "name": "W. Sahara",
-            "NOC": ""
+            "NOC": "ESH"
           }
         },
         {
@@ -1639,8 +1639,8 @@
           ],
           "id": "748",
           "properties": {
-            "name": "eSwatini",
-            "NOC": ""
+            "name": "Eswatini",
+            "NOC": "SWZ"
           }
         },
         {
