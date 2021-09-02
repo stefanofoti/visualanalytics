@@ -148,7 +148,12 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   updateChart() {
     // Update the X axis
     // this.x.domain(this.goldsFiltered.map(function(d) { return d.team }))
-    this.x.domain(this.statsFiltered.map(function (d) { return d.name }))
+    this.x.domain(this.statsFiltered.map(function (d) {
+      if (d) {
+        return d.name
+      }
+      return ""
+    }))
 
     //this.x.domain(this.goldsFiltered.map((d) => d.team));
     this.xAxis.call(d3.axisBottom(this.x))
@@ -157,11 +162,13 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // this.y.domain([0, d3Array.max(this.goldsFiltered, (d) => d.golds)]);
     let max = 0
     this.statsFiltered.forEach(element => {
-      let sum = 0
-      this.selectedMedals.includes(golds) && (sum += element.golds)
-      this.selectedMedals.includes(silvers) && (sum += element.silvers)
-      this.selectedMedals.includes(bronzes) && (sum += element.bronzes)
-      sum > max && (max = sum)
+      if(element) {
+        let sum = 0
+        this.selectedMedals.includes(golds) && (sum += element.golds)
+        this.selectedMedals.includes(silvers) && (sum += element.silvers)
+        this.selectedMedals.includes(bronzes) && (sum += element.bronzes)
+        sum > max && (max = sum)  
+      }
     })
     this.y.domain([0, max]);
 
@@ -190,10 +197,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .merge(u) // get the already existing elements as well
       .transition() // and apply changes to all of them
       .duration(1000)
-      .attr('x', (d) => this.x(d.name))
-      .attr('y', (d) => this.y(d.golds + d.bronzes + d.silvers))
+      .attr('x', (d) => this.x(d && d.name))
+      .attr('y', (d) => this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr('width', this.x.bandwidth())
-      .attr('height', (d) => this.height - this.y(d.golds + d.bronzes + d.silvers))
+      .attr('height', (d) => this.height - this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr("fill", "#69b3a2")
 
     // If less group in the new dataset, I delete the ones not in use anymore

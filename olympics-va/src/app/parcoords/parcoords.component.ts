@@ -28,6 +28,10 @@ export class ParcoordsComponent implements OnInit {
   private selectedSports: string[]
   private selectedCountries: string[]
 
+  private color: any
+
+  private countries: any = {}
+
   private x: any
   private y: any
   private svg: any
@@ -51,17 +55,18 @@ export class ParcoordsComponent implements OnInit {
   }
 
   dataReady(message): any {
-    if(message && message.length == 7) {
+    if (message && message.length == 7) {
       this.stats = Object.values(message[0])
       this.maxSelectedSports = message[2]
       this.dimensions = message[3]
-      if(this.dimensions.length == 0) this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
-      if(this.dimensions.length > 8) this.dimensions.splice(8)
+      if (this.dimensions.length == 0) this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
+      if (this.dimensions.length > 8) this.dimensions.splice(8)
       this.selectedMedals = message[4]
       this.selectedCountries = message[6]
-      if(this.selectedCountries.length > 0) {
+      if (this.selectedCountries.length > 0) {
         this.stats = Object.values(this.stats).filter(s => this.selectedCountries.includes((s as any).name))
       }
+      this.countries = this.loaderService.countries
       this.isDataReady = true
       this.firstPlot && this.plot()
       this.update()
@@ -127,6 +132,10 @@ export class ParcoordsComponent implements OnInit {
     // this.width = 1200 - margin.left - margin.right
     this.height = 400 - margin.top - margin.bottom
 
+    this.color = d3.scaleOrdinal()
+      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+      .range(["#4401ff", "#2f9dff", "#fde5ff", "#21fdf8", "#fd45f9", "#919dff"])
+
     // append the svg object to the body of the page
     this.svg = d3.select("#div_parcoord")
       .append("svg")
@@ -150,7 +159,7 @@ export class ParcoordsComponent implements OnInit {
     //this.drawAxis()
 
     // Draw the lines
-    this.svg.selectAll("myPath")
+    /* this.svg.selectAll("myPath")
       .data(c.stats)
       .join("path")
       .attr("class", d => {
@@ -158,42 +167,13 @@ export class ParcoordsComponent implements OnInit {
         return "line parcoord-line"
       }) // 2 class for each line: 'line' and the group name
       .attr("d", d => this.path(d, c))
-      .attr('id', d => 'line-'+d.name)
+      .attr('id', d => 'line-' + d.name)
       .style("fill", "none")
-      .style("stroke", "#0000ff")
+      // .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
       .style("opacity", 0.5)
-      .on("mouseover", (event, d) => this.highlight(event, d, c))
-      .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
-
-  }
-
-  highlight(ev, d, c) {
-    c.currentSelected = d
-    const color = d3.scaleOrdinal()
-      .domain(["setosa", "versicolor", "virginica"])
-      .range(["#440154ff", "#21908dff", "#fde725ff"])
-
-    let selected_specie: string = d.Species
-    let colorNumb: any = color(selected_specie)
-    // first every group turns grey
-    d3.selectAll(".line")
-      .transition().duration(200)
-      .style("stroke", "lightgrey")
-      .style("opacity", "0.2")
-    // Second the hovered specie takes its color
-    d3.select("#line-" + c.currentSelected.name)
-      .transition().duration(200)
-      .style("stroke", /*color(selected_specie)*/ "#00ffff")
-      .style("opacity", "1")
-  }
-
-  // Unhighlight
-  doNotHighlight(ev, d, c) {
-    c.currentSelected = {}
-    d3.selectAll(".line")
-      .transition().duration(200).delay(1000)
-      .style("stroke", "#0000ff")
-      .style("opacity", 0.5)
+      //.on("mouseover", (event, d) => this.highlight(event, d, c))
+      //.on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
+    */
   }
 
 
@@ -268,6 +248,37 @@ export class ParcoordsComponent implements OnInit {
     u.exit().remove()
   }
 
+
+  highlight(ev, d, c) {
+    c.currentSelected = d
+    const color = d3.scaleOrdinal()
+      .domain(["setosa", "versicolor", "virginica"])
+      .range(["#440154ff", "#21908dff", "#fde725ff"])
+
+    let selected_specie: string = d.Species
+    let colorNumb: any = color(selected_specie)
+    // first every group turns grey
+    d3.selectAll(".line")
+      .transition().duration(200)
+      .style("stroke", "lightgrey")
+      .style("opacity", "0.2")
+    // Second the hovered specie takes its color
+    d3.select("#line-" + c.currentSelected.name)
+      .transition().duration(200)
+      .style("stroke", /*color(selected_specie)*/ "#00ffff")
+      .style("opacity", "1")
+  }
+
+  // Unhighlight
+  doNotHighlight(ev, d, c) {
+    c.currentSelected = {}
+    d3.selectAll(".line")
+      .transition().duration(200).delay(1000)
+      .style("stroke", "#0000ff")
+      .style("opacity", 0.5)
+  }
+
+
   update() {
     let c = this
     c.computeXY()
@@ -283,15 +294,20 @@ export class ParcoordsComponent implements OnInit {
       .append('path')
       .attr('class', 'parcoord-line')
       .attr('class', 'line') // Add a new rect for each new elements
-      .attr('id', d => 'line-'+d.name)
+      .attr('id', d => 'line-' + d.name)
       .merge(u) // get the already existing elements as well
       .transition() // and apply changes to all of them
       //.duration(1000)
       .attr("d", d => c.path(d, c))
-      .attr("fill", "#69b3a2")
-      //.style("fill", "none")
-      .style("stroke", "#0000ff")
+      //.attr("fill", "#69b3a2")
+      .attr("stroke-width", 3)
+      .style("fill", "none")
+      .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
+      //.style("stroke", "#0000ff")
       .style("opacity", 0.5)
+      .on("mouseover", (event, d) => this.highlight(event, d, c))
+      .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
+
 
 
     // If less group in the new dataset, I delete the ones not in use anymore
