@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 import * as d3Sel from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
-import { Team, Teams } from 'src/data/data';
+import { bronzes, golds, silvers, Team, Teams } from 'src/data/data';
 @Component({
   selector: 'app-medal-chart',
   templateUrl: './medal-chart.component.html',
@@ -23,29 +23,54 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   yAxis: any
   svg: any
   g: any
-  golds: GoldEntry[] = []
-  goldsFiltered: GoldEntry[] = []
+  // golds: GoldEntry[] = []
+  // goldsFiltered: GoldEntry[] = []
+  stats: any
+  statsFiltered: any = []
+  selectedMedals: string[] = []
+  selectedCountries: string[] = []
+  max: number
+
+  firstRun = true
 
   @Input()
   teamsList: Team[] = Teams;
   subscription: Subscription;
+  subDataUpdated: Subscription;
 
   constructor(private data: DataService) {
     this.width = 900 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
-    this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
+    // this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
+    this.subDataUpdated = data.updateReadinessMessage.subscribe(message => this.dataReady(message))
+
   }
 
-  onMessageReceived(message) {
+  dataReady(message: any) {
+    if (message && message.length == 7) {
+      console.log("medal-chart invoked data ready")
+      this.stats = message[0]
+      this.max = message[1]
+      this.selectedMedals = message[4]
+      this.selectedCountries = message[6]
+      this.selectedCountries.length == 0 && (this.selectedCountries = ['USA', "GER", "FRA"])
+      // this.firstPlot && this.plot()
+      this.filterData()
+      this.firstRun && this.initChart()
+      this.updateChart()
+    }
+  }
+
+  /*onMessageReceived(message) {
     this.teamsList = message
     if (this.golds.length > 0) {
       this.filterData()
       this.updateChart()
     }
-  }
+  }*/
 
   ngOnInit(): void {
-    this.plotGraph()
+    // this.plotGraph()
   }
 
   ngOnDestroy() {
@@ -63,7 +88,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   }
 
   plotGraph() {
-    this.initData()
+    // this.initData()
     /*d3Sel.selectAll("rect")
       .on("mouseover",
         function () {
@@ -75,17 +100,21 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   }
 
   onDataInitialized() {
-    console.log(this.golds)
+    // console.log(this.golds)
     this.filterData()
     this.initChart()
     this.updateChart()
   }
 
   filterData() {
-    this.goldsFiltered = this.golds.filter(t => this.teamsList.some(t2 => t.team == t2.name && t2.isChecked));
+    // this.goldsFiltered = this.golds.filter(t => this.teamsList.some(t2 => t.team == t2.name && t2.isChecked));
+    this.statsFiltered = this.selectedCountries.map(c => this.stats[c])
+    console.log("medal chart stats filtered:")
+    console.log(this.statsFiltered)
   }
 
   initChart() {
+    this.firstRun = false
     //this.initSvg()
 
     // set the dimensions and margins of the graph
@@ -118,13 +147,24 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   updateChart() {
     // Update the X axis
-    this.x.domain(this.goldsFiltered.map(function(d) { return d.team }))
+    // this.x.domain(this.goldsFiltered.map(function(d) { return d.team }))
+    this.x.domain(this.statsFiltered.map(function (d) { return d.name }))
 
     //this.x.domain(this.goldsFiltered.map((d) => d.team));
     this.xAxis.call(d3.axisBottom(this.x))
 
     // Update the Y axis
-    this.y.domain([0, d3Array.max(this.goldsFiltered, (d) => d.golds)]);
+    // this.y.domain([0, d3Array.max(this.goldsFiltered, (d) => d.golds)]);
+    let max = 0
+    this.statsFiltered.forEach(element => {
+      let sum = 0
+      this.selectedMedals.includes(golds) && (sum += element.golds)
+      this.selectedMedals.includes(silvers) && (sum += element.silvers)
+      this.selectedMedals.includes(bronzes) && (sum += element.bronzes)
+      sum > max && (max = sum)
+    })
+    this.y.domain([0, max]);
+
     this.yAxis.transition().duration(1000).call(d3.axisLeft(this.y));
 
     // this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
@@ -140,7 +180,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // Create the u variable
     //var u = this.svg.select("#barChartMedals").selectAll(".bar").data(this.goldsFiltered)
     // var u = this.svg.select("#barChartMedals").data(this.goldsFiltered)
-    var u = this.svg.selectAll(".medalBar").data(this.goldsFiltered)
+    var u = this.svg.selectAll(".medalBar").data(this.statsFiltered)
 
     u
       .enter()
@@ -150,46 +190,50 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .merge(u) // get the already existing elements as well
       .transition() // and apply changes to all of them
       .duration(1000)
-      .attr('x', (d) => this.x(d.team))
-      .attr('y', (d) => this.y(d.golds))
+      .attr('x', (d) => this.x(d.name))
+      .attr('y', (d) => this.y(d.golds + d.bronzes + d.silvers))
       .attr('width', this.x.bandwidth())
-      .attr('height', (d) => this.height - this.y(d.golds))
+      .attr('height', (d) => this.height - this.y(d.golds + d.bronzes + d.silvers))
       .attr("fill", "#69b3a2")
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u
       .exit()
       .remove()
+
   }
 
 
-  initData() {
-    let golds = this.golds
-    d3.csv("/assets/data/athlete_events.csv").then(function (data) {
-      let dict: any = {}
-      for (let i = 0; i < data.length; i++) {
-        let team = data[i].Team || ""
-        if (!dict[team]) {
-          dict[team] = 0
+  /*  initData() {
+      let golds = this.golds
+      d3.csv("/assets/data/athlete_events.csv").then(function (data) {
+        let dict: any = {}
+        for (let i = 0; i < data.length; i++) {
+          let team = data[i].Team || ""
+          if (!dict[team]) {
+            dict[team] = 0
+          }
+          if (data[i].Medal === "Gold") {
+            dict[team]++
+          }
         }
-        if (data[i].Medal === "Gold") {
-          dict[team]++
+  
+        for (let key in dict) {
+          let entry: GoldEntry = {
+            team: key,
+            golds: dict[key]
+          }
+          golds.push(entry);
         }
-      }
-
-      for (let key in dict) {
-        let entry: GoldEntry = {
-          team: key,
-          golds: dict[key]
-        }
-        golds.push(entry);
-      }
-    }.bind(this)).then(this.onDataInitialized.bind(this))
-  }
-
+      }.bind(this)).then(this.onDataInitialized.bind(this))
+    }
+  */
 }
 
+/*
 export interface GoldEntry {
   team: string;
   golds: number;
 }
+
+*/

@@ -198,10 +198,14 @@ export class ConfComponent implements OnInit {
 
   updateData() {
     console.log("conf: Invoke updateData()")
-    let selMedals: string[] = this.medalsList.map(m => m.id)
-    let selSports: string[] = this.selectedSports.length > 0 ? this.selectedSports.map(s => s.name) : PreCheckedSports2
+    let selMedals: string[] = []
+    this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
+    let selSports: string[] = this.selectedSports.map(s => s.name)
+    let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
     let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports)
-    this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals])
+    this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
+    console.log("conf: updateData() result")
+    console.log(stats)
   }
 
   toggleSelectionCountry(country: Country) {

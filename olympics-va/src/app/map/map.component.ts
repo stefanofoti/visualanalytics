@@ -22,11 +22,13 @@ export class MapComponent implements OnInit {
   private g: any
   private path: any
   private div: any
+  private max: number
 
   private subDataReadiness: Subscription
   private subYearRangeChanged: Subscription
   private subSelectedMedals: Subscription
   private subSelectedSports: Subscription
+  private subDataUpdated: Subscription
   private isDataReady: Boolean = false
   private selectedSports: string[] = PreCheckedSports
   private yearsRange: number[]
@@ -35,23 +37,41 @@ export class MapComponent implements OnInit {
   stats: {}
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
-    this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
-    this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
-    this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
-    this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
+    //this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
+    //this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
+    //this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
+    //this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
+  
+    this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
+
   }
 
   ngOnInit(): void {
     this.initMap()
   }
 
+
+  dataReady(message: any): void {
+    if(message && message.length == 7) {
+      this.stats = message[0]
+      this.max = message[1]
+      this.selectedMedals = message[4]
+      this.yearsRange = message[5]
+      this.isDataReady = true
+      // this.firstPlot && this.plot()
+      this.updateMap()
+    }
+
+  }
+
+  /*
   dataReady(isReady: Boolean): any {
     if(isReady) {
       this.isDataReady = true
       this.onYearRangeChanged(this.yearsRange)
       //this.updateMap()
     }
-  }
+  }*/
 
   onSelectedMedalsChanged(message: Medal[]) {
     this.selectedMedals = []
@@ -69,9 +89,10 @@ export class MapComponent implements OnInit {
   updateMap() {
     console.log("update map invoked")
     if(this.isDataReady) {
-      let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
-      this.stats = stats
-      let maximum = Number(max)
+      // let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
+      // this.stats = stats
+      let stats = this.stats
+      let maximum = Number(this.max)
       console.log("maximum amount of medals: " + maximum)
       let intervals = [1, 5, 12, 18, 27, 34, 69]
       intervals = this.colorScaleCalculator()
@@ -121,9 +142,9 @@ export class MapComponent implements OnInit {
   }
 
   colorScaleCalculator(){
-    let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
-    this.stats = stats
-    let maximum = Number(max)
+    // let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
+    // this.stats = stats
+    let maximum = Number(this.max)
     console.log("maximum amount of medals: " + maximum)
     var intensityDict = {}
     var nonZeroNations = 0
@@ -132,9 +153,9 @@ export class MapComponent implements OnInit {
     let intervals = [1, 5, 12, 18, 27, 34, 69, 100]
     let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
        
-    for (const NOC in stats){
+    for (const NOC in this.stats){
       let currentNOC = NOC
-      let team = stats[currentNOC]
+      let team = this.stats[currentNOC]
       if (team) {
         var intensity = team.total*100/maximum
         if (intensity != 0){
@@ -304,7 +325,7 @@ export class MapComponent implements OnInit {
 
     this.svg.call(zoom);
 
-    console.log(this.loaderService.olympicsDict)
+    // console.log(this.loaderService.olympicsDict)
     /*this.g.selectAll("path")
       .on("mouseover", function() {
         console.log("got hover")

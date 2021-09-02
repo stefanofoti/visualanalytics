@@ -26,6 +26,7 @@ export class ParcoordsComponent implements OnInit {
 
   private selectedMedals: string[]
   private selectedSports: string[]
+  private selectedCountries: string[]
 
   private x: any
   private y: any
@@ -50,13 +51,17 @@ export class ParcoordsComponent implements OnInit {
   }
 
   dataReady(message): any {
-    if(message && message.length == 5) {
-      this.stats = message[0]
+    if(message && message.length == 7) {
+      this.stats = Object.values(message[0])
       this.maxSelectedSports = message[2]
       this.dimensions = message[3]
       if(this.dimensions.length == 0) this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight"]
-      if(this.dimensions.length > 8) this.dimensions = this.dimensions.splice(8)
+      if(this.dimensions.length > 8) this.dimensions.splice(8)
       this.selectedMedals = message[4]
+      this.selectedCountries = message[6]
+      if(this.selectedCountries.length > 0) {
+        this.stats = Object.values(this.stats).filter(s => this.selectedCountries.includes((s as any).name))
+      }
       this.isDataReady = true
       this.firstPlot && this.plot()
       this.update()
@@ -146,7 +151,7 @@ export class ParcoordsComponent implements OnInit {
 
     // Draw the lines
     this.svg.selectAll("myPath")
-      .data(Object.values(c.stats))
+      .data(c.stats)
       .join("path")
       .attr("class", d => {
         let x: any = d
@@ -271,7 +276,7 @@ export class ParcoordsComponent implements OnInit {
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
 
-    var u = c.svg.selectAll(".parcoord-line").data(Object.values(c.stats))
+    var u = c.svg.selectAll(".parcoord-line").data(c.stats)
 
     u
       .enter()
