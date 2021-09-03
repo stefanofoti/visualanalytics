@@ -120,7 +120,7 @@ export class ParcoordsComponent implements OnInit {
       return
     }
     let m
-    [this.stats, , m] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.selectedMedals, PreCheckedSports2)
+    [this.stats, , m] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.selectedMedals, PreCheckedSports2, true)
     this.maxSelectedSports = m as number
   }
 

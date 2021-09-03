@@ -107,7 +107,11 @@ export class MapComponent implements OnInit {
           var intensity = team.total*100/maximum
           //console.log(currentNOC + ", " + intensity)
 
+          if (team.noPop) {
+            return ("#ff0000")
+          }
           if (intensity==0) {
+
             return (colorScale[0])
           }
           if (intensity>0 && intensity<intervals[0]) {

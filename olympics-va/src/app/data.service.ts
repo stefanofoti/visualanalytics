@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Countries, Country, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams } from '../data/data'
+import { Countries, Populations, Country, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams } from '../data/data'
 
 @Injectable()
 export class DataService {
@@ -29,6 +29,9 @@ export class DataService {
   private countryReadinessSource = new BehaviorSubject(Countries);
   countryReadinessMessage = this.countryReadinessSource.asObservable();
 
+  private populationsReadinessSource = new BehaviorSubject(Populations);
+  populationsReadinessMessage = this.populationsReadinessSource.asObservable();
+
   private updateReadinessSource = new BehaviorSubject([]);
   updateReadinessMessage = this.updateReadinessSource.asObservable();
 
@@ -48,6 +51,10 @@ export class DataService {
 
   onCountriesDataReady(message: Country[]) {
     this.countryReadinessSource.next(message)
+  }
+
+  onPopulationsDataReady(message: CountryPopulation[]) {
+    this.populationsReadinessSource.next(message)
   }
 
   changeYearRange(message: number[]) {

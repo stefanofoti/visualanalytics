@@ -1,3 +1,5 @@
+import { NumberValue } from "d3-scale"
+
 export interface Team {
     id: number;
     name: string;
@@ -22,6 +24,28 @@ export interface Country {
     name: string;
     continent: string;
     isChecked: boolean;
+}
+
+export interface CountryPopulation {
+    name: string;
+    years: Decades;
+    continent: string;
+}
+
+export interface Decades {
+    1900: number;
+    1910: number;
+    1920: number;
+    1930: number;
+    1940: number;
+    1950: number;
+    1960: number;
+    1970: number;
+    1980: number;
+    1990: number;
+    2000: number;
+    2010: number;
+    2020: number;
 }
 
 export interface Stat {
@@ -58,6 +82,10 @@ export const Sports: Sport[] = [
 export const Countries: Country[] = [
 
 ];
+
+export const Populations: CountryPopulation[] = [
+
+]
 
 export const PreCheckedSports: string[] = []
 

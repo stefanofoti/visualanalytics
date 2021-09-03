@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -17,6 +17,8 @@ export class LoaderService {
   selectedSports: Sport[]
 
   countries = {}
+
+  populations = {}
 
   private isOlympicsDataReady: Boolean = false
 
@@ -42,14 +44,43 @@ export class LoaderService {
     return countries
   }
 
+  async loadPopulationCsv() {
+    let lines = await d3.csv("/assets/data/population.csv")
+    let populations = {}
+    lines.forEach(l => {
+      let d: Decades = {
+        1900: Number(l[1900]),
+        1910: Number(l[1910]),
+        1920: Number(l[1920]),
+        1930: Number(l[1930]),
+        1940: Number(l[1940]),
+        1950: Number(l[1950]),
+        1960: Number(l[1960]),
+        1970: Number(l[1970]),
+        1980: Number(l[1980]),
+        1990: Number(l[1990]),
+        2000: Number(l[2000]),
+        2010: Number(l[2010]),
+        2020: Number(l[2020])
+      }
+      let p: CountryPopulation = {
+        name: l.Team,
+        years: d,
+        continent: l.Continent
+        }
+        populations[l.Team] = p
+    })
+    return populations
+  }
+
   async loadOlympicsCsv() {
     let lines = await d3.csv("/assets/data/athlete_events.csv")
     let res = this.computeMedalsByNation(lines, this)
     return res
   }
 
-  checkReadiness(noc_r:boolean, oly_r:boolean) {
-    if(noc_r && oly_r) {
+  checkReadiness(noc_r:boolean, oly_r:boolean, pop_r:boolean) {
+    if(noc_r && oly_r && pop_r) {
       this.isOlympicsDataReady = true
       this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     }
@@ -61,19 +92,26 @@ export class LoaderService {
     let rowData = []
     let c = this
 
-    let noc_r, oly_r = false
+    let noc_r, oly_r, pop_r = false
 
     this.loadNocCsv().then(data => {
       this.countries = data
       noc_r = true 
       this.dataService.onCountriesDataReady(Object.values(this.countries))
-      this.checkReadiness(noc_r, oly_r)
+      this.checkReadiness(noc_r, oly_r, pop_r)
     })
 
     this.loadOlympicsCsv().then(d => {
       this.olympicsDict["NOC"] = d
       oly_r = true
-      this.checkReadiness(noc_r, oly_r)
+      this.checkReadiness(noc_r, oly_r, pop_r)
+    })
+
+    this.loadPopulationCsv().then(data => {
+      this.populations = data
+      pop_r = true
+      this.checkReadiness(noc_r, oly_r, pop_r)
+      this.dataService.onPopulationsDataReady(Object.values(this.populations))
     })
 
     // let data = await d3.csv("/assets/data/athlete_events.csv")
@@ -167,7 +205,7 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[]) {
+  computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[], medalsByPop: boolean) {
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2
@@ -176,11 +214,19 @@ export class LoaderService {
     let res = {}
     let max = 0
     let maxSingleSport = 0
+    let decadesSelected 
+      medalsByPop && (decadesSelected = this.computeDecadesRange(start, end))
+    console.log (decadesSelected)
+
     for (let i = start; i <= end; i++) {
       let currentYear = dict[i]
       currentYear && Object.keys(currentYear).forEach(noc => {
         let data = currentYear[noc]
         let teamStats = res[noc]
+        let currentAvgPop 
+          medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
+
+        
 
         selectedSports.forEach(sport => {
           if (data.sports[sport]) {
@@ -202,13 +248,24 @@ export class LoaderService {
                 total: 0
               }
             }
+            
+            let incrementSportGold = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].golds/currentAvgPop *100000: data.sports[sport].golds
+            let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].silvers/currentAvgPop *100000: data.sports[sport].silvers
+            let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].bronzes/currentAvgPop *100000: data.sports[sport].bronzes
 
-            medals.includes(golds) && (teamSportStats.golds += data.sports[sport].golds)
-            medals.includes(bronzes) && (teamSportStats.bronzes += data.sports[sport].bronzes)
-            medals.includes(silvers) && (teamSportStats.silvers += data.sports[sport].silvers)
-            medals.includes(golds) && (teamStats.golds += data.sports[sport].golds)
-            medals.includes(bronzes) && (teamStats.bronzes += data.sports[sport].bronzes)
-            medals.includes(silvers) && (teamStats.silvers += data.sports[sport].silvers)
+            if (isNaN(currentAvgPop)){
+              incrementSportGold = 0
+              incrementSportSilver = 0
+              incrementSportBronze = 0
+              teamStats.noPop = true
+            }
+
+            medals.includes(golds) && (teamSportStats.golds += incrementSportGold)
+            medals.includes(bronzes) && (teamSportStats.bronzes += incrementSportBronze)
+            medals.includes(silvers) && (teamSportStats.silvers += incrementSportSilver)
+            medals.includes(golds) && (teamStats.golds += incrementSportGold)
+            medals.includes(bronzes) && (teamStats.bronzes += incrementSportBronze)
+            medals.includes(silvers) && (teamStats.silvers += incrementSportSilver)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
             teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
             max = teamStats.total > max ? teamStats.total : max
@@ -222,4 +279,62 @@ export class LoaderService {
     return [res, max as number, maxSingleSport as number]
   }
 
+  computeDecadesRange(start: number, end: number) {
+    let first, second
+    let yearsArr = []
+    if (start<=1900){
+      first = 1900
+    }
+    else {
+      if (start%10 <= 5) {
+        first = start - start%10
+      }
+      else{
+        first = start + 10 - start%10
+      }
+    }
+    if (end <=1900) {
+      second = 1900
+    }
+    else {
+      if (end%10 <= 5) {
+        second = end - end%10
+      }
+      else {
+        second = end + 10 - end%10
+      }
+    }
+    if (first === second) {
+        yearsArr = [first]
+    }
+    else {
+      let decadesDiff = (second - first)/10
+      for (let i = 0; i<= decadesDiff; i++) {
+        yearsArr.push(Number(first+i*10))
+      }
+    }
+    return yearsArr
+  }
+
+  computeAveragePopulationOfNation(selectedDecades, NOC) {
+    let nation = this.countries[NOC].name
+    let popSum = 0
+    let popYears = 0
+    selectedDecades.forEach(y => {
+      if (this.populations[nation]) {
+        if (this.populations[nation].years[y]){
+          popSum += this.populations[nation].years[y]
+          popYears++
+        }
+      }
+      else {
+        console.log("not found in populations.csv: " + NOC + ", "+ nation)
+      }      
+    });
+
+    return(popSum/popYears)
+  
+  }
+
 }
+
