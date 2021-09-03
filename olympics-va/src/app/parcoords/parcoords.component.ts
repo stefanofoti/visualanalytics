@@ -154,8 +154,8 @@ export class ParcoordsComponent implements OnInit {
       //this.drawAxis()
 
       //this.svg
-        // .on("mouseover", (event, d) => this.highlight(event, d, c))
-        // .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
+      // .on("mouseover", (event, d) => this.highlight(event, d, c))
+      // .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
 
 
       // Draw the lines
@@ -174,7 +174,7 @@ export class ParcoordsComponent implements OnInit {
       //   .on("mouseover", (event, d) => this.highlight(event, d, c))
       //   .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
     }
-    
+
   }
 
 
@@ -256,7 +256,7 @@ export class ParcoordsComponent implements OnInit {
     // let selected_specie: string = d.Species
     // let colorNumb: any = color(selected_specie)
     // first every group turns grey
-    d3.selectAll(".line")
+    d3.selectAll(".parcoord-line")
       .transition().duration(200)
       //.style("stroke", "lightgrey")
       .style("opacity", "0.008")
@@ -271,7 +271,7 @@ export class ParcoordsComponent implements OnInit {
   doNotHighlight(ev, d, c) {
     c.currentSelected = {}
     c.currentCountryName = ""
-    d3.selectAll(".line")
+    d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")
       .style("opacity", 0.5)
@@ -283,20 +283,15 @@ export class ParcoordsComponent implements OnInit {
     c.computeXY()
     c.drawAxis()
 
-    c.svg.selectAll("myPath")
+    // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
+    c.svg.selectAll(".parcoord-line")
       .data(c.stats)
       .join("path")
-      .attr("class", d => {
-        let x: any = d
-        return "line parcoord-line"
-      }) // 2 class for each line: 'line' and the group name
-      .attr("d", d => this.path(d, c))
+      .attr("class", "parcoord-line")
       .attr('id', d => 'line-' + d.name)
       .on("mouseover", (event, d) => this.highlight(event, d, c))
       .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
 
-
-    // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
 
     var u = c.svg.selectAll(".parcoord-line").data(c.stats)
 
@@ -304,7 +299,7 @@ export class ParcoordsComponent implements OnInit {
       .enter()
       .append('path')
       .attr('class', 'parcoord-line')
-      .attr('class', 'line') // Add a new rect for each new elements
+      //.attr('class', 'line') // Add a new rect for each new elements
       .attr('id', d => 'line-' + d.name)
       .merge(u) // get the already existing elements as well
       .transition() // and apply changes to all of them
@@ -319,9 +314,9 @@ export class ParcoordsComponent implements OnInit {
 
 
 
+
     // If less group in the new dataset, I delete the ones not in use anymore
     u.exit().remove()
-
 
 
 

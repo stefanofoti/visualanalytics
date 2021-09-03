@@ -19,6 +19,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatInputModule } from '@angular/material/input'
+import { MatNativeDateModule } from '@angular/material/core'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { MatInputModule } from '@angular/material/input'
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    MatSlideToggleModule
   ],
   providers: [
     DataService,

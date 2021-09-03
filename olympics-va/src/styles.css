@@ -17,3 +17,14 @@ html{
    }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media SCREEN AND (min-width: 768px){
+    .autoHeight{ height:auto;  }
+    .heightLine1 { height:40vh;}
+    .heightLine2 { height:40vh; margin-top: 3vh;}
+    .heightLineBr { height:10vh;}
+    .heightFooter { height:10vh;}
+  
+  }
+  

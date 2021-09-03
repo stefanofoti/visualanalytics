@@ -17,7 +17,7 @@ import { bronzes, golds, Medal, PreCheckedSports, silvers, Sport, Stat } from 's
 export class MapComponent implements OnInit {
 
   private width = 1200
-  private height = 500
+  private height = 400
   private svg: any
   private g: any
   private path: any
@@ -290,7 +290,9 @@ export class MapComponent implements OnInit {
     this.svg = d3.select("svg")
       .attr("id", "svg_map")
       .attr("width", "100%")
-      .attr("height", this.height);
+      //.attr("height", this.height);
+      .attr("height", "100%");
+
 
     this.width = document.getElementById("svg_map").clientWidth || 800
 

@@ -40,7 +40,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   constructor(private data: DataService) {
     this.width = 900 - this.margin.left - this.margin.right;
-    this.height = 500 - this.margin.top - this.margin.bottom;
+    this.height = 400 - this.margin.top - this.margin.bottom;
     // this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
     this.subDataUpdated = data.updateReadinessMessage.subscribe(message => this.dataReady(message))
 
@@ -82,7 +82,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .append('svg')
       .attr('width', '100%')
       .attr('height', '100%')
-      .attr('viewBox', '0 0 900 500');
+      //.attr('viewBox', '0 0 900 500');
     this.g = this.svg.append('g')
       .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')');
   }
@@ -125,10 +125,9 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .append("svg")
       .attr('width', '100%')
       .attr('height', '100%')
-      .attr('viewBox', '0 0 900 500')
+      .attr('viewBox', '0 0 790 420')
       .append("g")
-      .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
     // Initialize the X axis
     this.x = d3.scaleBand()

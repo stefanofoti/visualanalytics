@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
 import { Observable, Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { map, filter, tap, startWith } from 'rxjs/operators'
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
 import { LoaderService } from '../loader.service';
+import { BooleanInput } from 'ngx-boolean-input';
 
 
 @Component({
@@ -32,6 +33,11 @@ export class ConfComponent implements OnInit {
   sportsList: Sport[]
   countryList: Country[]
 
+  @Input() @BooleanInput()
+  isMedalsByPop: any
+  
+  @Input() @BooleanInput()
+  isMedalsByGnp: any
 
   isOlympicsDataReady: Boolean
 
@@ -202,7 +208,7 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
     let selSports: string[] = this.selectedSports.map(s => s.name)
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
-    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports, true)
+    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports, this.isMedalsByPop)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
     console.log("conf: updateData() result")
     console.log(stats)
@@ -268,6 +274,18 @@ export class ConfComponent implements OnInit {
 
   submit() {
     console.log(this.formConf.value);
+  }
+
+  onSlideTogglePopChanged(event) {
+    this.isMedalsByPop = event.checked
+    this.isMedalsByGnp && this.isMedalsByPop && (this.isMedalsByGnp = false)
+    this.updateData()
+  }
+
+  onSlideToggleGnpChanged(event) {
+    this.isMedalsByGnp = event.checked
+    this.isMedalsByGnp && this.isMedalsByPop && (this.isMedalsByPop = false)
+    this.updateData()
   }
 
 }

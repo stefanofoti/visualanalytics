@@ -253,7 +253,7 @@ export class LoaderService {
             let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].silvers/currentAvgPop *100000: data.sports[sport].silvers
             let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].bronzes/currentAvgPop *100000: data.sports[sport].bronzes
 
-            if (isNaN(currentAvgPop)){
+            if (isNaN(currentAvgPop) && medalsByPop){
               incrementSportGold = 0
               incrementSportSilver = 0
               incrementSportBronze = 0
