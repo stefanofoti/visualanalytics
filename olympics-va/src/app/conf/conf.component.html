@@ -112,8 +112,8 @@
         </div>
     </form>
 
-    <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals every 100'000 inhabitants</mat-slide-toggle>
-    <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by GDP</mat-slide-toggle>
+    <div><mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals every 100,000 inhabitants</mat-slide-toggle></div>
+    <div><mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by GDP per capita</mat-slide-toggle></div>
 
 
 </div>
