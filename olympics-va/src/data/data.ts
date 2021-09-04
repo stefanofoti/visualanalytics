@@ -32,6 +32,17 @@ export interface CountryPopulation {
     continent: string;
 }
 
+export interface CountryGdp {
+    id: string;
+    name: string;
+    years: any;
+}
+
+// export interface GdpYears {
+//     [y: Number]: Number;
+
+// }
+
 export interface Decades {
     1900: number;
     1910: number;

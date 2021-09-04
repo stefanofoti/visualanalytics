@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -19,6 +19,8 @@ export class LoaderService {
   countries = {}
 
   populations = {}
+  
+  gdp = {}
 
   private isOlympicsDataReady: Boolean = false
 
@@ -73,14 +75,38 @@ export class LoaderService {
     return populations
   }
 
+  async loadGdpCsv() {
+    let lines = await d3.csv("/assets/data/gdp-per-capita.csv")
+    let gdp = {}
+    let currentNoc = ""
+    lines.forEach(l => {
+      if (l.Code != currentNoc){
+        let y = {
+          [l.Year]: l.Output
+        }
+        let p: CountryGdp = {
+            id: l.Code,
+            name: l.Entity,
+            years: y
+          }
+          currentNoc= l.Code
+          gdp[l.Code] = p
+        }else {
+          // update gdp[l.Code] with new year value of Gdp:  gdp[l.Code].years[l.Year] = l.Output
+          gdp[l.Code].years[l.Year] = l.Output
+        }
+    })
+    return gdp
+  }
+
   async loadOlympicsCsv() {
     let lines = await d3.csv("/assets/data/athlete_events.csv")
     let res = this.computeMedalsByNation(lines, this)
     return res
   }
 
-  checkReadiness(noc_r:boolean, oly_r:boolean, pop_r:boolean) {
-    if(noc_r && oly_r && pop_r) {
+  checkReadiness(noc_r:boolean, oly_r:boolean, pop_r:boolean, gdp_r:boolean) {
+    if(noc_r && oly_r && pop_r && gdp_r) {
       this.isOlympicsDataReady = true
       this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     }
@@ -92,26 +118,33 @@ export class LoaderService {
     let rowData = []
     let c = this
 
-    let noc_r, oly_r, pop_r = false
+    let noc_r, oly_r, pop_r, gdp_r = false
 
     this.loadNocCsv().then(data => {
       this.countries = data
       noc_r = true 
       this.dataService.onCountriesDataReady(Object.values(this.countries))
-      this.checkReadiness(noc_r, oly_r, pop_r)
+      this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
     })
 
     this.loadOlympicsCsv().then(d => {
       this.olympicsDict["NOC"] = d
       oly_r = true
-      this.checkReadiness(noc_r, oly_r, pop_r)
+      this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
     })
 
     this.loadPopulationCsv().then(data => {
       this.populations = data
       pop_r = true
-      this.checkReadiness(noc_r, oly_r, pop_r)
+      this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
       this.dataService.onPopulationsDataReady(Object.values(this.populations))
+    })
+
+    this.loadGdpCsv().then(data => {
+      this.gdp = data
+      console.log(this.gdp)
+      gdp_r = true
+      this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
     })
 
     // let data = await d3.csv("/assets/data/athlete_events.csv")
@@ -205,7 +238,7 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[], medalsByPop: boolean) {
+  computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean) {
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2
@@ -214,6 +247,7 @@ export class LoaderService {
     let res = {}
     let max = 0
     let maxSingleSport = 0
+    let range = this.rangeOf(start,end)
     let decadesSelected 
       medalsByPop && (decadesSelected = this.computeDecadesRange(start, end))
     console.log (decadesSelected)
@@ -223,6 +257,8 @@ export class LoaderService {
       currentYear && Object.keys(currentYear).forEach(noc => {
         let data = currentYear[noc]
         let teamStats = res[noc]
+        let currentAvgGdp = this.computeAverageGdpOfNation(range, noc)
+        console.log(currentAvgGdp)
         let currentAvgPop 
           medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
 
@@ -253,11 +289,23 @@ export class LoaderService {
             let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].silvers/currentAvgPop *100000: data.sports[sport].silvers
             let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].bronzes/currentAvgPop *100000: data.sports[sport].bronzes
 
+            if (medalsByGdp && !isNaN(currentAvgGdp)){
+              incrementSportGold /= currentAvgGdp
+              incrementSportSilver /= currentAvgGdp
+              incrementSportBronze /= currentAvgGdp
+            }
+
             if (isNaN(currentAvgPop) && medalsByPop){
               incrementSportGold = 0
               incrementSportSilver = 0
               incrementSportBronze = 0
               teamStats.noPop = true
+            }
+            if (isNaN(currentAvgGdp) && medalsByGdp){
+              incrementSportGold = 0
+              incrementSportSilver = 0
+              incrementSportBronze = 0
+              teamStats.noGdp = true
             }
 
             medals.includes(golds) && (teamSportStats.golds += incrementSportGold)
@@ -331,9 +379,31 @@ export class LoaderService {
         console.log("not found in populations.csv: " + NOC + ", "+ nation)
       }      
     });
-
     return(popSum/popYears)
-  
+  }
+
+  rangeOf(start, end) {
+    let range = []
+    for (let i=start; i<=end; i++){
+      range.push(i)
+    }
+    return range
+  }
+
+  computeAverageGdpOfNation(range,NOC) {
+    let GdpSum = 0
+    let GdpYears = 0
+    range.forEach(y => {
+      if (this.gdp[NOC]){
+        if (this.gdp[NOC].years[y]){
+          GdpSum += Number(this.gdp[NOC].years[y])
+          GdpYears++
+        }
+      } else {
+        console.log("not found in gdp.csv " + NOC)
+      }
+    })
+    return (GdpSum/GdpYears)
   }
 
 }

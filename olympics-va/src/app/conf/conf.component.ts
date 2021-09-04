@@ -37,7 +37,7 @@ export class ConfComponent implements OnInit {
   isMedalsByPop: any
   
   @Input() @BooleanInput()
-  isMedalsByGnp: any
+  isMedalsByGdp: any
 
   isOlympicsDataReady: Boolean
 
@@ -208,7 +208,7 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
     let selSports: string[] = this.selectedSports.map(s => s.name)
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
-    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports, this.isMedalsByPop)
+    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports, this.isMedalsByPop, this.isMedalsByGdp)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
     console.log("conf: updateData() result")
     console.log(stats)
@@ -278,13 +278,13 @@ export class ConfComponent implements OnInit {
 
   onSlideTogglePopChanged(event) {
     this.isMedalsByPop = event.checked
-    this.isMedalsByGnp && this.isMedalsByPop && (this.isMedalsByGnp = false)
+    this.isMedalsByGdp && this.isMedalsByPop && (this.isMedalsByGdp = false)
     this.updateData()
   }
 
-  onSlideToggleGnpChanged(event) {
-    this.isMedalsByGnp = event.checked
-    this.isMedalsByGnp && this.isMedalsByPop && (this.isMedalsByPop = false)
+  onSlideToggleGdpChanged(event) {
+    this.isMedalsByGdp = event.checked
+    this.isMedalsByGdp && this.isMedalsByPop && (this.isMedalsByPop = false)
     this.updateData()
   }
 

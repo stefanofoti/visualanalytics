@@ -107,7 +107,7 @@ export class MapComponent implements OnInit {
           var intensity = team.total*100/maximum
           //console.log(currentNOC + ", " + intensity)
 
-          if (team.noPop) {
+          if (team.noPop || team.noGdp) {
             return ("#ff0000")
           }
           if (intensity==0) {
