@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 import * as d3Sel from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
-import { bronzes, golds, silvers, Team, Teams } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, silvers, Team, Teams, AllNocs } from 'src/data/data';
 @Component({
   selector: 'app-medal-chart',
   templateUrl: './medal-chart.component.html',
@@ -39,7 +39,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   subDataUpdated: Subscription;
 
   constructor(private data: DataService) {
-    this.width = 900 - this.margin.left - this.margin.right;
+    this.width = 750 - this.margin.left - this.margin.right;
     this.height = 400 - this.margin.top - this.margin.bottom;
     // this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
     this.subDataUpdated = data.updateReadinessMessage.subscribe(message => this.dataReady(message))
@@ -53,7 +53,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       this.max = message[1]
       this.selectedMedals = message[4]
       this.selectedCountries = message[6]
-      this.selectedCountries.length == 0 && (this.selectedCountries = ['USA', "GER", "FRA"])
+      this.selectedCountries.length === 0 && (this.selectedCountries = AllNocs) //["USA", "FRA", "GER"])
       // this.firstPlot && this.plot()
       this.filterData()
       this.firstRun && this.initChart()
@@ -109,9 +109,47 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   filterData() {
     // this.goldsFiltered = this.golds.filter(t => this.teamsList.some(t2 => t.team == t2.name && t2.isChecked));
     this.statsFiltered = this.selectedCountries.map(c => this.stats[c])
+    this.statsFiltered = this.sort_object_of_objects(this.statsFiltered, "total")
+    this.statsFiltered = this.statsFiltered.slice(0, 25)
     console.log("medal chart stats filtered:")
     console.log(this.statsFiltered)
   }
+
+  sort_object_of_objects(data, attr) {
+    let arr = [];
+    for (let prop in data) {
+        if (data.hasOwnProperty(prop)) {
+            let obj = {
+              tempSortName: 0
+            };
+            if (data[prop]){
+              obj[prop] = data[prop];
+              obj.tempSortName = Number(data[prop][attr]);
+              arr.push(obj)
+            }
+        }
+    }
+
+    arr.sort(function(a, b) {
+        let at = a.tempSortName,
+            bt = b.tempSortName;
+        return at > bt ? -1 : ( at < bt ? 1 : 0 );
+    });
+
+    var result = [];
+    for (let i=0, l=arr.length; i<l; i++) {
+        var obj = arr[i];
+        delete obj.tempSortName;
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                var id = prop;
+            }
+        }
+        let item = obj[id];
+        result.push(item);
+    }
+    return result;
+}
 
   initChart() {
     this.firstRun = false
@@ -159,6 +197,8 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
     // Update the Y axis
     // this.y.domain([0, d3Array.max(this.goldsFiltered, (d) => d.golds)]);
+
+    /////// Now we do sorting, could just return first value
     let max = 0
     this.statsFiltered.forEach(element => {
       if(element) {
@@ -169,6 +209,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
         sum > max && (max = sum)  
       }
     })
+    ////////
     this.y.domain([0, max]);
 
     this.yAxis.transition().duration(1000).call(d3.axisLeft(this.y));
