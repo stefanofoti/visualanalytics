@@ -48,7 +48,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   dataReady(message: any) {
     if (message && message.length == 7) {
-      console.log("medal-chart invoked data ready")
+      console.log("medal-chart invoked data ready: ", this.subDataUpdated)
       this.stats = message[0]
       this.max = message[1]
       this.selectedMedals = message[4]

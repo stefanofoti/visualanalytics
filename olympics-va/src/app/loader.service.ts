@@ -257,8 +257,8 @@ export class LoaderService {
       currentYear && Object.keys(currentYear).forEach(noc => {
         let data = currentYear[noc]
         let teamStats = res[noc]
-        let currentAvgGdp = this.computeAverageGdpOfNation(range, noc)
-        console.log(currentAvgGdp)
+        let currentAvgGdp 
+          medalsByGdp && (currentAvgGdp = this.computeAverageGdpOfNation(range, noc))
         let currentAvgPop 
           medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
 
@@ -400,7 +400,7 @@ export class LoaderService {
           GdpYears++
         }
       } else {
-        console.log("not found in gdp.csv " + NOC)
+        //console.log("not found in gdp.csv " + NOC)
       }
     })
     return (GdpSum/GdpYears)
