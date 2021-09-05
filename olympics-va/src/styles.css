@@ -1,28 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 html{
-    background-color: #EDEEEF;
-}
-
-.container {
-     background-color: #EDEEEF;
-    padding: 2px;
-    }
+    background: rgb(84,87,107);
+    background: radial-gradient(circle, rgba(84,87,107,1) 0%, rgba(64,54,54,1) 63%, rgba(65,65,65,1) 77%, rgba(0,0,0,1) 100%);
+        }
   
   .row {
-      background-color: #EDEEEF;
+      background-color: transparent;
   }
   
   body{
-      background-color: #EDEEEF;
+      background-color: transparent;
    }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+   footer{
+    background-color: transparent;
+    }
+html, body { height: 100%; }
+body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
+
+p {
+    margin: 0
+}
+
+.items-bg {
+    background: radial-gradient(circle, rgba(246,240,240,1) 0%, rgba(232,232,232,0.9752275910364145) 100%);
+}
+
+.map-bg {
+    background: "#a7cdf2";
+}
 
 @media SCREEN AND (min-width: 768px){
     .autoHeight{ height:auto;  }
     .heightLine1 { height:40vh;}
-    .heightLine2 { height:40vh; margin-top: 3vh;}
+    .heightLine2 { height:40vh; margin-top: 4vh;margin-bottom: 4vh;}
     .heightLineBr { height:10vh;}
     .heightFooter { height:10vh;}
   

@@ -1,119 +1,77 @@
-<h5>Medal chart configuration</h5>
-
-<div class="autoHeight heightLine1">
+<div class="autoHeight heightLine1 item-box">
+    <div class="text-center">
+        <p>Settings</p>
+    </div>
     <mat-form-field class="search-full-width">
-        <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput [matAutocomplete]="auto_country" [formControl]="countryControl">
-      <mat-hint>Enter text to find countries</mat-hint>
+        <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput
+            [matAutocomplete]="auto_country" [formControl]="countryControl">
+        <mat-hint>Enter text to find countries</mat-hint>
     </mat-form-field>
-    
+
     <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
         <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
             <div (click)="optionCountryClicked($event, c)">
-                <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)" (click)="$event.stopPropagation()">
+                <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)"
+                    (click)="$event.stopPropagation()">
                     {{ c.name }}
                 </mat-checkbox>
             </div>
         </mat-option>
     </mat-autocomplete>
     <br>
-    
-    
+
+
     <mat-form-field class="search-full-width">
-        <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput [matAutocomplete]="auto_sport" [formControl]="sportControl">
-      <mat-hint>Enter text to find sports by name</mat-hint>
+        <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput
+            [matAutocomplete]="auto_sport" [formControl]="sportControl">
+        <mat-hint>Enter text to find sports by name</mat-hint>
     </mat-form-field>
-    
+
     <mat-autocomplete #auto_sport="matAutocomplete" [displayWith]="displayFn.bind(this)">
         <mat-option *ngFor="let sport of filteredSports | async" [value]="selectedSports">
             <div (click)="optionClicked($event, sport)">
-                <mat-checkbox [checked]="sport.isChecked" (change)="toggleSelection(sport)" (click)="$event.stopPropagation()">
+                <mat-checkbox [checked]="sport.isChecked" (change)="toggleSelection(sport)"
+                    (click)="$event.stopPropagation()">
                     {{ sport.name }}
                 </mat-checkbox>
             </div>
         </mat-option>
     </mat-autocomplete>
-    
-    
-    <br>
-    
-    <!--
-    
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    Accordion Item #1
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
-                    plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                    appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                    custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+
+    <div class="row pt-3">
+        <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions"
+        (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-sm-3">
+            <form [formGroup]="formConf" (ngSubmit)="submit()">
+                <div class="form-group">
+                    <div class="form-check">
+                        <div *ngFor="let medal of medalsList">
+                            <input class="form-check-input" [checked]="medal.isChecked" type="checkbox"
+                                [value]="medal.id" (change)="onMedalsCheckboxChange($event)" />
+                            <label class="form-check-label">
+                                {{medal.name}}
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Accordion Item #2
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
-                    plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                    appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                    custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
+
+        <div class="col-sm-9">
+            <div>
+                <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals
+                    every 100,000 inhabitants</mat-slide-toggle>
             </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Accordion Item #3
-                </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-                    plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                    appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                    custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
+            <div>
+                <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by
+                    GDP per capita</mat-slide-toggle>
             </div>
+
         </div>
     </div>
-    -->
-    
-    <form [formGroup]="formConf" (ngSubmit)="submit()">
-        <div class="form-group">
-            <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions"
-                (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>
-            <br>
-            <div *ngFor="let medal of medalsList">
-                <label>
-                    <input [checked]="medal.isChecked" type="checkbox" [value]="medal.id"
-                        (change)="onMedalsCheckboxChange($event)" />
-                    {{medal.name}}
-                </label>
-            </div>
-            <br>
-        </div>
-    </form>
-
-    <div><mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals every 100,000 inhabitants</mat-slide-toggle></div>
-    <div><mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by GDP per capita</mat-slide-toggle></div>
 
 
 </div>

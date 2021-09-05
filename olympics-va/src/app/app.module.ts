@@ -20,7 +20,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatInputModule } from '@angular/material/input'
 import { MatNativeDateModule } from '@angular/material/core'
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { OverviewComponent } from './overview/overview.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { AboutComponent } from './about/about.component'
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MedalRegionChartComponent,
     MapComponent,
     ParcoordsComponent,
+    OverviewComponent,
+    AnalyticsComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

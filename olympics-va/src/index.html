@@ -11,14 +11,38 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="mat-typography">
-  <h1 class="text-center">Visual Analytics Project</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid px-6">
+      <a class="navbar-brand text-light" href="#">Visual Analytics Project</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/overview">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/analytics">Analytics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/about">About</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
   <app-root></app-root>
 </body>
 
-<footer class="container-fluid text-center text-lg-start bg-light text-muted">
-  <div class="row">
+<footer class="container-fluid text-center text-lg-start text-muted">
+  <!-- <div class="row">
     <img src="assets/logo.png" class="mx-auto d-block pt-4" style="width:10%"/>
-  </div>
+  </div>-->
   <div class="row">
     <div class="text-center p-1">
       © 2021 Copyright:
@@ -27,6 +51,6 @@
       <a class="text-reset fw-bold" href="https://www.linkedin.com/in/stefano-foti/">Stefano Foti</a>  
   </div>
   </div>
-
+</footer>
 
 </html>

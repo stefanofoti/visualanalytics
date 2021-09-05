@@ -251,8 +251,15 @@ export class ParcoordsComponent implements OnInit {
 
   highlight(ev, d, c) {
     c.currentSelected = d
-    c.currentCountryName = this.countries[c.currentSelected.name].name
-    console.log(c.currentSelected)
+    // TEMP ------------
+    if (!this.countries[c.currentSelected.name]) {
+      console.log("ERROR! NOT FOUND: " + c.currentSelected.name)
+      c.currentCountryName = c.currentSelected.name
+    } else {
+      c.currentCountryName = this.countries[c.currentSelected.name].name
+    }
+
+    // TEMP ------------
     // let selected_specie: string = d.Species
     // let colorNumb: any = color(selected_specie)
     // first every group turns grey
