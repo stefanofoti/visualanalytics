@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { bronzes, golds, Medal, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
+import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-parcoords',
@@ -47,6 +48,8 @@ export class ParcoordsComponent implements OnInit {
 
   currentSelected: any = {}
   currentCountryName: string
+  currentCountryNoc: string
+
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
     //this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
@@ -54,6 +57,17 @@ export class ParcoordsComponent implements OnInit {
     // this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
     // this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
     this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
+    dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
+
+  }
+
+  onMouseSelection(message: MouseSelection) {
+    if(message.source && message.source !== ParcoordsComponent.name) {
+      console.log("onMouseSelection parcoords")
+      console.log(message)
+      message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
+
+    }
   }
 
   dataReady(message): any {
@@ -250,13 +264,21 @@ export class ParcoordsComponent implements OnInit {
 
 
   highlight(ev, d, c) {
-    c.currentSelected = d
-    // TEMP ------------
-    if (!this.countries[c.currentSelected.name]) {
-      console.log("ERROR! NOT FOUND: " + c.currentSelected.name)
-      c.currentCountryName = c.currentSelected.name
+  
+    if(typeof(d) === 'string') {
+      c.currentCountryNoc = d
+      c.currentCountryName = this.countries[d].name  
     } else {
-      c.currentCountryName = this.countries[c.currentSelected.name].name
+      c.currentSelected = d
+      c.currentCountryName = this.countries[c.currentSelected.name].name  
+      c.currentCountryNoc = c.currentSelected.name
+    
+      this.dataService.updateMouseSelection({
+        currentlySelected: true,
+        noc: c.currentCountryNoc,
+        source: ParcoordsComponent.name
+      })
+
     }
 
     // TEMP ------------
@@ -268,7 +290,7 @@ export class ParcoordsComponent implements OnInit {
       //.style("stroke", "lightgrey")
       .style("opacity", "0.008")
     // Second the hovered specie takes its color
-    d3.select("#line-" + c.currentSelected.name)
+    d3.select("#line-" + c.currentCountryNoc)
       .transition().duration(200)
       //.style("stroke", /*color(selected_specie)*/ "#00ffff")
       .style("opacity", "1")
@@ -276,8 +298,16 @@ export class ParcoordsComponent implements OnInit {
 
   // Unhighlight
   doNotHighlight(ev, d, c) {
+    if(typeof d !== 'string') {
+      this.dataService.updateMouseSelection({
+        currentlySelected: false,
+        noc: c.currentCountryNoc,
+        source: ParcoordsComponent.name
+      })  
+    }
     c.currentSelected = {}
     c.currentCountryName = ""
+    c.currentCountryNoc = ""
     d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")

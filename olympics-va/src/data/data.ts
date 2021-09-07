@@ -1,4 +1,8 @@
-import { NumberValue } from "d3-scale"
+export interface MouseSelection {
+    source?: string;
+    noc?: string;
+    currentlySelected?: boolean;
+}
 
 export interface Team {
     id: number;
@@ -62,6 +66,7 @@ export interface Decades {
 export interface Stat {
     id: string;
     name: string;
+    name_str: string;
     noc: string;
     golds: number;
     silvers: number;
@@ -85,6 +90,9 @@ export const Teams: Team[] = [
     { id: 3, isChecked: false, name: 'China' },
     { id: 4, isChecked: false, name: 'United States' },
 ];
+
+export const MouseSel: MouseSelection = {
+}
 
 export const Sports: Sport[] = [
 

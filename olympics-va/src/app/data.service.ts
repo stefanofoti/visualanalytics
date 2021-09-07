@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Countries, Populations, Country, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams } from '../data/data'
+import { Countries, Populations, Country, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel } from '../data/data'
 
 @Injectable()
 export class DataService {
@@ -34,6 +34,9 @@ export class DataService {
 
   private updateReadinessSource = new BehaviorSubject([]);
   updateReadinessMessage = this.updateReadinessSource.asObservable();
+
+  private mouseSelectionSource = new BehaviorSubject(MouseSel)
+  updateMouseSelectionMessage = this.mouseSelectionSource.asObservable()
 
   constructor() { }
 
@@ -77,5 +80,8 @@ export class DataService {
     this.updateReadinessSource.next(message)
   }
 
+  updateMouseSelection(message: MouseSelection) {
+    this.mouseSelectionSource.next(message)
+  }
 
 }

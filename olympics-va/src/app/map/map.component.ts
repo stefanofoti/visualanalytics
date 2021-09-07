@@ -7,7 +7,7 @@ import { color, max, select } from 'd3';
 import { LoaderService } from '../loader.service';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
-import { bronzes, golds, Medal, PreCheckedSports, silvers, Sport, Stat } from 'src/data/data';
+import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, silvers, Sport, Stat } from 'src/data/data';
 
 @Component({
   selector: 'app-map',
@@ -24,11 +24,7 @@ export class MapComponent implements OnInit {
   private div: any
   private max: number
 
-  private subDataReadiness: Subscription
-  private subYearRangeChanged: Subscription
-  private subSelectedMedals: Subscription
-  private subSelectedSports: Subscription
-  private subDataUpdated: Subscription
+
   private isDataReady: Boolean = false
   private selectedSports: string[] = PreCheckedSports
   private yearsRange: number[]
@@ -36,28 +32,31 @@ export class MapComponent implements OnInit {
   selectedStats: Stat
   stats: {}
 
-  constructor(private loaderService: LoaderService, private dataService: DataService) {
-    //this.subYearRangeChanged = dataService.changedYearRangeMessage.subscribe(message => this.onYearRangeChanged(message))
-    //this.subDataReadiness = dataService.olympycsReadinessMessage.subscribe(message => this.dataReady(message))
-    //this.subSelectedMedals = dataService.selectedMedalsMessage.subscribe(message => this.onSelectedMedalsChanged(message))
-    //this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
-  
-    this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
+  countries: any
 
+  constructor(private loaderService: LoaderService, private dataService: DataService) {
+    dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
+    dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
   }
 
   ngOnInit(): void {
     this.initMap()
   }
 
+  onMouseSelection(message: MouseSelection) {
+    if (message.source && message.source !== MapComponent.name) {
+      message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
+    }
+  }
 
   dataReady(message: any): void {
-    if(message && message.length == 7) {
+    if (message && message.length == 7) {
       this.stats = message[0]
       this.max = message[1]
       this.selectedMedals = message[4]
       this.yearsRange = message[5]
       this.isDataReady = true
+      this.countries = this.loaderService.countries
       // this.firstPlot && this.plot()
       this.updateMap()
     }
@@ -88,7 +87,7 @@ export class MapComponent implements OnInit {
 
   updateMap() {
     console.log("update map invoked")
-    if(this.isDataReady) {
+    if (this.isDataReady) {
       // let [stats, max] = this.loaderService.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
       // this.stats = stats
       let stats = this.stats
@@ -96,43 +95,43 @@ export class MapComponent implements OnInit {
       console.log("maximum amount of medals: " + maximum)
       let intervals = [1, 5, 12, 18, 27, 34, 69]
       intervals = this.colorScaleCalculator()
-      this.g.selectAll("path").attr("fill", function(d, event) {
-        
+      this.g.selectAll("path").attr("fill", function (d, event) {
+
         //let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
-        let colorScale = ["#ffffff", "#a2f69d", "#93e68f", "#84d681", "#76c673", "#67b765", "#59a758", "#4a984b", "#3c8a3e"]            
+        let colorScale = ["#ffffff", "#a2f69d", "#93e68f", "#84d681", "#76c673", "#67b765", "#59a758", "#4a984b", "#3c8a3e"]
         let currentNOC = d.properties.NOC
         let team = stats[currentNOC]
 
         if (team) {
-          var intensity = team.total*100/maximum
+          var intensity = team.total * 100 / maximum
           //console.log(currentNOC + ", " + intensity)
 
           if (team.noPop || team.noGdp) {
             return ("#ff0000")
           }
-          if (intensity==0) {
+          if (intensity == 0) {
 
             return (colorScale[0])
           }
-          if (intensity>0 && intensity<intervals[0]) {
+          if (intensity > 0 && intensity < intervals[0]) {
             return (colorScale[1])
           }
-          else if (intensity>=intervals[0] && intensity<intervals[1]) {
+          else if (intensity >= intervals[0] && intensity < intervals[1]) {
             return (colorScale[2])
           }
-          else if (intensity>=intervals[1] && intensity<intervals[2]) {
+          else if (intensity >= intervals[1] && intensity < intervals[2]) {
             return (colorScale[3])
           }
-          else if (intensity>=intervals[2] && intensity<intervals[3]) {
+          else if (intensity >= intervals[2] && intensity < intervals[3]) {
             return (colorScale[4])
           }
-          else if (intensity>=intervals[3] && intensity<intervals[4]) {
+          else if (intensity >= intervals[3] && intensity < intervals[4]) {
             return (colorScale[5])
           }
-          else if (intensity>=intervals[4] && intensity<intervals[5]) {
+          else if (intensity >= intervals[4] && intensity < intervals[5]) {
             return (colorScale[6])
           }
-          else if (intensity>=intervals[5] && intensity<intervals[6]) {
+          else if (intensity >= intervals[5] && intensity < intervals[6]) {
             return (colorScale[7])
           }
           else {
@@ -145,7 +144,7 @@ export class MapComponent implements OnInit {
 
   }
 
-  colorScaleCalculator(){
+  colorScaleCalculator() {
     // let [stats, max] = this.loaderServicey.computeMedalsByNationInRange(this.yearsRange[0], this.yearsRange[1], this.selectedMedals, this.selectedSports)
     // this.stats = stats
     let maximum = Number(this.max)
@@ -153,18 +152,18 @@ export class MapComponent implements OnInit {
     var intensityDict = {}
     var nonZeroNations = 0
     var nationsInInterval = 0
-      
+
     let intervals = [1, 5, 12, 18, 27, 34, 69, 100]
     let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
-       
-    for (const NOC in this.stats){
+
+    for (const NOC in this.stats) {
       let currentNOC = NOC
       let team = this.stats[currentNOC]
       if (team) {
-        var intensity = team.total*100/maximum
-        if (intensity != 0){
+        var intensity = team.total * 100 / maximum
+        if (intensity != 0) {
           if (!intensityDict.hasOwnProperty(intensity.toFixed(5))) {
-            intensityDict[intensity.toFixed(5)]=1
+            intensityDict[intensity.toFixed(5)] = 1
           }
           else {
             intensityDict[intensity.toFixed(5)]++
@@ -174,47 +173,47 @@ export class MapComponent implements OnInit {
       }
     }
 
-    nationsInInterval= Math.ceil(nonZeroNations/8)
+    nationsInInterval = Math.ceil(nonZeroNations / 8)
     intervals = []
 
-    let keysarray = []    
-    for (const k in intensityDict){
+    let keysarray = []
+    for (const k in intensityDict) {
       keysarray.push(Number(k).toFixed(5))
     }
-    keysarray = keysarray.sort(function(a,b) { return a - b;})
+    keysarray = keysarray.sort(function (a, b) { return a - b; })
     console.log(keysarray)
 
     let weightsArray = []
-    for (let i=0; i<keysarray.length; i++){
-      weightsArray.push(keysarray[i+1]-keysarray[i])
+    for (let i = 0; i < keysarray.length; i++) {
+      weightsArray.push(keysarray[i + 1] - keysarray[i])
       if (i === 0) {
-        intensityDict[keysarray[i]]=intensityDict[keysarray[i]]*weightsArray[i]
+        intensityDict[keysarray[i]] = intensityDict[keysarray[i]] * weightsArray[i]
 
       }
-      else{
-        intensityDict[keysarray[i]]+=intensityDict[keysarray[i-1]]*weightsArray[i]
+      else {
+        intensityDict[keysarray[i]] += intensityDict[keysarray[i - 1]] * weightsArray[i]
       }
     }
     console.log(weightsArray)
     console.log(intensityDict)
 
-    let variableInterval=nationsInInterval
+    let variableInterval = nationsInInterval
 
-    for (let i = 0; i<=keysarray.length; i++){
-      if (variableInterval/weightsArray[i]<=intensityDict[keysarray[i]]){
+    for (let i = 0; i <= keysarray.length; i++) {
+      if (variableInterval / weightsArray[i] <= intensityDict[keysarray[i]]) {
         intervals.push(keysarray[i])
-        variableInterval+=nationsInInterval
+        variableInterval += nationsInInterval
       }
     }
-    
+
     console.log("intervals array: ", intervals)
     console.log("nations with intensity > 0: ", nonZeroNations)
     console.log("intervals of", nationsInInterval, "nations for each color")
 
-    return(intervals)
+    return (intervals)
   }
 
-  onYearRangeChanged(newRange: number[]){
+  onYearRangeChanged(newRange: number[]) {
     this.yearsRange = newRange
     this.updateMap()
   }
@@ -301,11 +300,11 @@ export class MapComponent implements OnInit {
       .translate([this.width / 2, this.height / 2])
 
 
-    
+
     this.div = d3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
-  
+
 
     this.path = d3.geoPath()
       .projection(projection);
@@ -339,6 +338,55 @@ export class MapComponent implements OnInit {
       })*/
   }
 
+  highlight(e, d, context) {
+    //console.log(d)
+    if (typeof d === 'string') {
+      context.selectedStats = { 
+        name_str: this.countries[d].name,
+        golds: context.stats[d].golds || 0,
+        silvers: context.stats[d].silvers || 0,
+        bronzes: context.stats[d].bronzes || 0,
+      }
+
+      d3.select("#map-" + d).attr("opacity", "50%")
+
+    } else {
+      context.selectedStats = context.stats[d.properties.NOC] || {
+        id: "",
+        name_str: d.properties.name,
+        noc: d.properties.NOC,
+        golds: 0,
+        silvers: 0,
+        bronzes: 0,
+        from: 0,
+        to: 0
+      }
+      this.dataService.updateMouseSelection({
+        currentlySelected: true,
+        noc: d.properties.NOC,
+        source: MapComponent.name
+      })
+      context.selectedStats.name_str = d.properties && d.properties.name || ""
+      d3.select(e.currentTarget).attr("opacity", "50%")
+    }
+  }
+
+  doNotHighlight(e, d, context) {
+    context.selectedStats = undefined
+    if (typeof d === 'string') {      
+      d3.select("#map-" + d).attr("opacity", "100%")
+
+    } else {
+      d3.select(e.currentTarget).attr("opacity", "100%")
+      this.dataService.updateMouseSelection({
+        currentlySelected: false,
+        noc: d.properties.NOC,
+        source: MapComponent.name
+      })  
+    }
+
+  }
+
 
   drawMap(topology): void {
     const div = this.div
@@ -347,29 +395,10 @@ export class MapComponent implements OnInit {
       .data(tjson.feature(topology, topology.objects.countries).features)
       .enter().append("path")
       .attr("d", this.path)
+      .attr("id", d => "map-" + d.properties.NOC)
       //.attr("fill", "#000000")
-      .on("mouseover", function(event,d) {
-        //console.log(d)
-        
-        context.selectedStats = context.stats[d.properties.NOC] || {
-            id: "",
-            name: d.properties.name,
-            noc: d.properties.NOC,
-            golds: 0,
-            silvers: 0,
-            bronzes: 0,
-            from: 0,
-            to: 0
-        }
-
-        context.selectedStats.name = d.properties && d.properties.name || ""
-        console.log(context.selectedStats)
-        d3.select(event.currentTarget).attr("opacity", "50%")
-        })
-      .on("mouseout", function(event, d) {
-        context.selectedStats = undefined
-        d3.select(event.currentTarget).attr("opacity", "100%")
-        })
+      .on("mouseover", (event, d) => this.highlight(event, d, context))
+      .on("mouseout", (event, d) => this.doNotHighlight(event, d, context))
   }
 
 }
