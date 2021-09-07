@@ -5,7 +5,8 @@ import * as d3 from 'd3';
 import * as d3Sel from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
-import { bronzes, golds, PreCheckedSports2, silvers, Team, Teams, AllNocs } from 'src/data/data';
+import { LoaderService } from '../loader.service';
+import { bronzes, golds, MouseSelection, PreCheckedSports2, silvers, Team, Teams, AllNocs } from 'src/data/data';
 @Component({
   selector: 'app-medal-chart',
   templateUrl: './medal-chart.component.html',
@@ -31,19 +32,32 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   selectedCountries: string[] = []
   max: number
 
+  countries: any = {}
+  color: any = {}
+
   firstRun = true
+  currentSelected: any = {}
+  currentCountryNoc: string
 
   @Input()
   teamsList: Team[] = Teams;
   subscription: Subscription;
   subDataUpdated: Subscription;
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, private dataService: DataService, private loaderService: LoaderService) {
     this.width = 750 - this.margin.left - this.margin.right;
     this.height = 400 - this.margin.top - this.margin.bottom;
     // this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
     this.subDataUpdated = data.updateReadinessMessage.subscribe(message => this.dataReady(message))
+    dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
 
+  }
+
+  onMouseSelection(message: MouseSelection) {
+    if(message.source && message.source !== MedalChartComponent.name) {
+      message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
+
+    }
   }
 
   dataReady(message: any) {
@@ -54,6 +68,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       this.selectedMedals = message[4]
       this.selectedCountries = message[6]
       this.selectedCountries.length === 0 && (this.selectedCountries = AllNocs) //["USA", "FRA", "GER"])
+      this.countries = this.loaderService.countries
       // this.firstPlot && this.plot()
       this.filterData()
       this.firstRun && this.initChart()
@@ -158,6 +173,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // set the dimensions and margins of the graph
     var margin = { top: 30, right: 30, bottom: 70, left: 60 }
 
+    this.color = d3.scaleOrdinal()
+        .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+        .range(["#df0024", "#f4c300", "#0085c7", "#0085c7", "#000000", "#009f3d"])
+
     // append the svg object to the body of the page
     this.svg = d3Sel.select("#barChartMedals")
       .append("svg")
@@ -179,6 +198,53 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .range([this.height, 0]);
     this.yAxis = this.svg.append("g")
       .attr("class", "myYaxis")
+  }
+
+  highlight(ev, d, c) {
+    if (typeof d === 'string'){
+      //TODO if Noc received is in the bars
+      c.currentCountryNoc = d
+    } else {
+      console.log("trying to highlight")
+      c.currentSelected = d
+      c.currentCountryNoc = c.currentSelected.name
+      this.dataService.updateMouseSelection({
+        currentlySelected: true,
+        noc: c.currentCountryNoc,
+        source: MedalChartComponent.name
+      })
+    }
+
+    d3.selectAll(".medalBar")
+      .transition().duration(200)
+      //.style("stroke", "lightgrey")
+      .style("opacity", "0.2")
+    // Second the hovered specie takes its color
+    d3.select("#bar-" + c.currentCountryNoc)
+      .transition().duration(200)
+      //.style("stroke", /*color(selected_specie)*/ "#00ffff")
+      .style("opacity", "1")
+
+    
+
+
+  }
+
+  doNotHighlight(ev, d, c){
+    if (typeof d !== 'string'){
+      this.dataService.updateMouseSelection({
+        currentlySelected: false,
+        noc: c.currentCountryNoc,
+        source: MedalChartComponent.name
+      })
+    }
+    c.currentSelected = {}
+    c.currentCountryName = ""
+    d3.selectAll(".medalBar")
+      .transition().duration(200).delay(200)
+      //.style("stroke", "#0000ff")
+      .style("opacity", 1)
+
   }
 
 
@@ -234,6 +300,9 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .append('rect')
       .attr('class', 'bar') // Add a new rect for each new elements
       .attr('class', 'medalBar') // Add a new rect for each new elements
+      .attr('id', d => 'bar-'+ d.name)
+      .on("mouseover", (event, d) => this.highlight(event, d, this))
+      .on("mouseleave", (event, d) => this.doNotHighlight(event, d, this))
       .merge(u) // get the already existing elements as well
       .transition() // and apply changes to all of them
       .duration(1000)
@@ -241,7 +310,8 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .attr('y', (d) => this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr('width', this.x.bandwidth())
       .attr('height', (d) => this.height - this.y(d && (d.golds + d.bronzes + d.silvers)))
-      .attr("fill", "#69b3a2")
+      .attr("fill", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
+      
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u

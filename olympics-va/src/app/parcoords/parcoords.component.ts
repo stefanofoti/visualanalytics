@@ -288,7 +288,7 @@ export class ParcoordsComponent implements OnInit {
     d3.selectAll(".parcoord-line")
       .transition().duration(200)
       //.style("stroke", "lightgrey")
-      .style("opacity", "0.008")
+      .style("opacity", "0.02")
     // Second the hovered specie takes its color
     d3.select("#line-" + c.currentCountryNoc)
       .transition().duration(200)
