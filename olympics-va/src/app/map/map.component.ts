@@ -30,6 +30,7 @@ export class MapComponent implements OnInit {
   private yearsRange: number[]
   selectedMedals: string[]
   selectedStats: Stat
+  selectedColor: string
   stats: {}
 
   countries: any
@@ -278,6 +279,27 @@ export class MapComponent implements OnInit {
   }
 */
 
+  centerMap() {
+    console.log("centering map...")
+    this.width = document.getElementById("svg_map").clientWidth || 800
+
+    let g = this.g
+
+    let zoom = d3.zoom()
+      .scaleExtent([1, 10])
+      .on('zoom', (event) => {
+        g.selectAll('path')
+          .attr('transform', event.transform);
+        g.selectAll("circle")
+          .attr('transform', event.transform);
+        g.selectAll("text")
+          .attr('transform', event.transform);
+      })
+
+      this.svg.transition().duration(300).call(zoom.transform, d3.zoomIdentity.scale(1).translate(0,0));
+
+  }
+
   initMap(): void {
     console.log("initMap method")
 
@@ -296,8 +318,10 @@ export class MapComponent implements OnInit {
     this.width = document.getElementById("svg_map").clientWidth || 800
 
     var projection = d3geo.geoNaturalEarth1()
-      .scale(160)
-      .translate([this.width / 2, this.height / 2])
+      .scale(140)
+      //.translate([this.width / 2, this.height / 2])
+      .center([50,-20])
+      //.center([this.width / 2, this.height / 2])
 
 
 
@@ -318,7 +342,7 @@ export class MapComponent implements OnInit {
     const g = this.g
 
     var zoom: any = d3.zoom()
-      .scaleExtent([1, 8])
+      .scaleExtent([1, 10])
       .on('zoom', function (event) {
         g.selectAll('path')
           .attr('transform', event.transform);
@@ -340,16 +364,16 @@ export class MapComponent implements OnInit {
 
   highlight(e, d, context) {
     //console.log(d)
+    let noc
     if (typeof d === 'string') {
-      context.selectedStats = { 
+      context.selectedStats = {
         name_str: this.countries[d].name,
         golds: context.stats[d].golds || 0,
         silvers: context.stats[d].silvers || 0,
         bronzes: context.stats[d].bronzes || 0,
       }
 
-      d3.select("#map-" + d).attr("opacity", "50%")
-
+      noc = d
     } else {
       context.selectedStats = context.stats[d.properties.NOC] || {
         id: "",
@@ -367,24 +391,38 @@ export class MapComponent implements OnInit {
         source: MapComponent.name
       })
       context.selectedStats.name_str = d.properties && d.properties.name || ""
-      d3.select(e.currentTarget).attr("opacity", "50%")
+
+      noc = d.properties.NOC
+      // this.selectedColor = d3.select(e.currentTarget).attr("fill")
+      // d3.select(e.currentTarget).attr("fill", "#0000ff")
+      
     }
+
+
+    console.log("cerco noc: " + noc)
+    let selection = d3.select("#map-" + noc)
+    if(selection.size() > 0) {
+      this.selectedColor = selection.attr("fill")
+      selection.attr("fill", "#0000ff")
+    }
+
   }
 
   doNotHighlight(e, d, context) {
     context.selectedStats = undefined
-    if (typeof d === 'string') {      
-      d3.select("#map-" + d).attr("opacity", "100%")
-
+    let noc
+    if (typeof d === 'string') {
+      noc=d
     } else {
-      d3.select(e.currentTarget).attr("opacity", "100%")
+      //d3.select(e.currentTarget).attr("opacity", "100%")
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: d.properties.NOC,
         source: MapComponent.name
-      })  
+      })
+      noc = d.properties.NOC
     }
-
+    noc && (d3.select("#map-" + noc).attr("fill", this.selectedColor))
   }
 
 
@@ -396,6 +434,12 @@ export class MapComponent implements OnInit {
       .enter().append("path")
       .attr("d", this.path)
       .attr("id", d => "map-" + d.properties.NOC)
+      .attr("class", d => "map-item")
+      .style("stroke", "#000000")
+      .style("stroke-width", "0.2px")
+      //.style("stroke-dasharray", "2,2")
+      .style("stroke-linejoin", "round")
+
       //.attr("fill", "#000000")
       .on("mouseover", (event, d) => this.highlight(event, d, context))
       .on("mouseout", (event, d) => this.doNotHighlight(event, d, context))

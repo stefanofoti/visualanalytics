@@ -5,7 +5,6 @@ import { first } from 'rxjs/operators';
 import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
-import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-parcoords',
@@ -267,7 +266,7 @@ export class ParcoordsComponent implements OnInit {
   
     if(typeof(d) === 'string') {
       c.currentCountryNoc = d
-      c.currentCountryName = this.countries[d].name  
+      d && (c.currentCountryName = this.countries[d].name)  
     } else {
       c.currentSelected = d
       c.currentCountryName = this.countries[c.currentSelected.name].name  

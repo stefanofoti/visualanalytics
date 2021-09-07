@@ -298,19 +298,21 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     u
       .enter()
       .append('rect')
-      .attr('class', 'bar') // Add a new rect for each new elements
+      //.attr('class', 'bar') // Add a new rect for each new elements
       .attr('class', 'medalBar') // Add a new rect for each new elements
-      .attr('id', d => 'bar-'+ d.name)
+      // .attr('id', d => 'bar-'+ d.name)
+      .merge(u) // get the already existing elements as well
       .on("mouseover", (event, d) => this.highlight(event, d, this))
       .on("mouseleave", (event, d) => this.doNotHighlight(event, d, this))
-      .merge(u) // get the already existing elements as well
-      .transition() // and apply changes to all of them
-      .duration(1000)
       .attr('x', (d) => this.x(d && d.name))
       .attr('y', (d) => this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr('width', this.x.bandwidth())
       .attr('height', (d) => this.height - this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr("fill", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
+      .attr('id', d => 'bar-'+ d.name)
+      .transition() // and apply changes to all of them
+      .duration(1000)
+
       
 
     // If less group in the new dataset, I delete the ones not in use anymore
