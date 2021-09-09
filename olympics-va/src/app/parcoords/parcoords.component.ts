@@ -266,7 +266,7 @@ export class ParcoordsComponent implements OnInit {
   
     if(typeof(d) === 'string') {
       c.currentCountryNoc = d
-      d && (c.currentCountryName = this.countries[d].name)  
+      d && this.countries[d] && (c.currentCountryName = this.countries[d].name)  
     } else {
       c.currentSelected = d
       c.currentCountryName = this.countries[c.currentSelected.name].name  
