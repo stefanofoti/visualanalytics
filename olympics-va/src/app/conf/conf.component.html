@@ -1,7 +1,6 @@
-<div class="autoHeight heightLine1 item-box">
-    <div class="text-center">
-        <p>Settings</p>
-    </div>
+<div class="autoHeight heightLine1 item-box scroll items-bg rounded">
+    <p class="text-center">Settings</p>
+
     <mat-form-field class="search-full-width">
         <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput
             [matAutocomplete]="auto_country" [formControl]="countryControl">
@@ -44,7 +43,7 @@
     </div>
 
     <div class="row pt-3">
-        <div class="col-sm-3">
+        <div class="col-sm-3 col-xs-12">
             <form [formGroup]="formConf" (ngSubmit)="submit()">
                 <div class="form-group">
                     <div class="form-check">
@@ -60,7 +59,7 @@
             </form>
         </div>
 
-        <div class="col-sm-9">
+        <div class="col-sm-9 col-xs-12">
             <div>
                 <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals
                     every 100,000 inhabitants</mat-slide-toggle>

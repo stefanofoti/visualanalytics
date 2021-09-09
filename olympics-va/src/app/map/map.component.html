@@ -1,12 +1,19 @@
-<p class="text-center">
-    {{selectedStats && selectedStats.name_str + ", " || "Pick a country"}} 
-    {{selectedStats && selectedMedals.includes("golds") ? "Golds: " + selectedStats.golds : ""}}
-    {{selectedStats && selectedMedals.includes("silvers") ? "Silvers: " + selectedStats.silvers : ""}}
-    {{selectedStats && selectedMedals.includes("bronzes") ? "Bronzes: " + selectedStats.bronzes : ""}}
-</p>
-<svg id="mainMap" class="autoHeight heightLine1"></svg>
-
-<a class="float" (click)="centerMap()">
-    o
-    <i class="fa fa-plus my-float" ></i>
+<div class="autoHeight heightLine1">
+    <svg id="mainMap" class=""></svg>
+    
+    <a class="float float-right" (click)="centerMap()">
+        o
+        <i class="fa fa-plus my-float" ></i>
     </a>
+
+    <a class="float-big float-left" (click)="centerMap()">
+        <p class="text-center" height="0px">
+            {{selectedStats && selectedStats.name_str + ", " || "Pick a country"}} 
+            {{selectedStats && selectedMedals.includes("golds") ? "Golds: " + selectedStats.golds : ""}}
+            {{selectedStats && selectedMedals.includes("silvers") ? "Silvers: " + selectedStats.silvers : ""}}
+            {{selectedStats && selectedMedals.includes("bronzes") ? "Bronzes: " + selectedStats.bronzes : ""}}
+        </p>
+        <i class="fa fa-plus my-float" ></i>
+    </a>
+    
+</div>

@@ -11,3 +11,12 @@
   .item-box {
     padding: 15px;
   }
+
+div.scroll
+{
+height:"100%";
+margin: "10px";
+FLOAT: left;
+overflow:scroll;
+}
+

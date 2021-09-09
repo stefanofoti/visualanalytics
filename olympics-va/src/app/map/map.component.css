@@ -25,12 +25,34 @@ div.tooltip {
 	height:30px;
 	bottom:40px;
 	right:10px;
-  float: right;
   background-color:#0C9;
 	color:#FFF;
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
+}
+
+.float-big{
+	position:relative;
+	width:200px;
+	height:80px;
+	bottom:100px;
+	right:-20px;
+  opacity: 50%;
+  background-color:#bbbbbb;
+	color:#000;
+	border-radius:10px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
 }
 
 .my-float{
