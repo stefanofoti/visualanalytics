@@ -149,7 +149,7 @@ export class ParcoordsComponent implements OnInit {
 
       this.color = d3.scaleOrdinal()
         .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-        .range(["#df0024", "#f4c300", "#0085c7", "#0085c7", "#000000", "#009f3d"])
+        .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
 
       // append the svg object to the body of the page
       this.svg = d3.select("#div_parcoord")

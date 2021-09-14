@@ -99,7 +99,7 @@ export class MapComponent implements OnInit {
       this.g.selectAll("path").attr("fill", function (d, event) {
 
         //let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
-        let colorScale = ["#ffffff", "#a2f69d", "#93e68f", "#84d681", "#76c673", "#67b765", "#59a758", "#4a984b", "#3c8a3e"]
+        let colorScale = ["#ffffff", "#eebdb6", "#dca49d", "#ca8c84", "#b8746c", "#a65d55", "#93453f", "#802e2a", "#6d1317"]
         let currentNOC = d.properties.NOC
         let team = stats[currentNOC]
 
@@ -402,8 +402,10 @@ export class MapComponent implements OnInit {
     console.log("cerco noc: " + noc)
     let selection = d3.select("#map-" + noc)
     if(selection.size() > 0) {
-      this.selectedColor = selection.attr("fill")
-      selection.attr("fill", "#0000ff")
+      //this.selectedColor = selection.attr("fill")
+      //selection.attr("fill", "#0000ff")
+      //this.selectedColor = selection.attr("stroke-width")
+      selection.style("stroke", "0000ff")
     }
 
   }
@@ -422,7 +424,7 @@ export class MapComponent implements OnInit {
       })
       noc = d.properties.NOC
     }
-    noc && (d3.select("#map-" + noc).attr("fill", this.selectedColor))
+    //noc && (d3.select("#map-" + noc).attr("fill", this.selectedColor))
   }
 
 
