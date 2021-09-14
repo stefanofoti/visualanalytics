@@ -163,7 +163,7 @@ export class LoaderService {
     let res: any = {}
     this.selectedSports = []
     data.forEach(line => {
-      let sport = line.Event
+      let sport = line.Sport
       if (!res[sport]) {
         res[sport] = {
           golds: 0,
@@ -201,20 +201,20 @@ export class LoaderService {
         }
       }
       if (line.Medal === "Gold") {
-        if (team.sports[line.Event].golds === 0) {
-          team.sports[line.Event].golds++
+        if (team.sports[line.Sport].golds === 0) {
+          team.sports[line.Sport].golds++
           team.golds++
         }
       }
       if (line.Medal === "Silver") {
-        if (team.sports[line.Event].silvers === 0) {
-          team.sports[line.Event].silvers++
+        if (team.sports[line.Sport].silvers === 0) {
+          team.sports[line.Sport].silvers++
           team.silvers++
         }
       }
       if (line.Medal === "Bronze") {
-        if (team.sports[line.Event].bronzes === 0) {
-          team.sports[line.Event].bronzes++
+        if (team.sports[line.Sport].bronzes === 0) {
+          team.sports[line.Sport].bronzes++
           team.bronzes++
         }
       }

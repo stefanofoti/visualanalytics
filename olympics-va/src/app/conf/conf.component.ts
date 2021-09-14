@@ -15,7 +15,7 @@ import { BooleanInput } from 'ngx-boolean-input';
 @Component({
   selector: 'app-conf',
   templateUrl: './conf.component.html',
-  styleUrls: ['./conf.component.css']
+  styleUrls: ['./conf.component.css', './slider.conf.component.scss']
 })
 
 export class ConfComponent implements OnInit {

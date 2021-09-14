@@ -395,8 +395,11 @@ export class MapComponent implements OnInit {
       noc = d.properties.NOC
       // this.selectedColor = d3.select(e.currentTarget).attr("fill")
       // d3.select(e.currentTarget).attr("fill", "#0000ff")
-      
     }
+
+
+    d3.selectAll(".map-item")
+    .style("opacity", "0.4")
 
 
     console.log("cerco noc: " + noc)
@@ -405,9 +408,11 @@ export class MapComponent implements OnInit {
       //this.selectedColor = selection.attr("fill")
       //selection.attr("fill", "#0000ff")
       //this.selectedColor = selection.attr("stroke-width")
-      selection.style("stroke", "0000ff")
+      selection
+        .style("stroke", "#000000")
+        .style("stroke-width", "0.5px")
+        .style("opacity", "1")
     }
-
   }
 
   doNotHighlight(e, d, context) {
@@ -425,6 +430,12 @@ export class MapComponent implements OnInit {
       noc = d.properties.NOC
     }
     //noc && (d3.select("#map-" + noc).attr("fill", this.selectedColor))
+    noc && (d3.select("#map-" + noc)
+    .style("stroke", "#000000")
+    .style("stroke-width", "0.2px"))
+    
+    d3.selectAll(".map-item")
+      .style("opacity", "1")
   }
 
 

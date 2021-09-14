@@ -74,8 +74,9 @@ export class ParcoordsComponent implements OnInit {
       this.stats = Object.values(message[0])
       this.maxSelectedSports = message[2]
       this.dimensions = message[3]
-      if (this.dimensions.length == 0) this.dimensions = ["Athletics Men's High Jump", "Athletics Men's 400 metres", "Boxing Men's Featherweight", "Gymnastics Men's Individual All-Around", "Synchronized Swimming Women's Team"]
-      if (this.dimensions.length > 8) this.dimensions.splice(8)
+      // if (this.dimensions.length == 0) this.dimensions = [ "Art Competitions", "Alpine Skiing", "Handball", "Weightlifting", "Wrestling", "Luge", "Water Polo", "Hockey", "Rowing", "Bobsleigh", "Fencing", "Equestrianism", "Shooting", "Boxing", "Taekwondo", "Cycling", "Diving", "Canoeing", "Tennis", "Modern Pentathlon", "Figure Skating", "Golf", "Softball", "Archery", "Volleyball" ]
+      if (this.dimensions.length == 0) this.dimensions = PreCheckedSports2
+      //if (this.dimensions.length > 30) this.dimensions.splice(30)
       this.selectedMedals = message[4]
       this.selectedCountries = message[6]
       if (this.selectedCountries.length > 0) {
@@ -252,8 +253,8 @@ export class ParcoordsComponent implements OnInit {
       // Add axis title
       .append("text")
 
-      .style("text-anchor", "middle")
-      .attr("transform", "rotate(-55)")
+      .style("text-anchor", "start")
+      .attr("transform", "rotate(-70)")
       .attr("y", -9)
       .text(d => d as string)
       .style("fill", "black")

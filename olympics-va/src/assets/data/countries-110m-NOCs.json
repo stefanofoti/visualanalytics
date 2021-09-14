@@ -728,7 +728,7 @@
           "id": "238",
           "properties": {
             "name": "Falkland Is.",
-            "NOC": ""
+            "NOC": "C04"
           }
         },
         {
@@ -774,7 +774,7 @@
           "id": "304",
           "properties": {
             "name": "Greenland",
-            "NOC": ""
+            "NOC": "C01"
           }
         },
         {
@@ -787,7 +787,7 @@
           "id": "260",
           "properties": {
             "name": "Fr. S. Antarctic Lands",
-            "NOC": ""
+            "NOC": "C02"
           }
         },
         {
@@ -2704,7 +2704,7 @@
           "id": "540",
           "properties": {
             "name": "New Caledonia",
-            "NOC": ""
+            "NOC": "C03"
           }
         },
         {

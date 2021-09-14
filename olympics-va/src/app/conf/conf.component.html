@@ -1,4 +1,4 @@
-<div class="autoHeight heightLine1 item-box scroll items-bg rounded">
+<div class="item-box scroll items-bg rounded" style="height: 20vh;">
     <p class="text-center">Settings</p>
 
     <mat-form-field class="search-full-width">
@@ -38,8 +38,10 @@
     </mat-autocomplete>
 
     <div class="row pt-3">
-        <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions"
-        (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>
+        <div class="custom-ngx-slider">
+            <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions"
+            (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>    
+        </div>
     </div>
 
     <div class="row pt-3">

@@ -34,12 +34,12 @@ div.tooltip {
 
 .float-big{
 	position:relative;
-	width:200px;
+	width:150px;
 	height:80px;
 	bottom:100px;
 	right:-20px;
-  opacity: 50%;
-  background-color:#bbbbbb;
+	opacity: 90%;
+	background-color:#ffffff70;
 	color:#000;
 	border-radius:10px;
 	text-align:center;
