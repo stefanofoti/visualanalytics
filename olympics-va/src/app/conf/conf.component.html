@@ -45,34 +45,33 @@
     </div>
 
     <div class="row pt-3">
-        <div class="col-sm-3 col-xs-12">
-            <form [formGroup]="formConf" (ngSubmit)="submit()">
-                <div class="form-group">
-                    <div class="form-check">
-                        <div *ngFor="let medal of medalsList">
+        <form [formGroup]="formConf" (ngSubmit)="submit()">
+            <div class="form-group">
+                <div class="form-check">
+                    <div *ngFor="let medal of medalsList">
+                        <div class="row">
                             <input class="form-check-input" [checked]="medal.isChecked" type="checkbox"
                                 [value]="medal.id" (change)="onMedalsCheckboxChange($event)" />
                             <label class="form-check-label">
                                 {{medal.name}}
                             </label>
+
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
+
+    </div>
+    <div class="row pt-3">
+        <div>
+            <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals
+                every 100,000 inhabitants</mat-slide-toggle>
         </div>
-
-        <div class="col-sm-9 col-xs-12">
-            <div>
-                <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals
-                    every 100,000 inhabitants</mat-slide-toggle>
-            </div>
-            <div>
-                <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by
-                    GDP per capita</mat-slide-toggle>
-            </div>
-
+        <div>
+            <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by
+                GDP per capita</mat-slide-toggle>
         </div>
     </div>
-
 
 </div>
