@@ -1,77 +1,95 @@
 <div class="item-box scroll items-bg rounded" style="height: 20vh;">
     <p class="text-center">Settings</p>
 
-    <mat-form-field class="search-full-width">
-        <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput
-            [matAutocomplete]="auto_country" [formControl]="countryControl">
-        <mat-hint>Enter text to find countries</mat-hint>
-    </mat-form-field>
+    <div class="row">
 
-    <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
-        <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
-            <div (click)="optionCountryClicked($event, c)">
-                <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)"
-                    (click)="$event.stopPropagation()">
-                    {{ c.name }}
-                </mat-checkbox>
+            <mat-form-field class="search-full-width">
+                <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput
+                    [matAutocomplete]="auto_country" [formControl]="countryControl">
+                <mat-hint>Enter text to find countries</mat-hint>
+            </mat-form-field>
+        
+            <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
+                <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
+                    <div (click)="optionCountryClicked($event, c)">
+                        <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)"
+                            (click)="$event.stopPropagation()">
+                            {{ c.name }}
+                        </mat-checkbox>
+                    </div>
+                </mat-option>
+            </mat-autocomplete>
+            <br>
+        
+        
+            <mat-form-field class="search-full-width">
+                <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput
+                    [matAutocomplete]="auto_sport" [formControl]="sportControl">
+                <mat-hint>Enter text to find sports by name</mat-hint>
+            </mat-form-field>
+        
+            <mat-autocomplete #auto_sport="matAutocomplete" [displayWith]="displayFn.bind(this)">
+                <mat-option *ngFor="let sport of filteredSports | async" [value]="selectedSports">
+                    <div (click)="optionClicked($event, sport)">
+                        <mat-checkbox [checked]="sport.isChecked" (change)="toggleSelection(sport)"
+                            (click)="$event.stopPropagation()">
+                            {{ sport.name }}
+                        </mat-checkbox>
+                    </div>
+                </mat-option>
+            </mat-autocomplete>
+        
+            <div class="row pt-3">
+                <div class="custom-ngx-slider">
+                    <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions"
+                    (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>    
+                </div>
             </div>
-        </mat-option>
-    </mat-autocomplete>
-    <br>
+        
 
 
-    <mat-form-field class="search-full-width">
-        <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput
-            [matAutocomplete]="auto_sport" [formControl]="sportControl">
-        <mat-hint>Enter text to find sports by name</mat-hint>
-    </mat-form-field>
 
-    <mat-autocomplete #auto_sport="matAutocomplete" [displayWith]="displayFn.bind(this)">
-        <mat-option *ngFor="let sport of filteredSports | async" [value]="selectedSports">
-            <div (click)="optionClicked($event, sport)">
-                <mat-checkbox [checked]="sport.isChecked" (change)="toggleSelection(sport)"
-                    (click)="$event.stopPropagation()">
-                    {{ sport.name }}
-                </mat-checkbox>
-            </div>
-        </mat-option>
-    </mat-autocomplete>
-
-    <div class="row pt-3">
-        <div class="custom-ngx-slider">
-            <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions"
-            (userChangeEnd)="onYearSliderChange($event)"></ngx-slider>    
-        </div>
-    </div>
-
-    <div class="row pt-3">
         <form [formGroup]="formConf" (ngSubmit)="submit()">
             <div class="form-group">
                 <div class="form-check">
                     <div *ngFor="let medal of medalsList">
                         <div class="row">
-                            <input class="form-check-input" [checked]="medal.isChecked" type="checkbox"
+                            <div class="col-md-3" style="margin-top:2vh;">
+                                <input class="form-check-input" [checked]="medal.isChecked" type="checkbox"
                                 [value]="medal.id" (change)="onMedalsCheckboxChange($event)" />
                             <label class="form-check-label">
                                 {{medal.name}}
                             </label>
-
+                            </div>
+                            <div class="col-md-9">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Insert {{medal.name}} weight</mat-label>
+                                    <input [(ngModel)]="medal.weight" [disabled]="!medal.isChecked" type="text" matInput placeholder="Insert {{medal.name}} weight">
+                                </mat-form-field>    
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
 
+
+            <div class="row pt-3">
+                <div>
+                    <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals
+                        every 100,000 inhabitants</mat-slide-toggle>
+                </div>
+                <div>
+                    <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by
+                        GDP per capita</mat-slide-toggle>
+                </div>
+            </div>
+
+
+        <button type="button" class="btn btn-primary" (click)="submit()">Update</button>
+
+
     </div>
-    <div class="row pt-3">
-        <div>
-            <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>Show medals
-                every 100,000 inhabitants</mat-slide-toggle>
-        </div>
-        <div>
-            <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>Show medals by
-                GDP per capita</mat-slide-toggle>
-        </div>
-    </div>
+
 
 </div>

@@ -20,6 +20,7 @@ export interface Sport {
 export interface Medal {
     id: string;
     name: string;
+    weight: number
     isChecked: boolean;
 }
 
@@ -945,9 +946,9 @@ export const PreCheckedEvents: string[] = ["Basketball Men's Basketball",
     "Aeronautics Mixed Aeronautics"];
 
 export const Medals: Medal[] = [
-    { id: golds, isChecked: true, name: 'Golds' },
-    { id: silvers, isChecked: true, name: 'Silvers' },
-    { id: bronzes, isChecked: true, name: 'Bronzes' },
+    { id: golds, isChecked: true, name: 'Golds', weight: 1},
+    { id: silvers, isChecked: true, name: 'Silvers', weight: 1 },
+    { id: bronzes, isChecked: true, name: 'Bronzes', weight: 1 },
 ];
 
 export const StatsPieChart: any[] = [

@@ -199,7 +199,7 @@ export class ConfComponent implements OnInit {
     console.log(this.selectedSports)
     this.sportControl.setValue(this.selectedSports);
     // this.data.changeSelectedSports(this.selectedSports)
-    this.updateData()
+    // this.updateData()
   }
 
   updateData() {
@@ -225,7 +225,7 @@ export class ConfComponent implements OnInit {
     console.log(this.selectedCountry)
     this.countryControl.setValue(this.selectedCountry);
     //this.data.changeSelectedCountries(this.selectedCountry)
-    this.updateData()
+    // this.updateData()
   }
 
   ngOnDestroy() {
@@ -246,7 +246,7 @@ export class ConfComponent implements OnInit {
       teams.removeAt(index);
     }
     // this.data.changeMessage(this.teamsList)
-    this.updateData()
+    // this.updateData()
   }
 
   onMedalsCheckboxChange(e) {
@@ -261,31 +261,32 @@ export class ConfComponent implements OnInit {
       medals.removeAt(index);
     }
     // this.data.changeSelectedMedals(this.medalsList)
-    this.updateData()
+    // this.updateData()
     // console.log(this.medalsList)
   }
 
 
   onYearSliderChange(e) {
-    this.updateData()
+    // this.updateData()
     // this.data.changeYearRange(this.yearRange)
     // console.log(e)
   }
 
   submit() {
-    console.log(this.formConf.value);
+    console.log("update required");
+    this.updateData()
   }
 
   onSlideTogglePopChanged(event) {
     this.isMedalsByPop = event.checked
     this.isMedalsByGdp && this.isMedalsByPop && (this.isMedalsByGdp = false)
-    this.updateData()
+    // this.updateData()
   }
 
   onSlideToggleGdpChanged(event) {
     this.isMedalsByGdp = event.checked
     this.isMedalsByGdp && this.isMedalsByPop && (this.isMedalsByPop = false)
-    this.updateData()
+    // this.updateData()
   }
 
 }
