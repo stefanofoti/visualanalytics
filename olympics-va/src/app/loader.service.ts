@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -174,7 +174,8 @@ export class LoaderService {
           id: this.selectedSports.length,
           isChecked: PreCheckedSports.includes(sport),
           name: sport,
-          group: line.Sport
+          group: line.Sport,
+          totalMedals: 0
         })
       }
     })
@@ -238,16 +239,20 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: string[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean) {
+  computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean) {
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2
     }
+    this.selectedSports.forEach(s => s.totalMedals = 0)
     let dict = this.olympicsDict["NOC"]
     let res = {}
     let max = 0
     let maxSingleSport = 0
     let range = this.rangeOf(start,end)
+    let gold = medals.find(m => m.id === golds)
+    let silver = medals.find(m => m.id === silvers)
+    let bronze = medals.find(m => m.id === bronzes)
     let decadesSelected 
       medalsByPop && (decadesSelected = this.computeDecadesRange(start, end))
     console.log (decadesSelected)
@@ -285,14 +290,15 @@ export class LoaderService {
               }
             }
             
-            let incrementSportGold = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].golds/currentAvgPop *100000: data.sports[sport].golds
-            let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].silvers/currentAvgPop *100000: data.sports[sport].silvers
-            let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].bronzes/currentAvgPop *100000: data.sports[sport].bronzes
+            
+            let incrementSportGold = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].golds*gold.weight/currentAvgPop *100000: data.sports[sport].golds*gold.weight
+            let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].silvers*silver.weight/currentAvgPop *100000: data.sports[sport].silvers*silver.weight
+            let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].bronzes*bronze.weight/currentAvgPop *100000: data.sports[sport].bronzes*bronze.weight
 
             if (medalsByGdp && !isNaN(currentAvgGdp)){
-              incrementSportGold /= currentAvgGdp
-              incrementSportSilver /= currentAvgGdp
-              incrementSportBronze /= currentAvgGdp
+              incrementSportGold = incrementSportGold*gold.weight/currentAvgGdp
+              incrementSportSilver = incrementSportSilver*silver.weight/currentAvgGdp
+              incrementSportBronze = incrementSportBronze*bronze.weight/currentAvgGdp
             }
 
             if (isNaN(currentAvgPop) && medalsByPop){
@@ -308,22 +314,48 @@ export class LoaderService {
               teamStats.noGdp = true
             }
 
-            medals.includes(golds) && (teamSportStats.golds += incrementSportGold)
-            medals.includes(bronzes) && (teamSportStats.bronzes += incrementSportBronze)
-            medals.includes(silvers) && (teamSportStats.silvers += incrementSportSilver)
-            medals.includes(golds) && (teamStats.golds += incrementSportGold)
-            medals.includes(bronzes) && (teamStats.bronzes += incrementSportBronze)
-            medals.includes(silvers) && (teamStats.silvers += incrementSportSilver)
+            medals.some(m => m.id==="golds") && (teamSportStats.golds += incrementSportGold)
+            medals.some(m => m.id==="bronzes") && (teamSportStats.bronzes += incrementSportBronze)
+            medals.some(m => m.id==="silvers") && (teamSportStats.silvers += incrementSportSilver)
+            medals.some(m => m.id==="golds") && (teamStats.golds += incrementSportGold)
+            medals.some(m => m.id==="bronzes") && (teamStats.bronzes += incrementSportBronze)
+            medals.some(m => m.id==="silvers") && (teamStats.silvers += incrementSportSilver)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
             teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
             max = teamStats.total > max ? teamStats.total : max
-            maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
+            //maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
             teamStats[sport] = teamSportStats
             res[noc] = teamStats
           }
         })
+        
       })
     }
+    Object.keys(res).forEach(noc =>{
+      Object.keys(res[noc]).forEach(sport =>{
+        let entry = this.selectedSports.find(s => s.name == sport)
+        entry && (entry.totalMedals += res[noc][sport].golds)
+      })
+    })
+    Object.keys(res).forEach(noc =>{
+      Object.keys(res[noc]).forEach(sport =>{
+        let entry = this.selectedSports.find(s => s.name == sport)
+        if (entry){
+          res[noc][sport].golds /= entry.totalMedals
+          res[noc][sport].silvers /= entry.totalMedals
+          res[noc][sport].bronzes /= entry.totalMedals
+          res[noc][sport].total = res[noc][sport].golds + res[noc][sport].silvers + res[noc][sport].bronzes
+          res[noc].golds += res[noc][sport].golds
+          res[noc].silvers += res[noc][sport].silvers
+          res[noc].bronzes += res[noc][sport].bronzes
+          res[noc].total = res[noc].golds + res[noc].silvers +res[noc].bronzes
+          maxSingleSport = res[noc][sport].total > maxSingleSport? res[noc][sport].total : maxSingleSport
+        }
+
+      })
+    })
+    console.log("max in every sport", maxSingleSport)
+
     return [res, max as number, maxSingleSport as number]
   }
 

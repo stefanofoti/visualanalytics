@@ -32,8 +32,8 @@ p {
 
 @media SCREEN AND (min-width: 768px){
     .autoHeight{ height:auto;  }
-    .heightLine1 { height:40vh;}
-    .heightLine1half { height:20vh;}
+    .heightLine1 { height:56vh;}
+    .heightLine1half { height:28vh;}
     .heightLine2 { height:45vh; margin-top: 1vh}
     .heightLineBr { height:10vh;}
     .heightFooter { height:10vh;}

@@ -96,7 +96,7 @@ export class ParcoordsComponent implements OnInit {
       med.isChecked && this.selectedMedals.push(med.id)
     })
     if (this.isDataReady) {
-      this.getData()
+      //this.getData()
       this.update()
     }
   }
@@ -112,7 +112,7 @@ export class ParcoordsComponent implements OnInit {
     this.selectedSports.length > 0 ? this.dimensions = this.selectedSports : this.dimensions = ["Speed Skating Women's 500 metres", "Speed Skating Women's 1,000 metres"]
     // this.dimensions = this.selectedSports
     if (this.isDataReady) {
-      this.getData()
+      //this.getData()
       this.update()
     }
   }
@@ -120,7 +120,7 @@ export class ParcoordsComponent implements OnInit {
   onYearRangeChanged(newRange: number[]) {
     this.yearRange = newRange
     if (this.isDataReady) {
-      this.getData()
+      //this.getData()
       this.update()
     }
   }
@@ -128,15 +128,15 @@ export class ParcoordsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getData(): void {
-    console.log(this.isDataReady)
-    if (!this.isDataReady) {
-      return
-    }
-    let m
-    [this.stats, , m] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.selectedMedals, PreCheckedSports2, false, false)
-    this.maxSelectedSports = m as number
-  }
+  // getData(): void {
+  //   console.log(this.isDataReady)
+  //   if (!this.isDataReady) {
+  //     return
+  //   }
+  //   let m
+  //   [this.stats, , m] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.selectedMedals, PreCheckedSports2, false, false)
+  //   this.maxSelectedSports = m as number
+  // }
 
   firstPlot(): void {
     if (this.neverPlotted) {
@@ -193,6 +193,7 @@ export class ParcoordsComponent implements OnInit {
 
 
   path(d, c) {
+    console.log(d)
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
       c.selectedMedals.includes(golds) && (totMedals += d[p].golds)

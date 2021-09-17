@@ -15,6 +15,7 @@ export interface Sport {
     name: string;
     group: string;
     isChecked: boolean;
+    totalMedals: number;
 }
 
 export interface Medal {

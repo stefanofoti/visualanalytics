@@ -208,7 +208,8 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
     let selSports: string[] = this.selectedSports.map(s => s.name)
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
-    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], selMedals, selSports, this.isMedalsByPop, this.isMedalsByGdp)
+    this.medalsList.map (m => Number(m.weight))
+    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
     console.log("conf: updateData() result")
     console.log(stats)
@@ -274,6 +275,7 @@ export class ConfComponent implements OnInit {
 
   submit() {
     console.log("update required");
+    console.log(this.medalsList)
     this.updateData()
   }
 
@@ -287,6 +289,19 @@ export class ConfComponent implements OnInit {
     this.isMedalsByGdp = event.checked
     this.isMedalsByGdp && this.isMedalsByPop && (this.isMedalsByPop = false)
     // this.updateData()
+  }
+
+  numberOnly(event): boolean {
+    
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode == 46){
+      return true;
+    }
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
 }
