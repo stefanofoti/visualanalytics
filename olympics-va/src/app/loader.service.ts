@@ -241,9 +241,10 @@ export class LoaderService {
       this.preProcessEventsPerSport(line, eventsPerSport)
       this.preProcessMedalsByNation(line, res, sports)
     });
+
     for(let year in eventsPerSport) {
       for(let sports in eventsPerSport[year]) {
-        eventsPerSport[year][sports] = sports.length 
+        eventsPerSport[year][sports] = eventsPerSport[year][sports].length 
       }
     }
     c.eventsPerSport = eventsPerSport
@@ -267,7 +268,7 @@ export class LoaderService {
   }
 
   computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean) {
-   normalize = true
+    normalize = true
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2

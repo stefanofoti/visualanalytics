@@ -193,7 +193,6 @@ export class ParcoordsComponent implements OnInit {
 
 
   path(d, c) {
-    console.log(d)
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
       c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
