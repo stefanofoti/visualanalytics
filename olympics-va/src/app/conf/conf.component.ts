@@ -208,7 +208,8 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
     let selSports: string[] = this.selectedSports.map(s => s.name)
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
-    this.medalsList.map (m => Number(m.weight))
+    this.medalsList.forEach (m => m.weight = Number(m.weight))
+    console.log(this.medalsList)
     let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
     console.log("conf: updateData() result")
@@ -291,17 +292,8 @@ export class ConfComponent implements OnInit {
     // this.updateData()
   }
 
-  numberOnly(event): boolean {
-    
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode == 46){
-      return true;
-    }
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
-
+  numberOnly(event, medal): boolean {
+    return !isNaN(medal.weight+event.key)
   }
 
 }

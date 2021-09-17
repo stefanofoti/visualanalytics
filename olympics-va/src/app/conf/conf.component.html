@@ -65,7 +65,7 @@
                             <div class="col-md-9">
                                 <mat-form-field appearance="fill" style="width: 70px;">
                                     <!-- <mat-label>Insert {{medal.name}} weight</mat-label> -->
-                                    <input (keypress)="numberOnly($event)" [(ngModel)]="medal.weight" [ngModelOptions]="{standalone: true}" [disabled]="!medal.isChecked" type="text" matInput placeholder="weight">
+                                    <input (keypress)="numberOnly($event, medal)" [(ngModel)]="medal.weight" [ngModelOptions]="{standalone: true}" [disabled]="!medal.isChecked" type="text" matInput placeholder="weight">
                                 </mat-form-field>
                             </div>
                         </div>
