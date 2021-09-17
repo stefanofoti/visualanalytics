@@ -16,11 +16,14 @@ export class LoaderService {
 
   selectedSports: Sport[]
 
+  eventsPerSport = {}
   countries = {}
 
   populations = {}
   
   gdp = {}
+
+  
 
   private isOlympicsDataReady: Boolean = false
 
@@ -101,7 +104,7 @@ export class LoaderService {
 
   async loadOlympicsCsv() {
     let lines = await d3.csv("/assets/data/athlete_events.csv")
-    let res = this.computeMedalsByNation(lines, this)
+    let res = this.preProcessData(lines, this)
     return res
   }
 
@@ -184,48 +187,72 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNation(data, c) {
+  preProcessEventsPerSport(line: any, eventsPerSport: any) {
+    let yearMap = eventsPerSport[line.Year] || {}
+    let sport = yearMap[line.Sport] || [line.Event]
+    if(!sport.includes(line.Event)) {
+      sport.push(line.Event)
+    }
+    yearMap[line.Sport] = sport
+    eventsPerSport[line.Year] = yearMap
+  }
+
+  preProcessMedalsByNation(line: any, res: any, sports: any) {
+    let yearMap = res[line.Year] || {}
+    let team = yearMap[line.NOC]
+    if (!team) {
+      let sportsCP = ld.cloneDeep(sports)
+      team = {
+        name: line.NOC,
+        golds: 0,
+        goldsArr: [],
+        silvers: 0,
+        silversArr: [],
+        bronzes: 0,
+        bronzesArr: [],
+        sports: sportsCP,
+        year: line.Year
+      }
+    }
+    if (line.Medal === "Gold" && !team.goldsArr.includes(line.Event)) {
+      team.goldsArr.push(line.Event)
+      team.sports[line.Sport].golds++
+      team.golds++
+    }
+    if (line.Medal === "Silver" && !team.silversArr.includes(line.Event)) {
+      team.silversArr.push(line.Event)
+      team.sports[line.Sport].silvers++
+      team.silvers++
+    }
+    if (line.Medal === "Bronze" && !team.bronzesArr.includes(line.Event)) {
+      team.bronzesArr.push(line.Event)
+      team.sports[line.Sport].bronzes++
+      team.bronzes++
+    }
+    yearMap[line.NOC] = team
+    res[line.Year] = yearMap
+  }
+
+  preProcessData(data, c) {
     let res: any = {}
+    let eventsPerSport: any = {}
     let sports = c.computeSportsList(data)
     data.forEach(line => {
-      let yearMap = res[line.Year] || {}
-      let team = yearMap[line.NOC]
-      if (!team) {
-        let sportsCP = ld.cloneDeep(sports)
-        team = {
-          name: line.NOC,
-          golds: 0,
-          silvers: 0,
-          bronzes: 0,
-          sports: sportsCP,
-          year: line.Year
-        }
-      }
-      if (line.Medal === "Gold") {
-        if (team.sports[line.Sport].golds === 0) {
-          team.sports[line.Sport].golds++
-          team.golds++
-        }
-      }
-      if (line.Medal === "Silver") {
-        if (team.sports[line.Sport].silvers === 0) {
-          team.sports[line.Sport].silvers++
-          team.silvers++
-        }
-      }
-      if (line.Medal === "Bronze") {
-        if (team.sports[line.Sport].bronzes === 0) {
-          team.sports[line.Sport].bronzes++
-          team.bronzes++
-        }
-      }
-      yearMap[line.NOC] = team
-      res[line.Year] = yearMap
+      this.preProcessEventsPerSport(line, eventsPerSport)
+      this.preProcessMedalsByNation(line, res, sports)
     });
+    for(let year in eventsPerSport) {
+      for(let sports in eventsPerSport[year]) {
+        eventsPerSport[year][sports] = sports.length 
+      }
+    }
+    c.eventsPerSport = eventsPerSport
+    console.log(eventsPerSport)
+    
     var totgolds = 0
     var totsilvers = 0
     var totbronzes = 0
-    var nation = "FRA"
+    var nation = "USA"
     for (const year in res) {
       if (res[year][nation] != undefined) {
         totgolds += res[year][nation].golds
@@ -235,11 +262,12 @@ export class LoaderService {
     }
     console.log(totgolds + totsilvers + totbronzes)
     console.log(res)
-
+    
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean) {
+  computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean) {
+   normalize = true
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2
@@ -267,8 +295,6 @@ export class LoaderService {
         let currentAvgPop 
           medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
 
-        
-
         selectedSports.forEach(sport => {
           if (data.sports[sport]) {
             if (!teamStats) {
@@ -289,12 +315,26 @@ export class LoaderService {
                 total: 0
               }
             }
-            
-            
-            let incrementSportGold = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].golds*gold.weight/currentAvgPop *100000: data.sports[sport].golds*gold.weight
-            let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].silvers*silver.weight/currentAvgPop *100000: data.sports[sport].silvers*silver.weight
-            let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? data.sports[sport].bronzes*bronze.weight/currentAvgPop *100000: data.sports[sport].bronzes*bronze.weight
 
+            let eventsAmount = 1
+            this.eventsPerSport[i] && this.eventsPerSport[i][sport] && (eventsAmount = this.eventsPerSport[i][sport])
+            // console.log("eventsAmount: " + eventsAmount + ", year: "+ currentYear + ", sport:" + sport)
+            let goldsAmount = data.sports[sport].golds
+            let silversAmount = data.sports[sport].silvers
+            let bronzesAmount = data.sports[sport].bronzes
+            
+            if(normalize) {
+              goldsAmount/=eventsAmount
+              silversAmount/=eventsAmount
+              bronzesAmount/=eventsAmount
+            }
+
+            
+            let incrementSportGold = (medalsByPop && !isNaN(currentAvgPop))? goldsAmount*gold.weight/currentAvgPop *100000: goldsAmount*gold.weight
+            let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? silversAmount*silver.weight/currentAvgPop *100000: silversAmount*silver.weight
+            let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? bronzesAmount*bronze.weight/currentAvgPop *100000: bronzesAmount*bronze.weight
+
+            
             if (medalsByGdp && !isNaN(currentAvgGdp)){
               incrementSportGold = incrementSportGold*gold.weight/currentAvgGdp
               incrementSportSilver = incrementSportSilver*silver.weight/currentAvgGdp
@@ -314,16 +354,16 @@ export class LoaderService {
               teamStats.noGdp = true
             }
 
-            medals.some(m => m.id==="golds") && (teamSportStats.golds += incrementSportGold)
-            medals.some(m => m.id==="bronzes") && (teamSportStats.bronzes += incrementSportBronze)
-            medals.some(m => m.id==="silvers") && (teamSportStats.silvers += incrementSportSilver)
-            medals.some(m => m.id==="golds") && (teamStats.golds += incrementSportGold)
-            medals.some(m => m.id==="bronzes") && (teamStats.bronzes += incrementSportBronze)
-            medals.some(m => m.id==="silvers") && (teamStats.silvers += incrementSportSilver)
+            medals.some(m => m.id===golds) && (teamSportStats.golds += incrementSportGold)
+            medals.some(m => m.id===bronzes) && (teamSportStats.bronzes += incrementSportBronze)
+            medals.some(m => m.id===silvers) && (teamSportStats.silvers += incrementSportSilver)
+            medals.some(m => m.id===golds) && (teamStats.golds += incrementSportGold)
+            medals.some(m => m.id===bronzes) && (teamStats.bronzes += incrementSportBronze)
+            medals.some(m => m.id===silvers) && (teamStats.silvers += incrementSportSilver)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
             teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
             max = teamStats.total > max ? teamStats.total : max
-            //maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
+            maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
             teamStats[sport] = teamSportStats
             res[noc] = teamStats
           }
@@ -331,31 +371,6 @@ export class LoaderService {
         
       })
     }
-    Object.keys(res).forEach(noc =>{
-      Object.keys(res[noc]).forEach(sport =>{
-        let entry = this.selectedSports.find(s => s.name == sport)
-        entry && (entry.totalMedals += res[noc][sport].golds)
-      })
-    })
-    Object.keys(res).forEach(noc =>{
-      Object.keys(res[noc]).forEach(sport =>{
-        let entry = this.selectedSports.find(s => s.name == sport)
-        if (entry){
-          res[noc][sport].golds /= entry.totalMedals
-          res[noc][sport].silvers /= entry.totalMedals
-          res[noc][sport].bronzes /= entry.totalMedals
-          res[noc][sport].total = res[noc][sport].golds + res[noc][sport].silvers + res[noc][sport].bronzes
-          res[noc].golds += res[noc][sport].golds
-          res[noc].silvers += res[noc][sport].silvers
-          res[noc].bronzes += res[noc][sport].bronzes
-          res[noc].total = res[noc].golds + res[noc].silvers +res[noc].bronzes
-          maxSingleSport = res[noc][sport].total > maxSingleSport? res[noc][sport].total : maxSingleSport
-        }
-
-      })
-    })
-    console.log("max in every sport", maxSingleSport)
-
     return [res, max as number, maxSingleSport as number]
   }
 
