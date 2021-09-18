@@ -35,6 +35,9 @@ export class ConfComponent implements OnInit {
 
   @Input() @BooleanInput()
   isMedalsByPop: any
+
+  //@Input() @BooleanInput()
+  isNormalize: boolean = false //any
   
   @Input() @BooleanInput()
   isMedalsByGdp: any
@@ -210,7 +213,7 @@ export class ConfComponent implements OnInit {
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
     this.medalsList.forEach (m => m.weight = Number(m.weight))
     console.log(this.medalsList)
-    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp)
+    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
     console.log("conf: updateData() result")
     console.log(stats)

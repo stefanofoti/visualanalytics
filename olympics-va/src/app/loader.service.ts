@@ -268,7 +268,6 @@ export class LoaderService {
   }
 
   computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean) {
-    normalize = true
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2
