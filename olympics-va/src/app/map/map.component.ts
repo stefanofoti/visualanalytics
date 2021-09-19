@@ -308,7 +308,7 @@ export class MapComponent implements OnInit {
       .scale(80)
       .rotate([-180, 0]);
 */
-    this.svg = d3.select("svg")
+    this.svg = d3.select("#mainMap")
       .attr("id", "svg_map")
       .attr("width", "100%")
       //.attr("height", this.height);

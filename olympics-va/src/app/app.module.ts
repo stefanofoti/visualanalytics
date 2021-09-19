@@ -23,7 +23,8 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OverviewComponent } from './overview/overview.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
-import { AboutComponent } from './about/about.component'
+import { AboutComponent } from './about/about.component';
+import { ScatterplotComponent } from './scatterplot/scatterplot.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AboutComponent } from './about/about.component'
     OverviewComponent,
     AnalyticsComponent,
     AboutComponent,
+    ScatterplotComponent,
   ],
   imports: [
     BrowserModule,
