@@ -35,6 +35,9 @@ export class MapComponent implements OnInit {
 
   countries: any
 
+  highlightToggle: boolean = true
+  lastSelected: string
+
   constructor(private loaderService: LoaderService, private dataService: DataService) {
     dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
@@ -364,6 +367,9 @@ export class MapComponent implements OnInit {
 
   highlight(e, d, context) {
     //console.log(d)
+    if (!context.highlightToggle) {
+      return
+    }
     let noc
     if (typeof d === 'string') {
       context.selectedStats = {
@@ -416,6 +422,9 @@ export class MapComponent implements OnInit {
   }
 
   doNotHighlight(e, d, context) {
+    if (!context.highlightToggle) {
+      return
+    }
     context.selectedStats = undefined
     let noc
     if (typeof d === 'string') {
@@ -438,6 +447,34 @@ export class MapComponent implements OnInit {
       .style("opacity", "1")
   }
 
+  onClick(e, d, context){
+    console.log("onClick called")
+    let selectedCountry = d.properties.NOC 
+    console.log(selectedCountry)
+    if(selectedCountry!==this.lastSelected){
+      this.highlightToggle = true
+      this.lastSelected = selectedCountry
+      this.doNotHighlight(e, d, context)
+      this.highlight(e,d,context)
+      this.highlightToggle = false
+      context.dataService.updateTraditionSelection({
+        noc: selectedCountry,
+        currentlySelected: true,
+        source: MapComponent.name
+      })
+
+    }else{
+      this.highlightToggle = true
+      this.doNotHighlight(e, d, context)
+      this.lastSelected = undefined
+      context.dataService.updateTraditionSelection({
+        noc: selectedCountry,
+        currentlySelected: false,
+        source: MapComponent.name
+      })
+    }
+  }
+
 
   drawMap(topology): void {
     const div = this.div
@@ -456,6 +493,7 @@ export class MapComponent implements OnInit {
       //.attr("fill", "#000000")
       .on("mouseover", (event, d) => this.highlight(event, d, context))
       .on("mouseout", (event, d) => this.doNotHighlight(event, d, context))
+      .on("click", (event, d) => this.onClick(event, d, context))
   }
 
 }

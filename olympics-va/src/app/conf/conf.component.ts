@@ -29,15 +29,19 @@ export class ConfComponent implements OnInit {
   selectedSportsSubscription: Subscription
   sportsReadinessSubscription: Subscription
   countryReadinessSubscription: Subscription
+  traditionSelectionSubscription: Subscription
 
   sportsList: Sport[]
   countryList: Country[]
+  traditionCountry: string
 
   @Input() @BooleanInput()
   isMedalsByPop: any
 
   //@Input() @BooleanInput()
   isNormalize: boolean = false //any
+
+  isTradition: boolean = false
   
   @Input() @BooleanInput()
   isMedalsByGdp: any
@@ -86,6 +90,11 @@ export class ConfComponent implements OnInit {
     this.countryReadinessSubscription = this.data.countryReadinessMessage.subscribe(message => {
       this.countryList = message
       this.initCountryChecklist()
+    })
+    this.traditionSelectionSubscription = this.data.traditionSelectionMessage.subscribe(message => {
+      this.isOlympicsDataReady && (this.traditionCountry = message.noc)
+      this.isOlympicsDataReady && (this.isTradition = message.currentlySelected)
+      this.isOlympicsDataReady && this.updateData()
     })
 
   }
@@ -212,8 +221,8 @@ export class ConfComponent implements OnInit {
     let selSports: string[] = this.selectedSports.map(s => s.name)
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
     this.medalsList.forEach (m => m.weight = Number(m.weight))
-    console.log(this.medalsList)
-    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize)
+    console.log("conf. is tradition: ", this.isTradition)
+    let [stats, max, maxSingleSport] = this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition)
     this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
     console.log("conf: updateData() result")
     console.log(stats)

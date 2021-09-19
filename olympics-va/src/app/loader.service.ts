@@ -267,8 +267,11 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean) {
+  computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean, tradition?: boolean) {
     console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
+    console.log("tradition is active: ", tradition)
+
+
     if (selectedSports.length == 0) {
       selectedSports = PreCheckedSports2
     }
@@ -327,6 +330,12 @@ export class LoaderService {
               goldsAmount/=eventsAmount
               silversAmount/=eventsAmount
               bronzesAmount/=eventsAmount
+            }
+
+            if(tradition) {
+              goldsAmount*=Math.pow(100, 1/(end-i+1))
+              silversAmount*=Math.pow(100, 1/(end-i+1))
+              bronzesAmount*=Math.pow(100, 1/(end-i+1))
             }
 
             

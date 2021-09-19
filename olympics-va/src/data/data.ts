@@ -4,6 +4,12 @@ export interface MouseSelection {
     currentlySelected?: boolean;
 }
 
+export interface TraditionSelection {
+    noc?: string;
+    source?: string;
+    currentlySelected?: boolean;
+}
+
 export interface Team {
     id: number;
     name: string;
@@ -94,6 +100,9 @@ export const Teams: Team[] = [
 ];
 
 export const MouseSel: MouseSelection = {
+}
+
+export const TraditionSel: TraditionSelection = {
 }
 
 export const Sports: Sport[] = [
