@@ -146,7 +146,7 @@ export class ParcoordsComponent implements OnInit {
       // set the dimensions and margins of the graph
       const margin = { top: 60, right: 60, bottom: 10, left: 50 }
       // this.width = 1200 - margin.left - margin.right
-      this.height = 400 - margin.top - margin.bottom
+      this.height = 496 - margin.top - margin.bottom
 
       this.color = d3.scaleOrdinal()
         .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
@@ -193,6 +193,7 @@ export class ParcoordsComponent implements OnInit {
 
 
   path(d, c) {
+
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
       c.selectedMedals.includes(golds) && (totMedals += d[p].golds)

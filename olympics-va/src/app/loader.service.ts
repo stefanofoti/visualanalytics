@@ -13,11 +13,14 @@ export class LoaderService {
   public olympicsDict: any = {}
   subscription: Subscription;
   selectedSportsSub: Subscription;
+  traditionSelectionSubscription: Subscription
 
   selectedSports: Sport[]
 
   eventsPerSport = {}
   countries = {}
+
+  selectedTradition = ""
 
   populations = {}
   
@@ -31,6 +34,9 @@ export class LoaderService {
     this.subscription = this.dataService.olympycsReadinessMessage.subscribe(message => this.isOlympicsDataReady = message)
     this.selectedSportsSub = this.dataService.selectedSportsMessage.subscribe(message => this.selectedSports = message)
     this.loadOlympicsResults()
+    this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
+      this.selectedTradition = message.noc
+    })
   }
 
 
@@ -380,7 +386,44 @@ export class LoaderService {
         
       })
     }
+    if (tradition){
+      res = this.computeAffinity(res, this.selectedTradition)
+    }
     return [res, max as number, maxSingleSport as number]
+  }
+
+  computeAffinity(res, sel){
+    let mostSimilar = {}
+    let minDeltas = {}
+    Object.keys(res).forEach(noc => {
+      //if(noc!=sel){
+        let totalDelta = 0
+        Object.keys(res[noc]).forEach(sport =>{
+          if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total"){
+            let weight = res[sel][sport].total
+            let delta = Math.abs((res[noc][sport].total-res[sel][sport].total)*weight)
+            totalDelta += delta
+          }
+        })
+        if (Object.keys(minDeltas).length<5){
+          minDeltas[noc] = totalDelta
+        }else{
+          let maxConsidered = Number(minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)])
+          if (totalDelta<maxConsidered){
+            delete minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)]
+            minDeltas[noc] = totalDelta
+          }
+        }
+      //}
+    })
+    console.log("most similar Traditions: ", minDeltas)
+    Object.keys(minDeltas).forEach(noc =>{
+      mostSimilar[noc]=res[noc]
+    })
+    console.log("my deltas: ", mostSimilar)
+
+    console.log(res)
+    return mostSimilar
   }
 
   computeDecadesRange(start: number, end: number) {
