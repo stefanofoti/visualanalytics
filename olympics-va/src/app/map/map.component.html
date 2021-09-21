@@ -11,11 +11,11 @@
         <p class="text-center" height="0px">
             {{selectedStats && selectedStats.name_str + ", " || "Pick a country"}} 
             <br>
-            {{selectedStats && selectedMedals.includes("golds") ? "Golds: " + selectedStats.golds : ""}}
+            {{selectedStats && selectedMedals.includes("golds") ? "Golds: " + (selectedStats.golds%1===0 ? selectedStats.golds:selectedStats.golds.toFixed(3)) : ""}}
             <br>
-            {{selectedStats && selectedMedals.includes("silvers") ? "Silvers: " + selectedStats.silvers : ""}}
+            {{selectedStats && selectedMedals.includes("silvers") ? "Silvers: " + (selectedStats.silvers%1===0 ? selectedStats.silvers:selectedStats.silvers.toFixed(3)) : ""}}
             <br>
-            {{selectedStats && selectedMedals.includes("bronzes") ? "Bronzes: " + selectedStats.bronzes : ""}}
+            {{selectedStats && selectedMedals.includes("bronzes") ? "Bronzes: " + (selectedStats.bronzes%1===0 ? selectedStats.bronzes:selectedStats.bronzes.toFixed(3)) : ""}}
         </p>
         <i class="fa fa-plus my-float" ></i>
     </a>

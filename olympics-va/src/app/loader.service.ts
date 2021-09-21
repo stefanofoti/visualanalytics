@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -26,6 +26,7 @@ export class LoaderService {
   
   gdp = {}
 
+  cache: Array<CacheEntry> = []
   
 
   private isOlympicsDataReady: Boolean = false
@@ -273,38 +274,63 @@ export class LoaderService {
     return res
   }
 
-  computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean, tradition?: boolean) {
-    console.log("computeMedalsByNationInRange sports: " + selectedSports.length)
-    console.log("tradition is active: ", tradition)
+  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean, tradition?: boolean) {
+    let query: Query = { start, end, medals, selectedSports, medalsByPop, medalsByGdp, normalize }
+    let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
+    if(!ce) {
+      console.log("Cache miss: computing...")
+      let result = this.computeResult({...query, tradition: false})
+      let traditionResult = this.computeResult({...query, tradition: true})
+      let [res, traditionRes] = await Promise.all([result, traditionResult])
+
+      ce = {
+        query: query,
+        res: res,
+        traditionRes: traditionRes
+      }
+      this.cache.push(ce)  
+    }
+    if (tradition){
+      let tradResAffinity = ld.cloneDeep(ce.traditionRes)
+      tradResAffinity[0] = this.computeAffinity(tradResAffinity[0], this.selectedTradition)
+
+      return tradResAffinity
+    }
+    return ce.res
+  }
+
+  async computeResult(q: Query) {
+    console.log("computeMedalsByNationInRange sports: " + q.selectedSports.length)
+    console.log("tradition is active: ", q.tradition)
 
 
-    if (selectedSports.length == 0) {
-      selectedSports = PreCheckedSports2
+    if (q.selectedSports.length == 0) {
+      q.selectedSports = PreCheckedSports2
     }
     this.selectedSports.forEach(s => s.totalMedals = 0)
     let dict = this.olympicsDict["NOC"]
     let res = {}
     let max = 0
     let maxSingleSport = 0
-    let range = this.rangeOf(start,end)
-    let gold = medals.find(m => m.id === golds)
-    let silver = medals.find(m => m.id === silvers)
-    let bronze = medals.find(m => m.id === bronzes)
+    let range = this.rangeOf(q.start,q.end)
+    let gold = q.medals.find(m => m.id === golds)
+    let silver = q.medals.find(m => m.id === silvers)
+    let bronze = q.medals.find(m => m.id === bronzes)
     let decadesSelected 
-      medalsByPop && (decadesSelected = this.computeDecadesRange(start, end))
+      q.medalsByPop && (decadesSelected = this.computeDecadesRange(q.start, q.end))
     console.log (decadesSelected)
 
-    for (let i = start; i <= end; i++) {
+    for (let i = q.start; i <= q.end; i++) {
       let currentYear = dict[i]
       currentYear && Object.keys(currentYear).forEach(noc => {
         let data = currentYear[noc]
         let teamStats = res[noc]
         let currentAvgGdp 
-          medalsByGdp && (currentAvgGdp = this.computeAverageGdpOfNation(range, noc))
+          q.medalsByGdp && (currentAvgGdp = this.computeAverageGdpOfNation(range, noc))
         let currentAvgPop 
-          medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
+          q.medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
 
-        selectedSports.forEach(sport => {
+        q.selectedSports.forEach(sport => {
           if (data.sports[sport]) {
             if (!teamStats) {
               teamStats = {
@@ -332,49 +358,49 @@ export class LoaderService {
             let silversAmount = data.sports[sport].silvers
             let bronzesAmount = data.sports[sport].bronzes
             
-            if(normalize) {
+            if(q.normalize) {
               goldsAmount/=eventsAmount
               silversAmount/=eventsAmount
               bronzesAmount/=eventsAmount
             }
 
-            if(tradition) {
-              goldsAmount*=Math.pow(100, 1/(end-i+1))
-              silversAmount*=Math.pow(100, 1/(end-i+1))
-              bronzesAmount*=Math.pow(100, 1/(end-i+1))
+            if(q.tradition) {
+              goldsAmount*=Math.pow(100, 1/(q.end-i+1))
+              silversAmount*=Math.pow(100, 1/(q.end-i+1))
+              bronzesAmount*=Math.pow(100, 1/(q.end-i+1))
             }
 
             
-            let incrementSportGold = (medalsByPop && !isNaN(currentAvgPop))? goldsAmount*gold.weight/currentAvgPop *100000: goldsAmount*gold.weight
-            let incrementSportSilver = (medalsByPop && !isNaN(currentAvgPop))? silversAmount*silver.weight/currentAvgPop *100000: silversAmount*silver.weight
-            let incrementSportBronze = (medalsByPop && !isNaN(currentAvgPop))? bronzesAmount*bronze.weight/currentAvgPop *100000: bronzesAmount*bronze.weight
+            let incrementSportGold = (q.medalsByPop && !isNaN(currentAvgPop))? goldsAmount*gold.weight/currentAvgPop *100000: goldsAmount*gold.weight
+            let incrementSportSilver = (q.medalsByPop && !isNaN(currentAvgPop))? silversAmount*silver.weight/currentAvgPop *100000: silversAmount*silver.weight
+            let incrementSportBronze = (q.medalsByPop && !isNaN(currentAvgPop))? bronzesAmount*bronze.weight/currentAvgPop *100000: bronzesAmount*bronze.weight
 
             
-            if (medalsByGdp && !isNaN(currentAvgGdp)){
+            if (q.medalsByGdp && !isNaN(currentAvgGdp)){
               incrementSportGold = incrementSportGold*gold.weight/currentAvgGdp
               incrementSportSilver = incrementSportSilver*silver.weight/currentAvgGdp
               incrementSportBronze = incrementSportBronze*bronze.weight/currentAvgGdp
             }
 
-            if (isNaN(currentAvgPop) && medalsByPop){
+            if (isNaN(currentAvgPop) && q.medalsByPop){
               incrementSportGold = 0
               incrementSportSilver = 0
               incrementSportBronze = 0
               teamStats.noPop = true
             }
-            if (isNaN(currentAvgGdp) && medalsByGdp){
+            if (isNaN(currentAvgGdp) && q.medalsByGdp){
               incrementSportGold = 0
               incrementSportSilver = 0
               incrementSportBronze = 0
               teamStats.noGdp = true
             }
 
-            medals.some(m => m.id===golds) && (teamSportStats.golds += incrementSportGold)
-            medals.some(m => m.id===bronzes) && (teamSportStats.bronzes += incrementSportBronze)
-            medals.some(m => m.id===silvers) && (teamSportStats.silvers += incrementSportSilver)
-            medals.some(m => m.id===golds) && (teamStats.golds += incrementSportGold)
-            medals.some(m => m.id===bronzes) && (teamStats.bronzes += incrementSportBronze)
-            medals.some(m => m.id===silvers) && (teamStats.silvers += incrementSportSilver)
+            q.medals.some(m => m.id===golds) && (teamSportStats.golds += incrementSportGold)
+            q.medals.some(m => m.id===bronzes) && (teamSportStats.bronzes += incrementSportBronze)
+            q.medals.some(m => m.id===silvers) && (teamSportStats.silvers += incrementSportSilver)
+            q.medals.some(m => m.id===golds) && (teamStats.golds += incrementSportGold)
+            q.medals.some(m => m.id===bronzes) && (teamStats.bronzes += incrementSportBronze)
+            q.medals.some(m => m.id===silvers) && (teamStats.silvers += incrementSportSilver)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
             teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
             max = teamStats.total > max ? teamStats.total : max
@@ -385,9 +411,6 @@ export class LoaderService {
         })
         
       })
-    }
-    if (tradition){
-      res = this.computeAffinity(res, this.selectedTradition)
     }
     return [res, max as number, maxSingleSport as number]
   }

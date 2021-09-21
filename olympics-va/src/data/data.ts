@@ -16,6 +16,23 @@ export interface Team {
     isChecked: boolean;
 }
 
+export interface Query {
+    start: number,
+    end: number,
+    medals: Medal[],
+    selectedSports: string[],
+    medalsByPop: boolean,
+    medalsByGdp: boolean,
+    normalize?: boolean,
+    tradition?: boolean
+}
+
+export interface CacheEntry {
+    query: Query,
+    traditionRes: any,
+    res: any
+}
+
 export interface Sport {
     id: number;
     name: string;
