@@ -19,6 +19,7 @@ export class ParcoordsComponent implements OnInit {
   private subSelectedMedals: Subscription
   private subSelectedSports: Subscription
   private subDataUpdated: Subscription
+  private traditionSelectionSubscription: Subscription
 
   private isDataReady: boolean
   private spacing: number = 0
@@ -48,6 +49,7 @@ export class ParcoordsComponent implements OnInit {
   currentSelected: any = {}
   currentCountryName: string
   currentCountryNoc: string
+  selectedTradition: string
 
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
@@ -57,6 +59,9 @@ export class ParcoordsComponent implements OnInit {
     // this.subSelectedSports = dataService.selectedSportsMessage.subscribe(message => this.onSelectedSportsChanged(message))
     this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
+    this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
+      this.selectedTradition = message.noc
+    })
 
   }
 
@@ -193,7 +198,6 @@ export class ParcoordsComponent implements OnInit {
 
 
   path(d, c) {
-
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
       c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
@@ -306,13 +310,16 @@ export class ParcoordsComponent implements OnInit {
         source: ParcoordsComponent.name
       })  
     }
-    c.currentSelected = {}
-    c.currentCountryName = ""
-    c.currentCountryNoc = ""
     d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")
-      .style("opacity", 0.5)
+      .style("opacity", d => {if (c.currentCountryNoc === this.selectedTradition) return 1
+        return 0.5})
+
+    c.currentSelected = {}
+    c.currentCountryName = ""
+    c.currentCountryNoc = ""
+    
   }
 
 
@@ -344,11 +351,13 @@ export class ParcoordsComponent implements OnInit {
       //.duration(1000)
       .attr("d", d => c.path(d, c))
       //.attr("fill", "#69b3a2")
-      .attr("stroke-width", 3)
+      .attr("stroke-width", d => {if (d.name === this.selectedTradition) return 5
+        return 3})
       .style("fill", "none")
       .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
       //.style("stroke", "#0000ff")
-      .style("opacity", 0.5)
+      .style("opacity", d => {if (d.name === this.selectedTradition) return 1
+        return 0.5})
 
 
 
