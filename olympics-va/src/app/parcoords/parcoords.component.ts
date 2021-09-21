@@ -198,6 +198,14 @@ export class ParcoordsComponent implements OnInit {
 
 
   path(d, c) {
+    if (c.dimensions.length === 1){
+      let p = c.dimensions[0]
+      let totMedals = 0
+        c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
+        c.selectedMedals.includes(bronzes) && (totMedals += d[p].bronzes)
+        c.selectedMedals.includes(silvers) && (totMedals += d[p].silvers)
+      return d3.line()([[0,c.y[p](totMedals)],[c.x(p)*2,c.y[p](totMedals)]])
+    }
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
       c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
@@ -262,7 +270,7 @@ export class ParcoordsComponent implements OnInit {
       .attr("transform", "rotate(-70)")
       .attr("y", -9)
       .text(d => d as string)
-      .style("fill", "black")
+      .style("fill", "rgb(182, 182, 182)")
 
     u.exit().remove()
   }
@@ -314,7 +322,7 @@ export class ParcoordsComponent implements OnInit {
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")
       .style("opacity", d => {if (c.currentCountryNoc === this.selectedTradition) return 1
-        return 0.5})
+        return 0.7})
 
     c.currentSelected = {}
     c.currentCountryName = ""
@@ -357,7 +365,7 @@ export class ParcoordsComponent implements OnInit {
       .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
       //.style("stroke", "#0000ff")
       .style("opacity", d => {if (d.name === this.selectedTradition) return 1
-        return 0.5})
+        return 0.7})
 
 
 

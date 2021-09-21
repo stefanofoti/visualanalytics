@@ -39,11 +39,11 @@ div.tooltip {
 	bottom:100px;
 	right:-20px;
 	opacity: 90%;
-	background-color:#ffffff70;
-	color:#000;
+	background-color:rgb(24, 21, 39);
+	color:rgb(24, 21, 39);
 	border-radius:10px;
 	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+	/* box-shadow: 2px 2px 3px #999; */
 }
 
 
