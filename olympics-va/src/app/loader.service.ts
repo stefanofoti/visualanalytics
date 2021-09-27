@@ -275,10 +275,9 @@ export class LoaderService {
   }
 
   async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean, tradition?: boolean) {
-    let query: Query = { start, end, medals, selectedSports, medalsByPop, medalsByGdp, normalize }
+    let query: Query = ld.cloneDeep({ start, end, medals, selectedSports, medalsByPop, medalsByGdp, normalize })
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
     if(!ce) {
-      console.log("Cache miss: computing...")
       let result = this.computeResult({...query, tradition: false})
       let traditionResult = this.computeResult({...query, tradition: true})
       let [res, traditionRes] = await Promise.all([result, traditionResult])
@@ -300,6 +299,7 @@ export class LoaderService {
   }
 
   async computeResult(q: Query) {
+    console.log("compute results speaking", q.medals)
     console.log("computeMedalsByNationInRange sports: " + q.selectedSports.length)
     console.log("tradition is active: ", q.tradition)
 

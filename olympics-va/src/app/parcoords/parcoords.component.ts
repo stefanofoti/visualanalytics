@@ -75,6 +75,7 @@ export class ParcoordsComponent implements OnInit {
   }
 
   dataReady(message): any {
+    console.log("current message: ", message)
     if (message && message.length == 7) {
       this.stats = Object.values(message[0])
       this.maxSelectedSports = message[2]
