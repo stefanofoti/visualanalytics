@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry, MainComputationResult } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -280,7 +280,7 @@ export class LoaderService {
     if(!ce) {
       let result = this.computeResult({...query, tradition: false})
       let traditionResult = this.computeResult({...query, tradition: true})
-      let [res, traditionRes] = await Promise.all([result, traditionResult])
+      let [res, traditionRes]:MainComputationResult[] = await Promise.all([result, traditionResult])
 
       ce = {
         query: query,
@@ -290,9 +290,20 @@ export class LoaderService {
       this.cache.push(ce)  
     }
     if (tradition){
-      let tradResAffinity = ld.cloneDeep(ce.traditionRes)
-      tradResAffinity[0] = this.computeAffinity(tradResAffinity[0], this.selectedTradition)
-
+      let tradResAffinity: MainComputationResult = ld.cloneDeep(ce.traditionRes)
+      tradResAffinity.stats = this.computeAffinity(tradResAffinity.stats, this.selectedTradition)
+      let selectedStats: Object = tradResAffinity.stats[this.selectedTradition]
+      
+      Object.keys(selectedStats).forEach(k => {
+        typeof selectedStats[k] === "object" &&(selectedStats[k].sport = k)
+      })
+      let values = Object.values(selectedStats)
+      values = values.filter(v => typeof v === "object")
+      values.sort((a,b) => b.total - a.total)
+      let sortedSports = values.map(v => v && v.sport)
+      tradResAffinity.sportsList = sortedSports
+      console.log("tradResAffinity: ", tradResAffinity)
+      // todo sorting 
       return tradResAffinity
     }
     return ce.res
@@ -395,12 +406,12 @@ export class LoaderService {
               teamStats.noGdp = true
             }
 
-            q.medals.some(m => m.id===golds) && (teamSportStats.golds += incrementSportGold)
-            q.medals.some(m => m.id===bronzes) && (teamSportStats.bronzes += incrementSportBronze)
-            q.medals.some(m => m.id===silvers) && (teamSportStats.silvers += incrementSportSilver)
-            q.medals.some(m => m.id===golds) && (teamStats.golds += incrementSportGold)
-            q.medals.some(m => m.id===bronzes) && (teamStats.bronzes += incrementSportBronze)
-            q.medals.some(m => m.id===silvers) && (teamStats.silvers += incrementSportSilver)
+            q.medals.some(m => m.id===golds && m.isChecked) && (teamSportStats.golds += incrementSportGold)
+            q.medals.some(m => m.id===bronzes && m.isChecked) && (teamSportStats.bronzes += incrementSportBronze)
+            q.medals.some(m => m.id===silvers && m.isChecked) && (teamSportStats.silvers += incrementSportSilver)
+            q.medals.some(m => m.id===golds && m.isChecked) && (teamStats.golds += incrementSportGold)
+            q.medals.some(m => m.id===bronzes && m.isChecked) && (teamStats.bronzes += incrementSportBronze)
+            q.medals.some(m => m.id===silvers && m.isChecked) && (teamStats.silvers += incrementSportSilver)
             teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
             teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
             max = teamStats.total > max ? teamStats.total : max
@@ -412,7 +423,15 @@ export class LoaderService {
         
       })
     }
-    return [res, max as number, maxSingleSport as number]
+
+    let response: MainComputationResult = {
+      stats: res,
+      max: max as number,
+      maxSingleSport: maxSingleSport as number,
+      sportsList: q.selectedSports
+    } 
+
+    return response
   }
 
   computeAffinity(res, sel){
@@ -424,7 +443,7 @@ export class LoaderService {
         Object.keys(res[noc]).forEach(sport =>{
           if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total"){
             let weight = res[sel][sport].total+0.1
-            let delta = Math.abs((res[noc][sport].total-res[sel][sport].total)*weight)
+            let delta = Math.abs((res[noc][sport].total-res[sel][sport].total)*1)
             totalDelta += delta
           }
         })

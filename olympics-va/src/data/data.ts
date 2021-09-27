@@ -16,6 +16,14 @@ export interface Team {
     isChecked: boolean;
 }
 
+export interface MainComputationResult {
+    stats: any
+    max: number
+    maxSingleSport: number
+    sportsList: string[]
+
+}
+
 export interface Query {
     start: number,
     end: number,
@@ -29,8 +37,8 @@ export interface Query {
 
 export interface CacheEntry {
     query: Query,
-    traditionRes: any,
-    res: any
+    traditionRes: MainComputationResult,
+    res: MainComputationResult
 }
 
 export interface Sport {

@@ -269,9 +269,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     this.statsFiltered.forEach(element => {
       if(element) {
         let sum = 0
-        this.selectedMedals.includes(golds) && (sum += element.golds)
-        this.selectedMedals.includes(silvers) && (sum += element.silvers)
-        this.selectedMedals.includes(bronzes) && (sum += element.bronzes)
+        // this.selectedMedals.includes(golds) && (sum += element.golds)
+        // this.selectedMedals.includes(silvers) && (sum += element.silvers)
+        // this.selectedMedals.includes(bronzes) && (sum += element.bronzes)
+        sum += element.total
         sum > max && (max = sum)  
       }
     })

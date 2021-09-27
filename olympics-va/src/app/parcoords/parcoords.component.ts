@@ -49,7 +49,7 @@ export class ParcoordsComponent implements OnInit {
   currentSelected: any = {}
   currentCountryName: string
   currentCountryNoc: string
-  selectedTradition: string
+  selectedTraditionNoc: string
 
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
@@ -60,7 +60,7 @@ export class ParcoordsComponent implements OnInit {
     this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
-      this.selectedTradition = message.noc
+      this.selectedTraditionNoc = message.noc
     })
 
   }
@@ -202,16 +202,15 @@ export class ParcoordsComponent implements OnInit {
     if (c.dimensions.length === 1){
       let p = c.dimensions[0]
       let totMedals = 0
-        c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
-        c.selectedMedals.includes(bronzes) && (totMedals += d[p].bronzes)
-        c.selectedMedals.includes(silvers) && (totMedals += d[p].silvers)
+      totMedals += d[p].total
       return d3.line()([[0,c.y[p](totMedals)],[c.x(p)*2,c.y[p](totMedals)]])
     }
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
-      c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
-      c.selectedMedals.includes(bronzes) && (totMedals += d[p].bronzes)
-      c.selectedMedals.includes(silvers) && (totMedals += d[p].silvers)
+      // c.selectedMedals.includes(golds) && (totMedals += d[p].golds)
+      // c.selectedMedals.includes(bronzes) && (totMedals += d[p].bronzes)
+      // c.selectedMedals.includes(silvers) && (totMedals += d[p].silvers)
+      totMedals += d[p].total
       return [c.x(p), c.y[p](totMedals) - c.spacing];
     }));
   }
@@ -322,7 +321,7 @@ export class ParcoordsComponent implements OnInit {
     d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")
-      .style("opacity", d => {if (c.currentCountryNoc === this.selectedTradition) return 1
+      .style("opacity", d => {if (c.currentCountryNoc === this.selectedTraditionNoc) return 1
         return 0.7})
 
     c.currentSelected = {}
@@ -360,12 +359,12 @@ export class ParcoordsComponent implements OnInit {
       //.duration(1000)
       .attr("d", d => c.path(d, c))
       //.attr("fill", "#69b3a2")
-      .attr("stroke-width", d => {if (d.name === this.selectedTradition) return 5
+      .attr("stroke-width", d => {if (d.name === this.selectedTraditionNoc) return 5
         return 3})
       .style("fill", "none")
       .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
       //.style("stroke", "#0000ff")
-      .style("opacity", d => {if (d.name === this.selectedTradition) return 1
+      .style("opacity", d => {if (d.name === this.selectedTraditionNoc) return 1
         return 0.7})
 
 

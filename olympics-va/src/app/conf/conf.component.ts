@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
 import { Observable, Subscription } from 'rxjs';
-import { Country, Medal, PreCheckedSports, PreCheckedSports2, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
+import { Country, MainComputationResult, Medal, PreCheckedSports, PreCheckedSports2, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
 import { of, pipe } from 'rxjs';
 import { map, filter, tap, startWith } from 'rxjs/operators'
@@ -223,11 +223,12 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach (m => m.weight = Number(m.weight))
     console.log("conf. is tradition: ", this.isTradition)
     console.log("conf. medalsList:",this.medalsList)
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition).then(res => {
-      let stats = res[0]
-      let max = res[1]
-      let maxSingleSport = res[2]
-      this.data.updateNewData([stats, max, maxSingleSport, selSports, selMedals, this.yearRange, selCountries])
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition).then(res  => {
+      let r = res as MainComputationResult
+      let stats = r.stats
+      let max = r.max
+      let maxSingleSport = r.maxSingleSport
+      this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
       console.log("conf: updateData() result: ", stats)
     })
   }
