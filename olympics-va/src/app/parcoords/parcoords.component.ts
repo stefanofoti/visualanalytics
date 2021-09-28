@@ -150,9 +150,9 @@ export class ParcoordsComponent implements OnInit {
       // let data = Object.values(stats)
       let c = this
       // set the dimensions and margins of the graph
-      const margin = { top: 60, right: 60, bottom: 10, left: 50 }
+      const margin = { top: 60, right: 30, bottom: 10, left: 30 }
       // this.width = 1200 - margin.left - margin.right
-      this.height = 496 - margin.top - margin.bottom
+      this.height = 300  - margin.top - margin.bottom
 
       this.color = d3.scaleOrdinal()
         .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
@@ -163,13 +163,13 @@ export class ParcoordsComponent implements OnInit {
         .append("svg")
         .attr("id", "svg_parcoords")
         .attr("width", "100%")
-        .attr("height", this.height + margin.top + margin.bottom)
+        .attr("height", "100%")
+        .attr('viewBox', '0 0 2080 300')
         .append("g")
-        .attr("transform",
-          `translate(${margin.left},${margin.top})`);
+        .attr("transform",`translate(${margin.left},${margin.top})`);
 
       this.width = document.getElementById("svg_parcoords").clientWidth
-
+      //this.height = document.getElementById("svg_parcoords").clientHeight
       //this.computeXY()
       //this.drawAxis()
 
