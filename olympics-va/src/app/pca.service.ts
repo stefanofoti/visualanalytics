@@ -12,21 +12,22 @@ export class PcaService {
   filterData(q: PcaQuery, lines: any[]) {
     let result = lines.map(l =>
       [
-        l.Sex_value,
-        l.Season_value,
-        l.Medal_value,
-        l.Sport_value,
-        l.NOC_value,
-        l.Name_value,
-        l.Event_value
+        Number(l.Sex_value),
+        Number(l.Season_value),
+        Number(l.Medal_value),
+        Number(l.Sport_value),
+        Number(l.NOC_value),
+        Number(l.Name_value),
+        Number(l.Event_value)
       ]
     )
-    return result
+    return result.slice(0,15000)
   }
 
   async computePca(q: PcaQuery, lines: any[]): Promise<PCAEntry[]> {
     let data = this.filterData(q, lines)
-
+    console.log(data)
+    
     // var data = [[40,50,60,20,70],[50,70,60,25,90],[80,70,90,30,60],[50,60,80,50,50]];
     var vectors = PCA.getEigenVectors(data);
     let m = [vectors[0].vector, vectors[1].vector, vectors[2].vector]
@@ -44,7 +45,8 @@ export class PcaService {
       }
       return r
     })
-
+    console.log("pcaresult", result)
     return result
+    // return []
   }
 }

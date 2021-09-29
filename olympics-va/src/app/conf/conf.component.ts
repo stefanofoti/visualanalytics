@@ -245,7 +245,8 @@ export class ConfComponent implements OnInit {
 
 
     this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
-      let x: PCAEntry[] = []
+      let x: PCAEntry[] = res
+      console.log("plotting pca: sending readiness...", x)
       this.data.pcaDataReady(x)
     })
 

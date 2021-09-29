@@ -20,6 +20,8 @@ export class ScatterplotComponent implements OnInit {
   }
 
   dataReady(entries: PCAEntry[]): void {
+    console.log("plotting: data ready...")
+
     entries.length>0 && this.plot3d(entries)
   }
 
@@ -71,11 +73,13 @@ export class ScatterplotComponent implements OnInit {
   }
 
   plot3d(entries: PCAEntry[]) {
-
+    console.log("plotting pca...")
 
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
     let z = this.extractComponents(entries, "z")
+
+    console.log("plotting x", x, "y: ", y, "z:", z)
 
       var trace1 = {        
         x: x,
