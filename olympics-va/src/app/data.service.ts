@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Countries, Populations, Country, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel, TraditionSel, TraditionSelection } from '../data/data'
+import { Countries, Populations, Country, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel, TraditionSel, TraditionSelection, PCAEntry, PCAData } from '../data/data'
 
 @Injectable()
 export class DataService {
@@ -40,6 +40,9 @@ export class DataService {
 
   private traditionSelectionSource = new BehaviorSubject(TraditionSel)
   traditionSelectionMessage = this.traditionSelectionSource.asObservable()
+
+  private pcaDataReadySource = new BehaviorSubject(PCAData)
+  pcaDataReadyMessage = this.pcaDataReadySource.asObservable()
 
   constructor() { }
 
@@ -89,6 +92,10 @@ export class DataService {
 
   updateTraditionSelection(message: TraditionSelection) {
     this.traditionSelectionSource.next(message)
+  }
+
+  pcaDataReady(message: PCAEntry[]) {
+    this.pcaDataReadySource.next(message)
   }
 
 }

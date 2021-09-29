@@ -14,7 +14,7 @@ export class LoaderService {
   subscription: Subscription;
   selectedSportsSub: Subscription;
   traditionSelectionSubscription: Subscription
-
+  csvLines = [] 
   selectedSports: Sport[]
 
   eventsPerSport = {}
@@ -33,7 +33,7 @@ export class LoaderService {
 
   constructor(private dataService: DataService) {
     this.subscription = this.dataService.olympycsReadinessMessage.subscribe(message => this.isOlympicsDataReady = message)
-    this.selectedSportsSub = this.dataService.selectedSportsMessage.subscribe(message => this.selectedSports = message)
+    //this.selectedSportsSub = this.dataService.selectedSportsMessage.subscribe(message => this.selectedSports = message)
     this.loadOlympicsResults()
     this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
       this.selectedTradition = message.noc
@@ -109,10 +109,11 @@ export class LoaderService {
     return gdp
   }
 
-  async loadOlympicsCsv() {
-    let lines = await d3.csv("/assets/data/athlete_events.csv")
+  async loadOlympicsCsv() {    
+    let lines = await d3.dsv(";", "/assets/data/athlete_events.csv")
+    // let lines = await d3.csv("/assets/data/athlete_events.csv")
     let res = this.preProcessData(lines, this)
-    return res
+    return [res, lines]
   }
 
   checkReadiness(noc_r:boolean, oly_r:boolean, pop_r:boolean, gdp_r:boolean) {
@@ -138,7 +139,8 @@ export class LoaderService {
     })
 
     this.loadOlympicsCsv().then(d => {
-      this.olympicsDict["NOC"] = d
+      this.olympicsDict["NOC"] = d[0]
+      this.csvLines = d[1]
       oly_r = true
       this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
     })

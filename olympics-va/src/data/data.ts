@@ -35,6 +35,14 @@ export interface Query {
     tradition?: boolean
 }
 
+export interface PcaQuery {
+    start: number,
+    end: number,
+    medals: Medal[],
+    selectedSports: string[],
+    selectedNocs: string[]
+}
+
 export interface CacheEntry {
     query: Query,
     traditionRes: MainComputationResult,
@@ -79,6 +87,14 @@ export interface CountryGdp {
 //     [y: Number]: Number;
 
 // }
+
+export interface PCAEntry {
+    x: number
+    y: number
+    z: number
+    name?: string
+    group?: string
+}
 
 export interface Decades {
     1900: number;
@@ -133,6 +149,8 @@ export const TraditionSel: TraditionSelection = {
 export const Sports: Sport[] = [
 
 ];
+
+export const PCAData: PCAEntry[] = []
 
 export const Countries: Country[] = [
 

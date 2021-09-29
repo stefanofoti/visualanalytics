@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
 import { Observable, Subscription } from 'rxjs';
-import { Country, MainComputationResult, Medal, PreCheckedSports, PreCheckedSports2, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
+import { Country, MainComputationResult, Medal, PCAEntry, PcaQuery, PreCheckedSports, PreCheckedSports2, Query, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
 import { of, pipe } from 'rxjs';
 import { map, filter, tap, startWith } from 'rxjs/operators'
@@ -98,7 +98,6 @@ export class ConfComponent implements OnInit {
       this.isOlympicsDataReady && this.updateData()
     })
 
-    pcaService.dummyDemo()
 
   }
 
@@ -234,6 +233,22 @@ export class ConfComponent implements OnInit {
       this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
       console.log("conf: updateData() result: ", stats)
     })
+
+
+    let q: PcaQuery = {
+      start: this.yearRange[0],
+      end: this.yearRange[1],
+      medals: this.medalsList,
+      selectedSports: selSports,
+      selectedNocs: selCountries
+    }
+
+
+    this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
+      let x: PCAEntry[] = []
+      this.data.pcaDataReady(x)
+    })
+
   }
 
   toggleSelectionCountry(country: Country) {

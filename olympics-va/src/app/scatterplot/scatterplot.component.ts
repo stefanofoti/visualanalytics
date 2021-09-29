@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import Plotly from 'plotly.js'
+import * as Plotly from 'plotly.js/dist/plotly'
+import { Subscription } from 'rxjs';
+import { PCAEntry } from 'src/data/data';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-scatterplot',
@@ -9,23 +12,75 @@ import Plotly from 'plotly.js'
 })
 export class ScatterplotComponent implements OnInit {
 
-  constructor() { }
+  subPCAReady: Subscription
+
+  constructor(private dataService: DataService) {
+    this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
+
+  }
+
+  dataReady(entries: PCAEntry[]): void {
+    entries.length>0 && this.plot3d(entries)
+  }
 
   ngOnInit(): void {
     // this.plot()
-    this.newPlot()
   }
 
-  newPlot() {
+
+  newPlot2(){
+    var trace1 = {
+      x: [1, 2, 3, 4, 5],
+      y: [1, 6, 3, 6, 1],
+      mode: 'markers',
+      type: 'scatter',
+      name: 'Team A',
+      text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+      marker: { size: 12 }
+    };
+    
+    var trace2 = {
+      x: [1.5, 2.5, 3.5, 4.5, 5.5],
+      y: [4, 1, 7, 1, 4],
+      mode: 'markers',
+      type: 'scatter',
+      name: 'Team B',
+      text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
+      marker: { size: 12 }
+    };
+    
+    var data = [ trace1, trace2 ];
+    
+    var layout = {
+      xaxis: {
+        range: [ 0.75, 5.25 ]
+      },
+      yaxis: {
+        range: [0, 8]
+      },
+      title:'Data Labels Hover'
+    };
+    
+    Plotly.newPlot('myDiv', data, layout);
+    
+  }
+
+  extractComponents(entries: PCAEntry[], type: string) {
+    let res = entries.map(e => e[type])
+    return res
+  }
+
+  plot3d(entries: PCAEntry[]) {
 
 
-    d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/3d-scatter.csv').then(function (rows) {
-      function unpack(rows, key) {
-        return rows.map(function (row) { return row[key]; });
-      }
+    let x = this.extractComponents(entries, "x")
+    let y = this.extractComponents(entries, "y")
+    let z = this.extractComponents(entries, "z")
 
-      var trace1 = {
-        x: unpack(rows, 'x1'), y: unpack(rows, 'y1'), z: unpack(rows, 'z1'),
+      var trace1 = {        
+        x: x,
+        y: y,
+        z: z,
         mode: 'markers',
         marker: {
           size: 12,
@@ -38,23 +93,8 @@ export class ScatterplotComponent implements OnInit {
         type: 'scatter3d'
       };
 
-      var trace2 = {
-        x: unpack(rows, 'x2'), y: unpack(rows, 'y2'), z: unpack(rows, 'z2'),
-        mode: 'markers',
-        marker: {
-          color: 'rgb(127, 127, 127)',
-          size: 12,
-          symbol: 'circle',
-          line: {
-            color: 'rgb(204, 204, 204)',
-            width: 1
-          },
-          opacity: 0.8
-        },
-        type: 'scatter3d'
-      };
-
-      var data = [trace1, trace2];
+      var data = [trace1];
+      
       var layout = {
         margin: {
           l: 0,
@@ -64,7 +104,6 @@ export class ScatterplotComponent implements OnInit {
         }
       };
       Plotly.newPlot('myDiv', data, layout);
-    });
 
   }
 
