@@ -34,9 +34,12 @@
     "lodash": "^4.17.21",
     "ngx-boolean-input": "^1.1.0",
     "ngx-slider": "0.0.5",
+    "pca-js": "^1.0.2",
+    "plotly.js": "^1.47.4",
     "rxjs": "~6.6.0",
     "topojson": "^3.0.2",
     "tslib": "^2.3.0",
+    "util": "^0.12.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

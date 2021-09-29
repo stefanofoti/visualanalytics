@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "plotly.js",
+              "has-hover"
+            ],
             "outputPath": "dist/olympics-va",
             "index": "src/index.html",
             "main": "src/main.ts",

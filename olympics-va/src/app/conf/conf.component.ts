@@ -10,6 +10,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
 import { LoaderService } from '../loader.service';
 import { BooleanInput } from 'ngx-boolean-input';
+import { PcaService } from '../pca.service';
 
 
 @Component({
@@ -68,7 +69,7 @@ export class ConfComponent implements OnInit {
     ceil: requiredYearRange[1]
   };
 
-  constructor(private formBuilder: FormBuilder, private data: DataService, private loaderService: LoaderService) {
+  constructor(private formBuilder: FormBuilder, private data: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.formConf = this.formBuilder.group({
       teams: this.formBuilder.array([], [Validators.required]),
       medals: this.formBuilder.array([], [Validators.required])
@@ -96,6 +97,8 @@ export class ConfComponent implements OnInit {
       this.isOlympicsDataReady && (this.isTradition = message.currentlySelected)
       this.isOlympicsDataReady && this.updateData()
     })
+
+    pcaService.dummyDemo()
 
   }
 
