@@ -150,7 +150,7 @@ export class ParcoordsComponent implements OnInit {
       // let data = Object.values(stats)
       let c = this
       // set the dimensions and margins of the graph
-      const margin = { top: 60, right: 30, bottom: 10, left: 30 }
+      const margin = { top: 60, right: 50, bottom: 10, left: 30 }
       // this.width = 1200 - margin.left - margin.right
       this.height = 300  - margin.top - margin.bottom
 

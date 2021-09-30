@@ -18,6 +18,12 @@ html{
 html, body { height: 100%; }
 body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
 
+#scene > canvas{
+    background: rgba(54,57,70,1);
+
+}
+
+
 p {
     margin: 0;
     color: rgba(255, 255, 255, 1)

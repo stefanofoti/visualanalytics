@@ -1,3 +1,4 @@
+import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as Plotly from 'plotly.js/dist/plotly'
@@ -78,6 +79,7 @@ export class ScatterplotComponent implements OnInit {
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
     let z = this.extractComponents(entries, "z")
+    let names = this.extractComponents(entries, "names") // qui prendo i noc che assegno in 121 pca.service
 
     console.log("plotting x", x, "y: ", y, "z:", z)
 
@@ -86,13 +88,14 @@ export class ScatterplotComponent implements OnInit {
         y: y,
         z: z,
         mode: 'markers',
+        text: 'qui ci va il NOC',
         marker: {
-          size: 12,
+          size: 10,
           line: {
-            color: 'rgba(217, 217, 217, 0.14)',
-            width: 0.5
+            color: 'rgba(217, 217, 217, 1)',
+            width: 0.1
           },
-          opacity: 0.8
+          opacity: 1
         },
         type: 'scatter3d'
       };
@@ -100,6 +103,16 @@ export class ScatterplotComponent implements OnInit {
       var data = [trace1];
       
       var layout = {
+        scene:{
+          xaxis: {
+          color: 'white'
+          }, 
+            yaxis: {
+              color: 'white'
+            }, 
+            zaxis: {
+              color: 'white'
+            }},
         margin: {
           l: 0,
           r: 0,

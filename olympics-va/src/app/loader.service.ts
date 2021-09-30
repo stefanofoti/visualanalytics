@@ -445,7 +445,7 @@ export class LoaderService {
         Object.keys(res[noc]).forEach(sport =>{
           if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total"){
             let weight = res[sel][sport].total+0.1
-            let delta = Math.abs((res[noc][sport].total-res[sel][sport].total)*1)
+            let delta = Math.abs((res[noc][sport].total-res[sel][sport].total)*weight)
             totalDelta += delta
           }
         })
