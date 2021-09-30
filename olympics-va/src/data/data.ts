@@ -92,7 +92,7 @@ export interface PCAEntry {
     x: number
     y: number
     z: number
-    name?: string
+    details?: string
     group?: string
 }
 

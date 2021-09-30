@@ -32,6 +32,7 @@
     "loadash": "^1.0.0",
     "loadsh": "0.0.4",
     "lodash": "^4.17.21",
+    "mathjs": "^9.5.0",
     "ngx-boolean-input": "^1.1.0",
     "ngx-slider": "0.0.5",
     "pca-js": "^1.0.2",

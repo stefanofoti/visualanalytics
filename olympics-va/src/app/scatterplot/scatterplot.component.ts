@@ -5,6 +5,7 @@ import * as Plotly from 'plotly.js/dist/plotly'
 import { Subscription } from 'rxjs';
 import { PCAEntry } from 'src/data/data';
 import { DataService } from '../data.service';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-scatterplot',
@@ -15,7 +16,7 @@ export class ScatterplotComponent implements OnInit {
 
   subPCAReady: Subscription
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
 
   }
@@ -68,9 +69,28 @@ export class ScatterplotComponent implements OnInit {
     
   }
 
-  extractComponents(entries: PCAEntry[], type: string) {
-    let res = entries.map(e => e[type])
+  extractComponents(entries: PCAEntry[], type: string, attr?: string) {
+    let res = attr ? entries.map(e => e[type][attr]) : entries.map(e => e[type]) 
     return res
+  }
+
+  extractLabels(entries: PCAEntry[]) {
+    let res = entries.map(e => 
+      "noc:" + e.details["NOC"] + "<br>" + 
+      "sport: " + e.details["Sport"] + "<br>" +
+      "year: " + e.details["Year"] + "<br>"
+    ) 
+    return res
+  }
+
+  extractColors(entries: PCAEntry[]) {
+
+    let colors = d3.scaleOrdinal()
+    .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+    .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+
+    let c = entries.map(e => colors(this.loaderService.countries[e.details["NOC"]].continent))
+    return c
   }
 
   plot3d(entries: PCAEntry[]) {
@@ -79,23 +99,32 @@ export class ScatterplotComponent implements OnInit {
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
     let z = this.extractComponents(entries, "z")
-    let names = this.extractComponents(entries, "names") // qui prendo i noc che assegno in 121 pca.service
+    let text = this.extractLabels(entries)
+    
+    let c = this.extractColors(entries)
 
-    console.log("plotting x", x, "y: ", y, "z:", z)
+
+
 
       var trace1 = {        
         x: x,
         y: y,
         z: z,
         mode: 'markers',
-        text: 'qui ci va il NOC',
+        text: text,
+        hovertemplate:
+        "<b>%{text}</b><br><br>"+
+          "y: %{y:.0f}<br>" +
+          "x: %{x:.0f}<br>" +
+          "z: %{x:.0f}<br>",
         marker: {
           size: 10,
+          color: c,
           line: {
             color: 'rgba(217, 217, 217, 1)',
             width: 0.1
           },
-          opacity: 1
+          opacity: 0.5
         },
         type: 'scatter3d'
       };
