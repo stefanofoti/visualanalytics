@@ -17,7 +17,7 @@ export class LoaderService {
   csvLines = [] 
   selectedSports: Sport[]
 
-  eventsPerSport = {}
+  public eventsPerSport = {}
   countries = {}
 
   selectedTradition = ""
@@ -143,6 +143,7 @@ export class LoaderService {
       this.csvLines = d[1]
       oly_r = true
       this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
+      this.dataService.onEventsPerSportDataReady(this.eventsPerSport)
     })
 
     this.loadPopulationCsv().then(data => {

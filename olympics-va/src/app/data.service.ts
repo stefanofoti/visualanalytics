@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Countries, Populations, Country, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel, TraditionSel, TraditionSelection, PCAEntry, PCAData } from '../data/data'
+import { Countries, Populations, Country,isEventsPerSportDataReady, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel, TraditionSel, TraditionSelection, PCAEntry, PCAData } from '../data/data'
 
 @Injectable()
 export class DataService {
@@ -13,6 +13,10 @@ export class DataService {
 
   private olympicsReadinessSource = new BehaviorSubject(isOlympicsDataReady);
   olympycsReadinessMessage = this.olympicsReadinessSource.asObservable();
+
+  private eventsPerSportDataSource = new BehaviorSubject(isEventsPerSportDataReady);
+  eventsPerSportDataMessage = this.eventsPerSportDataSource
+
 
   private sportsReadinessSource = new BehaviorSubject(Sports);
   sportsReadinessMessage = this.sportsReadinessSource.asObservable();
@@ -52,6 +56,10 @@ export class DataService {
 
   onOlympicsDataReady(message: Boolean) {
     this.olympicsReadinessSource.next(message)
+  }
+
+  onEventsPerSportDataReady(message: any){
+    this.eventsPerSportDataSource.next(message)    
   }
 
   onSportsDataReady(message: Sport[]) {

@@ -76,7 +76,7 @@ export class ScatterplotComponent implements OnInit {
 
   extractLabels(entries: PCAEntry[]) {
     let res = entries.map(e => 
-      "noc:" + e.details["NOC"] + "<br>" + 
+      "noc: " + e.details["NOC"] + "<br>" + 
       "sport: " + e.details["Sport"] + "<br>" +
       "year: " + e.details["Year"] + "<br>"
     ) 
@@ -116,7 +116,8 @@ export class ScatterplotComponent implements OnInit {
         "<b>%{text}</b><br><br>"+
           "y: %{y:.0f}<br>" +
           "x: %{x:.0f}<br>" +
-          "z: %{x:.0f}<br>",
+          "z: %{x:.0f}<br>" +
+          "<extra></extra>",
         marker: {
           size: 10,
           color: c,
@@ -124,7 +125,7 @@ export class ScatterplotComponent implements OnInit {
             color: 'rgba(217, 217, 217, 1)',
             width: 0.1
           },
-          opacity: 0.5
+          opacity: 1
         },
         type: 'scatter3d'
       };

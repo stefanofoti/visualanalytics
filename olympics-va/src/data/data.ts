@@ -40,7 +40,8 @@ export interface PcaQuery {
     end: number,
     medals: Medal[],
     selectedSports: string[],
-    selectedNocs: string[]
+    selectedNocs: string[],
+    isNormalize: boolean
 }
 
 export interface CacheEntry {
@@ -149,6 +150,7 @@ export const TraditionSel: TraditionSelection = {
 export const Sports: Sport[] = [
 
 ];
+export const isEventsPerSportDataReady: any = {};
 
 export const PCAData: PCAEntry[] = []
 

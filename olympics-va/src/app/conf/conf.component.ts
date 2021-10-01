@@ -240,7 +240,8 @@ export class ConfComponent implements OnInit {
       end: this.yearRange[1],
       medals: this.medalsList,
       selectedSports: selSports,
-      selectedNocs: selCountries
+      selectedNocs: selCountries,
+      isNormalize: this.isNormalize
     }
 
 

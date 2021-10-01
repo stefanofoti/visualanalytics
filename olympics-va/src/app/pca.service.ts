@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import PCA from 'pca-js';
 import { PCAEntry, PcaQuery } from 'src/data/data';
+import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
 import * as mjs from 'mathjs'
+import { LoaderService } from './loader.service';
+import { DataService } from './data.service';
 @Injectable({
   providedIn: 'root'
 })
 export class PcaService {
 
   private filteredLines = []
+  subscription: Subscription;
 
-  constructor() { }
+  eventsPerSport = {}
+
+  constructor(private dataService: DataService) {
+    this.subscription = this.dataService.eventsPerSportDataMessage.subscribe(message => this.eventsPerSport = message)
+  }
 
   shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -20,61 +28,105 @@ export class PcaService {
     }
 }
 
-  aggregateData(lines){
+  aggregateData(lines, isNormalize: boolean, medals){
     let aggregateLines = []
     let medalSum = {}
+    let gold = ""
+    let silver = ""
+    let bronze = ""
+    if (!medals[0].isChecked){
+      gold = "Gold"
+    }
+    if (!medals[1].isChecked){
+      silver = "Silver"
+    }
+    if (!medals[2].isChecked){
+      bronze = "Bronze"
+    }
+    let goldWeigth = medals[0].weight
+    let silverWeight = medals[1].weight
+    let bronzeWeight = medals[2].weight
+    
     for (const elem in lines){
-      if (lines[elem].Medal !== "NA"){
+      if (lines[elem].Medal !== "NA" && lines[elem].Medal !== gold && lines[elem].Medal !== silver && lines[elem].Medal !== bronze ){
         let currentNOC = lines[elem].NOC_value
         let currentYear = lines[elem].Year
         let currentSport = lines[elem].Sport_value
+        let currentSportName = lines[elem].Sport
+        let currentMedaltype = lines[elem].Medal
+        let weight = 1
+        if (currentMedaltype === "Gold"){
+          weight = goldWeigth
+        }
+        if (currentMedaltype === "Silver"){
+          weight = silverWeight
+        }
+        if (currentMedaltype === "Bronze"){
+          weight = bronzeWeight
+        }
         if(currentNOC) {
           if(medalSum[currentNOC]){
             if(medalSum[currentNOC][currentYear]){
               if(medalSum[currentNOC][currentYear][currentSport]){
-                medalSum[currentNOC][currentYear][currentSport]++
+                medalSum[currentNOC][currentYear][currentSport].totalMedals+=weight
               }else{
-                medalSum[currentNOC][currentYear][currentSport]=1
+                medalSum[currentNOC][currentYear][currentSport]={
+                  totalMedals: weight,
+                  sportName: currentSportName
+                }
               }
             } else {
               medalSum[currentNOC][currentYear]={}
               if(medalSum[currentNOC][currentYear][currentSport]){
-                medalSum[currentNOC][currentYear][currentSport]++
+                medalSum[currentNOC][currentYear][currentSport].totalMedals+=weight
               }else{
-                medalSum[currentNOC][currentYear][currentSport]=1
+                medalSum[currentNOC][currentYear][currentSport]={
+                  totalMedals: weight,
+                  sportName: currentSportName
+                }
               }
             }          
           } else {
             medalSum[currentNOC]={}
             if(medalSum[currentNOC][currentYear]){
               if(medalSum[currentNOC][currentYear][currentSport]){
-                medalSum[currentNOC][currentYear][currentSport]++
+                medalSum[currentNOC][currentYear][currentSport].totalMedals+=weight
               }else{
-                medalSum[currentNOC][currentYear][currentSport]=1
+                medalSum[currentNOC][currentYear][currentSport]={
+                  totalMedals: weight,
+                  sportName: currentSportName
+                }
               }
             } else {
               medalSum[currentNOC][currentYear]={}
               if(medalSum[currentNOC][currentYear][currentSport]){
-                medalSum[currentNOC][currentYear][currentSport]++
+                medalSum[currentNOC][currentYear][currentSport].totalMedals+=weight
               }else{
-                medalSum[currentNOC][currentYear][currentSport]=1
+                medalSum[currentNOC][currentYear][currentSport]={
+                  totalMedals: weight,
+                  sportName: currentSportName
+                }
               }
             }     
           }
         }
       }
     }
-    console.log("medalsum:", medalSum)
     Object.keys(medalSum).forEach( noc => {
       Object.keys(medalSum[noc]).forEach(year => {
         Object.keys(medalSum[noc][year]).forEach(sport => {
-          // !isNaN(Number(noc)) && aggregateLines.push([Number(noc),Number(year),Number(sport),medalSum[noc][year][sport]])          
-          aggregateLines.push([Number(noc),Number(year),Number(sport),medalSum[noc][year][sport]])          
+          if(isNormalize){
+            let eventsAmount = 1
+            let currentSportName = medalSum[noc][year][sport].sportName
+            this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmount = this.eventsPerSport[year][currentSportName])
+            medalSum[noc][year][sport].totalMedals/=eventsAmount   
+          }   
+          aggregateLines.push([Number(noc),Number(year),Number(sport),medalSum[noc][year][sport].totalMedals])          
         })        
       })
     })
     console.log("aggregatelines", aggregateLines)
-    return aggregateLines// .slice(0,6864)
+    return aggregateLines
   }
 
   filterData(q: PcaQuery, lines: any[]) {
@@ -89,9 +141,10 @@ export class PcaService {
       this.filteredLines = this.filteredLines.filter(l => q.selectedSports.includes(l.Sport))    
     }
 
-    this.filteredLines = this.filteredLines.filter(l => (l.Year >= q.start && l.Year <= q.end))    
+    this.filteredLines = this.filteredLines.filter(l => (l.Year >= q.start && l.Year <= q.end)) 
+    
 // q.medals[0].weight
-    resLines = this.aggregateData(this.filteredLines)
+    resLines = this.aggregateData(this.filteredLines, q.isNormalize, q.medals)
     
     resLines = this.normalizeLines(resLines)
 
