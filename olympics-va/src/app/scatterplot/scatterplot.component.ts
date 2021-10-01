@@ -132,7 +132,14 @@ export class ScatterplotComponent implements OnInit {
 
       var data = [trace1];
       
+      let config = {
+        responsive: true
+      }
+
       var layout = {
+        //autosize: true,
+        //width: "100%",
+        //height:"30vh",
         scene:{
           xaxis: {
           color: 'white'
@@ -150,9 +157,11 @@ export class ScatterplotComponent implements OnInit {
           t: 0
         }
       };
-      Plotly.newPlot('myDiv', data, layout);
+      Plotly.newPlot('myDiv', data, layout, config);
 
   }
+
+  /*
 
   plot(): void {
 
@@ -202,5 +211,5 @@ export class ScatterplotComponent implements OnInit {
 
     })
   }
-
+  */
 }
