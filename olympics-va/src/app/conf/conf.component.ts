@@ -225,7 +225,7 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach (m => m.weight = Number(m.weight))
     console.log("conf. is tradition: ", this.isTradition)
     console.log("conf. medalsList:",this.medalsList)
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition).then(res  => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries).then(res  => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max
@@ -241,7 +241,9 @@ export class ConfComponent implements OnInit {
       medals: this.medalsList,
       selectedSports: selSports,
       selectedNocs: selCountries,
-      isNormalize: this.isNormalize
+      isNormalize: this.isNormalize,
+      isGdp: this.isMedalsByGdp,
+      isPop: this.isMedalsByPop
     }
 
 

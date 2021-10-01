@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { boolean } from 'mathjs';
 import { BehaviorSubject } from 'rxjs';
 import { Countries, Populations, Country,isEventsPerSportDataReady, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel, TraditionSel, TraditionSelection, PCAEntry, PCAData } from '../data/data'
 
@@ -47,6 +48,9 @@ export class DataService {
 
   private pcaDataReadySource = new BehaviorSubject(PCAData)
   pcaDataReadyMessage = this.pcaDataReadySource.asObservable()
+
+  private avgGdpPopSource = new BehaviorSubject({})
+  avgGdpPopMessage = this.avgGdpPopSource.asObservable()
 
   constructor() { }
 
@@ -104,6 +108,10 @@ export class DataService {
 
   pcaDataReady(message: PCAEntry[]) {
     this.pcaDataReadySource.next(message)
+  }
+
+  avgGdpPopReady(message: any) {
+    this.avgGdpPopSource.next(message)
   }
 
 }

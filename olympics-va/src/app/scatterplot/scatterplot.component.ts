@@ -16,6 +16,8 @@ export class ScatterplotComponent implements OnInit {
 
   subPCAReady: Subscription
 
+  entries: PCAEntry[] = []
+
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
 
@@ -23,8 +25,8 @@ export class ScatterplotComponent implements OnInit {
 
   dataReady(entries: PCAEntry[]): void {
     console.log("plotting: data ready...")
-
-    entries.length>0 && this.plot3d(entries)
+    this.entries = entries
+    this.entries.length>0 && this.plot3d()
   }
 
   ngOnInit(): void {
@@ -93,7 +95,8 @@ export class ScatterplotComponent implements OnInit {
     return c
   }
 
-  plot3d(entries: PCAEntry[]) {
+  plot3d() {
+    let entries = this.entries
     console.log("plotting pca...")
 
     let x = this.extractComponents(entries, "x")

@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry, MainComputationResult } from 'src/data/data';
+import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry, MainComputationResult, NocsList } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -14,7 +14,7 @@ export class LoaderService {
   subscription: Subscription;
   selectedSportsSub: Subscription;
   traditionSelectionSubscription: Subscription
-  csvLines = [] 
+  csvLines = []
   selectedSports: Sport[]
 
   public eventsPerSport = {}
@@ -23,11 +23,13 @@ export class LoaderService {
   selectedTradition = ""
 
   populations = {}
-  
+
   gdp = {}
 
   cache: Array<CacheEntry> = []
-  
+
+  private avgGdpDict = {}
+  private avgPopDict = {}
 
   private isOlympicsDataReady: Boolean = false
 
@@ -51,7 +53,7 @@ export class LoaderService {
         continent: l.continent,
         isChecked: false
       }
-      countries[l.NOC] = c 
+      countries[l.NOC] = c
     })
     return countries
   }
@@ -79,8 +81,8 @@ export class LoaderService {
         name: l.Team,
         years: d,
         continent: l.Continent
-        }
-        populations[l.Team] = p
+      }
+      populations[l.Team] = p
     })
     return populations
   }
@@ -90,34 +92,34 @@ export class LoaderService {
     let gdp = {}
     let currentNoc = ""
     lines.forEach(l => {
-      if (l.Code != currentNoc){
+      if (l.Code != currentNoc) {
         let y = {
           [l.Year]: l.Output
         }
         let p: CountryGdp = {
-            id: l.Code,
-            name: l.Entity,
-            years: y
-          }
-          currentNoc= l.Code
-          gdp[l.Code] = p
-        }else {
-          // update gdp[l.Code] with new year value of Gdp:  gdp[l.Code].years[l.Year] = l.Output
-          gdp[l.Code].years[l.Year] = l.Output
+          id: l.Code,
+          name: l.Entity,
+          years: y
         }
+        currentNoc = l.Code
+        gdp[l.Code] = p
+      } else {
+        // update gdp[l.Code] with new year value of Gdp:  gdp[l.Code].years[l.Year] = l.Output
+        gdp[l.Code].years[l.Year] = l.Output
+      }
     })
     return gdp
   }
 
-  async loadOlympicsCsv() {    
+  async loadOlympicsCsv() {
     let lines = await d3.dsv(";", "/assets/data/athlete_events.csv")
     // let lines = await d3.csv("/assets/data/athlete_events.csv")
     let res = this.preProcessData(lines, this)
     return [res, lines]
   }
 
-  checkReadiness(noc_r:boolean, oly_r:boolean, pop_r:boolean, gdp_r:boolean) {
-    if(noc_r && oly_r && pop_r && gdp_r) {
+  checkReadiness(noc_r: boolean, oly_r: boolean, pop_r: boolean, gdp_r: boolean) {
+    if (noc_r && oly_r && pop_r && gdp_r) {
       this.isOlympicsDataReady = true
       this.dataService.onOlympicsDataReady(this.isOlympicsDataReady)
     }
@@ -133,7 +135,7 @@ export class LoaderService {
 
     this.loadNocCsv().then(data => {
       this.countries = data
-      noc_r = true 
+      noc_r = true
       this.dataService.onCountriesDataReady(Object.values(this.countries))
       this.checkReadiness(noc_r, oly_r, pop_r, gdp_r)
     })
@@ -200,7 +202,7 @@ export class LoaderService {
   preProcessEventsPerSport(line: any, eventsPerSport: any) {
     let yearMap = eventsPerSport[line.Year] || {}
     let sport = yearMap[line.Sport] || [line.Event]
-    if(!sport.includes(line.Event)) {
+    if (!sport.includes(line.Event)) {
       sport.push(line.Event)
     }
     yearMap[line.Sport] = sport
@@ -252,14 +254,14 @@ export class LoaderService {
       this.preProcessMedalsByNation(line, res, sports)
     });
 
-    for(let year in eventsPerSport) {
-      for(let sports in eventsPerSport[year]) {
-        eventsPerSport[year][sports] = eventsPerSport[year][sports].length 
+    for (let year in eventsPerSport) {
+      for (let sports in eventsPerSport[year]) {
+        eventsPerSport[year][sports] = eventsPerSport[year][sports].length
       }
     }
     c.eventsPerSport = eventsPerSport
     console.log(eventsPerSport)
-    
+
     var totgolds = 0
     var totsilvers = 0
     var totbronzes = 0
@@ -273,36 +275,37 @@ export class LoaderService {
     }
     console.log(totgolds + totsilvers + totbronzes)
     console.log(res)
-    
+
     return res
   }
 
-  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize?: boolean, tradition?: boolean) {
-    let query: Query = ld.cloneDeep({ start, end, medals, selectedSports, medalsByPop, medalsByGdp, normalize })
+
+  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[]) {
+    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize })
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
-    if(!ce) {
-      let result = this.computeResult({...query, tradition: false})
-      let traditionResult = this.computeResult({...query, tradition: true})
-      let [res, traditionRes]:MainComputationResult[] = await Promise.all([result, traditionResult])
+    if (!ce) {
+      let result = this.computeResult({ ...query, tradition: false })
+      let traditionResult = this.computeResult({ ...query, tradition: true })
+      let [res, traditionRes]: MainComputationResult[] = await Promise.all([result, traditionResult])
 
       ce = {
         query: query,
         res: res,
         traditionRes: traditionRes
       }
-      this.cache.push(ce)  
+      this.cache.push(ce)
     }
-    if (tradition){
+    if (tradition) {
       let tradResAffinity: MainComputationResult = ld.cloneDeep(ce.traditionRes)
       tradResAffinity.stats = this.computeAffinity(tradResAffinity.stats, this.selectedTradition)
       let selectedStats: Object = tradResAffinity.stats[this.selectedTradition]
-      
+
       Object.keys(selectedStats).forEach(k => {
-        typeof selectedStats[k] === "object" &&(selectedStats[k].sport = k)
+        typeof selectedStats[k] === "object" && (selectedStats[k].sport = k)
       })
       let values = Object.values(selectedStats)
       values = values.filter(v => typeof v === "object")
-      values.sort((a,b) => b.total - a.total)
+      values.sort((a, b) => b.total - a.total)
       let sortedSports = values.map(v => v && v.sport)
       tradResAffinity.sportsList = sortedSports
       console.log("tradResAffinity: ", tradResAffinity)
@@ -326,229 +329,242 @@ export class LoaderService {
     let res = {}
     let max = 0
     let maxSingleSport = 0
-    let range = this.rangeOf(q.start,q.end)
+    let range = this.rangeOf(q.start, q.end)
     let gold = q.medals.find(m => m.id === golds)
     let silver = q.medals.find(m => m.id === silvers)
     let bronze = q.medals.find(m => m.id === bronzes)
-    let decadesSelected 
-      q.medalsByPop && (decadesSelected = this.computeDecadesRange(q.start, q.end))
-    console.log (decadesSelected)
+    let decadesSelected
+    q.medalsByPop && (decadesSelected = this.computeDecadesRange(q.start, q.end))
+    console.log(decadesSelected)
 
-    for (let i = q.start; i <= q.end; i++) {
-      let currentYear = dict[i]
-      currentYear && Object.keys(currentYear).forEach(noc => {
-        let data = currentYear[noc]
-        let teamStats = res[noc]
-        let currentAvgGdp 
-          q.medalsByGdp && (currentAvgGdp = this.computeAverageGdpOfNation(range, noc))
-        let currentAvgPop 
-          q.medalsByPop && (currentAvgPop = this.computeAveragePopulationOfNation(decadesSelected, noc))
 
-        q.selectedSports.forEach(sport => {
-          if (data.sports[sport]) {
-            if (!teamStats) {
-              teamStats = {
-                name: noc,
-                golds: 0,
-                bronzes: 0,
-                silvers: 0,
-                total: 0
-              }
-            }
-            let teamSportStats = teamStats[sport]
-            if (!teamSportStats) {
-              teamSportStats = {
-                golds: 0,
-                bronzes: 0,
-                silvers: 0,
-                total: 0
-              }
-            }
-
-            let eventsAmount = 1
-            this.eventsPerSport[i] && this.eventsPerSport[i][sport] && (eventsAmount = this.eventsPerSport[i][sport])
-            // console.log("eventsAmount: " + eventsAmount + ", year: "+ currentYear + ", sport:" + sport)
-            let goldsAmount = data.sports[sport].golds
-            let silversAmount = data.sports[sport].silvers
-            let bronzesAmount = data.sports[sport].bronzes
-            
-            if(q.normalize) {
-              goldsAmount/=eventsAmount
-              silversAmount/=eventsAmount
-              bronzesAmount/=eventsAmount
-            }
-
-            if(q.tradition) {
-              goldsAmount*=Math.pow(100, 1/(q.end-i+1))
-              silversAmount*=Math.pow(100, 1/(q.end-i+1))
-              bronzesAmount*=Math.pow(100, 1/(q.end-i+1))
-            }
-
-            
-            let incrementSportGold = (q.medalsByPop && !isNaN(currentAvgPop))? goldsAmount*gold.weight/currentAvgPop *100000: goldsAmount*gold.weight
-            let incrementSportSilver = (q.medalsByPop && !isNaN(currentAvgPop))? silversAmount*silver.weight/currentAvgPop *100000: silversAmount*silver.weight
-            let incrementSportBronze = (q.medalsByPop && !isNaN(currentAvgPop))? bronzesAmount*bronze.weight/currentAvgPop *100000: bronzesAmount*bronze.weight
-
-            
-            if (q.medalsByGdp && !isNaN(currentAvgGdp)){
-              incrementSportGold = incrementSportGold*gold.weight/currentAvgGdp
-              incrementSportSilver = incrementSportSilver*silver.weight/currentAvgGdp
-              incrementSportBronze = incrementSportBronze*bronze.weight/currentAvgGdp
-            }
-
-            if (isNaN(currentAvgPop) && q.medalsByPop){
-              incrementSportGold = 0
-              incrementSportSilver = 0
-              incrementSportBronze = 0
-              teamStats.noPop = true
-            }
-            if (isNaN(currentAvgGdp) && q.medalsByGdp){
-              incrementSportGold = 0
-              incrementSportSilver = 0
-              incrementSportBronze = 0
-              teamStats.noGdp = true
-            }
-
-            q.medals.some(m => m.id===golds && m.isChecked) && (teamSportStats.golds += incrementSportGold)
-            q.medals.some(m => m.id===bronzes && m.isChecked) && (teamSportStats.bronzes += incrementSportBronze)
-            q.medals.some(m => m.id===silvers && m.isChecked) && (teamSportStats.silvers += incrementSportSilver)
-            q.medals.some(m => m.id===golds && m.isChecked) && (teamStats.golds += incrementSportGold)
-            q.medals.some(m => m.id===bronzes && m.isChecked) && (teamStats.bronzes += incrementSportBronze)
-            q.medals.some(m => m.id===silvers && m.isChecked) && (teamStats.silvers += incrementSportSilver)
-            teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
-            teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
-            max = teamStats.total > max ? teamStats.total : max
-            maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
-            teamStats[sport] = teamSportStats
-            res[noc] = teamStats
-          }
-        })
-        
+    if (q.medalsByGdp) {
+      NocsList.forEach(c => {
+        this.avgGdpDict[c] = this.computeAverageGdpOfNation(range, c)
       })
+      this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])
     }
 
-    let response: MainComputationResult = {
-      stats: res,
-      max: max as number,
-      maxSingleSport: maxSingleSport as number,
-      sportsList: q.selectedSports
-    } 
+    if (q.medalsByPop) {
+      NocsList.forEach(c => {
+        this.avgPopDict[c] = this.computeAveragePopulationOfNation(decadesSelected, c)
+      })
+      this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])      
+    }
 
-    return response
-  }
 
-  computeAffinity(res, sel){
-    let mostSimilar = {}
-    let minDeltas = {}
-    Object.keys(res).forEach(noc => {
-      //if(noc!=sel){
-        let totalDelta = 0
-        Object.keys(res[noc]).forEach(sport =>{
-          if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total"){
-            let weight = res[sel][sport].total+0.1
-            let delta = Math.abs((res[noc][sport].total-res[sel][sport].total)*weight)
-            totalDelta += delta
-          }
-        })
-        if (Object.keys(minDeltas).length<5){
-          minDeltas[noc] = totalDelta
-        }else{
-          let maxConsidered = Number(minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)])
-          if (totalDelta<maxConsidered){
-            delete minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)]
-            minDeltas[noc] = totalDelta
+  for(let i = q.start; i <= q.end; i++) {
+  let currentYear = dict[i]
+  currentYear && Object.keys(currentYear).forEach(noc => {
+    let data = currentYear[noc]
+    let teamStats = res[noc]
+
+    q.selectedSports.forEach(sport => {
+      if (data.sports[sport]) {
+        if (!teamStats) {
+          teamStats = {
+            name: noc,
+            golds: 0,
+            bronzes: 0,
+            silvers: 0,
+            total: 0
           }
         }
-      //}
-    })
-    console.log("most similar Traditions: ", minDeltas)
-    Object.keys(minDeltas).forEach(noc =>{
-      mostSimilar[noc]=res[noc]
-    })
-    console.log("my deltas: ", mostSimilar)
-
-    console.log(res)
-    return mostSimilar
-  }
-
-  computeDecadesRange(start: number, end: number) {
-    let first, second
-    let yearsArr = []
-    if (start<=1900){
-      first = 1900
-    }
-    else {
-      if (start%10 <= 5) {
-        first = start - start%10
-      }
-      else{
-        first = start + 10 - start%10
-      }
-    }
-    if (end <=1900) {
-      second = 1900
-    }
-    else {
-      if (end%10 <= 5) {
-        second = end - end%10
-      }
-      else {
-        second = end + 10 - end%10
-      }
-    }
-    if (first === second) {
-        yearsArr = [first]
-    }
-    else {
-      let decadesDiff = (second - first)/10
-      for (let i = 0; i<= decadesDiff; i++) {
-        yearsArr.push(Number(first+i*10))
-      }
-    }
-    return yearsArr
-  }
-
-  computeAveragePopulationOfNation(selectedDecades, NOC) {
-    let nation = this.countries[NOC].name
-    let popSum = 0
-    let popYears = 0
-    selectedDecades.forEach(y => {
-      if (this.populations[nation]) {
-        if (this.populations[nation].years[y]){
-          popSum += this.populations[nation].years[y]
-          popYears++
+        let teamSportStats = teamStats[sport]
+        if (!teamSportStats) {
+          teamSportStats = {
+            golds: 0,
+            bronzes: 0,
+            silvers: 0,
+            total: 0
+          }
         }
-      }
-      else {
-        console.log("not found in populations.csv: " + NOC + ", "+ nation)
-      }      
-    });
-    return(popSum/popYears)
-  }
 
-  rangeOf(start, end) {
-    let range = []
-    for (let i=start; i<=end; i++){
-      range.push(i)
-    }
-    return range
-  }
+        let eventsAmount = 1
+        this.eventsPerSport[i] && this.eventsPerSport[i][sport] && (eventsAmount = this.eventsPerSport[i][sport])
+        // console.log("eventsAmount: " + eventsAmount + ", year: "+ currentYear + ", sport:" + sport)
+        let goldsAmount = data.sports[sport].golds
+        let silversAmount = data.sports[sport].silvers
+        let bronzesAmount = data.sports[sport].bronzes
 
-  computeAverageGdpOfNation(range,NOC) {
-    let GdpSum = 0
-    let GdpYears = 0
-    range.forEach(y => {
-      if (this.gdp[NOC]){
-        if (this.gdp[NOC].years[y]){
-          GdpSum += Number(this.gdp[NOC].years[y])
-          GdpYears++
+        if (q.normalize) {
+          goldsAmount /= eventsAmount
+          silversAmount /= eventsAmount
+          bronzesAmount /= eventsAmount
         }
-      } else {
-        //console.log("not found in gdp.csv " + NOC)
+
+        if (q.tradition) {
+          goldsAmount *= Math.pow(100, 1 / (q.end - i + 1))
+          silversAmount *= Math.pow(100, 1 / (q.end - i + 1))
+          bronzesAmount *= Math.pow(100, 1 / (q.end - i + 1))
+        }
+
+
+        let incrementSportGold = (q.medalsByPop && !isNaN(this.avgPopDict[noc])) ? goldsAmount * gold.weight / this.avgPopDict[noc] * 100000 : goldsAmount * gold.weight
+        let incrementSportSilver = (q.medalsByPop && !isNaN(this.avgPopDict[noc])) ? silversAmount * silver.weight / this.avgPopDict[noc] * 100000 : silversAmount * silver.weight
+        let incrementSportBronze = (q.medalsByPop && !isNaN(this.avgPopDict[noc])) ? bronzesAmount * bronze.weight / this.avgPopDict[noc] * 100000 : bronzesAmount * bronze.weight
+
+
+        if (q.medalsByGdp && !isNaN(this.avgGdpDict[noc])) {
+          incrementSportGold = incrementSportGold * gold.weight / this.avgGdpDict[noc]
+          incrementSportSilver = incrementSportSilver * silver.weight / this.avgGdpDict[noc]
+          incrementSportBronze = incrementSportBronze * bronze.weight / this.avgGdpDict[noc]
+        }
+
+        if (isNaN(this.avgPopDict[noc]) && q.medalsByPop) {
+          incrementSportGold = 0
+          incrementSportSilver = 0
+          incrementSportBronze = 0
+          teamStats.noPop = true
+        }
+        if (isNaN(this.avgGdpDict[noc]) && q.medalsByGdp) {
+          incrementSportGold = 0
+          incrementSportSilver = 0
+          incrementSportBronze = 0
+          teamStats.noGdp = true
+        }
+
+        q.medals.some(m => m.id === golds && m.isChecked) && (teamSportStats.golds += incrementSportGold)
+        q.medals.some(m => m.id === bronzes && m.isChecked) && (teamSportStats.bronzes += incrementSportBronze)
+        q.medals.some(m => m.id === silvers && m.isChecked) && (teamSportStats.silvers += incrementSportSilver)
+        q.medals.some(m => m.id === golds && m.isChecked) && (teamStats.golds += incrementSportGold)
+        q.medals.some(m => m.id === bronzes && m.isChecked) && (teamStats.bronzes += incrementSportBronze)
+        q.medals.some(m => m.id === silvers && m.isChecked) && (teamStats.silvers += incrementSportSilver)
+        teamStats.total = teamStats.golds + teamStats.bronzes + teamStats.silvers
+        teamSportStats.total = teamSportStats.golds + teamSportStats.bronzes + teamSportStats.silvers
+        max = teamStats.total > max ? teamStats.total : max
+        maxSingleSport = teamSportStats.total > maxSingleSport ? teamSportStats.total : maxSingleSport
+        teamStats[sport] = teamSportStats
+        res[noc] = teamStats
       }
     })
-    return (GdpSum/GdpYears)
+
+  })
+}
+
+let response: MainComputationResult = {
+  stats: res,
+  max: max as number,
+  maxSingleSport: maxSingleSport as number,
+  sportsList: q.selectedSports
+}
+
+return response
   }
+
+computeAffinity(res, sel) {
+  let mostSimilar = {}
+  let minDeltas = {}
+  Object.keys(res).forEach(noc => {
+    //if(noc!=sel){
+    let totalDelta = 0
+    Object.keys(res[noc]).forEach(sport => {
+      if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total") {
+        let weight = res[sel][sport].total + 0.1
+        let delta = Math.abs((res[noc][sport].total - res[sel][sport].total) * weight)
+        totalDelta += delta
+      }
+    })
+    if (Object.keys(minDeltas).length < 5) {
+      minDeltas[noc] = totalDelta
+    } else {
+      let maxConsidered = Number(minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)])
+      if (totalDelta < maxConsidered) {
+        delete minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)]
+        minDeltas[noc] = totalDelta
+      }
+    }
+    //}
+  })
+  console.log("most similar Traditions: ", minDeltas)
+  Object.keys(minDeltas).forEach(noc => {
+    mostSimilar[noc] = res[noc]
+  })
+  console.log("my deltas: ", mostSimilar)
+
+  console.log(res)
+  return mostSimilar
+}
+
+computeDecadesRange(start: number, end: number) {
+  let first, second
+  let yearsArr = []
+  if (start <= 1900) {
+    first = 1900
+  }
+  else {
+    if (start % 10 <= 5) {
+      first = start - start % 10
+    }
+    else {
+      first = start + 10 - start % 10
+    }
+  }
+  if (end <= 1900) {
+    second = 1900
+  }
+  else {
+    if (end % 10 <= 5) {
+      second = end - end % 10
+    }
+    else {
+      second = end + 10 - end % 10
+    }
+  }
+  if (first === second) {
+    yearsArr = [first]
+  }
+  else {
+    let decadesDiff = (second - first) / 10
+    for (let i = 0; i <= decadesDiff; i++) {
+      yearsArr.push(Number(first + i * 10))
+    }
+  }
+  return yearsArr
+}
+
+computeAveragePopulationOfNation(selectedDecades, NOC) {
+  let nation = this.countries[NOC].name
+  let popSum = 0
+  let popYears = 0
+  selectedDecades.forEach(y => {
+    if (this.populations[nation]) {
+      if (this.populations[nation].years[y]) {
+        popSum += this.populations[nation].years[y]
+        popYears++
+      }
+    }
+    else {
+      console.log("not found in populations.csv: " + NOC + ", " + nation)
+    }
+  });
+  return (popSum / popYears)
+}
+
+rangeOf(start, end) {
+  let range = []
+  for (let i = start; i <= end; i++) {
+    range.push(i)
+  }
+  return range
+}
+
+computeAverageGdpOfNation(range, NOC) {
+  let GdpSum = 0
+  let GdpYears = 0
+  range.forEach(y => {
+    if (this.gdp[NOC]) {
+      if (this.gdp[NOC].years[y]) {
+        GdpSum += Number(this.gdp[NOC].years[y])
+        GdpYears++
+      }
+    }
+  })
+  if (GdpYears == 0) {
+    return 0
+  }
+  return (GdpSum / GdpYears)
+}
 
 }
 
