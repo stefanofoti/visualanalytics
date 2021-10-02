@@ -194,7 +194,6 @@ export class LoaderService {
         })
       }
     })
-    console.log(res)
     this.dataService.onSportsDataReady(this.selectedSports)
     return res
   }
@@ -260,7 +259,6 @@ export class LoaderService {
       }
     }
     c.eventsPerSport = eventsPerSport
-    console.log(eventsPerSport)
 
     var totgolds = 0
     var totsilvers = 0
@@ -273,9 +271,6 @@ export class LoaderService {
         totbronzes += res[year][nation].bronzes
       }
     }
-    console.log(totgolds + totsilvers + totbronzes)
-    console.log(res)
-
     return res
   }
 
@@ -308,18 +303,12 @@ export class LoaderService {
       values.sort((a, b) => b.total - a.total)
       let sortedSports = values.map(v => v && v.sport)
       tradResAffinity.sportsList = sortedSports
-      console.log("tradResAffinity: ", tradResAffinity)
-      // todo sorting 
       return tradResAffinity
     }
     return ce.res
   }
 
   async computeResult(q: Query) {
-    console.log("compute results speaking", q.medals)
-    console.log("computeMedalsByNationInRange sports: " + q.selectedSports.length)
-    console.log("tradition is active: ", q.tradition)
-
 
     if (q.selectedSports.length == 0) {
       q.selectedSports = PreCheckedSports2
@@ -343,13 +332,14 @@ export class LoaderService {
         this.avgGdpDict[c] = this.computeAverageGdpOfNation(range, c)
       })
       this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])
+      console.log("avgGdpDict", this.avgGdpDict)  
     }
 
     if (q.medalsByPop) {
       NocsList.forEach(c => {
         this.avgPopDict[c] = this.computeAveragePopulationOfNation(decadesSelected, c)
       })
-      this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])      
+      this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])    
     }
 
 
@@ -561,7 +551,7 @@ computeAverageGdpOfNation(range, NOC) {
     }
   })
   if (GdpYears == 0) {
-    return 0
+    return NaN
   }
   return (GdpSum / GdpYears)
 }

@@ -244,7 +244,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")
       .style("opacity", 1)
-
   }
 
 
