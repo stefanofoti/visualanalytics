@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as Plotly from 'plotly.js/dist/plotly'
 import { Subscription } from 'rxjs';
-import { PCAEntry } from 'src/data/data';
+import { MouseSelection, PCAEntry } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
 
@@ -14,14 +14,43 @@ import { LoaderService } from '../loader.service';
 })
 export class ScatterplotComponent implements OnInit {
 
+  plotlyDivId = "scatterplot_id"
+
   subPCAReady: Subscription
 
   entries: PCAEntry[] = []
 
   currentlySelectedNoc: string
 
+  plot: any
+
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
+    dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
+
+  }
+
+  onMouseSelection(message: MouseSelection) {
+    console.log("scatterplot got selection event")
+    if (message.currentlySelected && message.source !== ScatterplotComponent.name) {
+      let selectedNoc = message.noc
+      let updatedColors = this.extractColors(this.entries, selectedNoc)
+      let update = {
+        marker: {
+          color: updatedColors
+        }
+      }
+      Plotly.restyle(this.plotlyDivId, update)
+    }
+    if (!message.currentlySelected && message.source !== ScatterplotComponent.name) {
+      let updatedColors = this.extractColors(this.entries)
+      let update = {
+        marker: {
+          color: updatedColors
+        }
+      }
+      Plotly.restyle(this.plotlyDivId, update)
+    }
 
   }
 
@@ -51,14 +80,24 @@ export class ScatterplotComponent implements OnInit {
     return res
   }
 
-  extractColors(entries: PCAEntry[]) {
+  extractColors(entries: PCAEntry[], customNoc?: string) {
+
+    // non possiamo ridurre l'opacità degli elemento non selezionati come facciamo altrove perché altrimenti
+    // dove i punti sono sovrapposti il colore risultante è completamente bianco; l'idea è di rendere
+    // gli altri punti più scuri, tranne quelli del noc selezionato
+    let lightColorRange = ["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"]
+    let darkColorRange = ["#002c42", "#541b00", "#6e5800", "#6e5800", "#322245", "#08451f"]
+
+    if(customNoc) {
+      
+
+    }
 
     let colors = d3.scaleOrdinal()
       .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-      .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+      .range(customNoc ? darkColorRange : lightColorRange)
 
-    let c = entries.map(e => colors(this.loaderService.countries[e.details["NOC"]].continent))
-    return c
+    return entries.map(e => customNoc === e.details["NOC"] ? "#ffffff" : colors(this.loaderService.countries[e.details["NOC"]].continent))
   }
 
   plot3d() {
@@ -131,10 +170,10 @@ export class ScatterplotComponent implements OnInit {
         t: 0
       }
     };
-    Plotly.newPlot('myDiv', data, layout, config);
+    this.plot = Plotly.newPlot(this.plotlyDivId, data, layout, config);
 
-    let plot: any = document.getElementById('myDiv')
-    
+    let plot: any = document.getElementById(this.plotlyDivId)
+
     plot.on('plotly_hover', data => {
       if (this.entries.length > 0) {
 
@@ -154,7 +193,7 @@ export class ScatterplotComponent implements OnInit {
         }
       }
     })
-    
+
     plot.on('plotly_unhover', _ => {
       if (this.entries.length > 0) {
         this.dataService.updateMouseSelection({
