@@ -18,6 +18,8 @@ export class ScatterplotComponent implements OnInit {
 
   entries: PCAEntry[] = []
 
+  currentlySelectedNoc: string
+
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
 
@@ -26,7 +28,7 @@ export class ScatterplotComponent implements OnInit {
   dataReady(entries: PCAEntry[]): void {
     console.log("plotting: data ready...")
     this.entries = entries
-    this.entries.length>0 && this.plot3d()
+    this.entries.length > 0 && this.plot3d()
   }
 
   ngOnInit(): void {
@@ -34,62 +36,26 @@ export class ScatterplotComponent implements OnInit {
   }
 
 
-  newPlot2(){
-    var trace1 = {
-      x: [1, 2, 3, 4, 5],
-      y: [1, 6, 3, 6, 1],
-      mode: 'markers',
-      type: 'scatter',
-      name: 'Team A',
-      text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
-      marker: { size: 12 }
-    };
-    
-    var trace2 = {
-      x: [1.5, 2.5, 3.5, 4.5, 5.5],
-      y: [4, 1, 7, 1, 4],
-      mode: 'markers',
-      type: 'scatter',
-      name: 'Team B',
-      text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-      marker: { size: 12 }
-    };
-    
-    var data = [ trace1, trace2 ];
-    
-    var layout = {
-      xaxis: {
-        range: [ 0.75, 5.25 ]
-      },
-      yaxis: {
-        range: [0, 8]
-      },
-      title:'Data Labels Hover'
-    };
-    
-    Plotly.newPlot('myDiv', data, layout);
-    
-  }
 
   extractComponents(entries: PCAEntry[], type: string, attr?: string) {
-    let res = attr ? entries.map(e => e[type][attr]) : entries.map(e => e[type]) 
+    let res = attr ? entries.map(e => e[type][attr]) : entries.map(e => e[type])
     return res
   }
 
   extractLabels(entries: PCAEntry[]) {
-    let res = entries.map(e => 
-      "noc: " + e.details["NOC"] + "<br>" + 
+    let res = entries.map(e =>
+      "noc: " + e.details["NOC"] + "<br>" +
       "sport: " + e.details["Sport"] + "<br>" +
       "year: " + e.details["Year"] + "<br>"
-    ) 
+    )
     return res
   }
 
   extractColors(entries: PCAEntry[]) {
 
     let colors = d3.scaleOrdinal()
-    .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-    .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+      .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
 
     let c = entries.map(e => colors(this.loaderService.countries[e.details["NOC"]].continent))
     return c
@@ -102,66 +68,104 @@ export class ScatterplotComponent implements OnInit {
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
     let z = this.extractComponents(entries, "z")
+    let nocs = this.extractComponents(entries, "details", "NOC")
+
+
     let text = this.extractLabels(entries)
-    
+
     let c = this.extractColors(entries)
 
 
 
 
-      var trace1 = {        
-        x: x,
-        y: y,
-        z: z,
-        mode: 'markers',
-        text: text,
-        hovertemplate:
-        "<b>%{text}</b><br><br>"+
-          "y: %{y:.0f}<br>" +
-          "x: %{x:.0f}<br>" +
-          "z: %{x:.0f}<br>" +
-          "<extra></extra>",
-        marker: {
-          size: 10,
-          color: c,
-          line: {
-            color: 'rgba(217, 217, 217, 1)',
-            width: 0.1
-          },
-          opacity: 1
+    var trace1 = {
+      x: x,
+      y: y,
+      z: z,
+      mode: 'markers',
+      text: text,
+      id: nocs,
+      hovertemplate:
+        "<b>%{text}</b><br><br>" +
+        "y: %{y:.0f}<br>" +
+        "x: %{x:.0f}<br>" +
+        "z: %{x:.0f}<br>" +
+        "<extra></extra>",
+      marker: {
+        size: 10,
+        color: c,
+        line: {
+          color: 'rgba(217, 217, 217, 1)',
+          width: 0.1
         },
-        type: 'scatter3d'
-      };
+        opacity: 1
+      },
+      type: 'scatter3d'
+    };
 
-      var data = [trace1];
-      
-      let config = {
-        responsive: true
-      }
+    var data = [trace1];
 
-      var layout = {
-        //autosize: true,
-        //width: "100%",
-        //height:"30vh",
-        scene:{
-          xaxis: {
+    let config = {
+      responsive: true
+    }
+
+    var layout = {
+      //autosize: true,
+      //width: "100%",
+      //height:"30vh",
+      scene: {
+        xaxis: {
           color: 'white'
-          }, 
-            yaxis: {
-              color: 'white'
-            }, 
-            zaxis: {
-              color: 'white'
-            }},
-        margin: {
-          l: 0,
-          r: 0,
-          b: 0,
-          t: 0
+        },
+        yaxis: {
+          color: 'white'
+        },
+        zaxis: {
+          color: 'white'
         }
-      };
-      Plotly.newPlot('myDiv', data, layout, config);
+      },
+      margin: {
+        l: 0,
+        r: 0,
+        b: 0,
+        t: 0
+      }
+    };
+    Plotly.newPlot('myDiv', data, layout, config);
 
+    let plot: any = document.getElementById('myDiv')
+    
+    plot.on('plotly_hover', data => {
+      if (this.entries.length > 0) {
+
+        let d, newSelected
+        data && data.points && data.points.length > 0 && (d = data.points[0])
+        d.data.id[d.pointNumber] && (newSelected = d.data.id[d.pointNumber])
+
+        if (!this.currentlySelectedNoc || newSelected !== this.currentlySelectedNoc) {
+          console.log("scatterplot got hover on:" + newSelected)
+          this.currentlySelectedNoc = newSelected
+          this.dataService.updateMouseSelection({
+            currentlySelected: true,
+            noc: newSelected,
+            source: ScatterplotComponent.name
+          })
+
+        }
+      }
+    })
+    
+    plot.on('plotly_unhover', _ => {
+      if (this.entries.length > 0) {
+        this.dataService.updateMouseSelection({
+          currentlySelected: false,
+          noc: this.currentlySelectedNoc,
+          source: ScatterplotComponent.name
+        })
+        this.currentlySelectedNoc = undefined
+        console.log("scatterplot got unhover")
+      }
+    })
   }
 
   /*
