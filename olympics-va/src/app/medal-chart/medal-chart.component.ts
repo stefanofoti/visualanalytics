@@ -54,6 +54,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   }
 
   onMouseSelection(message: MouseSelection) {
+    console.log("medalchart mouse selection event: ", message)
     if(message.source && message.source !== MedalChartComponent.name) {
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
 

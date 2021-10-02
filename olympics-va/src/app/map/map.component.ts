@@ -48,6 +48,7 @@ export class MapComponent implements OnInit {
   }
 
   onMouseSelection(message: MouseSelection) {
+    console.log("map mouse selection event: ", message)
     if (message.source && message.source !== MapComponent.name) {
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
     }

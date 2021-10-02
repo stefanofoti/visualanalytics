@@ -24,32 +24,54 @@ export class ScatterplotComponent implements OnInit {
 
   plot: any
 
+  plotted: boolean = false
+
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
 
   }
 
-  onMouseSelection(message: MouseSelection) {
-    console.log("scatterplot got selection event")
-    if (message.currentlySelected && message.source !== ScatterplotComponent.name) {
-      let selectedNoc = message.noc
-      let updatedColors = this.extractColors(this.entries, selectedNoc)
-      let update = {
-        marker: {
-          color: updatedColors
-        }
+  highlight(noc: string){
+    let updatedColors = this.extractColors(this.entries, noc)
+    let update = {
+      marker: {
+        size: 10,
+        color: updatedColors,
+        line: {
+          color: 'rgba(217, 217, 217, 1)',
+          width: 0.1
+        },
+        opacity: 1
       }
-      Plotly.restyle(this.plotlyDivId, update)
     }
-    if (!message.currentlySelected && message.source !== ScatterplotComponent.name) {
-      let updatedColors = this.extractColors(this.entries)
-      let update = {
-        marker: {
-          color: updatedColors
-        }
+    Plotly.restyle(this.plotlyDivId, update)
+  }
+
+  doNotHighlight(){
+    let updatedColors = this.extractColors(this.entries)
+    let update = {
+      marker: {
+        size: 10,
+        color: updatedColors,
+        line: {
+          color: 'rgba(217, 217, 217, 1)',
+          width: 0.1
+        },
+        opacity: 1
       }
-      Plotly.restyle(this.plotlyDivId, update)
+    }
+    Plotly.restyle(this.plotlyDivId, update)
+  }
+
+  onMouseSelection(message: MouseSelection) {
+    console.log("scatterplot got selection event", message)
+    if (this.plotted && message.currentlySelected && message.source !== ScatterplotComponent.name) {
+      let selectedNoc = message.noc
+      this.highlight(selectedNoc)
+    }
+    if (this.plotted && !message.currentlySelected && message.source !== ScatterplotComponent.name) {
+      this.doNotHighlight()
     }
 
   }
@@ -85,22 +107,24 @@ export class ScatterplotComponent implements OnInit {
     // non possiamo ridurre l'opacità degli elemento non selezionati come facciamo altrove perché altrimenti
     // dove i punti sono sovrapposti il colore risultante è completamente bianco; l'idea è di rendere
     // gli altri punti più scuri, tranne quelli del noc selezionato
-    let lightColorRange = ["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"]
-    let darkColorRange = ["#002c42", "#541b00", "#6e5800", "#6e5800", "#322245", "#08451f"]
 
-    if(customNoc) {
-      
+    let colorsLight = d3.scaleOrdinal()
+      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+      .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+
+      let colorsDark = d3.scaleOrdinal()
+      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+      .range(["#002c42", "#541b00", "#6e5800", "#6e5800", "#322245", "#08451f"])
+    
+      if(customNoc){
+        return entries.map(e => customNoc === e.details["NOC"] ? colorsLight(this.loaderService.countries[e.details["NOC"]].continent) : colorsDark(this.loaderService.countries[e.details["NOC"]].continent))
+      }
+      return entries.map(e => colorsLight(this.loaderService.countries[e.details["NOC"]].continent))
 
     }
 
-    let colors = d3.scaleOrdinal()
-      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-      .range(customNoc ? darkColorRange : lightColorRange)
-
-    return entries.map(e => customNoc === e.details["NOC"] ? "#ffffff" : colors(this.loaderService.countries[e.details["NOC"]].continent))
-  }
-
   plot3d() {
+
     let entries = this.entries
     console.log("plotting pca...")
 
@@ -125,10 +149,10 @@ export class ScatterplotComponent implements OnInit {
       text: text,
       id: nocs,
       hovertemplate:
-        "<b>%{text}</b><br><br>" +
-        "y: %{y:.0f}<br>" +
-        "x: %{x:.0f}<br>" +
-        "z: %{x:.0f}<br>" +
+        "<b>%{text}</b><br>" +
+        "x: %{x:.0f}, " +
+        "y: %{y:.0f}, " +
+        "z: %{x:.0f}" +
         "<extra></extra>",
       marker: {
         size: 10,
@@ -175,13 +199,13 @@ export class ScatterplotComponent implements OnInit {
     let plot: any = document.getElementById(this.plotlyDivId)
 
     plot.on('plotly_hover', data => {
-      if (this.entries.length > 0) {
+      if (this.plotted && this.entries.length > 0) {
 
         let d, newSelected
         data && data.points && data.points.length > 0 && (d = data.points[0])
         d.data.id[d.pointNumber] && (newSelected = d.data.id[d.pointNumber])
 
-        if (!this.currentlySelectedNoc || newSelected !== this.currentlySelectedNoc) {
+        if (newSelected && (!this.currentlySelectedNoc || newSelected !== this.currentlySelectedNoc)) {
           console.log("scatterplot got hover on:" + newSelected)
           this.currentlySelectedNoc = newSelected
           this.dataService.updateMouseSelection({
@@ -189,22 +213,24 @@ export class ScatterplotComponent implements OnInit {
             noc: newSelected,
             source: ScatterplotComponent.name
           })
-
+          this.highlight(newSelected)
         }
       }
     })
 
     plot.on('plotly_unhover', _ => {
-      if (this.entries.length > 0) {
+      if (this.currentlySelectedNoc && this.plotted && this.entries.length > 0) {
         this.dataService.updateMouseSelection({
           currentlySelected: false,
           noc: this.currentlySelectedNoc,
           source: ScatterplotComponent.name
         })
         this.currentlySelectedNoc = undefined
-        console.log("scatterplot got unhover")
+        this.doNotHighlight()
       }
     })
+
+    this.plotted = true
   }
 
   /*

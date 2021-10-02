@@ -57,10 +57,16 @@ export class PcaService {
     let silverWeight = medals[1].weight
     let bronzeWeight = medals[2].weight
 
+    let tempFilteredLines = []
+
     for (const elem in lines) {
       if (lines[elem].Medal !== "NA" && lines[elem].Medal !== gold && lines[elem].Medal !== silver && lines[elem].Medal !== bronze) {
+        tempFilteredLines.push(lines[elem])
         let currentNOC = Number(lines[elem].NOC_value)
         let currentNOCName = lines[elem].NOC
+        if(currentNOCName === "MTN") {
+          console.log("magic at work: ", lines[elem])
+        }
         let currentYear = Number(lines[elem].Year)
         let currentSport = Number(lines[elem].Sport_value)
         let currentSportName = lines[elem].Sport
@@ -125,6 +131,7 @@ export class PcaService {
         }
       }
     }
+    this.filteredLines = tempFilteredLines
     Object.keys(medalSum).forEach(noc => {
       let gdpDict = this.loaderService.gdp
       let gdpEntry: CountryGdp = gdpDict[noc]
@@ -173,6 +180,7 @@ export class PcaService {
                 medalSum[noc][year] = undefined
               }
             }
+
             medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), medalSum[noc][year][sport].totalMedals])
           })
         }
@@ -196,12 +204,14 @@ export class PcaService {
 
     this.filteredLines = this.filteredLines.filter(l => (l.Year >= q.start && l.Year <= q.end))
 
+    
     // q.medals[0].weight
+
     resLines = this.aggregateData(this.filteredLines, q.isNormalize, q.isGdp, q.isPop, q.medals)
 
     resLines.length > 0 && (resLines = this.normalizeLines(resLines))
 
-    resLines.filter(l => !isNaN(l[0]) && !isNaN(l[1]) && !isNaN(l[2]) && !isNaN(l[3]))
+    // resLines.filter(l => !isNaN(l[0]) && !isNaN(l[1]) && !isNaN(l[2]) && !isNaN(l[3]))
 
     return resLines
   }
