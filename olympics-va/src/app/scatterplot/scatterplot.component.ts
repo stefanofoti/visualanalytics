@@ -169,10 +169,22 @@ export class ScatterplotComponent implements OnInit {
     var data = [trace1];
 
     let config = {
-      responsive: true
+      modeBarButtonsToRemove: ['toImage', 'zoom3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'orbitRotation'],
+      responsive: true,
+      displaylogo: false
     }
 
     var layout = {
+      modebar: {
+        bgcolor: 'rgba(0,0,0,0)',
+        pan3d: {
+          color: 'white'
+        }
+      },
+      hovermode: "closest",
+      hoverlabel: {
+        bgcolor: 'rgba(54,57,70,1)'
+      },
       //autosize: true,
       //width: "100%",
       //height:"30vh",
