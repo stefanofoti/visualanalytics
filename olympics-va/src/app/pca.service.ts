@@ -5,6 +5,7 @@ import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
 import * as mjs from 'mathjs'
 import { LoaderService } from './loader.service';
 import { DataService } from './data.service';
+import { filter } from 'mathjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,10 +15,11 @@ export class PcaService {
   eventsPerSport = {}
   avgGdp = {}
   avgPop = {}
+  PCADetails = []
+  TradNocs=[]
 
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.dataService.eventsPerSportDataMessage.subscribe(message => {
-      console.log("events per sport: ", message)
       this.eventsPerSport = message
     })
     this.dataService.avgGdpPopMessage.subscribe(message => {
@@ -34,8 +36,11 @@ export class PcaService {
       array[j] = temp;
     }
   }
+  computePCATradition(){
 
-  aggregateData(lines, isNormalize: boolean, isGdp: boolean, isPop: boolean, medals) {
+  }
+
+  aggregateData(lines, isNormalize: boolean, isTradition:boolean, end: number, isGdp: boolean, isPop: boolean, medals) {
 
 
 
@@ -57,19 +62,15 @@ export class PcaService {
     let silverWeight = medals[1].weight
     let bronzeWeight = medals[2].weight
 
-    let tempFilteredLines = []
+    this.PCADetails = []
 
     for (const elem in lines) {
       if (lines[elem].Medal !== "NA" && lines[elem].Medal !== gold && lines[elem].Medal !== silver && lines[elem].Medal !== bronze) {
-        tempFilteredLines.push(lines[elem])
         let currentNOC = Number(lines[elem].NOC_value)
         let currentNOCName = lines[elem].NOC
-        if(currentNOCName === "MTN") {
-          console.log("magic at work: ", lines[elem])
-        }
         let currentYear = Number(lines[elem].Year)
         let currentSport = Number(lines[elem].Sport_value)
-        let currentSportName = lines[elem].Sport
+        let currentSportName = lines[elem].Sport || ""
         let currentMedaltype = lines[elem].Medal
         let weight = 1
         if (currentMedaltype === "Gold") {
@@ -85,20 +86,20 @@ export class PcaService {
           if (medalSum[currentNOC]) {
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += weight
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: weight,
+                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
                   sportName: currentSportName
                 }
               }
             } else {
               medalSum[currentNOC][currentYear] = {}
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += weight
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: weight,
+                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
                   sportName: currentSportName
                 }
               }
@@ -109,20 +110,20 @@ export class PcaService {
             }
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += weight
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: weight,
+                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
                   sportName: currentSportName
                 }
               }
             } else {
               medalSum[currentNOC][currentYear] = {}
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += weight
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: weight,
+                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
                   sportName: currentSportName
                 }
               }
@@ -131,11 +132,9 @@ export class PcaService {
         }
       }
     }
-    this.filteredLines = tempFilteredLines
     Object.keys(medalSum).forEach(noc => {
       let gdpDict = this.loaderService.gdp
       let gdpEntry: CountryGdp = gdpDict[noc]
-
       let nocName = medalSum[noc].noc
 
       Object.keys(medalSum[noc]).forEach(year => {
@@ -159,33 +158,44 @@ export class PcaService {
           }
 
           Object.keys(medalSum[noc][year]).forEach(sport => {
-            if (isNormalize) {
+            if (isNormalize && medalSum[noc][year]) {
               let eventsAmount = 1
               let currentSportName = medalSum[noc][year][sport].sportName
               this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmount = this.eventsPerSport[year][currentSportName])
               medalSum[noc][year][sport].totalMedals /= eventsAmount
             }
+            let population
             if (isPop) {
-              let population
-              this.loaderService.populations[nocName] && this.loaderService.populations[nocName].years[val] && (population = this.loaderService.populations[nocName].years[val])
-              population && (medalSum[noc][year][sport].totalMedals /= population)
-              !population && (medalSum[noc][year][sport].totalMedals /= this.avgPop[nocName])
-            }
-            if (isGdp) {
-              let gdp
-              this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
-              gdp && (medalSum[noc][year][sport].totalMedals /= gdp)
-              !gdp && this.avgGdp[nocName] > 0 && (medalSum[noc][year][sport].totalMedals /= this.avgGdp[nocName])
-              if (this.avgGdp[nocName] == 0) {
+              this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
+              !population && (population = this.avgPop[this.loaderService.countries[nocName].name])
+              population > 0 && (medalSum[noc][year][sport].totalMedals /= population)
+              if (population == 0 || !population) {
                 medalSum[noc][year] = undefined
               }
             }
-
+            let gdp
+            if (isGdp) {
+              this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
+              !gdp && (gdp = this.avgGdp[nocName]) 
+              gdp > 0 && (medalSum[noc][year][sport].totalMedals /= gdp)
+              if (gdp == 0 || !gdp) {
+                medalSum[noc][year] = undefined
+              }
+            }            
+            medalSum[noc][year] && this.PCADetails.push({
+              NOC: nocName,
+              Year: year,
+              Sport: medalSum[noc][year][sport].sportName,
+              Totmedals: medalSum[noc][year][sport].totalMedals,
+              Gdp: gdp,
+              Pop: population
+            })
             medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), medalSum[noc][year][sport].totalMedals])
           })
         }
       })
     })
+    console.log("details lines", this.PCADetails)
     console.log("aggregatelines", aggregateLines)
     return aggregateLines
   }
@@ -207,7 +217,7 @@ export class PcaService {
     
     // q.medals[0].weight
 
-    resLines = this.aggregateData(this.filteredLines, q.isNormalize, q.isGdp, q.isPop, q.medals)
+    resLines = this.aggregateData(this.filteredLines, q.isNormalize, q.isTradition, q.end, q.isGdp, q.isPop, q.medals)
 
     resLines.length > 0 && (resLines = this.normalizeLines(resLines))
 
@@ -249,7 +259,7 @@ export class PcaService {
         x: c[0],
         y: c[1],
         z: c[2],
-        details: this.filteredLines[i]
+        details: this.PCADetails[i]
       }
       return r
     })

@@ -43,6 +43,7 @@ export interface PcaQuery {
     selectedSports: string[],
     selectedNocs: string[],
     isNormalize: boolean,
+    isTradition: boolean,
     isGdp: boolean,
     isPop: boolean
 }

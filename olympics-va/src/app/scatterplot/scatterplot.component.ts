@@ -39,7 +39,7 @@ export class ScatterplotComponent implements OnInit {
         size: 10,
         color: updatedColors,
         line: {
-          color: 'rgba(217, 217, 217, 1)',
+          color: 'rgba(0, 0, 0, 1)',
           width: 0.1
         },
         opacity: 1
@@ -55,7 +55,7 @@ export class ScatterplotComponent implements OnInit {
         size: 10,
         color: updatedColors,
         line: {
-          color: 'rgba(217, 217, 217, 1)',
+          color: 'rgba(0, 0, 0, 1)',
           width: 0.1
         },
         opacity: 1
@@ -94,11 +94,20 @@ export class ScatterplotComponent implements OnInit {
   }
 
   extractLabels(entries: PCAEntry[]) {
-    let res = entries.map(e =>
-      "noc: " + e.details["NOC"] + "<br>" +
-      "sport: " + e.details["Sport"] + "<br>" +
-      "year: " + e.details["Year"] + "<br>"
-    )
+    let res = entries.map(e => {
+      let result =
+      "NOC: " + e.details["NOC"] + "<br>" +
+      "Sport: " + e.details["Sport"] + "<br>" +
+      "Year: " + e.details["Year"] + "<br>" +
+      "Medals:" + e.details["Totmedals"] + "<br>"
+      if (e.details["Gdp"]) {
+        result += ("Gdp: " + e.details["Gdp"] + "<br>")
+      }
+      if (e.details["Pop"]) {
+        result += ("Pop: " + e.details["Pop"] + "<br>")
+      }
+      return result
+    })
     return res
   }
 
@@ -149,7 +158,7 @@ export class ScatterplotComponent implements OnInit {
       text: text,
       id: nocs,
       hovertemplate:
-        "<b>%{text}</b><br>" +
+        "%{text}<br>" +
         "x: %{x:.0f}, " +
         "y: %{y:.0f}, " +
         "z: %{x:.0f}" +
@@ -158,7 +167,7 @@ export class ScatterplotComponent implements OnInit {
         size: 10,
         color: c,
         line: {
-          color: 'rgba(217, 217, 217, 1)',
+          color: 'rgba(0, 0, 0, 1)',
           width: 0.1
         },
         opacity: 1
@@ -183,7 +192,11 @@ export class ScatterplotComponent implements OnInit {
       },
       hovermode: "closest",
       hoverlabel: {
-        bgcolor: 'rgba(54,57,70,1)'
+        bordercolor: "rgba(24, 21, 39, 1)",
+        bgcolor: 'rgba(24, 21, 39, 1)',
+        font: {
+          color: 'rgba(255,255,255,1)'
+        }
       },
       //autosize: true,
       //width: "100%",

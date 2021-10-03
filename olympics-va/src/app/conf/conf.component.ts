@@ -11,6 +11,7 @@ import { MatChipInputEvent, MatChipInput } from '@angular/material/chips';
 import { LoaderService } from '../loader.service';
 import { BooleanInput } from 'ngx-boolean-input';
 import { PcaService } from '../pca.service';
+import * as ld from "lodash";
 
 
 @Component({
@@ -217,6 +218,7 @@ export class ConfComponent implements OnInit {
   }
 
   updateData() {
+    
     console.log("conf: Invoke updateData()")
     let selMedals: string[] = []
     this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
@@ -225,16 +227,6 @@ export class ConfComponent implements OnInit {
     this.medalsList.forEach (m => m.weight = Number(m.weight))
     console.log("conf. is tradition: ", this.isTradition)
     console.log("conf. medalsList:",this.medalsList)
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries).then(res  => {
-      let r = res as MainComputationResult
-      let stats = r.stats
-      let max = r.max
-      let maxSingleSport = r.maxSingleSport
-      this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
-      console.log("conf: updateData() result: ", stats)
-    })
-
-
     let q: PcaQuery = {
       start: this.yearRange[0],
       end: this.yearRange[1],
@@ -242,17 +234,33 @@ export class ConfComponent implements OnInit {
       selectedSports: selSports,
       selectedNocs: selCountries,
       isNormalize: this.isNormalize,
+      isTradition: this.isTradition,
       isGdp: this.isMedalsByGdp,
       isPop: this.isMedalsByPop
     }
-
-
-    this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
-      let x: PCAEntry[] = res
-      console.log("plotting pca: sending readiness...", x)
-      this.data.pcaDataReady(x)
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries).then(res  => {
+      let r = res as MainComputationResult
+      let stats = r.stats
+      let max = r.max
+      let maxSingleSport = r.maxSingleSport
+      this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
+      console.log("conf: updateData() result: ", stats)
+      if (this.isTradition){
+        q.selectedNocs = ld.cloneDeep(Object.keys(stats[0]))
+        this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
+          let x: PCAEntry[] = res
+          console.log("plotting pca: sending readiness...", x)
+          this.data.pcaDataReady(x)
+        })
+      }      
     })
-
+    if (!this.isTradition) {
+      this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
+        let x: PCAEntry[] = res
+        console.log("plotting pca: sending readiness...", x)
+        this.data.pcaDataReady(x)
+      })
+    }
   }
 
   toggleSelectionCountry(country: Country) {
