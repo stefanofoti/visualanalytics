@@ -282,33 +282,34 @@ export class ParcoordsComponent implements OnInit {
     if (typeof (d) === 'string') {
       c.currentCountryNoc = d
       d && this.countries[d] && (c.currentCountryName = this.countries[d].name)
-    } else //if(d.name !== "BORDER")
-    {
-      c.currentSelected = d
-      c.currentCountryName = this.countries[c.currentSelected.name].name
-      c.currentCountryNoc = c.currentSelected.name
-
+    } else {
+      
+      if(d.name == "BORDER"){
+        c.currentCountryName = this.countries[this.selectedTraditionNoc].name
+        c.currentCountryNoc = this.selectedTraditionNoc        
+      } else {
+        c.currentSelected = d
+        c.currentCountryName = this.countries[c.currentSelected.name].name
+        c.currentCountryNoc = c.currentSelected.name
+      }
       this.dataService.updateMouseSelection({
         currentlySelected: true,
         noc: c.currentCountryNoc,
         source: ParcoordsComponent.name
       })
-
     }
-
-    // TEMP ------------
-    // let selected_specie: string = d.Species
-    // let colorNumb: any = color(selected_specie)
-    // first every group turns grey
     d3.selectAll(".parcoord-line")
       .transition().duration(200)
-      //.style("stroke", "lightgrey")
       .style("opacity", "0.02")
     // Second the hovered specie takes its color
     d3.select("#line-" + c.currentCountryNoc)
       .transition().duration(200)
-      //.style("stroke", /*color(selected_specie)*/ "#00ffff")
       .style("opacity", "1")
+    if (d.name == "BORDER" || d.name == this.selectedTraditionNoc) {
+      d3.select("#line-" + "BORDER")
+      .transition().duration(200)
+      .style("opacity", "1")
+    }
   }
 
   // Unhighlight
@@ -322,11 +323,15 @@ export class ParcoordsComponent implements OnInit {
     }
     d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
-      //.style("stroke", "#0000ff")
-      .style("opacity", d => {
-        if (c.currentCountryNoc === this.selectedTraditionNoc) return 1
-        return 0.7
-      })
+      .style("opacity", 0.7)
+    if (this.selectedTraditionNoc){
+      d3.select("#line-" + this.selectedTraditionNoc)
+      .transition().duration(200)
+      .style("opacity", "1")
+      d3.select("#line-" + "BORDER")
+      .transition().duration(200)
+      .style("opacity", "1")
+    }
 
     c.currentSelected = {}
     c.currentCountryName = ""
@@ -341,18 +346,20 @@ export class ParcoordsComponent implements OnInit {
     c.drawAxis()
 
 
-    let statsArray = c.stats
+    let statsCopy = ld.cloneDeep(c.stats)
 
-    /*if (this.selectedTraditionNoc) {
-      let index = c.stats.findIndex(e => e.name === this.selectedTraditionNoc)
-      let newLine = ld.cloneDeep(c.stats[index])
-      newLine.name = "BORDER"
-      statsArray = [c.stats.splice(index, 0, newLine)]
-    }*/
+    if (this.selectedTraditionNoc) {
+      let index = statsCopy.findIndex(e => e.name === this.selectedTraditionNoc)
+      let selectedLine = ld.cloneDeep(statsCopy[index])
+      let borderLine = ld.cloneDeep(statsCopy[index])
+      borderLine.name = "BORDER"
+      statsCopy.splice(index, 1)
+      statsCopy.push(borderLine, selectedLine)
+    }
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
     c.svg.selectAll(".parcoord-line")
-      .data(statsArray)
+      .data(statsCopy)
       .join("path")
       .attr("class", "parcoord-line")
       .attr('id', d => 'line-' + d.name)
@@ -360,7 +367,7 @@ export class ParcoordsComponent implements OnInit {
       .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
 
 
-    var u = c.svg.selectAll(".parcoord-line").data(c.stats)
+    var u = c.svg.selectAll(".parcoord-line").data(statsCopy)
 
     u
       .enter()
