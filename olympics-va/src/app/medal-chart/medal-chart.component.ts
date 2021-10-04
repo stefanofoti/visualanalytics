@@ -32,6 +32,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   selectedCountries: string[] = []
   max: number
 
+  selectedTraditionNoc: string
+  selectedTraditionStatus: boolean
+  
+
   countries: any = {}
   color: any = {}
 
@@ -50,6 +54,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // this.subscription = this.data.currentMessage.subscribe(message => this.onMessageReceived(message))
     this.subDataUpdated = data.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
+
+    this.dataService.traditionSelectionMessage.subscribe(message => {
+      this.selectedTraditionNoc = message.currentlySelected ? message.noc : undefined
+    })
 
   }
 
@@ -294,6 +302,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // Create the u variable
     //var u = this.svg.select("#barChartMedals").selectAll(".bar").data(this.goldsFiltered)
     // var u = this.svg.select("#barChartMedals").data(this.goldsFiltered)
+
+   //!this.selectedTraditionStatus && d3.select("#bar-" + this.currentCountryNoc)
+   //  .style("outline-width", "0px")
+
     var u = this.svg.selectAll(".medalBar").data(this.statsFiltered)
 
     u
@@ -310,11 +322,14 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .attr('width', this.x.bandwidth())
       .attr('height', (d) => this.height - this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr("fill", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
+      .style("outline-color", "initial")
+      .style("outline-style", "solid")
+      .style("outline-width", (d) => this.selectedTraditionNoc === d.name ? "3px": "0px")
+
       .attr('id', d => 'bar-'+ d.name)
+      // .style("outline", (d) => this.currentCountryNoc === d.name ? "3px solid !important;": "10px solid !important;")
       .transition() // and apply changes to all of them
       .duration(1000)
-
-      
 
     // If less group in the new dataset, I delete the ones not in use anymore
     u

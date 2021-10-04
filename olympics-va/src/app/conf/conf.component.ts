@@ -252,7 +252,7 @@ export class ConfComponent implements OnInit {
       this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
       console.log("conf: updateData() result: ", stats)
       if (this.isTradition){
-        q.selectedNocs = ld.cloneDeep(Object.keys(stats[0]))
+        q.selectedNocs = ld.cloneDeep(Object.keys(stats))
         this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
           let x: PCAEntry[] = res
           console.log("plotting pca: sending readiness...", x)

@@ -479,7 +479,8 @@ computeAffinity(res, sel) {
     //if(noc!=sel){
     let totalDelta = 0
     Object.keys(res[noc]).forEach(sport => {
-      if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total") {
+      //if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total") {
+      if (typeof res[noc][sport] === "object") {
         let weight = res[sel][sport].total + 0.1
         let delta = Math.abs((res[noc][sport].total - res[sel][sport].total) * weight)
         totalDelta += delta

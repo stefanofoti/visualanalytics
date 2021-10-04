@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
+import * as ld from "lodash";
 
 @Component({
   selector: 'app-parcoords',
@@ -60,13 +61,13 @@ export class ParcoordsComponent implements OnInit {
     this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
-      this.selectedTraditionNoc = message.noc
+      this.selectedTraditionNoc = message.currentlySelected ? message.noc : undefined
     })
 
   }
 
   onMouseSelection(message: MouseSelection) {
-    if(message.source && message.source !== ParcoordsComponent.name) {
+    if (message.source && message.source !== ParcoordsComponent.name) {
       console.log("onMouseSelection parcoords")
       console.log(message)
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
@@ -152,7 +153,7 @@ export class ParcoordsComponent implements OnInit {
       // set the dimensions and margins of the graph
       const margin = { top: 60, right: 50, bottom: 10, left: 30 }
       // this.width = 1200 - margin.left - margin.right
-      this.height = 300  - margin.top - margin.bottom
+      this.height = 300 - margin.top - margin.bottom
 
       this.color = d3.scaleOrdinal()
         .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
@@ -166,7 +167,7 @@ export class ParcoordsComponent implements OnInit {
         .attr("height", "100%")
         .attr('viewBox', '0 0 2080 300')
         .append("g")
-        .attr("transform",`translate(${margin.left},${margin.top})`);
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
       this.width = document.getElementById("svg_parcoords").clientWidth
       //this.height = document.getElementById("svg_parcoords").clientHeight
@@ -199,11 +200,11 @@ export class ParcoordsComponent implements OnInit {
 
 
   path(d, c) {
-    if (c.dimensions.length === 1){
+    if (c.dimensions.length === 1) {
       let p = c.dimensions[0]
       let totMedals = 0
       totMedals += d[p].total
-      return d3.line()([[0,c.y[p](totMedals)],[c.x(p)*2,c.y[p](totMedals)]])
+      return d3.line()([[0, c.y[p](totMedals)], [c.x(p) * 2, c.y[p](totMedals)]])
     }
     return d3.line()(c.dimensions.map(p => {
       let totMedals = 0
@@ -277,15 +278,16 @@ export class ParcoordsComponent implements OnInit {
 
 
   highlight(ev, d, c) {
-  
-    if(typeof(d) === 'string') {
+
+    if (typeof (d) === 'string') {
       c.currentCountryNoc = d
-      d && this.countries[d] && (c.currentCountryName = this.countries[d].name)  
-    } else {
+      d && this.countries[d] && (c.currentCountryName = this.countries[d].name)
+    } else //if(d.name !== "BORDER")
+    {
       c.currentSelected = d
-      c.currentCountryName = this.countries[c.currentSelected.name].name  
+      c.currentCountryName = this.countries[c.currentSelected.name].name
       c.currentCountryNoc = c.currentSelected.name
-    
+
       this.dataService.updateMouseSelection({
         currentlySelected: true,
         noc: c.currentCountryNoc,
@@ -311,23 +313,25 @@ export class ParcoordsComponent implements OnInit {
 
   // Unhighlight
   doNotHighlight(ev, d, c) {
-    if(typeof d !== 'string') {
+    if (typeof d !== 'string') {
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: c.currentCountryNoc,
         source: ParcoordsComponent.name
-      })  
+      })
     }
     d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
       //.style("stroke", "#0000ff")
-      .style("opacity", d => {if (c.currentCountryNoc === this.selectedTraditionNoc) return 1
-        return 0.7})
+      .style("opacity", d => {
+        if (c.currentCountryNoc === this.selectedTraditionNoc) return 1
+        return 0.7
+      })
 
     c.currentSelected = {}
     c.currentCountryName = ""
     c.currentCountryNoc = ""
-    
+
   }
 
 
@@ -336,9 +340,19 @@ export class ParcoordsComponent implements OnInit {
     c.computeXY()
     c.drawAxis()
 
+
+    let statsArray = c.stats
+
+    /*if (this.selectedTraditionNoc) {
+      let index = c.stats.findIndex(e => e.name === this.selectedTraditionNoc)
+      let newLine = ld.cloneDeep(c.stats[index])
+      newLine.name = "BORDER"
+      statsArray = [c.stats.splice(index, 0, newLine)]
+    }*/
+
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
     c.svg.selectAll(".parcoord-line")
-      .data(c.stats)
+      .data(statsArray)
       .join("path")
       .attr("class", "parcoord-line")
       .attr('id', d => 'line-' + d.name)
@@ -359,13 +373,22 @@ export class ParcoordsComponent implements OnInit {
       //.duration(1000)
       .attr("d", d => c.path(d, c))
       //.attr("fill", "#69b3a2")
-      .attr("stroke-width", d => {if (d.name === this.selectedTraditionNoc) return 5
-        return 3})
+      .attr("stroke-width", d => {
+        if (d.name === this.selectedTraditionNoc) return 5
+        if (d.name === "BORDER") return 9
+        return 3
+      })
       .style("fill", "none")
-      .style("stroke", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
+      .style("stroke", d => { 
+        if(d.name === "BORDER") {
+          return "#000000"
+        }
+        return this.color(this.countries[d.name] && this.countries[d.name].continent) })
       //.style("stroke", "#0000ff")
-      .style("opacity", d => {if (d.name === this.selectedTraditionNoc) return 1
-        return 0.7})
+      .style("opacity", d => {
+        if (d.name === this.selectedTraditionNoc) return 1
+        return 0.7
+      })
 
 
 
