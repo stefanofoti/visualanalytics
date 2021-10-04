@@ -16,7 +16,7 @@ export class PcaService {
   avgGdp = {}
   avgPop = {}
   PCADetails = []
-  TradNocs=[]
+  TradNocs = []
 
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.dataService.eventsPerSportDataMessage.subscribe(message => {
@@ -36,11 +36,11 @@ export class PcaService {
       array[j] = temp;
     }
   }
-  computePCATradition(){
+  computePCATradition() {
 
   }
 
-  aggregateData(lines, isNormalize: boolean, isTradition:boolean, end: number, isGdp: boolean, isPop: boolean, medals) {
+  aggregateData(lines, isNormalize: boolean, isTradition: boolean, end: number, isGdp: boolean, isPop: boolean, medals) {
 
 
 
@@ -86,20 +86,20 @@ export class PcaService {
           if (medalSum[currentNOC]) {
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
+                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
                   sportName: currentSportName
                 }
               }
             } else {
               medalSum[currentNOC][currentYear] = {}
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
+                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
                   sportName: currentSportName
                 }
               }
@@ -110,20 +110,20 @@ export class PcaService {
             }
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
+                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
                   sportName: currentSportName
                 }
               }
             } else {
               medalSum[currentNOC][currentYear] = {}
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight)
+                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition? weight*Math.pow(100, 1 / (end - currentYear + 1)) :  weight,
+                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
                   sportName: currentSportName
                 }
               }
@@ -176,12 +176,12 @@ export class PcaService {
             let gdp
             if (isGdp) {
               this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
-              !gdp && (gdp = this.avgGdp[nocName]) 
+              !gdp && (gdp = this.avgGdp[nocName])
               gdp > 0 && (medalSum[noc][year][sport].totalMedals /= gdp)
               if (gdp == 0 || !gdp) {
                 medalSum[noc][year] = undefined
               }
-            }            
+            }
             medalSum[noc][year] && this.PCADetails.push({
               NOC: nocName,
               Year: year,
@@ -214,7 +214,20 @@ export class PcaService {
 
     this.filteredLines = this.filteredLines.filter(l => (l.Year >= q.start && l.Year <= q.end))
 
-    
+    this.filteredLines = this.filteredLines.filter(l => {
+      if (q.isMale && q.isFemale) {
+        return (l.Sex === "M" || l.Sex === "F")
+      }
+      if (q.isFemale) {
+        return l.Sex === "F"
+      }
+      if (q.isMale) {
+        return l.Sex === "M"
+      }
+      return false
+    })
+
+
     // q.medals[0].weight
 
     resLines = this.aggregateData(this.filteredLines, q.isNormalize, q.isTradition, q.end, q.isGdp, q.isPop, q.medals)
@@ -240,7 +253,7 @@ export class PcaService {
 
   async computePca(q: PcaQuery, lines: any[]): Promise<PCAEntry[]> {
     let data = this.filterData(q, lines)
-    if(data.length <= 0){
+    if (data.length <= 0) {
       return []
     }
     console.log("data", data)

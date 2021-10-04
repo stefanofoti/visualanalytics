@@ -23,6 +23,9 @@ body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
 
 }
 
+label {
+    color: white!important
+}
 
 p {
     margin: 0;
@@ -38,7 +41,13 @@ text {
     color: white!important
 }
 .mat-input-element{
-    color: white!important
+    color: white!important;
+    caret-color: white !important;
+}
+
+.mat-custom-light {
+    color: white !important;
+    caret-color: white !important;
 }
 
 .mat-slide-toggle-content{
@@ -46,6 +55,10 @@ text {
 }
 .form-check-label{
     color:white
+}
+
+.mat-autocomplete-panel {
+    background-color: rgba(84,87,107,1);
 }
 
 #svg_parcoords > g > g > g > line{

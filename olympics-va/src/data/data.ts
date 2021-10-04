@@ -33,7 +33,9 @@ export interface Query {
     medalsByPop: boolean,
     medalsByGdp: boolean,
     normalize?: boolean,
-    tradition?: boolean
+    tradition?: boolean,
+    isMale: boolean,
+    isFemale: boolean
 }
 
 export interface PcaQuery {
@@ -45,7 +47,9 @@ export interface PcaQuery {
     isNormalize: boolean,
     isTradition: boolean,
     isGdp: boolean,
-    isPop: boolean
+    isPop: boolean,
+    isMale: boolean,
+    isFemale: boolean
 }
 
 export interface CacheEntry {

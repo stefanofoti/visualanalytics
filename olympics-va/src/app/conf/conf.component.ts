@@ -43,6 +43,10 @@ export class ConfComponent implements OnInit {
   //@Input() @BooleanInput()
   isNormalize: boolean = false //any
 
+  isMaleChecked: boolean = true
+  isFemaleChecked: boolean = true
+  
+
   isTradition: boolean = false
   
   @Input() @BooleanInput()
@@ -236,9 +240,11 @@ export class ConfComponent implements OnInit {
       isNormalize: this.isNormalize,
       isTradition: this.isTradition,
       isGdp: this.isMedalsByGdp,
-      isPop: this.isMedalsByPop
+      isPop: this.isMedalsByPop,
+      isMale: this.isMaleChecked,
+      isFemale: this.isFemaleChecked
     }
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries).then(res  => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked).then(res  => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max
@@ -298,8 +304,8 @@ export class ConfComponent implements OnInit {
     // this.updateData()
   }
 
-  onMedalsCheckboxChange(e) {
-    const medals: FormArray = this.formConf.get('medals') as FormArray;
+  onMedalsCheckboxChange(medal) {
+    /*const medals: FormArray = this.formConf.get('medals') as FormArray;
     let item = this.medalsList.find(({ id }) => id == e.target.value)
     if (e.target.checked) {
       medals.push(new FormControl(e.target.value));
@@ -308,7 +314,9 @@ export class ConfComponent implements OnInit {
       const index = medals.controls.findIndex(x => x.value === e.target.value);
       item && (item.isChecked = false)
       medals.removeAt(index);
-    }
+    }*/
+    console.log(medal)
+    console.log(this.medalsList)
     // this.data.changeSelectedMedals(this.medalsList)
     // this.updateData()
     // console.log(this.medalsList)

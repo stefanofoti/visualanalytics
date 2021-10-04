@@ -183,7 +183,13 @@ export class LoaderService {
         res[sport] = {
           golds: 0,
           silvers: 0,
-          bronzes: 0
+          bronzes: 0,
+          goldsMale: 0,
+          silversMale: 0,
+          bronzesMale: 0,
+          goldsFemale: 0,
+          silversFemale: 0,
+          bronzesFemale: 0
         }
         this.selectedSports.push({
           id: this.selectedSports.length,
@@ -216,10 +222,16 @@ export class LoaderService {
       team = {
         name: line.NOC,
         golds: 0,
+        goldsMale: 0,
+        goldsFemale: 0,
         goldsArr: [],
         silvers: 0,
+        silversMale: 0,
+        silversFemale: 0,
         silversArr: [],
         bronzes: 0,
+        bronzesMale: 0,
+        bronzesFemale: 0,
         bronzesArr: [],
         sports: sportsCP,
         year: line.Year
@@ -228,17 +240,23 @@ export class LoaderService {
     if (line.Medal === "Gold" && !team.goldsArr.includes(line.Event)) {
       team.goldsArr.push(line.Event)
       team.sports[line.Sport].golds++
+      line.Sex === "M" && team.sports[line.Sport].goldsMale++
+      line.Sex === "F" && team.sports[line.Sport].goldsFemale++
       team.golds++
     }
     if (line.Medal === "Silver" && !team.silversArr.includes(line.Event)) {
       team.silversArr.push(line.Event)
       team.sports[line.Sport].silvers++
+      line.Sex === "M" && team.sports[line.Sport].silversMale++
+      line.Sex === "F" && team.sports[line.Sport].silversFemale++
       team.silvers++
     }
     if (line.Medal === "Bronze" && !team.bronzesArr.includes(line.Event)) {
       team.bronzesArr.push(line.Event)
       team.sports[line.Sport].bronzes++
       team.bronzes++
+      line.Sex === "M" && team.sports[line.Sport].bronzesMale++
+      line.Sex === "F" && team.sports[line.Sport].bronzesFemale++
     }
     yearMap[line.NOC] = team
     res[line.Year] = yearMap
@@ -275,8 +293,8 @@ export class LoaderService {
   }
 
 
-  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[]) {
-    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize })
+  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale:boolean) {
+    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale })
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
     if (!ce) {
       let result = this.computeResult({ ...query, tradition: false })
@@ -373,9 +391,21 @@ export class LoaderService {
         let eventsAmount = 1
         this.eventsPerSport[i] && this.eventsPerSport[i][sport] && (eventsAmount = this.eventsPerSport[i][sport])
         // console.log("eventsAmount: " + eventsAmount + ", year: "+ currentYear + ", sport:" + sport)
-        let goldsAmount = data.sports[sport].golds
-        let silversAmount = data.sports[sport].silvers
-        let bronzesAmount = data.sports[sport].bronzes
+        
+        let goldsAmount =0 
+        let silversAmount = 0
+        let bronzesAmount = 0
+
+        if(q.isMale) {
+          goldsAmount += data.sports[sport].goldsMale
+          silversAmount += data.sports[sport].silversMale
+          bronzesAmount += data.sports[sport].bronzesMale   
+        }
+        if(q.isFemale) {
+          goldsAmount += data.sports[sport].goldsFemale
+          silversAmount += data.sports[sport].silversFemale
+          bronzesAmount += data.sports[sport].bronzesFemale   
+        }
 
         if (q.normalize) {
           goldsAmount /= eventsAmount
