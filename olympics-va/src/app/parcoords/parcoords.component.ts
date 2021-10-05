@@ -159,7 +159,7 @@ export class ParcoordsComponent implements OnInit {
       // let data = Object.values(stats)
       let c = this
       // set the dimensions and margins of the graph
-      const margin = { top: 60, right: 15, bottom: 10, left: 35  }
+      const margin = { top: 60, right: 15, bottom: 10, left: 45  }
       // this.width = 1200 - margin.left - margin.right
       // this.height = 300 - margin.top - margin.bottom
 
@@ -252,6 +252,20 @@ export class ParcoordsComponent implements OnInit {
 
   drawAxis() {
     let c = this
+
+    let axisLabelX = -30;
+    let axisLabelY = 200
+    let labelText = 'Total Medals' //da cambiare a seconda dei filtri
+    c.svg.select("#ParcoordChartLabel").remove()
+    c.svg.append("g")
+      .attr('id', "ParcoordChartLabel")
+      .attr('transform', 'translate(' + axisLabelX + ', ' + axisLabelY + ')')
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('transform', 'rotate(-90)')
+      .text(labelText)
+      .style("fill", "white");
+
     var yscale = d3.scaleSqrt()
       .domain([0, c.maxSelectedSports])
       .range([c.height - c.spacing, 0]);
@@ -286,13 +300,13 @@ export class ParcoordsComponent implements OnInit {
       .append("text")
 
       .style("text-anchor", "start")
-      .attr("transform", "rotate(-70)")
+      .attr("transform", "rotate(-75)")
       .attr("y", -9)
       .text(d => {
         typeof d === "number" && Number(d)%1 !== 0 && (d=Number(d).toFixed(4))
         return d as string
       })
-      .style("fill", "rgb(182, 182, 182)")
+      .style("fill", "white");
 
     u.exit().remove()
   }
@@ -326,6 +340,12 @@ export class ParcoordsComponent implements OnInit {
     d3.select("#line-" + c.currentCountryNoc)
       .transition().duration(200)
       .style("opacity", "1")
+    d3.select("#line-" + this.selectedTraditionNoc)
+    .transition().duration(200)
+    .style("opacity", "0.5")
+    d3.select("#line-" + "BORDER")
+    .transition().duration(200)
+    .style("opacity", "0.5")
     if (d.name == "BORDER" || d.name == this.selectedTraditionNoc) {
       d3.select("#line-" + "BORDER")
       .transition().duration(200)

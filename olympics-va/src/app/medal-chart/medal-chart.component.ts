@@ -226,12 +226,10 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
     d3.selectAll(".medalBar")
       .transition().duration(200)
-      //.style("stroke", "lightgrey")
       .style("opacity", "0.2")
     // Second the hovered specie takes its color
     d3.select("#bar-" + c.currentCountryNoc)
       .transition().duration(200)
-      //.style("stroke", /*color(selected_specie)*/ "#00ffff")
       .style("opacity", "1")
 
     
@@ -251,7 +249,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     c.currentCountryName = ""
     d3.selectAll(".medalBar")
       .transition().duration(200).delay(200)
-      //.style("stroke", "#0000ff")
       .style("opacity", 1)
   }
 
@@ -265,6 +262,19 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       }
       return ""
     }))
+
+    var axisLabelX = -40;
+    var axisLabelY = 200;
+    let labelText = 'Total Medals' //da cambiare a seconda dei filtri
+    this.svg.select("#medalChartLabel").remove()
+    this.svg.append("g")
+      .attr('id', "medalChartLabel")
+      .attr('transform', 'translate(' + axisLabelX + ', ' + axisLabelY + ')')
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('transform', 'rotate(-90)')
+      .text(labelText)
+      .style("fill", "white");
 
     //this.x.domain(this.goldsFiltered.map((d) => d.team));
     this.xAxis.call(d3.axisBottom(this.x))
@@ -305,7 +315,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
    //!this.selectedTraditionStatus && d3.select("#bar-" + this.currentCountryNoc)
    //  .style("outline-width", "0px")
-
+    this.svg.selectAll(".medalBar").remove()
     var u = this.svg.selectAll(".medalBar").data(this.statsFiltered)
 
     u
@@ -335,7 +345,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     u
       .exit()
       .remove()
-
   }
 
 

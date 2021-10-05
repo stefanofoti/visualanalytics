@@ -486,17 +486,21 @@ return response
 computeAffinity(res, sel) {
   let mostSimilar = {}
   let minDeltas = {}
+  console.log("res", res)
   Object.keys(res).forEach(noc => {
     //if(noc!=sel){
     let totalDelta = 0
     Object.keys(res[noc]).forEach(sport => {
-      //if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total") {
+      // if (sport != "bronzes" && sport != "silvers" && sport != "golds" && sport != "name" && sport != "total") {
+      
+      // }
       if (typeof res[noc][sport] === "object") {
         let weight = res[sel][sport].total + 0.1
         let delta = Math.abs((res[noc][sport].total - res[sel][sport].total) * weight)
         totalDelta += delta
       }
     })
+    console.log("delta: ",minDeltas, totalDelta, noc)
     if (Object.keys(minDeltas).length < 5) {
       minDeltas[noc] = totalDelta
     } else {

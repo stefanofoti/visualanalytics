@@ -20,7 +20,7 @@ div.scroll
 {
 height:"100%";
 margin: "10px";
-overflow:scroll;
+overflow:auto;
 float: "none";
 }
 
