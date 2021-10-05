@@ -265,6 +265,7 @@ export class ParcoordsComponent implements OnInit {
     u.enter()
       .append("g")
       .attr("class", "parcoord-axis")
+      //.merge(u)
       // I translate this element to its right position on the x axis
       .attr("transform", function (d) {
 
@@ -363,7 +364,7 @@ export class ParcoordsComponent implements OnInit {
     c.drawAxis()
 
 
-    let statsCopy = ld.cloneDeep(c.stats)
+    let statsCopy = c.stats
 
     if (this.selectedTraditionNoc) {
       let index = statsCopy.findIndex(e => e.name === this.selectedTraditionNoc)
@@ -375,6 +376,7 @@ export class ParcoordsComponent implements OnInit {
     }
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
+    c.svg.selectAll(".parcoord-line").remove()
     c.svg.selectAll(".parcoord-line")
       .data(statsCopy)
       .join("path")
@@ -384,7 +386,7 @@ export class ParcoordsComponent implements OnInit {
       .on("mouseleave", (event, d) => this.doNotHighlight(event, d, c))
 
 
-    var u = c.svg.selectAll(".parcoord-line").data(statsCopy)
+      var u = c.svg.selectAll(".parcoord-line").data(statsCopy)
 
     u
       .enter()
