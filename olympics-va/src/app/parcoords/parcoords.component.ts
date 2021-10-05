@@ -133,6 +133,14 @@ export class ParcoordsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.addEventListener("resize", this.resize.bind(this));
+  }
+
+  resize(): void {
+    d3.select("#svg_parcoords").remove()
+    this.neverPlotted = true
+    this.firstPlot()
+    this.update()
   }
 
   // getData(): void {
@@ -151,10 +159,17 @@ export class ParcoordsComponent implements OnInit {
       // let data = Object.values(stats)
       let c = this
       // set the dimensions and margins of the graph
-      const margin = { top: 60, right: 50, bottom: 10, left: 30 }
+      const margin = { top: 60, right: 25, bottom: 10, left: 25 }
       // this.width = 1200 - margin.left - margin.right
-      this.height = 300 - margin.top - margin.bottom
+      // this.height = 300 - margin.top - margin.bottom
 
+      this.width = document.getElementById("div_parcoord").clientWidth;
+      this.height = document.getElementById("div_parcoord").clientHeight;
+
+      // this.width = this.width - margin.left - margin.right
+      this.height = this.height - margin.top - margin.bottom
+
+      
       this.color = d3.scaleOrdinal()
         .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
         .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
@@ -163,13 +178,15 @@ export class ParcoordsComponent implements OnInit {
       this.svg = d3.select("#div_parcoord")
         .append("svg")
         .attr("id", "svg_parcoords")
-        .attr("width", "100%")
+        //.attr("width", "100%")
         .attr("height", "100%")
-        .attr('viewBox', '0 0 2080 300')
+        .attr("width", this.width)
+        //.attr("height",this.height)
+        // .attr('viewBox', '0 0 2080 300')
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-      this.width = document.getElementById("svg_parcoords").clientWidth
+      // this.width = document.getElementById("svg_parcoords").clientWidth
       //this.height = document.getElementById("svg_parcoords").clientHeight
       //this.computeXY()
       //this.drawAxis()
@@ -228,7 +245,7 @@ export class ParcoordsComponent implements OnInit {
     }
 
     c.x = d3.scalePoint()
-      .range([0, c.width - 79])
+      .range([0, c.width - 50])
       .domain(c.dimensions);
     //})
   }
