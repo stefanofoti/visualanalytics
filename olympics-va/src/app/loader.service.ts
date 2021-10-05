@@ -313,6 +313,16 @@ export class LoaderService {
       tradResAffinity.stats = this.computeAffinity(tradResAffinity.stats, this.selectedTradition)
       let selectedStats: Object = tradResAffinity.stats[this.selectedTradition]
 
+      let max = 0
+
+      Object.values(tradResAffinity.stats).forEach(element => {
+        typeof element === "object" && Object.values(element).forEach(sport => {
+          sport.total > max && (max = sport.total)
+        });
+      });
+
+
+
       Object.keys(selectedStats).forEach(k => {
         typeof selectedStats[k] === "object" && (selectedStats[k].sport = k)
       })
@@ -321,6 +331,7 @@ export class LoaderService {
       values.sort((a, b) => b.total - a.total)
       let sortedSports = values.map(v => v && v.sport)
       tradResAffinity.sportsList = sortedSports
+      tradResAffinity.maxSingleSport = max
       return tradResAffinity
     }
     return ce.res

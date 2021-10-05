@@ -159,7 +159,7 @@ export class ParcoordsComponent implements OnInit {
       // let data = Object.values(stats)
       let c = this
       // set the dimensions and margins of the graph
-      const margin = { top: 60, right: 25, bottom: 10, left: 25 }
+      const margin = { top: 60, right: 15, bottom: 10, left: 35  }
       // this.width = 1200 - margin.left - margin.right
       // this.height = 300 - margin.top - margin.bottom
 
@@ -288,7 +288,10 @@ export class ParcoordsComponent implements OnInit {
       .style("text-anchor", "start")
       .attr("transform", "rotate(-70)")
       .attr("y", -9)
-      .text(d => d as string)
+      .text(d => {
+        typeof d === "number" && Number(d)%1 !== 0 && (d=Number(d).toFixed(4))
+        return d as string
+      })
       .style("fill", "rgb(182, 182, 182)")
 
     u.exit().remove()
