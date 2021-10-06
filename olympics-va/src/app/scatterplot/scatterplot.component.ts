@@ -105,7 +105,8 @@ export class ScatterplotComponent implements OnInit {
       "NOC: " + e.details["NOC"] + "<br>" +
       "Sport: " + e.details["Sport"] + "<br>" +
       "Year: " + e.details["Year"] + "<br>" +
-      "Medals:" + e.details["Totmedals"] + "<br>"
+      "Medals:" + e.details["Totmedals"] + "<br>" +
+      "Sex:" + e.details["Sex"] + "<br>"
       if (e.details["Gdp"]) {
         result += ("Gdp: " + e.details["Gdp"] + "<br>")
       }

@@ -72,6 +72,7 @@ export class PcaService {
         let currentSport = Number(lines[elem].Sport_value)
         let currentSportName = lines[elem].Sport || ""
         let currentMedaltype = lines[elem].Medal
+        let currentSex = lines[elem].Sex_value
         let weight = 1
         if (currentMedaltype === "Gold") {
           weight = goldWeigth
@@ -86,47 +87,39 @@ export class PcaService {
           if (medalSum[currentNOC]) {
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
+                if (medalSum[currentNOC][currentYear][currentSport][currentSex]) {
+                  medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
+                }
+                else {
+                  medalSum[currentNOC][currentYear][currentSport][currentSex] = {
+                    totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
+                    sportName: currentSportName
+                  }
+                }
               } else {
-                medalSum[currentNOC][currentYear][currentSport] = {
+                medalSum[currentNOC][currentYear][currentSport] = {}
+                medalSum[currentNOC][currentYear][currentSport][currentSex] = {
                   totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
                   sportName: currentSportName
                 }
               }
             } else {
               medalSum[currentNOC][currentYear] = {}
-              if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
-              } else {
-                medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
-                  sportName: currentSportName
-                }
+              medalSum[currentNOC][currentYear][currentSport] = {}
+              medalSum[currentNOC][currentYear][currentSport][currentSex] = {
+                totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
+                sportName: currentSportName
               }
             }
           } else {
             medalSum[currentNOC] = {
               noc: currentNOCName
             }
-            if (medalSum[currentNOC][currentYear]) {
-              if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
-              } else {
-                medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
-                  sportName: currentSportName
-                }
-              }
-            } else {
-              medalSum[currentNOC][currentYear] = {}
-              if (medalSum[currentNOC][currentYear][currentSport]) {
-                medalSum[currentNOC][currentYear][currentSport].totalMedals += (isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight)
-              } else {
-                medalSum[currentNOC][currentYear][currentSport] = {
-                  totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
-                  sportName: currentSportName
-                }
-              }
+            medalSum[currentNOC][currentYear] = {}
+            medalSum[currentNOC][currentYear][currentSport] = {}
+            medalSum[currentNOC][currentYear][currentSport][currentSex] = {
+              totalMedals: isTradition ? weight * Math.pow(100, 1 / (end - currentYear + 1)) : weight,
+              sportName: currentSportName
             }
           }
         }
@@ -139,9 +132,6 @@ export class PcaService {
 
       Object.keys(medalSum[noc]).forEach(year => {
         if (!isNaN(Number(year))) {
-
-
-
           let val
 
           if (isPop) {
@@ -156,47 +146,49 @@ export class PcaService {
               }
             }
           }
-
           Object.keys(medalSum[noc][year]).forEach(sport => {
-            if (isNormalize && medalSum[noc][year]) {
-              let eventsAmount = 1
-              let currentSportName = medalSum[noc][year][sport].sportName
-              this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmount = this.eventsPerSport[year][currentSportName])
-              medalSum[noc][year][sport].totalMedals /= eventsAmount
-            }
-            let population
-            if (isPop) {
-              this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
-              !population && (population = this.avgPop[this.loaderService.countries[nocName].name])
-              population > 0 && (medalSum[noc][year][sport].totalMedals /= population)
-              if (population == 0 || !population) {
-                medalSum[noc][year] = undefined
+            Object.keys(medalSum[noc][year][sport]).forEach(sex => {
+              if (isNormalize && medalSum[noc][year]) {
+                let eventsAmount = 1
+                let currentSportName = medalSum[noc][year][sport][sex].sportName
+                this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmount = this.eventsPerSport[year][currentSportName])
+                medalSum[noc][year][sport].totalMedals /= eventsAmount
               }
-            }
-            let gdp
-            if (isGdp) {
-              this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
-              !gdp && (gdp = this.avgGdp[nocName])
-              gdp > 0 && (medalSum[noc][year][sport].totalMedals /= gdp)
-              if (gdp == 0 || !gdp) {
-                medalSum[noc][year] = undefined
+              let population
+              if (isPop) {
+                this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
+                !population && (population = this.avgPop[this.loaderService.countries[nocName].name])
+                population > 0 && (medalSum[noc][year][sport][sex].totalMedals /= population)
+                if (population == 0 || !population) {
+                  medalSum[noc][year] = undefined
+                }
               }
-            }
-            medalSum[noc][year] && this.PCADetails.push({
-              NOC: nocName,
-              Year: year,
-              Sport: medalSum[noc][year][sport].sportName,
-              Totmedals: medalSum[noc][year][sport].totalMedals,
-              Gdp: gdp,
-              Pop: population
+              let gdp
+              if (isGdp) {
+                this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
+                !gdp && (gdp = this.avgGdp[nocName])
+                gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                if (gdp == 0 || !gdp) {
+                  medalSum[noc][year] = undefined
+                }
+              }
+              medalSum[noc][year] && this.PCADetails.push({
+                NOC: nocName,
+                Year: year,
+                Sport: medalSum[noc][year][sport][sex].sportName,
+                Totmedals: medalSum[noc][year][sport][sex].totalMedals,
+                Gdp: gdp,
+                Pop: population,
+                Sex: Number(sex) == 0? "M": "F"
+              })
+              medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
             })
-            medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), medalSum[noc][year][sport].totalMedals])
           })
         }
       })
     })
-    console.log("details lines", this.PCADetails)
-    console.log("aggregatelines", aggregateLines)
+    // console.log("details lines", this.PCADetails)
+    // console.log("aggregatelines", aggregateLines)
     return aggregateLines
   }
 
@@ -204,6 +196,7 @@ export class PcaService {
 
     let resLines: any[]
     this.filteredLines = lines
+    console.log("check", this.filteredLines)
     if (q.selectedNocs.length > 0) {
       this.filteredLines = this.filteredLines.filter(l => q.selectedNocs.includes(l.NOC))
     }
@@ -227,14 +220,8 @@ export class PcaService {
       return false
     })
 
-
-    // q.medals[0].weight
-
     resLines = this.aggregateData(this.filteredLines, q.isNormalize, q.isTradition, q.end, q.isGdp, q.isPop, q.medals)
-
     resLines.length > 0 && (resLines = this.normalizeLines(resLines))
-
-    // resLines.filter(l => !isNaN(l[0]) && !isNaN(l[1]) && !isNaN(l[2]) && !isNaN(l[3]))
 
     return resLines
   }
@@ -264,7 +251,8 @@ export class PcaService {
             NOC: n,
             Year: "0",
             Sport: " - ",
-            Totmedals: 0
+            Totmedals: 0,
+            Sex: " - "
           }
         } 
       })
@@ -272,7 +260,6 @@ export class PcaService {
       this.dataService.pcaDataReady(result)
       return result
     }
-    console.log("data", data)
 
 
     
@@ -310,18 +297,6 @@ export class PcaService {
       // Web workers are not supported in this environment.
       // You should add a fallback so that your program still executes correctly.
     }
-
-
-    /*
-    // var data = [[40,50,60,20,70],[50,70,60,25,90],[80,70,90,30,60],[50,60,80,50,50]];
-    var vectors = PCA.getEigenVectors(data);
-    let m = [vectors[0].vector, vectors[1].vector, vectors[2].vector]
-    let mt = PCA.transpose(m)
-    //let adjData = PCA.computeAdjustedData(data, vectors)
-    // console.log(adjData)
-    let components = PCA.multiply(data, mt)
-*/
-
     return []
   }
 }
