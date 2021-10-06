@@ -25,6 +25,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AboutComponent } from './about/about.component';
 import { ScatterplotComponent } from './scatterplot/scatterplot.component'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { ScatterplotComponent } from './scatterplot/scatterplot.component'
     MatAutocompleteModule,
     MatCheckboxModule,
     MatInputModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressSpinnerModule
+
   ],
   providers: [
     DataService,

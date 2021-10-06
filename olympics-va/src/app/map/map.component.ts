@@ -38,9 +38,14 @@ export class MapComponent implements OnInit {
   highlightToggle: boolean = true
   lastSelected: string
 
+  actionsEnabled: boolean = false
+
   constructor(private loaderService: LoaderService, private dataService: DataService) {
     dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
+    dataService.pcaDataReadyMessage.subscribe(message => message && (this.actionsEnabled = true))
+    dataService.updateReadinessMessage.subscribe(message => message && message.length > 0 && (this.actionsEnabled = false))
+
   }
 
   ngOnInit(): void {
@@ -449,30 +454,33 @@ export class MapComponent implements OnInit {
   }
 
   onClick(e, d, context){
-    console.log("onClick called")
-    let selectedCountry = d.properties.NOC 
-    console.log(selectedCountry)
-    if(selectedCountry!==this.lastSelected){
-      this.highlightToggle = true
-      this.lastSelected = selectedCountry
-      this.doNotHighlight(e, d, context)
-      this.highlight(e,d,context)
-      this.highlightToggle = false
-      context.dataService.updateTraditionSelection({
-        noc: selectedCountry,
-        currentlySelected: true,
-        source: MapComponent.name
-      })
-
-    }else{
-      this.highlightToggle = true
-      this.doNotHighlight(e, d, context)
-      this.lastSelected = undefined
-      context.dataService.updateTraditionSelection({
-        noc: selectedCountry,
-        currentlySelected: false,
-        source: MapComponent.name
-      })
+    // TODO check paese selezionato ha partecipato
+    if(this.actionsEnabled) {
+      console.log("onClick called")
+      let selectedCountry = d.properties.NOC 
+      console.log(selectedCountry)
+      if(selectedCountry!==this.lastSelected){
+        this.highlightToggle = true
+        this.lastSelected = selectedCountry
+        this.doNotHighlight(e, d, context)
+        this.highlight(e,d,context)
+        this.highlightToggle = false
+        context.dataService.updateTraditionSelection({
+          noc: selectedCountry,
+          currentlySelected: true,
+          source: MapComponent.name
+        })
+  
+      }else{
+        this.highlightToggle = true
+        this.doNotHighlight(e, d, context)
+        this.lastSelected = undefined
+        context.dataService.updateTraditionSelection({
+          noc: selectedCountry,
+          currentlySelected: false,
+          source: MapComponent.name
+        })
+      }
     }
   }
 

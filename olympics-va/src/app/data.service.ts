@@ -46,7 +46,7 @@ export class DataService {
   private traditionSelectionSource = new BehaviorSubject(TraditionSel)
   traditionSelectionMessage = this.traditionSelectionSource.asObservable()
 
-  private pcaDataReadySource = new BehaviorSubject(PCAData)
+  private pcaDataReadySource = new BehaviorSubject(undefined)
   pcaDataReadyMessage = this.pcaDataReadySource.asObservable()
 
   private avgGdpPopSource = new BehaviorSubject({})

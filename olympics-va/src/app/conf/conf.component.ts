@@ -74,6 +74,8 @@ export class ConfComponent implements OnInit {
     ceil: requiredYearRange[1]
   };
 
+  actionsEnabled: boolean = false
+
   constructor(private formBuilder: FormBuilder, private data: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.formConf = this.formBuilder.group({
       teams: this.formBuilder.array([], [Validators.required]),
@@ -101,6 +103,11 @@ export class ConfComponent implements OnInit {
       this.isOlympicsDataReady && (this.traditionCountry = message.noc)
       this.isOlympicsDataReady && (this.isTradition = message.currentlySelected)
       this.isOlympicsDataReady && this.updateData()
+    })
+    data.pcaDataReadyMessage.subscribe(message => {
+      console.log("pca data: ", message)
+      message && (this.actionsEnabled = true)
+    
     })
 
 
@@ -222,7 +229,7 @@ export class ConfComponent implements OnInit {
   }
 
   updateData() {
-    
+    this.actionsEnabled = false
     console.log("conf: Invoke updateData()")
     let selMedals: string[] = []
     this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
@@ -251,15 +258,15 @@ export class ConfComponent implements OnInit {
       let maxSingleSport = r.maxSingleSport
       this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
       console.log("conf: updateData() result: ", stats)
-      // if (this.isTradition){
-      //   q.selectedNocs = ld.cloneDeep(Object.keys(stats))
-      //   this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
-      //     let x: PCAEntry[] = res
-      //     console.log("plotting pca: sending readiness...", x)
-      //     this.data.pcaDataReady(x)
-      //   })
-      // }      
+
+      if (this.isTradition){
+        q.selectedNocs = ld.cloneDeep(Object.keys(stats))
+      }      
+      this.pcaService.computePca(q, this.loaderService.csvLines)
+
+
     })
+
     // if (!this.isTradition) {
     //   this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
     //     let x: PCAEntry[] = res
@@ -267,6 +274,7 @@ export class ConfComponent implements OnInit {
     //     this.data.pcaDataReady(x)
     //   })
     // }
+
   }
 
   toggleSelectionCountry(country: Country) {

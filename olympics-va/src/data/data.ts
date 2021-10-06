@@ -101,7 +101,7 @@ export interface PCAEntry {
     x: number
     y: number
     z: number
-    details?: string
+    details?: any
     group?: string
 }
 

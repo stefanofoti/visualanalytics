@@ -254,10 +254,65 @@ export class PcaService {
   async computePca(q: PcaQuery, lines: any[]): Promise<PCAEntry[]> {
     let data = this.filterData(q, lines)
     if (data.length <= 0) {
-      return []
+
+      let result: PCAEntry[] = q.selectedNocs.map(n => {
+        return {
+          x: 0,
+          y: 0,
+          z: 0,
+          details: {
+            NOC: n,
+            Year: "0",
+            Sport: " - ",
+            Totmedals: 0
+          }
+        } 
+      })
+
+      this.dataService.pcaDataReady(result)
+      return result
     }
     console.log("data", data)
 
+
+    
+    if (typeof Worker !== 'undefined') {
+      // Create a new
+      const worker = new Worker(new URL('./pca.worker', import.meta.url));
+      
+      worker.onmessage = ({ data }) => {
+        console.log(`page got message: ${data}`);
+        let components = data
+        console.log(components)
+        console.log("components", components)
+        let result = components.map((c, i) => {
+          let r: PCAEntry = {
+            x: c[0],
+            y: c[1],
+            z: c[2],
+            details: this.PCADetails[i]
+          }
+          return r
+        })
+        console.log("pcaresult", result)
+        // return result
+
+        let x: PCAEntry[] = result
+        console.log("plotting pca: sending readiness...", x)
+        this.dataService.pcaDataReady(x)
+        worker.terminate()
+
+      };
+
+      worker.postMessage(data);
+    } else {
+      alert("PCA not supported")
+      // Web workers are not supported in this environment.
+      // You should add a fallback so that your program still executes correctly.
+    }
+
+
+    /*
     // var data = [[40,50,60,20,70],[50,70,60,25,90],[80,70,90,30,60],[50,60,80,50,50]];
     var vectors = PCA.getEigenVectors(data);
     let m = [vectors[0].vector, vectors[1].vector, vectors[2].vector]
@@ -265,19 +320,8 @@ export class PcaService {
     //let adjData = PCA.computeAdjustedData(data, vectors)
     // console.log(adjData)
     let components = PCA.multiply(data, mt)
-    console.log(components)
-    console.log("components", components)
-    let result = components.map((c, i) => {
-      let r: PCAEntry = {
-        x: c[0],
-        y: c[1],
-        z: c[2],
-        details: this.PCADetails[i]
-      }
-      return r
-    })
-    console.log("pcaresult", result)
-    return result
-    // return []
+*/
+
+    return []
   }
 }

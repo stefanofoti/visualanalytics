@@ -26,9 +26,14 @@ export class ScatterplotComponent implements OnInit {
 
   plotted: boolean = false
 
+  showSpinner: boolean = false
+
   constructor(private dataService: DataService, private loaderService: LoaderService) {
-    this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => this.dataReady(message))
+    this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => message && this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
+    dataService.updateReadinessMessage.subscribe(message => message && message.length > 0 && (this.showSpinner = true))
+
+
 
   }
 
@@ -77,9 +82,10 @@ export class ScatterplotComponent implements OnInit {
   }
 
   dataReady(entries: PCAEntry[]): void {
+    this.showSpinner = false
     console.log("plotting: data ready...")
     this.entries = entries
-    this.entries.length > 0 && this.plot3d()
+    this.plot3d()
   }
 
   ngOnInit(): void {
