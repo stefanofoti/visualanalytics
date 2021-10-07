@@ -26,6 +26,8 @@ export class LoaderService {
 
   gdp = {}
 
+  traditionDeltas = {}
+
   cache: Array<CacheEntry> = []
 
   private avgGdpDict = {}
@@ -503,6 +505,8 @@ computeAffinity(res, sel) {
     }
     //}
   })
+
+  this.traditionDeltas = minDeltas
   console.log("most similar Traditions: ", minDeltas)
   Object.keys(minDeltas).forEach(noc => {
     mostSimilar[noc] = res[noc]

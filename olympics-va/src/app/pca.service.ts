@@ -5,7 +5,7 @@ import * as hash from 'object-hash'
 import * as mjs from 'mathjs'
 import { LoaderService } from './loader.service';
 import { DataService } from './data.service';
-import { filter } from 'mathjs';
+import { e, filter } from 'mathjs';
 import * as ld from "lodash";
 
 @Injectable({
@@ -155,7 +155,7 @@ export class PcaService {
             }
           }
           Object.keys(medalSum[noc][year]).forEach(sport => {
-            Object.keys(medalSum[noc][year][sport]).forEach(sex => {
+            medalSum[noc][year] && Object.keys(medalSum[noc][year][sport]).forEach(sex => {
               if (q.isNormalize && medalSum[noc][year]) {
                 let eventsAmount = 1
                 let currentSportName = medalSum[noc][year][sport][sex].sportName
@@ -341,7 +341,11 @@ export class PcaService {
 
         let x: PCAEntry[] = result
         console.log("plotting pca: sending readiness...", x)
-        localStorage.setItem(pcaId, JSON.stringify(result));
+        try {
+          localStorage.setItem(pcaId, JSON.stringify(result));          
+        } catch (error) {
+          console.log(error)
+        }
         this.dataService.pcaDataReady(x)
         worker.terminate()
 

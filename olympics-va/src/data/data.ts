@@ -69,8 +69,8 @@ export interface Sport {
 export interface Medal {
     id: string;
     name: string;
-    weight: number
     isChecked: boolean;
+    weight?: number;
 }
 
 export interface Country {
@@ -1236,9 +1236,9 @@ export const NocsList: string[] = [
 ]
 
 export const Medals: Medal[] = [
-    { id: golds, isChecked: true, name: 'Golds', weight: 1},
-    { id: silvers, isChecked: true, name: 'Silvers', weight: 1 },
-    { id: bronzes, isChecked: true, name: 'Bronzes', weight: 1 },
+    { id: golds, isChecked: true, name: 'Golds' },
+    { id: silvers, isChecked: true, name: 'Silvers' },
+    { id: bronzes, isChecked: true, name: 'Bronzes' },
 ];
 
 export const StatsPieChart: any[] = [

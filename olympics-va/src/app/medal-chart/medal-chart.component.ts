@@ -34,7 +34,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   selectedTraditionNoc: string
   selectedTraditionStatus: boolean
-  
+
 
   countries: any = {}
   color: any = {}
@@ -63,7 +63,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   onMouseSelection(message: MouseSelection) {
     console.log("medalchart mouse selection event: ", message)
-    if(message.source && message.source !== MedalChartComponent.name) {
+    if (message.source && message.source !== MedalChartComponent.name) {
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
 
     }
@@ -106,7 +106,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .append('svg')
       .attr('width', '100%')
       .attr('height', '100%')
-      //.attr('viewBox', '0 0 900 500');
+    //.attr('viewBox', '0 0 900 500');
     this.g = this.svg.append('g')
       .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')');
   }
@@ -134,6 +134,17 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // this.goldsFiltered = this.golds.filter(t => this.teamsList.some(t2 => t.team == t2.name && t2.isChecked));
     this.statsFiltered = this.selectedCountries.map(c => this.stats[c])
     this.statsFiltered = this.sort_object_of_objects(this.statsFiltered, "total")
+    if (this.selectedTraditionNoc) {
+      let traditionDeltas = this.loaderService.traditionDeltas
+      let traditionDeltasArray = Object.keys(traditionDeltas).map(noc => {
+        return {
+          noc: noc,
+          value: traditionDeltas[noc]
+        }
+      })
+      traditionDeltasArray.sort((a,b) => a.value-b.value)
+      this.statsFiltered = traditionDeltasArray.map(elem => this.statsFiltered.find(s => s.name === elem.noc))
+    }
     this.statsFiltered = this.statsFiltered.slice(0, 25)
     console.log("medal chart stats filtered:")
     console.log(this.statsFiltered)
@@ -142,38 +153,38 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   sort_object_of_objects(data, attr) {
     let arr = [];
     for (let prop in data) {
-        if (data.hasOwnProperty(prop)) {
-            let obj = {
-              tempSortName: 0
-            };
-            if (data[prop]){
-              obj[prop] = data[prop];
-              obj.tempSortName = Number(data[prop][attr]);
-              arr.push(obj)
-            }
+      if (data.hasOwnProperty(prop)) {
+        let obj = {
+          tempSortName: 0
+        };
+        if (data[prop]) {
+          obj[prop] = data[prop];
+          obj.tempSortName = Number(data[prop][attr]);
+          arr.push(obj)
         }
+      }
     }
 
-    arr.sort(function(a, b) {
-        let at = a.tempSortName,
-            bt = b.tempSortName;
-        return at > bt ? -1 : ( at < bt ? 1 : 0 );
+    arr.sort(function (a, b) {
+      let at = a.tempSortName,
+        bt = b.tempSortName;
+      return at > bt ? -1 : (at < bt ? 1 : 0);
     });
 
     var result = [];
-    for (let i=0, l=arr.length; i<l; i++) {
-        var obj = arr[i];
-        delete obj.tempSortName;
-        for (var prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
-                var id = prop;
-            }
+    for (let i = 0, l = arr.length; i < l; i++) {
+      var obj = arr[i];
+      delete obj.tempSortName;
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          var id = prop;
         }
-        let item = obj[id];
-        result.push(item);
+      }
+      let item = obj[id];
+      result.push(item);
     }
     return result;
-}
+  }
 
   initChart() {
     this.firstRun = false
@@ -183,8 +194,8 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     var margin = { top: 30, right: 30, bottom: 70, left: 60 }
 
     this.color = d3.scaleOrdinal()
-        .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-        .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+      .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
 
     // append the svg object to the body of the page
     this.svg = d3Sel.select("#barChartMedals")
@@ -193,7 +204,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .attr('height', '100%')
       .attr('viewBox', '0 0 790 420')
       .append("g")
-      .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Initialize the X axis
     this.x = d3.scaleBand()
@@ -210,7 +221,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   }
 
   highlight(ev, d, c) {
-    if (typeof d === 'string'){
+    if (typeof d === 'string') {
       //TODO if Noc received is in the bars
       c.currentCountryNoc = d
     } else {
@@ -232,13 +243,13 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .transition().duration(200)
       .style("opacity", "1")
 
-    
+
 
 
   }
 
-  doNotHighlight(ev, d, c){
-    if (typeof d !== 'string'){
+  doNotHighlight(ev, d, c) {
+    if (typeof d !== 'string') {
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: c.currentCountryNoc,
@@ -285,13 +296,13 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     /////// Now we do sorting, could just return first value
     let max = 0
     this.statsFiltered.forEach(element => {
-      if(element) {
+      if (element) {
         let sum = 0
         // this.selectedMedals.includes(golds) && (sum += element.golds)
         // this.selectedMedals.includes(silvers) && (sum += element.silvers)
         // this.selectedMedals.includes(bronzes) && (sum += element.bronzes)
         sum += element.total
-        sum > max && (max = sum)  
+        sum > max && (max = sum)
       }
     })
     ////////
@@ -313,8 +324,8 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     //var u = this.svg.select("#barChartMedals").selectAll(".bar").data(this.goldsFiltered)
     // var u = this.svg.select("#barChartMedals").data(this.goldsFiltered)
 
-   //!this.selectedTraditionStatus && d3.select("#bar-" + this.currentCountryNoc)
-   //  .style("outline-width", "0px")
+    //!this.selectedTraditionStatus && d3.select("#bar-" + this.currentCountryNoc)
+    //  .style("outline-width", "0px")
     this.svg.selectAll(".medalBar").remove()
     var u = this.svg.selectAll(".medalBar").data(this.statsFiltered)
 
@@ -334,9 +345,9 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .attr("fill", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
       .style("outline-color", "initial")
       .style("outline-style", "solid")
-      .style("outline-width", (d) => this.selectedTraditionNoc === d.name ? "3px": "0px")
+      .style("outline-width", (d) => this.selectedTraditionNoc === d.name ? "3px" : "0px")
 
-      .attr('id', d => 'bar-'+ d.name)
+      .attr('id', d => 'bar-' + d.name)
       // .style("outline", (d) => this.currentCountryNoc === d.name ? "3px solid !important;": "10px solid !important;")
       .transition() // and apply changes to all of them
       .duration(1000)

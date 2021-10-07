@@ -232,16 +232,17 @@ export class ConfComponent implements OnInit {
     this.actionsEnabled = false
     console.log("conf: Invoke updateData()")
     let selMedals: string[] = []
-    this.medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
+    let medalsList = ld.cloneDeep(this.medalsList)
+    medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
+    medalsList.forEach (m => m.weight = m.weight ? Number(m.weight) : 1)
     let selSports: string[] = this.selectedSports.map(s => s.name)
     let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
-    this.medalsList.forEach (m => m.weight = Number(m.weight))
     console.log("conf. is tradition: ", this.isTradition)
-    console.log("conf. medalsList:",this.medalsList)
+    console.log("conf. medalsList:",medalsList)
     let q: PcaQuery = {
       start: this.yearRange[0],
       end: this.yearRange[1],
-      medals: this.medalsList,
+      medals: medalsList,
       selectedSports: selSports,
       selectedNocs: selCountries,
       isNormalize: this.isNormalize,
@@ -251,7 +252,7 @@ export class ConfComponent implements OnInit {
       isMale: this.isMaleChecked,
       isFemale: this.isFemaleChecked
     }
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], this.medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked).then(res  => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked).then(res  => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max
@@ -323,11 +324,8 @@ export class ConfComponent implements OnInit {
       item && (item.isChecked = false)
       medals.removeAt(index);
     }*/
-    console.log(medal)
-    console.log(this.medalsList)
     // this.data.changeSelectedMedals(this.medalsList)
     // this.updateData()
-    // console.log(this.medalsList)
   }
 
 
@@ -338,8 +336,6 @@ export class ConfComponent implements OnInit {
   }
 
   submit() {
-    console.log("update required");
-    console.log(this.medalsList)
     this.updateData()
   }
 
@@ -356,6 +352,9 @@ export class ConfComponent implements OnInit {
   }
 
   numberOnly(event, medal): boolean {
+    if(!medal.weight){
+      return !isNaN(event.key)
+    }
     return !isNaN(medal.weight+event.key)
   }
 
