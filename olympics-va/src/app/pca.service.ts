@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import PCA from 'pca-js';
 import { CountryGdp, PCAEntry, PcaQuery } from 'src/data/data';
-import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
+import * as hash from 'object-hash'
 import * as mjs from 'mathjs'
 import { LoaderService } from './loader.service';
 import { DataService } from './data.service';
 import { filter } from 'mathjs';
+import * as ld from "lodash";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -57,6 +59,7 @@ export class PcaService {
       if (lines[elem].Medal !== "NA" && lines[elem].Medal !== gold && lines[elem].Medal !== silver && lines[elem].Medal !== bronze) {
         let currentNOC = Number(lines[elem].NOC_value)
         let currentNOCName = lines[elem].NOC
+        let currentEventName = lines[elem].Event
         let currentYear = Number(lines[elem].Year)
         let currentSport = Number(lines[elem].Sport_value)
         let currentSportName = lines[elem].Sport || ""
@@ -72,18 +75,30 @@ export class PcaService {
         if (currentMedaltype === "Bronze") {
           weight = bronzeWeight
         }
+        let medal = {
+          event: currentEventName,
+          type: currentMedaltype
+        }
         if (currentNOC) {
           if (medalSum[currentNOC]) {
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
                 if (medalSum[currentNOC][currentYear][currentSport][currentSex]) {
-                  medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedals += (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight)
+
+                  let medals: [] = medalSum[currentNOC][currentYear][currentSport][currentSex].medals
+
+                  let res = medals.find(m => (m as any).event === medal.event && (m as any).type === medal.type)
+                  if (!res) {
+                    medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedals += (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight)
+                    medalSum[currentNOC][currentYear][currentSport][currentSex].medals.push(medal)
+                  }
                 }
                 else {
                   medalSum[currentNOC][currentYear][currentSport][currentSex] = {
                     totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
                     sportName: currentSportName
                   }
+                  medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
                 }
               } else {
                 medalSum[currentNOC][currentYear][currentSport] = {}
@@ -91,6 +106,7 @@ export class PcaService {
                   totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
                   sportName: currentSportName
                 }
+                medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
               }
             } else {
               medalSum[currentNOC][currentYear] = {}
@@ -99,6 +115,8 @@ export class PcaService {
                 totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
                 sportName: currentSportName
               }
+              medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
+
             }
           } else {
             medalSum[currentNOC] = {
@@ -110,6 +128,7 @@ export class PcaService {
               totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
               sportName: currentSportName
             }
+            medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
           }
         }
       }
@@ -168,7 +187,7 @@ export class PcaService {
                 Totmedals: medalSum[noc][year][sport][sex].totalMedals,
                 Gdp: gdp,
                 Pop: population,
-                Sex: Number(sex) == 0? "M": "F"
+                Sex: Number(sex) == 0 ? "M" : "F"
               })
               medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
             })
@@ -181,22 +200,22 @@ export class PcaService {
     let removeSex: Number
     let removeArray = []
 
-    if(q.selectedNocs.length == 1){
-      removeNocs = 0  
-      removeArray.push(removeNocs)              
+    if (q.selectedNocs.length == 1) {
+      removeNocs = 0
+      removeArray.push(removeNocs)
     }
-    if(q.selectedSports.length == 1){
+    if (q.selectedSports.length == 1) {
       removeSports = 2
-      removeArray.push(removeSports) 
+      removeArray.push(removeSports)
     }
-    if(!q.isMale || !q.isFemale){
+    if (!q.isMale || !q.isFemale) {
       removeSex = 3
-      removeArray.push(removeSex) 
+      removeArray.push(removeSex)
     }
 
     aggregateLines.forEach(line => {
-      for (let i = removeArray.length -1; i >= 0; i--){
-        line.splice(removeArray[i],1);
+      for (let i = removeArray.length - 1; i >= 0; i--) {
+        line.splice(removeArray[i], 1);
       }
     })
     console.log("check", removeArray)
@@ -235,11 +254,19 @@ export class PcaService {
       return false
     })
 
+    // this.filteredLines = this.removeGroupSports(this.filteredLines)
+
     resLines = this.aggregateData(this.filteredLines, q) //q.isNormalize, q.isTradition, q.end, q.isGdp, q.isPop, q.medals
     resLines.length > 0 && (resLines = this.normalizeLines(resLines))
 
     return resLines
   }
+
+  /*removeGroupSports(lines: any[]) {
+
+
+    return []
+  }*/
 
   normalizeLines(data: any[]): any[] {
     let mt = PCA.transpose(data)
@@ -253,7 +280,20 @@ export class PcaService {
     return newColumns
   }
 
+  getCacheId(q: PcaQuery) {
+    let queryId = "pca-" + hash(q)
+    return queryId
+  }
+
   async computePca(q: PcaQuery, lines: any[]): Promise<PCAEntry[]> {
+
+    let pcaId = this.getCacheId(q)
+    let cacheValue = JSON.parse(localStorage.getItem(pcaId))
+    if (cacheValue) {
+      this.dataService.pcaDataReady(cacheValue)
+      return cacheValue
+    }
+
     let data = this.filterData(q, lines)
     if (data.length <= 0) {
 
@@ -269,7 +309,7 @@ export class PcaService {
             Totmedals: 0,
             Sex: " - "
           }
-        } 
+        }
       })
 
       this.dataService.pcaDataReady(result)
@@ -277,11 +317,11 @@ export class PcaService {
     }
 
 
-    
+
     if (typeof Worker !== 'undefined') {
       // Create a new
       const worker = new Worker(new URL('./pca.worker', import.meta.url));
-      
+
       worker.onmessage = ({ data }) => {
         console.log(`page got message: ${data}`);
         let components = data
@@ -291,9 +331,9 @@ export class PcaService {
           let r: PCAEntry = {
             x: c[0],
             y: c[1],
-            z: c[2],
             details: this.PCADetails[i]
           }
+          r.z = c[2] && c[2] || 0
           return r
         })
         console.log("pcaresult", result)
@@ -301,6 +341,7 @@ export class PcaService {
 
         let x: PCAEntry[] = result
         console.log("plotting pca: sending readiness...", x)
+        localStorage.setItem(pcaId, JSON.stringify(result));
         this.dataService.pcaDataReady(x)
         worker.terminate()
 

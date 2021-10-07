@@ -166,9 +166,9 @@ export class ScatterplotComponent implements OnInit {
       id: nocs,
       hovertemplate:
         "%{text}<br>" +
-        "x: %{x:.0f}, " +
-        "y: %{y:.0f}, " +
-        "z: %{x:.0f}" +
+        "x: %{x:.3f}, " +
+        "y: %{y:.3f}, " +
+        "z: %{z:.3f}" +
         "<extra></extra>",
       marker: {
         size: 10,

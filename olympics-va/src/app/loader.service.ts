@@ -141,6 +141,7 @@ export class LoaderService {
     })
 
     this.loadOlympicsCsv().then(d => {
+
       this.olympicsDict["NOC"] = d[0]
       this.csvLines = d[1]
       oly_r = true
@@ -270,6 +271,7 @@ export class LoaderService {
       this.preProcessEventsPerSport(line, eventsPerSport)
       this.preProcessMedalsByNation(line, res, sports)
     });
+    
 
     for (let year in eventsPerSport) {
       for (let sports in eventsPerSport[year]) {
@@ -278,17 +280,6 @@ export class LoaderService {
     }
     c.eventsPerSport = eventsPerSport
 
-    var totgolds = 0
-    var totsilvers = 0
-    var totbronzes = 0
-    var nation = "USA"
-    for (const year in res) {
-      if (res[year][nation] != undefined) {
-        totgolds += res[year][nation].golds
-        totsilvers += res[year][nation].silvers
-        totbronzes += res[year][nation].bronzes
-      }
-    }
     return res
   }
 

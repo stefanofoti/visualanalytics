@@ -100,7 +100,7 @@ export interface CountryGdp {
 export interface PCAEntry {
     x: number
     y: number
-    z: number
+    z?: number
     details?: any
     group?: string
 }

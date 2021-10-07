@@ -35,6 +35,7 @@
     "mathjs": "^9.5.0",
     "ngx-boolean-input": "^1.1.0",
     "ngx-slider": "0.0.5",
+    "object-hash": "^2.2.0",
     "pca-js": "^1.0.2",
     "plotly.js": "^1.47.4",
     "rxjs": "~6.6.0",
