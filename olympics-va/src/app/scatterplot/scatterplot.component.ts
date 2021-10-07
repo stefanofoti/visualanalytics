@@ -142,7 +142,7 @@ export class ScatterplotComponent implements OnInit {
   plot3d() {
 
     let entries = this.entries
-    console.log("plotting pca...")
+    console.log("plotting pca...", entries)
 
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
