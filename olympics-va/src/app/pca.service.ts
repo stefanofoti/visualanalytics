@@ -134,8 +134,6 @@ export class PcaService {
       }
     }
     Object.keys(medalSum).forEach(noc => {
-      let gdpDict = this.loaderService.gdp
-      let gdpEntry: CountryGdp = gdpDict[noc]
       let nocName = medalSum[noc].noc
 
       Object.keys(medalSum[noc]).forEach(year => {
@@ -160,6 +158,9 @@ export class PcaService {
                 let eventsAmount = 1
                 let currentSportName = medalSum[noc][year][sport][sex].sportName
                 this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmount = this.eventsPerSport[year][currentSportName])
+                if (medalSum[noc][year][sport][sex].sportName == "Swimming" && year == "2016"){
+                  console.log("check total number of events:", medalSum[noc][year][sport][sex].totalMedals, eventsAmount)
+                }
                 medalSum[noc][year][sport][sex].totalMedals /= eventsAmount
               }
               let population
@@ -195,6 +196,7 @@ export class PcaService {
         }
       })
     })
+
     let removeNocs: Number
     let removeSports: Number
     let removeSex: Number
@@ -218,9 +220,6 @@ export class PcaService {
         line.splice(removeArray[i], 1);
       }
     })
-    console.log("check", removeArray)
-
-    console.log("check", aggregateLines)
 
     console.log("details lines", this.PCADetails)
     console.log("aggregatelines", aggregateLines)

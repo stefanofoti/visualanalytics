@@ -454,8 +454,11 @@ export class MapComponent implements OnInit {
   }
 
   onClick(e, d, context){
-    // TODO check paese selezionato ha partecipato
+  
     if(this.actionsEnabled) {
+      if (!this.stats[d.properties.NOC] || this.stats[d.properties.NOC].noPop || this.stats[d.properties.NOC].noGdp) {
+        return
+      }
       console.log("onClick called")
       let selectedCountry = d.properties.NOC 
       console.log(selectedCountry)

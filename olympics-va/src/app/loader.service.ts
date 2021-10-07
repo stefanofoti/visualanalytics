@@ -273,14 +273,16 @@ export class LoaderService {
       this.preProcessEventsPerSport(line, eventsPerSport)
       this.preProcessMedalsByNation(line, res, sports)
     });
+
+    console.log("check eventsPerSport:", eventsPerSport)
     
 
-    for (let year in eventsPerSport) {
-      for (let sports in eventsPerSport[year]) {
-        eventsPerSport[year][sports] = eventsPerSport[year][sports].length
-      }
-    }
-    c.eventsPerSport = eventsPerSport
+    // for (let year in eventsPerSport) {
+    //   for (let sports in eventsPerSport[year]) {
+    //     eventsPerSport[year][sports] = eventsPerSport[year][sports].length
+    //   }
+    // }
+    // c.eventsPerSport = eventsPerSport
 
     return res
   }
