@@ -5,7 +5,7 @@
 
 
             <mat-form-field class="search-full-width">
-                <input type="text" placeholder="Type to select countries..." aria-label="Select Countries" matInput
+                <input type="text" placeholder="Select countries..." aria-label="Select Countries" matInput
                     [matAutocomplete]="auto_country" [formControl]="countryControl">
                 <mat-hint class="mat-custom-light">Enter text to find countries</mat-hint>
             </mat-form-field>
@@ -24,7 +24,7 @@
 
 
             <mat-form-field class="search-full-width">
-                <input type="text" placeholder="Type to select sports..." aria-label="Select Sports" matInput
+                <input type="text" placeholder="Select sports..." aria-label="Select Sports" matInput
                     [matAutocomplete]="auto_sport" [formControl]="sportControl">
                 <mat-hint class="mat-custom-light">Enter text to find sports by name</mat-hint>
             </mat-form-field>
@@ -51,34 +51,39 @@
         <div class="col-md-4">
 
             <!-- <form [formGroup]="formConf" (ngSubmit)="submit()">-->
-                <div class="form-group">
-                    <div class="form-check">
-                        <div *ngFor="let medal of medalsList">
-                            <div class="row">
-                                <div class="col-md-3" style="margin-top:2vh;">
-
-
-                                    <mat-checkbox class="mat-custom-light" name="medal.name" [checked]="medal.isChecked" [(ngModel)]="medal.isChecked" (click)="$event.stopPropagation()" (change)="onMedalsCheckboxChange(medal)">
-                                        {{medal.name}}
-                                    </mat-checkbox>
-                                    <!-- <input class="form-check-input" [checked]="medal.isChecked" type="checkbox"
+            <div class="form-group">
+                <div class="form-check" style="padding: 0!important;">
+                    <div *ngFor="let medal of medalsList">
+                        <div class="row">
+                            <!-- <input class="form-check-input" [checked]="medal.isChecked" type="checkbox"
                                         [value]="medal.id" (change)="onMedalsCheckboxChange($event)" />
                                     <label class="form-check-label">
                                         {{medal.name}}
                                     </label>-->
-                                </div>
-                                <div class="col-md-9">
-                                    <mat-form-field appearance="fill" style="width: 70px;">
-                                        <!-- <mat-label>Insert {{medal.name}} weight</mat-label> -->
-                                        <input (keypress)="numberOnly($event, medal)" [(ngModel)]="medal.weight"
-                                            [ngModelOptions]="{standalone: true}" [disabled]="!medal.isChecked"
-                                            type="text" matInput placeholder="weight">
-                                    </mat-form-field>
-                                </div>
-                            </div>
+
+                            <mat-checkbox class="mat-custom-light" name="medal.name" [checked]="medal.isChecked"
+                                [(ngModel)]="medal.isChecked" (click)="$event.stopPropagation()"
+                                (change)="onMedalsCheckboxChange(medal)">
+
+                                <img *ngIf="medal.isChecked" src="/assets/{{medal.name}}_medal.png" width="30vh"
+                                    style="margin-left: 1vh; margin-right: 1vh">
+                                <img *ngIf="!medal.isChecked" src="/assets/{{medal.name}}_medal.png" width="30vh"
+                                    style="margin-left: 1vh; margin-right: 1vh; opacity: 30%;">
+                                <!-- {{medal.name}} -->
+
+                                <mat-form-field appearance="fill" style="width: 8vh;">
+                                    <!-- <mat-label>Insert {{medal.name}} weight</mat-label> -->
+                                    <input (keypress)="numberOnly($event, medal)" [(ngModel)]="medal.weight"
+                                        [ngModelOptions]="{standalone: true}" [disabled]="!medal.isChecked" type="text"
+                                        matInput placeholder="weight...">
+                                </mat-form-field>
+
+                            </mat-checkbox>
+
                         </div>
                     </div>
                 </div>
+            </div>
             <!-- </form> -->
         </div>
 
@@ -100,16 +105,19 @@
             </div>
 
             <div class="row pt-3">
-                <mat-checkbox class="mat-custom-light" name="'male'" [(ngModel)]="isMaleChecked" [checked]="isMaleChecked" (click)="$event.stopPropagation()">
+                <mat-checkbox class="mat-custom-light" name="'male'" [(ngModel)]="isMaleChecked"
+                    [checked]="isMaleChecked" (click)="$event.stopPropagation()">
                     Male
                 </mat-checkbox>
-                <mat-checkbox class="mat-custom-light" name="'female'" [(ngModel)]="isFemaleChecked" [checked]="isFemaleChecked" (click)="$event.stopPropagation()">
+                <mat-checkbox class="mat-custom-light" name="'female'" [(ngModel)]="isFemaleChecked"
+                    [checked]="isFemaleChecked" (click)="$event.stopPropagation()">
                     Female
                 </mat-checkbox>
             </div>
 
 
-            <button type="button" [disabled]="!actionsEnabled" class="btn btn-primary" (click)="submit()">Update</button>
+            <button type="button" [disabled]="!actionsEnabled" class="btn btn-primary"
+                (click)="submit()">Update</button>
         </div>
     </div>
 

@@ -263,6 +263,16 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .style("opacity", 1)
   }
 
+  getLabel(): string {
+    let labelText = 'Total Medals'
+    let query = this.loaderService.query
+    
+    // query.normalize && (labelText += " normalized")
+    query.medalsByPop && (labelText += "/avg country population")
+    query.medalsByGdp && (labelText += "/avg country gdp per capita")
+    query.tradition && (labelText = "("+labelText +")"+ "*100^(1/(last year - year + 1))")
+    return labelText
+  }
 
   updateChart() {
     // Update the X axis
@@ -276,7 +286,8 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
     var axisLabelX = -40;
     var axisLabelY = 200;
-    let labelText = 'Total Medals' //da cambiare a seconda dei filtri
+    let labelText = this.getLabel()
+
     this.svg.select("#medalChartLabel").remove()
     this.svg.append("g")
       .attr('id', "medalChartLabel")

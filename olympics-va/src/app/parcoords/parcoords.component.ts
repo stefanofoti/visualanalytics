@@ -254,7 +254,7 @@ export class ParcoordsComponent implements OnInit {
     let c = this
 
     let axisLabelX = -30;
-    let axisLabelY = 200
+    let axisLabelY = this.height/2
     let labelText = 'Total Medals' //da cambiare a seconda dei filtri
     c.svg.select("#ParcoordChartLabel").remove()
     c.svg.append("g")

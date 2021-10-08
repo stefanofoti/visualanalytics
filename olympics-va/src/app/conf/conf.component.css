@@ -24,3 +24,8 @@ overflow:auto;
 float: "none";
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(200,200,200);
+  opacity: 1; /* Firefox */
+}
+

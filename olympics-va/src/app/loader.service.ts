@@ -30,6 +30,8 @@ export class LoaderService {
 
   cache: Array<CacheEntry> = []
 
+  query: Query
+
   private avgGdpDict = {}
   private avgPopDict = {}
 
@@ -290,6 +292,8 @@ export class LoaderService {
 
   async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale:boolean) {
     let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale })
+    this.query = ld.cloneDeep(query)
+    this.query.tradition = tradition
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
     if (!ce) {
       let result = this.computeResult({ ...query, tradition: false })

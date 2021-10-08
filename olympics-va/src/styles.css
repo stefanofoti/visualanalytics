@@ -89,3 +89,7 @@ text {
   
   }
   
+
+span.mat-checkbox-inner-container.mat-checkbox-inner-container-no-side-margin {
+      display: none!important;
+  }

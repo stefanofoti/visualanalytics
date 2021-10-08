@@ -11,7 +11,12 @@
     .custom-ngx-slider .ngx-slider .ngx-slider-pointer {
       background-color: #ff4081;
     }
-  
+
+    
+    .ngx-slider .ngx-slider-pointer.ngx-slider-active::after {
+      background-color: white!important;
+    }
+
 
     .custom-ngx-slider .ngx-slider .ngx-slider-limit {
       font-weight: bold;
@@ -21,4 +26,9 @@
     .custom-ngx-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
       background: #ff408190;
     }
+  }
+  
+  ::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #ff4081 !important;;
   }
