@@ -1,11 +1,18 @@
 <div class="container-fluid">
     <div class="row autoHeight heightLine1">
         <div class="col-md-4">
-            <div class="rounded items-bg">
-                <app-medal-chart></app-medal-chart>
+            <div class="col-md-12">
+                <div class="rounded items-bg autoHeight heightLegend">
+                    <app-legend></app-legend>
+                </div>    
+            </div>
+            <div class="col-md-12">
+                <div class="rounded items-bg">
+                    <app-medal-chart></app-medal-chart>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="padding:0;">
             <div class="rounded items-bg">
                 <app-scatterplot></app-scatterplot>
             </div>    

@@ -25,7 +25,8 @@ import { OverviewComponent } from './overview/overview.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AboutComponent } from './about/about.component';
 import { ScatterplotComponent } from './scatterplot/scatterplot.component'
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LegendComponent } from './legend/legend.component'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     AnalyticsComponent,
     AboutComponent,
     ScatterplotComponent,
+    LegendComponent,
   ],
   imports: [
     BrowserModule,

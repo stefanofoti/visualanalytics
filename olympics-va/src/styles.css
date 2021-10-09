@@ -83,6 +83,8 @@ text {
     .autoHeight{ height:auto;  }
     .heightLine1 { height:56vh;}
     .heightLine1half { height:28vh;}
+    .heightBarchart { height:34vh;}
+    .heightLegend { height:21vh; margin-bottom: 1vh;}
     .heightLine2 { height:45vh; margin-top: 1vh}
     .heightLineBr { height:10vh;}
     .heightFooter { height:10vh;}
