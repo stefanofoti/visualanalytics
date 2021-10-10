@@ -19,7 +19,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
 
 #scene > canvas{
-    background: rgba(54,57,70,1);
+    background: rgba(47,50,60,1);
 
 }
 
@@ -72,7 +72,7 @@ text {
 }
 
 .items-bg {
-    background: rgba(84,87,107,0.5)
+    background: rgba(47,50,60,1)
 }
 
 .map-bg {
@@ -96,3 +96,10 @@ text {
 span.mat-checkbox-inner-container.mat-checkbox-inner-container-no-side-margin {
       display: none!important;
   }
+
+
+
+#scene {
+    border-radius: 100px;
+    background: rgba(47,50,60,1);
+}
