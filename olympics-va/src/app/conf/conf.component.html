@@ -105,7 +105,8 @@
             </div>
 
             <div class="row pt-3">
-                <mat-checkbox class="mat-custom-light" name="'male'" [(ngModel)]="isMaleChecked"
+                <!--
+                    <mat-checkbox class="mat-custom-light" name="'male'" [(ngModel)]="isMaleChecked"
                     [checked]="isMaleChecked" (click)="$event.stopPropagation()">
                     Male
                 </mat-checkbox>
@@ -113,6 +114,11 @@
                     [checked]="isFemaleChecked" (click)="$event.stopPropagation()">
                     Female
                 </mat-checkbox>
+                -->
+                <mat-slide-toggle [(ngModel)]="isMaleChecked">
+                    Male</mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="isFemaleChecked">
+                    Female</mat-slide-toggle>
             </div>
 
 

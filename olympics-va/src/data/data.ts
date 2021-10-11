@@ -1,3 +1,6 @@
+import * as d3 from 'd3';
+
+
 export interface MouseSelection {
     source?: string;
     noc?: string;
@@ -170,11 +173,53 @@ export const Populations: CountryPopulation[] = [
 
 ]
 
-export const AllNocs: string[] = ["AFG","AHO","ALB","ALG","AND","ANG","ANT","ANZ","ARG","ARM","ARU","ASA","AUS","AUT","AZE","BAH","BAN","BAR","BDI","BEL","BEN","BER","BHU","BIH","BIZ","BLR","BOH","BOL","BOT","BRA","BRN","BRU","BUL","BUR","CAF","CAM","CAN","CAY","CGO","CHA","CHI","CHN","CIV","CMR","COD","COK","COL","COM","CPV","CRC","CRO","CRT","CUB","CYP","CZE","DEN","DJI","DMA","DOM","ECU","EGY","ERI","ESA","ESP","EST","ETH","EUN","FIJ","FIN","FRA","FRG","FSM","GAB","GAM","GBR","GBS","GDR","GEO","GEQ","GER","GHA","GRE","GRN","GUA","GUI","GUM","GUY","HAI","HKG","HON","HUN","INA","IND","IOA","IRI","IRL","IRQ","ISL","ISR","ISV","ITA","IVB","JAM","JOR","JPN","KAZ","KEN","KGZ","KIR","KOR","KOS","KSA","KUW","LAO","LAT","LBA","LBR","LCA","LES","LIB","LIE","LTU","LUX","MAD","MAL","MAR","MAS","MAW","MDA","MDV","MEX","MGL","MHL","MKD","MLI","MLT","MNE","MON","MOZ","MRI","MTN","MYA","NAM","NBO","NCA","NED","NEP","NFL","NGR","NIG","NOR","NRU","NZL","OMA","PAK","PAN","PAR","PER","PHI","PLE","PLW","PNG","POL","POR","PRK","PUR","QAT","RHO","ROT","ROU","RSA","RUS","RWA","SAA","SAM","SCG","SEN","SEY","SIN","SKN","SLE","SLO","SMR","SOL","SOM","SRB","SRI","SSD","STP","SUD","SUI","SUR","SVK","SWE","SWZ","SYR","TAN","TCH","TGA","THA","TJK","TKM","TLS","TOG","TPE","TTO","TUN","TUR","TUV","UAE","UAR","UGA","UKR","UNK","URS","URU","USA","UZB","VAN","VEN","VIE","VIN","VNM","WIF","YAR","YEM","YMD","YUG","ZAM","ZIM"]
+export const AsiaColor = "#020ad9"
+export const AfricaColor = "#ff4f00"
+export const NorthAmericaColor = "#f4c300"
+export const SouthAmericaColor = "#47ebff"
+export const EuropeColor = "#7851A9"
+export const OceaniaColor = "#009f3d"
+
+export const AsiaColorDark = "#00045e"
+export const AfricaColorDark = "#541b00"
+export const NorthAmericaColorDark = "#6e5800"
+export const SouthAmericaColorDark = "#003036"
+export const EuropeColorDark = "#322245"
+export const OceaniaColorDark = "#08451f"
+
+export const ColorScale = d3.scaleOrdinal()
+    .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+    .range([AsiaColor, AfricaColor, NorthAmericaColor, SouthAmericaColor, EuropeColor, OceaniaColor])
+
+export const ColorScaleDark = d3.scaleOrdinal()
+    .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
+    .range([AsiaColorDark, AfricaColorDark, NorthAmericaColorDark, SouthAmericaColorDark, EuropeColorDark, OceaniaColorDark])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const AllNocs: string[] = ["AFG", "AHO", "ALB", "ALG", "AND", "ANG", "ANT", "ANZ", "ARG", "ARM", "ARU", "ASA", "AUS", "AUT", "AZE", "BAH", "BAN", "BAR", "BDI", "BEL", "BEN", "BER", "BHU", "BIH", "BIZ", "BLR", "BOH", "BOL", "BOT", "BRA", "BRN", "BRU", "BUL", "BUR", "CAF", "CAM", "CAN", "CAY", "CGO", "CHA", "CHI", "CHN", "CIV", "CMR", "COD", "COK", "COL", "COM", "CPV", "CRC", "CRO", "CRT", "CUB", "CYP", "CZE", "DEN", "DJI", "DMA", "DOM", "ECU", "EGY", "ERI", "ESA", "ESP", "EST", "ETH", "EUN", "FIJ", "FIN", "FRA", "FRG", "FSM", "GAB", "GAM", "GBR", "GBS", "GDR", "GEO", "GEQ", "GER", "GHA", "GRE", "GRN", "GUA", "GUI", "GUM", "GUY", "HAI", "HKG", "HON", "HUN", "INA", "IND", "IOA", "IRI", "IRL", "IRQ", "ISL", "ISR", "ISV", "ITA", "IVB", "JAM", "JOR", "JPN", "KAZ", "KEN", "KGZ", "KIR", "KOR", "KOS", "KSA", "KUW", "LAO", "LAT", "LBA", "LBR", "LCA", "LES", "LIB", "LIE", "LTU", "LUX", "MAD", "MAL", "MAR", "MAS", "MAW", "MDA", "MDV", "MEX", "MGL", "MHL", "MKD", "MLI", "MLT", "MNE", "MON", "MOZ", "MRI", "MTN", "MYA", "NAM", "NBO", "NCA", "NED", "NEP", "NFL", "NGR", "NIG", "NOR", "NRU", "NZL", "OMA", "PAK", "PAN", "PAR", "PER", "PHI", "PLE", "PLW", "PNG", "POL", "POR", "PRK", "PUR", "QAT", "RHO", "ROT", "ROU", "RSA", "RUS", "RWA", "SAA", "SAM", "SCG", "SEN", "SEY", "SIN", "SKN", "SLE", "SLO", "SMR", "SOL", "SOM", "SRB", "SRI", "SSD", "STP", "SUD", "SUI", "SUR", "SVK", "SWE", "SWZ", "SYR", "TAN", "TCH", "TGA", "THA", "TJK", "TKM", "TLS", "TOG", "TPE", "TTO", "TUN", "TUR", "TUV", "UAE", "UAR", "UGA", "UKR", "UNK", "URS", "URU", "USA", "UZB", "VAN", "VEN", "VIE", "VIN", "VNM", "WIF", "YAR", "YEM", "YMD", "YUG", "ZAM", "ZIM"]
 
 export const PreCheckedSports: string[] = []
 
-export const PreCheckedSports2: string[] =     [
+export const PreCheckedSports2: string[] = [
     "Basketball",
     "Judo",
     "Football",
@@ -240,7 +285,7 @@ export const PreCheckedSports2: string[] =     [
     "Roque",
     "Alpinism",
     "Basque Pelota",
-    "Aeronautics" ]
+    "Aeronautics"]
 
 export const PreCheckedEvents: string[] = ["Basketball Men's Basketball",
     "Judo Men's Extra-Lightweight",
@@ -1232,7 +1277,7 @@ export const NocsList: string[] = [
     "NFL",
     "KOS",
     "SSD",
-    "LES" 
+    "LES"
 ]
 
 export const Medals: Medal[] = [

@@ -6,7 +6,7 @@ import * as d3Sel from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
 import { LoaderService } from '../loader.service';
-import { bronzes, golds, MouseSelection, PreCheckedSports2, silvers, Team, Teams, AllNocs } from 'src/data/data';
+import { bronzes, golds, MouseSelection, PreCheckedSports2, silvers, Team, Teams, AllNocs, ColorScale } from 'src/data/data';
 @Component({
   selector: 'app-medal-chart',
   templateUrl: './medal-chart.component.html',
@@ -193,9 +193,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     // set the dimensions and margins of the graph
     var margin = { top: 30, right: 30, bottom: 70, left: 60 }
 
-    this.color = d3.scaleOrdinal()
-      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-      .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+    this.color = ColorScale
 
     // append the svg object to the body of the page
     this.svg = d3Sel.select("#barChartMedals")

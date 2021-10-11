@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as Plotly from 'plotly.js/dist/plotly'
 import { Subscription } from 'rxjs';
-import { MouseSelection, PCAEntry } from 'src/data/data';
+import { AfricaColor, AsiaColor, ColorScale, ColorScaleDark, MouseSelection, PCAEntry } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
 
@@ -37,7 +37,7 @@ export class ScatterplotComponent implements OnInit {
 
   }
 
-  highlight(noc: string){
+  highlight(noc: string) {
     let updatedColors = this.extractColors(this.entries, noc)
     let update = {
       marker: {
@@ -53,7 +53,7 @@ export class ScatterplotComponent implements OnInit {
     Plotly.restyle(this.plotlyDivId, update)
   }
 
-  doNotHighlight(){
+  doNotHighlight() {
     let updatedColors = this.extractColors(this.entries)
     let update = {
       marker: {
@@ -102,11 +102,11 @@ export class ScatterplotComponent implements OnInit {
   extractLabels(entries: PCAEntry[]) {
     let res = entries.map(e => {
       let result =
-      "NOC: " + e.details["NOC"] + "<br>" +
-      "Sport: " + e.details["Sport"] + "<br>" +
-      "Year: " + e.details["Year"] + "<br>" +
-      "Medals:" + e.details["Totmedals"] + "<br>" +
-      "Sex:" + e.details["Sex"] + "<br>"
+        "NOC: " + e.details["NOC"] + "<br>" +
+        "Sport: " + e.details["Sport"] + "<br>" +
+        "Year: " + e.details["Year"] + "<br>" +
+        "Medals:" + e.details["Totmedals"] + "<br>" +
+        "Sex:" + e.details["Sex"] + "<br>"
       if (e.details["Gdp"]) {
         result += ("Gdp: " + e.details["Gdp"] + "<br>")
       }
@@ -124,20 +124,15 @@ export class ScatterplotComponent implements OnInit {
     // dove i punti sono sovrapposti il colore risultante è completamente bianco; l'idea è di rendere
     // gli altri punti più scuri, tranne quelli del noc selezionato
 
-    let colorsLight = d3.scaleOrdinal()
-      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-      .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+    let colorsLight = ColorScale
+    let colorsDark = ColorScaleDark
 
-      let colorsDark = d3.scaleOrdinal()
-      .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-      .range(["#002c42", "#541b00", "#6e5800", "#6e5800", "#322245", "#08451f"])
-    
-      if(customNoc){
-        return entries.map(e => customNoc === e.details["NOC"] ? colorsLight(this.loaderService.countries[e.details["NOC"]].continent) : colorsDark(this.loaderService.countries[e.details["NOC"]].continent))
-      }
-      return entries.map(e => colorsLight(this.loaderService.countries[e.details["NOC"]].continent))
-
+    if (customNoc) {
+      return entries.map(e => customNoc === e.details["NOC"] ? colorsLight(this.loaderService.countries[e.details["NOC"]].continent) : colorsDark(this.loaderService.countries[e.details["NOC"]].continent))
     }
+    return entries.map(e => colorsLight(this.loaderService.countries[e.details["NOC"]].continent))
+
+  }
 
   plot3d() {
 

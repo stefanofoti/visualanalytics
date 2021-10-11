@@ -285,46 +285,8 @@ export class LoaderService {
       this.preProcessMedalsByNation(line, res, sports)
     });
 
-    Object.keys(res).forEach(year => {
-      let
-        totalGoldsMale = 0,
-        totalGoldsFemale = 0,
-        totalSilversMale = 0,
-        totalSilversFemale = 0,
-        totalBronzesMale = 0,
-        totalBronzesFemale = 0
 
-      let sportscp = ld.cloneDeep(sports)
-      Object.keys(res[year]).forEach(noc => {
-        totalGoldsMale += res[year][noc].goldsMale
-        totalGoldsFemale += res[year][noc].goldsFemale
-        totalSilversMale += res[year][noc].silversMale
-        totalSilversFemale += res[year][noc].silversFemale
-        totalBronzesMale += res[year][noc].bronzesMale
-        totalBronzesFemale += res[year][noc].bronzesFemale
-        Object.keys(res[year][noc].sports).forEach(sport => {
-          sportscp[sport].goldsFemale += res[year][noc].sports[sport].goldsFemale
-          sportscp[sport].silversFemale += res[year][noc].sports[sport].silversFemale
-          sportscp[sport].bronzesFemale += res[year][noc].sports[sport].bronzesFemale
-          sportscp[sport].goldsMale += res[year][noc].sports[sport].goldsMale
-          sportscp[sport].silversMale += res[year][noc].sports[sport].silversMale
-          sportscp[sport].bronzesMale += res[year][noc].sports[sport].bronzesMale
-        })
-      })
-      this.yearStats[year] = {
-        totalGoldsMale: totalGoldsMale,
-        totalGoldsFemale: totalGoldsFemale,
-        totalSilversMale: totalSilversMale,
-        totalSilversFemale: totalSilversFemale,
-        totalBronzesMale: totalBronzesMale,
-        totalBronzesFemale: totalBronzesFemale,
-        sports: sportscp
-      }
-    });
 
-    console.log("yearstats:", this.yearStats)
-
-    console.log("check eventsPerSport:", eventsPerSport)
 
 
     for (let year in eventsPerSport) {
@@ -347,6 +309,92 @@ export class LoaderService {
       }
     }
     c.eventsPerSport = eventsPerSport
+
+
+
+
+
+    Object.keys(res).forEach(year => {
+      let
+        totalGoldsMale = 0,
+        totalGoldsFemale = 0,
+        totalSilversMale = 0,
+        totalSilversFemale = 0,
+        totalBronzesMale = 0,
+        totalBronzesFemale = 0
+
+      let sportscp = ld.cloneDeep(sports)
+      this.yearStats[year] = {}
+      Object.keys(res[year]).forEach(noc => {
+        totalGoldsMale += res[year][noc].goldsMale
+        totalGoldsFemale += res[year][noc].goldsFemale
+        totalSilversMale += res[year][noc].silversMale
+        totalSilversFemale += res[year][noc].silversFemale
+        totalBronzesMale += res[year][noc].bronzesMale
+        totalBronzesFemale += res[year][noc].bronzesFemale
+        Object.keys(res[year][noc].sports).forEach(sport => {
+          sportscp[sport].goldsFemale += res[year][noc].sports[sport].goldsFemale
+          sportscp[sport].silversFemale += res[year][noc].sports[sport].silversFemale
+          sportscp[sport].bronzesFemale += res[year][noc].sports[sport].bronzesFemale
+          sportscp[sport].goldsMale += res[year][noc].sports[sport].goldsMale
+          sportscp[sport].silversMale += res[year][noc].sports[sport].silversMale
+          sportscp[sport].bronzesMale += res[year][noc].sports[sport].bronzesMale
+        })
+
+        this.yearStats[year].sumGoldsMaleDivByEvents = 0
+        this.yearStats[year].sumGoldsFemaleDivByEvents = 0
+        this.yearStats[year].sumSilversMaleDivByEvents = 0
+        this.yearStats[year].sumSilversFemaleDivByEvents = 0
+        this.yearStats[year].sumBronzesMaleDivByEvents = 0
+        this.yearStats[year].sumBronzesFemaleDivByEvents = 0
+
+
+        Object.keys(sportscp).forEach(sport => {
+          if (this.eventsPerSport[year][sport] && this.eventsPerSport[year][sport][0] > 0) {
+            sportscp[sport].totalGoldsMaleDivByEvents = sportscp[sport].goldsMale / this.eventsPerSport[year][sport][0]
+            sportscp[sport].totalSilversMaleDivByEvents = sportscp[sport].silversMale / this.eventsPerSport[year][sport][0]
+            sportscp[sport].totalBronzesMaleDivByEvents = sportscp[sport].bronzesMale / this.eventsPerSport[year][sport][0]
+            this.yearStats[year].sumGoldsMaleDivByEvents += sportscp[sport].totalGoldsMaleDivByEvents
+            this.yearStats[year].sumSilversMaleDivByEvents += sportscp[sport].totalSilversMaleDivByEvents
+            this.yearStats[year].sumBronzesMaleDivByEvents += sportscp[sport].totalBronzesMaleDivByEvents
+          }
+
+          if (this.eventsPerSport[year][sport] && this.eventsPerSport[year][sport][1] > 0) {
+            sportscp[sport].totalGoldsFemaleDivByEvents = sportscp[sport].goldsFemale / this.eventsPerSport[year][sport][1]
+            sportscp[sport].totalSilversFemaleDivByEvents = sportscp[sport].silversFemale / this.eventsPerSport[year][sport][1]
+            sportscp[sport].totalBronzesFemaleDivByEvents = sportscp[sport].bronzesFemale / this.eventsPerSport[year][sport][1]
+            this.yearStats[year].sumGoldsFemaleDivByEvents += sportscp[sport].totalGoldsFemaleDivByEvents
+            this.yearStats[year].sumSilversFemaleDivByEvents += sportscp[sport].totalSilversFemaleDivByEvents
+            this.yearStats[year].sumBronzesFemaleDivByEvents += sportscp[sport].totalBronzesFemaleDivByEvents
+          }
+        })
+      })
+
+
+
+      this.yearStats[year] = {
+        ...this.yearStats[year],
+        totalGoldsMale: totalGoldsMale,
+        totalGoldsFemale: totalGoldsFemale,
+        totalSilversMale: totalSilversMale,
+        totalSilversFemale: totalSilversFemale,
+        totalBronzesMale: totalBronzesMale,
+        totalBronzesFemale: totalBronzesFemale,
+        normConstGoldsMale: totalGoldsMale/this.yearStats[year].sumGoldsMaleDivByEvents || 0,
+        normConstGoldsFemale: totalGoldsFemale/this.yearStats[year].sumGoldsFemaleDivByEvents || 0,
+        normConstSilversMale: totalSilversMale/this.yearStats[year].sumSilversMaleDivByEvents || 0,
+        normConstSilversFemale: totalSilversFemale/this.yearStats[year].sumSilversFemaleDivByEvents || 0,
+        normConstBronzesMale: totalBronzesMale/this.yearStats[year].sumBronzesMaleDivByEvents || 0,
+        normConstBronzesFemale: totalBronzesFemale/this.yearStats[year].sumBronzesFemaleDivByEvents || 0,
+        sports: sportscp
+      }
+    });
+
+    console.log("yearstats:", this.yearStats)
+
+    console.log("check eventsPerSport:", eventsPerSport)
+
+
 
     return res
   }
@@ -480,14 +528,14 @@ export class LoaderService {
 
 
             if ((q.isMale && !q.normalize) || (q.isMale && q.normalize && eventsAmountMale > 0)) {
-              goldsAmount += q.normalize ? data.sports[sport].goldsMale / eventsAmountMale : data.sports[sport].goldsMale
-              silversAmount += q.normalize ? data.sports[sport].silversMale / eventsAmountMale : data.sports[sport].silversMale
-              bronzesAmount += q.normalize ? data.sports[sport].bronzesMale / eventsAmountMale : data.sports[sport].bronzesMale
+              goldsAmount += q.normalize ? (data.sports[sport].goldsMale / eventsAmountMale)*this.yearStats[i].normConstGoldsMale : data.sports[sport].goldsMale
+              silversAmount += q.normalize ? (data.sports[sport].silversMale / eventsAmountMale)*this.yearStats[i].normConstSilversMale : data.sports[sport].silversMale
+              bronzesAmount += q.normalize ? (data.sports[sport].bronzesMale / eventsAmountMale)*this.yearStats[i].normConstBronzesMale : data.sports[sport].bronzesMale
             }
             if ((q.isFemale && !q.normalize) || (q.isFemale && q.normalize && eventsAmountFemale > 0)) {
-              goldsAmount += q.normalize ? data.sports[sport].goldsFemale / eventsAmountFemale : data.sports[sport].goldsFemale
-              silversAmount += q.normalize ? data.sports[sport].silversFemale / eventsAmountFemale : data.sports[sport].silversFemale
-              bronzesAmount += q.normalize ? data.sports[sport].bronzesFemale / eventsAmountFemale : data.sports[sport].bronzesFemale
+              goldsAmount += q.normalize ? (data.sports[sport].goldsFemale / eventsAmountFemale)*this.yearStats[i].normConstGoldsFemale : data.sports[sport].goldsFemale
+              silversAmount += q.normalize ? (data.sports[sport].silversFemale / eventsAmountFemale)*this.yearStats[i].normConstSilversFemale : data.sports[sport].silversFemale
+              bronzesAmount += q.normalize ? (data.sports[sport].bronzesFemale / eventsAmountFemale)*this.yearStats[i].normConstBronzesFemale : data.sports[sport].bronzesFemale
             }
 
 

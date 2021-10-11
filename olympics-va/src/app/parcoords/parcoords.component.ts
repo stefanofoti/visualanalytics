@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
+import { bronzes, ColorScale, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
 import * as ld from "lodash";
@@ -170,9 +170,7 @@ export class ParcoordsComponent implements OnInit {
       this.height = this.height - margin.top - margin.bottom
 
       
-      this.color = d3.scaleOrdinal()
-        .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-        .range(["#0085c7", "#ff4f00", "#f4c300", "#f4c300", "#7851A9", "#009f3d"])
+      this.color = ColorScale
 
       // append the svg object to the body of the page
       this.svg = d3.select("#div_parcoord")

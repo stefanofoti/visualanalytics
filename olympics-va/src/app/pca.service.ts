@@ -63,21 +63,21 @@ export class PcaService {
         let currentYear = Number(lines[elem].Year)
         let currentSport = Number(lines[elem].Sport_value)
         let currentSportName = lines[elem].Sport || ""
-        let currentMedaltype = lines[elem].Medal
+        let currentMedalType = lines[elem].Medal
         let currentSex = lines[elem].Sex_value
         let weight = 1
-        if (currentMedaltype === "Gold") {
+        if (currentMedalType === "Gold") {
           weight = goldWeigth
         }
-        if (currentMedaltype === "Silver") {
+        if (currentMedalType === "Silver") {
           weight = silverWeight
         }
-        if (currentMedaltype === "Bronze") {
+        if (currentMedalType === "Bronze") {
           weight = bronzeWeight
         }
         let medal = {
           event: currentEventName,
-          type: currentMedaltype
+          type: currentMedalType
         }
         if (currentNOC) {
           if (medalSum[currentNOC]) {
@@ -90,12 +90,25 @@ export class PcaService {
                   let res = medals.find(m => (m as any).event === medal.event && (m as any).type === medal.type)
                   if (!res) {
                     medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedals += (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight)
+
+                    currentMedalType === "Gold" && (medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedalsGolds += (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight))
+                    currentMedalType === "Silver" && (medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedalsSilvers += (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight))
+                    currentMedalType === "Bronze" && (medalSum[currentNOC][currentYear][currentSport][currentSex].totalMedalsBronzes += (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight))
+
                     medalSum[currentNOC][currentYear][currentSport][currentSex].medals.push(medal)
                   }
                 }
                 else {
+
+                  
+                  
+                  
+
                   medalSum[currentNOC][currentYear][currentSport][currentSex] = {
                     totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
+                    totalMedalsGolds: currentMedalType === "Gold" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+                    totalMedalsSilvers: currentMedalType === "Silver" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+                    totalMedalsBronzes: currentMedalType === "Bronze" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
                     sportName: currentSportName
                   }
                   medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
@@ -104,6 +117,9 @@ export class PcaService {
                 medalSum[currentNOC][currentYear][currentSport] = {}
                 medalSum[currentNOC][currentYear][currentSport][currentSex] = {
                   totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
+                  totalMedalsGolds: currentMedalType === "Gold" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+                  totalMedalsSilvers: currentMedalType === "Silver" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+                  totalMedalsBronzes: currentMedalType === "Bronze" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
                   sportName: currentSportName
                 }
                 medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
@@ -113,6 +129,9 @@ export class PcaService {
               medalSum[currentNOC][currentYear][currentSport] = {}
               medalSum[currentNOC][currentYear][currentSport][currentSex] = {
                 totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
+                totalMedalsGolds: currentMedalType === "Gold" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+                totalMedalsSilvers: currentMedalType === "Silver" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+                totalMedalsBronzes: currentMedalType === "Bronze" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
                 sportName: currentSportName
               }
               medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
@@ -126,6 +145,9 @@ export class PcaService {
             medalSum[currentNOC][currentYear][currentSport] = {}
             medalSum[currentNOC][currentYear][currentSport][currentSex] = {
               totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
+              totalMedalsGolds: currentMedalType === "Gold" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+              totalMedalsSilvers: currentMedalType === "Silver" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
+              totalMedalsBronzes: currentMedalType === "Bronze" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
               sportName: currentSportName
             }
             medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
@@ -155,13 +177,25 @@ export class PcaService {
           Object.keys(medalSum[noc][year]).forEach(sport => {
             medalSum[noc][year] && Object.keys(medalSum[noc][year][sport]).forEach(sex => {
               if (q.isNormalize && medalSum[noc][year]) {
-                let eventsAmount = 1
+                let eventsAmountMale = 1
+                let eventsAmountFemale = 1
                 let currentSportName = medalSum[noc][year][sport][sex].sportName
-                this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmount = this.eventsPerSport[year][currentSportName])
-                if (medalSum[noc][year][sport][sex].sportName == "Swimming" && year == "2016"){
-                  console.log("check total number of events:", medalSum[noc][year][sport][sex].totalMedals, eventsAmount)
+
+                this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmountMale = this.eventsPerSport[year][currentSportName][0])
+                this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmountFemale = this.eventsPerSport[year][currentSportName][1])
+
+                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsGolds = medalSum[noc][year][sport][sex].totalMedalsGolds*this.loaderService.yearStats[year].normConstGoldsMale/eventsAmountMale)
+                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsSilvers = medalSum[noc][year][sport][sex].totalMedalsSilvers*this.loaderService.yearStats[year].normConstSilversMale /eventsAmountMale )
+                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsBronzes = medalSum[noc][year][sport][sex].totalMedalsBronzes*this.loaderService.yearStats[year].normConstBronzesMale /eventsAmountMale )
+                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsGolds = medalSum[noc][year][sport][sex].totalMedalsGolds*this.loaderService.yearStats[year].normConstGoldsFemale /eventsAmountFemale)
+                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsSilvers = medalSum[noc][year][sport][sex].totalMedalsSilvers*this.loaderService.yearStats[year].normConstSilversFemale /eventsAmountFemale)
+                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsBronzes = medalSum[noc][year][sport][sex].totalMedalsBronzes*this.loaderService.yearStats[year].normConstBronzesFemale /eventsAmountFemale)
+
+                medalSum[noc][year][sport][sex].totalMedals = medalSum[noc][year][sport][sex].totalMedalsGolds + medalSum[noc][year][sport][sex].totalMedalsSilvers + medalSum[noc][year][sport][sex].totalMedalsBronzes
+
+                if(isNaN(medalSum[noc][year][sport][sex].totalMedals)) {
+                  console.log("NaN:", noc, year, sport, sex, medalSum[noc][year][sport][sex])
                 }
-                medalSum[noc][year][sport][sex].totalMedals /= eventsAmount
               }
               let population
               if (q.isPop) {
