@@ -38,7 +38,9 @@ export interface Query {
     normalize?: boolean,
     tradition?: boolean,
     isMale: boolean,
-    isFemale: boolean
+    isFemale: boolean,
+    traditionCountriesNumber?: number
+    traditionPastWeight?: number
 }
 
 export interface PcaQuery {

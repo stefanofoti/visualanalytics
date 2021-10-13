@@ -16,6 +16,12 @@ import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, silvers, Sport
 })
 export class MapComponent implements OnInit {
 
+  COMPONENT_HEIGHT = "26vh"
+  COMPONENT_HEIGHT_TRAD = "20vh"
+
+  componentHeight = this.COMPONENT_HEIGHT
+
+
   private width = 1200
   private height = 400
   private svg: any
@@ -473,7 +479,7 @@ export class MapComponent implements OnInit {
           currentlySelected: true,
           source: MapComponent.name
         })
-  
+        this.componentHeight = this.COMPONENT_HEIGHT_TRAD
       }else{
         this.highlightToggle = true
         this.doNotHighlight(e, d, context)
@@ -483,6 +489,7 @@ export class MapComponent implements OnInit {
           currentlySelected: false,
           source: MapComponent.name
         })
+        this.componentHeight = this.COMPONENT_HEIGHT
       }
     }
   }

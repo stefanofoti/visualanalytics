@@ -128,9 +128,18 @@ export class ScatterplotComponent implements OnInit {
     let colorsDark = ColorScaleDark
 
     if (customNoc) {
-      return entries.map(e => customNoc === e.details["NOC"] ? colorsLight(this.loaderService.countries[e.details["NOC"]].continent) : colorsDark(this.loaderService.countries[e.details["NOC"]].continent))
+      return entries.map(e => {
+        let continent = this.loaderService.countries[e.details["NOC"]] && this.loaderService.countries[e.details["NOC"]].continent ? this.loaderService.countries[e.details["NOC"]].continent : ""
+        if(customNoc === e.details["NOC"]) {
+          return colorsLight(continent)
+        }
+        return colorsDark(continent)
+      })
     }
-    return entries.map(e => colorsLight(this.loaderService.countries[e.details["NOC"]].continent))
+    return entries.map(e => {
+      let continent = this.loaderService.countries[e.details["NOC"]] && this.loaderService.countries[e.details["NOC"]].continent ? this.loaderService.countries[e.details["NOC"]].continent : ""
+      return colorsLight(continent)
+    })
 
   }
 

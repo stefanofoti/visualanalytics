@@ -1,4 +1,4 @@
-<div class="heightMap">
+<div [ngStyle]="{'height': [componentHeight]}">
     <svg id="mainMap" class=""></svg>
     
     <a class="float float-right" (click)="centerMap()">
@@ -7,7 +7,7 @@
     </a>
 
     
-    <a *ngIf="selectedStats" class="float-big float-left" (click)="centerMap()">
+    <a *ngIf="selectedStats && !lastSelected" class="float-big float-left" (click)="centerMap()">
         <p class="text-center" height="0px">
             {{selectedStats && selectedStats.name_str + ", " || "Pick a country"}} 
             <br>

@@ -262,13 +262,15 @@ export class MedalChartComponent implements OnInit, OnDestroy {
   }
 
   getLabel(): string {
-    let labelText = 'Total Medals'
+    let labelText = 'Medals'
     let query = this.loaderService.query
-    
-    // query.normalize && (labelText += " normalized")
-    query.medalsByPop && (labelText += "/avg country population")
-    query.medalsByGdp && (labelText += "/avg country gdp per capita")
-    query.tradition && (labelText = "("+labelText +")"+ "*100^(1/(last year - year + 1))")
+
+    query.tradition && (labelText += " (tradition)")
+    query.normalize && (labelText+= " normalized")
+
+    query.medalsByPop && (labelText += "/country population")
+    query.medalsByGdp && (labelText += "/gdp per capita")
+
     return labelText
   }
 
@@ -351,7 +353,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       .attr('y', (d) => this.y(d && (d.golds + d.bronzes + d.silvers)))
       .attr('width', this.x.bandwidth())
       .attr('height', (d) => this.height - this.y(d && (d.golds + d.bronzes + d.silvers)))
-      .attr("fill", d => this.color(this.countries[d.name] && this.countries[d.name].continent))
+      .attr("fill", d => this.color(this.countries[d.name] && this.countries[d.name].continent ? this.countries[d.name].continent : ""))
       .style("outline-color", "initial")
       .style("outline-style", "solid")
       .style("outline-width", (d) => this.selectedTraditionNoc === d.name ? "3px" : "0px")

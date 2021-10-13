@@ -22,6 +22,11 @@ import * as ld from "lodash";
 
 export class ConfComponent implements OnInit {
 
+  COMPONENT_HEIGHT = "27vh"
+  COMPONENT_HEIGHT_TRAD = "33vh"
+
+  componentHeight = this.COMPONENT_HEIGHT
+
   formConf: FormGroup
   teamsList: Team[] = Teams
   medalsList: Medal[]
@@ -37,6 +42,8 @@ export class ConfComponent implements OnInit {
   countryList: Country[]
   traditionCountry: string
 
+  traditionCountriesNumber: number
+  traditionPastWeight: number
   @Input() @BooleanInput()
   isMedalsByPop: any
 
@@ -100,9 +107,20 @@ export class ConfComponent implements OnInit {
       this.initCountryChecklist()
     })
     this.traditionSelectionSubscription = this.data.traditionSelectionMessage.subscribe(message => {
-      this.isOlympicsDataReady && (this.traditionCountry = message.noc)
-      this.isOlympicsDataReady && (this.isTradition = message.currentlySelected)
-      this.isOlympicsDataReady && this.updateData()
+      if(this.isOlympicsDataReady){
+        this.traditionCountry = message.noc
+        this.isTradition = message.currentlySelected
+        // disattivare input paesi
+        // ripristinare la selezione
+        message.currentlySelected && (this.componentHeight = this.COMPONENT_HEIGHT_TRAD)
+        !message.currentlySelected && (this.componentHeight = this.COMPONENT_HEIGHT)
+
+        message.currentlySelected && (this.selectedCountry = [])
+        message.currentlySelected && this.countryControl.disable()
+        !message.currentlySelected && this.countryControl.enable()
+        this.updateData()
+  
+      }
     })
     data.pcaDataReadyMessage.subscribe(message => {
       console.log("pca data: ", message)
@@ -252,7 +270,7 @@ export class ConfComponent implements OnInit {
       isMale: this.isMaleChecked,
       isFemale: this.isFemaleChecked
     }
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked).then(res  => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, this.traditionCountriesNumber, this.traditionPastWeight).then(res  => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max
@@ -356,6 +374,14 @@ export class ConfComponent implements OnInit {
       return !isNaN(event.key)
     }
     return !isNaN(medal.weight+event.key)
+  }
+
+
+  numberOnlyInteger(event, nrStr, min, max): boolean {
+    let str = event.key
+    nrStr && (str = nrStr+str)
+    let n = Number(str)
+    return !isNaN(n) && n%1==0 && n<=max && n>min
   }
 
 }

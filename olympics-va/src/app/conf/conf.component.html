@@ -1,26 +1,25 @@
-<div class="item-box scroll items-bg rounded" style="height: 27vh; margin-bottom: 1vh;">
-    <p class="text-center">Settings</p>
+<div class="item-box scroll items-bg rounded" style="margin-bottom: 1vh" [ngStyle]="{'height': [componentHeight]}">
     <div class="row">
         <div class="col-md-4">
 
+                <mat-form-field class="search-full-width">
+                    <input type="text" placeholder="Select countries..." aria-label="Select Countries" matInput
+                        [matAutocomplete]="auto_country" [formControl]="countryControl">
+                    <mat-hint class="mat-custom-light">Enter text to find countries</mat-hint>
+                </mat-form-field>
 
-            <mat-form-field class="search-full-width">
-                <input type="text" placeholder="Select countries..." aria-label="Select Countries" matInput
-                    [matAutocomplete]="auto_country" [formControl]="countryControl">
-                <mat-hint class="mat-custom-light">Enter text to find countries</mat-hint>
-            </mat-form-field>
+                <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
+                    <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
+                        <div (click)="optionCountryClicked($event, c)">
+                            <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)"
+                                (click)="$event.stopPropagation()">
+                                {{ c.name }}
+                            </mat-checkbox>
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+                <br>
 
-            <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
-                <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
-                    <div (click)="optionCountryClicked($event, c)">
-                        <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)"
-                            (click)="$event.stopPropagation()">
-                            {{ c.name }}
-                        </mat-checkbox>
-                    </div>
-                </mat-option>
-            </mat-autocomplete>
-            <br>
 
 
             <mat-form-field class="search-full-width">
@@ -122,10 +121,29 @@
             </div>
 
 
-            <button type="button" [disabled]="!actionsEnabled" class="btn btn-primary"
+            <button *ngIf="!isTradition" type="button" [disabled]="!actionsEnabled" class="btn btn-primary"
                 (click)="submit()">Update</button>
         </div>
     </div>
 
+    <div class="row" *ngIf="isTradition">
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" style="width: 18vh;">
+                <input (keypress)="numberOnlyInteger($event, traditionCountriesNumber, 0, 25)" [(ngModel)]="traditionCountriesNumber" [ngModelOptions]="{standalone: true}"
+                type="text" matInput placeholder="Countries shown...">    
+            </mat-form-field>    
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" style="width: 18vh;">
+                <input (keypress)="numberOnlyInteger($event, traditionPastWeight, 0, 100)" [(ngModel)]="traditionPastWeight" [ngModelOptions]="{standalone: true}"
+                type="text" matInput placeholder="Past weight ...">    
+            </mat-form-field>
+    
+        </div>
+        <div class="col-md-4">
+            <button type="button" [disabled]="!actionsEnabled" class="btn btn-primary"
+            (click)="submit()">Update</button>
+        </div>
+    </div>
 
 </div>

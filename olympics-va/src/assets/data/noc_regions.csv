@@ -9,7 +9,7 @@ ANT,Antigua,Antigua and Barbuda,North America
 ARG,Argentina,,South America
 ARM,Armenia,,Asia
 ARU,Aruba,,South America
-ANZ,Australia,Australasia,Oceania
+ANZ,Australasia,,Oceania
 AUS,Australia,,Oceania
 AUT,Austria,,Europe
 AZE,Azerbaijan,,Asia
@@ -34,14 +34,14 @@ BDI,Burundi,,Africa
 CAM,Cambodia,,Asia
 CMR,Cameroon,,Africa
 CAN,Canada,,North America
-NFL,Canada,Newfoundland,North America
+NFL,Newfoundland,,North America
 CPV,Cape Verde,,Africa
 CAY,Cayman Islands,,North America
 CAF,Central African Republic,,Africa
 CHA,Chad,,Africa
 CHI,Chile,,South America
 CHN,China,,Asia
-HKG,China,Hong Kong,Asia
+HKG,Hong Kong,,Asia
 COL,Colombia,,South America
 COM,Comoros,,Africa
 COK,Cook Islands,,Oceania
@@ -50,9 +50,9 @@ CRO,Croatia,,Europe
 CUB,Cuba,,North America
 AHO,Curacao,Netherlands Antilles,South America
 CYP,Cyprus,,Europe
-BOH,Czech Republic,Bohemia,Europe
+BOH,Bohemia,,Europe
 CZE,Czech Republic,,Europe
-TCH,Czech Republic,,Europe
+TCH,Czechoslovakia,,Europe
 COD,Democratic Republic of Congo,,Africa
 DEN,Denmark,,Europe
 DJI,Djibouti,,Africa
@@ -73,7 +73,7 @@ GAM,Gambia,,Africa
 GEO,Georgia,,Asia
 GER,Germany,,Europe
 GHA,Ghana,,Africa
-CRT,Greece,Crete,Europe
+CRT,Crete,,Europe
 GRE,Greece,,Europe
 GRN,Grenada,,North America
 GUM,Guam,,Oceania
@@ -86,7 +86,6 @@ HON,Honduras,,North America
 HUN,Hungary,,Europe
 ISL,Iceland,,Europe
 IND,India,,Asia
-IOA,Individual Olympic Athletes,Individual Olympic Athletes,
 INA,Indonesia,,Asia
 IRI,Iran,,Asia
 IRQ,Iraq,,Asia
@@ -115,9 +114,8 @@ LUX,Luxembourg,,Europe
 MKD,Macedonia,,Europe
 MAD,Madagascar,,Africa
 MAW,Malawi,,Africa
-MAL,Malaysia,,Asia
 MAS,Malaysia,,Asia
-NBO,Malaysia,North Borneo,Asia
+NBO,North Borneo,,Asia
 MDV,Maldives,,Asia
 MLI,Mali,,Africa
 MLT,Malta,,Europe
@@ -133,9 +131,6 @@ MNE,Montenegro,,Europe
 MAR,Morocco,,Africa
 MOZ,Mozambique,,Africa
 MYA,Myanmar,,Asia
-ROT,NA,Refugee Olympic Team,
-TUV,NA,Tuvalu,
-UNK,NA,Unknown,
 NAM,Namibia,,Africa
 NRU,Nauru,,Oceania
 NEP,Nepal,,Asia
@@ -171,9 +166,9 @@ SMR,San Marino,,Europe
 STP,Sao Tome and Principe,,Africa
 KSA,Saudi Arabia,,Asia
 SEN,Senegal,,Africa
-SCG,Serbia,Serbia and Montenegro,Europe
+SCG,Serbia and Montenegro,,Europe
 SRB,Serbia,,Europe
-YUG,Serbia,Yugoslavia,Europe
+YUG,Yugoslavia,,Europe
 SEY,Seychelles,,Africa
 SLE,Sierra Leone,,Africa
 SGP,Singapore,,Asia
@@ -192,7 +187,7 @@ SWZ,Swaziland,,Africa
 SWE,Sweden,,Europe
 SUI,Switzerland,,Europe
 SYR,Syria,,Africa
-UAR,Syria,United Arab Republic,Africa
+UAR,United Arab Republic,,Africa
 TPE,Taiwan,,Asia
 TJK,Tajikistan,,Asia
 TAN,Tanzania,,Africa
@@ -201,7 +196,7 @@ TLS,Timor-Leste,,Asia
 TOG,Togo,,Africa
 TGA,Tonga,,Oceania
 TTO,Trinidad and Tobago,Trinidad and Tobago,South America
-WIF,Trinidad,West Indies Federation,South America
+WIF,West Indies Federation,,South America
 TUN,Tunisia,,Africa
 TUR,Turkey,,Asia
 TKM,Turkmenistan,,Asia
@@ -215,12 +210,11 @@ UZB,Uzbekistan,,Asia
 VAN,Vanuatu,,Oceania
 VEN,Venezuela,,South America
 VIE,Vietnam,,Asia
-VNM,Vietnam,,Asia
 IVB,"Virgin Islands, British",,North America
 ISV,"Virgin Islands, US",Virgin Islands,North America
-YAR,Yemen,North Yemen,Asia
+YAR,North Yemen, Yemen,Asia
 YEM,Yemen,,Asia
-YMD,Yemen,South Yemen,Asia
+YMD,South Yemen, Yemen,Asia
 ZAM,Zambia,,Africa
-RHO,Zimbabwe,,Africa
+RHO,Rhodesia,,Africa
 ZIM,Zimbabwe,,Africa

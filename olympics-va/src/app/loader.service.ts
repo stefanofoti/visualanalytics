@@ -400,8 +400,8 @@ export class LoaderService {
   }
 
 
-  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale: boolean) {
-    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale })
+  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale: boolean, traditionCountriesNumber?: number, traditionPastWeight?: number) {
+    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale, traditionCountriesNumber, traditionPastWeight })
     this.query = ld.cloneDeep(query)
     this.query.tradition = tradition
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
@@ -419,7 +419,8 @@ export class LoaderService {
     }
     if (tradition) {
       let tradResAffinity: MainComputationResult = ld.cloneDeep(ce.traditionRes)
-      tradResAffinity.stats = this.computeAffinity(tradResAffinity.stats, this.selectedTradition)
+      let countriesAmount: Number = isNaN(Number(traditionCountriesNumber)) ? 5 : Number(traditionCountriesNumber)
+      tradResAffinity.stats = this.computeAffinity(tradResAffinity.stats, this.selectedTradition, countriesAmount)
       let selectedStats: Object = tradResAffinity.stats[this.selectedTradition]
 
       let max = 0
@@ -450,6 +451,11 @@ export class LoaderService {
 
     if (q.selectedSports.length == 0) {
       q.selectedSports = PreCheckedSports2
+    }
+    let pastWeight
+    if(q.tradition) {
+      pastWeight = isNaN(Number(q.traditionPastWeight)) ? 100 : Number(q.traditionPastWeight)
+
     }
     this.selectedSports.forEach(s => s.totalMedals = 0)
     let dict = this.olympicsDict["NOC"]
@@ -544,9 +550,9 @@ export class LoaderService {
 
 
             if (q.tradition) {
-              goldsAmount *= Math.pow(100, 1 / (q.end - i + 1))
-              silversAmount *= Math.pow(100, 1 / (q.end - i + 1))
-              bronzesAmount *= Math.pow(100, 1 / (q.end - i + 1))
+              goldsAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
+              silversAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
+              bronzesAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
             }
 
 
@@ -602,7 +608,7 @@ export class LoaderService {
     return response
   }
 
-  computeAffinity(res, sel) {
+  computeAffinity(res, sel, countriesAmount) {
     let mostSimilar = {}
     let minDeltas = {}
     console.log("res", res)
@@ -620,7 +626,7 @@ export class LoaderService {
         }
       })
       console.log("delta: ", minDeltas, totalDelta, noc)
-      if (Object.keys(minDeltas).length < 5) {
+      if (Object.keys(minDeltas).length < countriesAmount) {
         minDeltas[noc] = totalDelta
       } else {
         let maxConsidered = Number(minDeltas[Object.keys(minDeltas).reduce((a, b) => minDeltas[a] > minDeltas[b] ? a : b)])

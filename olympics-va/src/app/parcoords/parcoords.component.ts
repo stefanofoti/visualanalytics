@@ -248,12 +248,26 @@ export class ParcoordsComponent implements OnInit {
     //})
   }
 
+
+  getLabel(): string {
+    let labelText = 'Medals'
+    let query = this.loaderService.query
+
+    query.tradition && (labelText += " (tradition)")
+    query.normalize && (labelText+= " normalized")
+
+    query.medalsByPop && (labelText += "/country population")
+    query.medalsByGdp && (labelText += "/gdp per capita")
+
+    return labelText
+  }
+
   drawAxis() {
     let c = this
 
     let axisLabelX = -30;
     let axisLabelY = this.height/2
-    let labelText = 'Total Medals' //da cambiare a seconda dei filtri
+    let labelText = this.getLabel()
     c.svg.select("#ParcoordChartLabel").remove()
     c.svg.append("g")
       .attr('id', "ParcoordChartLabel")
@@ -430,7 +444,7 @@ export class ParcoordsComponent implements OnInit {
         if(d.name === "BORDER") {
           return "#000000"
         }
-        return this.color(this.countries[d.name] && this.countries[d.name].continent) })
+        return this.color(this.countries[d.name] && this.countries[d.name].continent ? this.countries[d.name].continent : "") })
       //.style("stroke", "#0000ff")
       .style("opacity", d => {
         if (d.name === this.selectedTraditionNoc) return 1
