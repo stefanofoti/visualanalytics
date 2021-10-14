@@ -123,7 +123,7 @@ export class MapComponent implements OnInit {
           //console.log(currentNOC + ", " + intensity)
 
           if (team.noPop || team.noGdp) {
-            return ("#ff0000")
+            return ("#9b9b9b")
           }
           if (intensity == 0) {
 
