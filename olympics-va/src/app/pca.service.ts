@@ -20,6 +20,8 @@ export class PcaService {
   PCADetails = []
   TradNocs = []
 
+  query: PcaQuery
+
   constructor(private dataService: DataService, private loaderService: LoaderService) {
     this.dataService.eventsPerSportDataMessage.subscribe(message => {
       this.eventsPerSport = message
@@ -325,7 +327,7 @@ export class PcaService {
   }
 
   async computePca(q: PcaQuery, lines: any[]): Promise<PCAEntry[]> {
-
+    this.query = q
     let pcaId = this.getCacheId(q)
     let cacheValue = JSON.parse(localStorage.getItem(pcaId))
     if (cacheValue) {
@@ -390,6 +392,8 @@ export class PcaService {
 
       };
 
+
+      // TODO compute PCA for 2D 
       worker.postMessage(data)
     } else {
       alert("PCA not supported")

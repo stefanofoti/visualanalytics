@@ -56,6 +56,8 @@ export class ConfComponent implements OnInit {
 
   isTradition: boolean = false
   
+  is3D: boolean = true
+
   @Input() @BooleanInput()
   isMedalsByGdp: any
 
@@ -268,7 +270,8 @@ export class ConfComponent implements OnInit {
       isGdp: this.isMedalsByGdp,
       isPop: this.isMedalsByPop,
       isMale: this.isMaleChecked,
-      isFemale: this.isFemaleChecked
+      isFemale: this.isFemaleChecked,
+      is3D: this.is3D
     }
     this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, this.traditionCountriesNumber, this.traditionPastWeight).then(res  => {
       let r = res as MainComputationResult

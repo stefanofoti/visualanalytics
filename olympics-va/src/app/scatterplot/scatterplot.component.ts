@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as Plotly from 'plotly.js/dist/plotly'
 import { Subscription } from 'rxjs';
-import { AfricaColor, AsiaColor, ColorScale, ColorScaleDark, MouseSelection, PCAEntry } from 'src/data/data';
+import { AfricaColor, AsiaColor, ColorScale, ColorScaleDark, MouseSelection, PCAEntry, PcaQuery } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
+import { PcaService } from '../pca.service';
 
 @Component({
   selector: 'app-scatterplot',
@@ -28,7 +29,7 @@ export class ScatterplotComponent implements OnInit {
 
   showSpinner: boolean = false
 
-  constructor(private dataService: DataService, private loaderService: LoaderService) {
+  constructor(private dataService: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => message && this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     dataService.updateReadinessMessage.subscribe(message => message && message.length > 0 && (this.showSpinner = true))
@@ -92,8 +93,6 @@ export class ScatterplotComponent implements OnInit {
     // this.plot()
   }
 
-
-
   extractComponents(entries: PCAEntry[], type: string, attr?: string) {
     let res = attr ? entries.map(e => e[type][attr]) : entries.map(e => e[type])
     return res
@@ -130,7 +129,7 @@ export class ScatterplotComponent implements OnInit {
     if (customNoc) {
       return entries.map(e => {
         let continent = this.loaderService.countries[e.details["NOC"]] && this.loaderService.countries[e.details["NOC"]].continent ? this.loaderService.countries[e.details["NOC"]].continent : ""
-        if(customNoc === e.details["NOC"]) {
+        if (customNoc === e.details["NOC"]) {
           return colorsLight(continent)
         }
         return colorsDark(continent)
@@ -144,13 +143,16 @@ export class ScatterplotComponent implements OnInit {
   }
 
   plot3d() {
-
+    let q: PcaQuery = this.pcaService.query
     let entries = this.entries
     console.log("plotting pca...", entries)
 
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
-    let z = this.extractComponents(entries, "z")
+    let z
+    if (q.is3D) {
+      z = this.extractComponents(entries, "z")
+    }
     let nocs = this.extractComponents(entries, "details", "NOC")
 
 
@@ -161,10 +163,9 @@ export class ScatterplotComponent implements OnInit {
 
 
 
-    var trace1 = {
+    var trace1: any = {
       x: x,
       y: y,
-      z: z,
       mode: 'markers',
       text: text,
       id: nocs,
@@ -172,7 +173,7 @@ export class ScatterplotComponent implements OnInit {
         "%{text}<br>" +
         "x: %{x:.3f}, " +
         "y: %{y:.3f}, " +
-        "z: %{z:.3f}" +
+        (z ? "z: %{z:.3f}" : "") +
         "<extra></extra>",
       marker: {
         size: 10,
@@ -183,23 +184,36 @@ export class ScatterplotComponent implements OnInit {
         },
         opacity: 1
       },
-      type: 'scatter3d'
     };
+
+    if (q.is3D) {
+      trace1.z = z
+      trace1.type = 'scatter3d'
+
+    }
+
+    if (!q.is3D) {
+      trace1.type = 'satter'
+      trace1.marker.size = 3 
+    }
 
     var data = [trace1];
 
-    let config = {
-      modeBarButtonsToRemove: ['toImage', 'zoom3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'orbitRotation'],
+    let config:any = {
       responsive: true,
       displaylogo: false
     }
 
-    var layout = {
+    if (q.is3D) {
+
+      config.modeBarButtonsToRemove = ['toImage', 'zoom3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'orbitRotation']
+
+    }
+
+
+    let layout: any = {
       modebar: {
         bgcolor: 'rgba(0,0,0,0)',
-        pan3d: {
-          color: 'white'
-        }
       },
       hovermode: "closest",
       hoverlabel: {
@@ -218,9 +232,6 @@ export class ScatterplotComponent implements OnInit {
         },
         yaxis: {
           color: 'white'
-        },
-        zaxis: {
-          color: 'white'
         }
       },
       margin: {
@@ -228,8 +239,37 @@ export class ScatterplotComponent implements OnInit {
         r: 0,
         b: 0,
         t: 0
+      },
+      title: 'Data Labels on the Plot'
+    }
+
+    if (q.is3D) {
+      layout.modebar.pan3d = {
+        color: 'white'
       }
-    };
+      layout.scene.zaxis = {
+        color: 'white'
+      }
+    }
+
+    if (!q.is3D) {
+
+      layout.xaxis = {
+        zerolinecolor: 'white',
+      },
+      layout.yaxis = {
+        zerolinecolor: 'white',
+
+      }
+
+      // layout.xaxis = {
+      //   range: [0.75, 5.25]
+      // }
+      // 
+      // layout.yaxis = {
+      //   range: [0, 8]
+      // }
+    }
     this.plot = Plotly.newPlot(this.plotlyDivId, data, layout, config);
 
     let plot: any = document.getElementById(this.plotlyDivId)

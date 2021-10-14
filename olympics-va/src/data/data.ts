@@ -54,7 +54,8 @@ export interface PcaQuery {
     isGdp: boolean,
     isPop: boolean,
     isMale: boolean,
-    isFemale: boolean
+    isFemale: boolean,
+    is3D: boolean
 }
 
 export interface CacheEntry {
