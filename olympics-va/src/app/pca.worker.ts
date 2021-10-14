@@ -13,6 +13,5 @@ addEventListener('message', ({ data }) => {
   let mt = PCA.transpose(m)
   let components = PCA.multiply(data, mt)
   postMessage(components)
-
   // const response = `worker response to ${data}`;
 });

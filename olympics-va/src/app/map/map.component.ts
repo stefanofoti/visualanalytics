@@ -333,7 +333,7 @@ export class MapComponent implements OnInit {
     this.width = document.getElementById("svg_map").clientWidth || 800
 
     var projection = d3geo.geoNaturalEarth1()
-      .scale(140)
+      .scale(130)
       //.translate([this.width / 2, this.height / 2])
       .center([50,-20])
       //.center([this.width / 2, this.height / 2])

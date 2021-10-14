@@ -199,8 +199,8 @@ export class PcaService {
               }
               let population
               if (q.isPop) {
-                this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
-                !population && (population = this.avgPop[this.loaderService.countries[nocName].name])
+                this.loaderService.countries[nocName] && this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
+                !population && this.avgPop[this.loaderService.countries[nocName]] && (population =this.avgPop[this.loaderService.countries[nocName].name])
                 population > 0 && (medalSum[noc][year][sport][sex].totalMedals /= population)
                 if (population == 0 || !population) {
                   medalSum[noc][year] = undefined

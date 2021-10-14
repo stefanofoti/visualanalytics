@@ -227,7 +227,9 @@ export class ParcoordsComponent implements OnInit {
       // c.selectedMedals.includes(bronzes) && (totMedals += d[p].bronzes)
       // c.selectedMedals.includes(silvers) && (totMedals += d[p].silvers)
       totMedals += d[p].total
-      return [c.x(p), c.y[p](totMedals) - c.spacing];
+      let x = c.x(p) || 0
+      let y = c.y[p](totMedals) || 0 
+      return [x, y - c.spacing];
     }));
   }
 
@@ -336,7 +338,7 @@ export class ParcoordsComponent implements OnInit {
         c.currentCountryNoc = this.selectedTraditionNoc        
       } else {
         c.currentSelected = d
-        c.currentCountryName = this.countries[c.currentSelected.name].name
+        c.currentCountryName = this.countries[c.currentSelected.name] && this.countries[c.currentSelected.name].name || ""
         c.currentCountryNoc = c.currentSelected.name
       }
       this.dataService.updateMouseSelection({
@@ -347,7 +349,7 @@ export class ParcoordsComponent implements OnInit {
     }
     d3.selectAll(".parcoord-line")
       .transition().duration(200)
-      .style("opacity", "0.02")
+      .style("opacity", "0.07")
     // Second the hovered specie takes its color
     d3.select("#line-" + c.currentCountryNoc)
       .transition().duration(200)
@@ -376,7 +378,7 @@ export class ParcoordsComponent implements OnInit {
     }
     d3.selectAll(".parcoord-line")
       .transition().duration(200).delay(200)
-      .style("opacity", 0.7)
+      .style("opacity", 1)
     if (this.selectedTraditionNoc){
       d3.select("#line-" + this.selectedTraditionNoc)
       .transition().duration(200)
@@ -448,7 +450,7 @@ export class ParcoordsComponent implements OnInit {
       //.style("stroke", "#0000ff")
       .style("opacity", d => {
         if (d.name === this.selectedTraditionNoc) return 1
-        return 0.7
+        return 1
       })
 
 

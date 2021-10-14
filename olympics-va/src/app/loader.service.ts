@@ -687,21 +687,24 @@ export class LoaderService {
   }
 
   computeAveragePopulationOfNation(selectedDecades, NOC) {
-    let nation = this.countries[NOC].name
-    let popSum = 0
-    let popYears = 0
-    selectedDecades.forEach(y => {
-      if (this.populations[nation]) {
-        if (this.populations[nation].years[y]) {
-          popSum += this.populations[nation].years[y]
-          popYears++
+    let nation = this.countries[NOC] && this.countries[NOC].name
+    if (nation) {let popSum = 0
+      let popYears = 0
+      selectedDecades.forEach(y => {
+        if (this.populations[nation]) {
+          if (this.populations[nation].years[y]) {
+            popSum += this.populations[nation].years[y]
+            popYears++
+          }
         }
-      }
-      else {
-        console.log("not found in populations.csv: " + NOC + ", " + nation)
-      }
-    });
-    return (popSum / popYears)
+        else {
+          console.log("not found in populations.csv: " + NOC + ", " + nation)
+        }
+      });
+      return (popSum / popYears)
+    }
+    return 0
+
   }
 
   rangeOf(start, end) {
