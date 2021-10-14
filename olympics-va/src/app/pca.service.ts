@@ -79,7 +79,7 @@ export class PcaService {
           event: currentEventName,
           type: currentMedalType
         }
-        if (currentNOC) {
+        if (currentNOCName) {
           if (medalSum[currentNOC]) {
             if (medalSum[currentNOC][currentYear]) {
               if (medalSum[currentNOC][currentYear][currentSport]) {
@@ -155,6 +155,8 @@ export class PcaService {
         }
       }
     }
+
+    console.log("medalsum", medalSum)
     Object.keys(medalSum).forEach(noc => {
       let nocName = medalSum[noc].noc
 
@@ -262,6 +264,8 @@ export class PcaService {
 
   filterData(q: PcaQuery, lines: any[]) {
 
+    console.log("lines", lines)
+
     let resLines: any[]
     this.filteredLines = lines
     if (q.selectedNocs.length > 0) {
@@ -286,6 +290,8 @@ export class PcaService {
       }
       return false
     })
+
+    console.log("filtered lines", this.filteredLines)
 
     // this.filteredLines = this.removeGroupSports(this.filteredLines)
 
