@@ -30,6 +30,7 @@ export class MapComponent implements OnInit {
   private div: any
   private max: number
 
+  private MAP_COMPONENT_TAG = "MapComponent"
 
   private isDataReady: Boolean = false
   private selectedSports: string[] = PreCheckedSports
@@ -60,7 +61,7 @@ export class MapComponent implements OnInit {
 
   onMouseSelection(message: MouseSelection) {
     console.log("map mouse selection event: ", message)
-    if (message.source && message.source !== MapComponent.name) {
+    if (message.source && message.source !== this.MAP_COMPONENT_TAG) {
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
     }
   }
@@ -405,7 +406,7 @@ export class MapComponent implements OnInit {
       this.dataService.updateMouseSelection({
         currentlySelected: true,
         noc: d.properties.NOC,
-        source: MapComponent.name
+        source: this.MAP_COMPONENT_TAG
       })
       context.selectedStats.name_str = d.properties && d.properties.name || ""
 
@@ -445,7 +446,7 @@ export class MapComponent implements OnInit {
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: d.properties.NOC,
-        source: MapComponent.name
+        source: this.MAP_COMPONENT_TAG
       })
       noc = d.properties.NOC
     }
@@ -476,7 +477,7 @@ export class MapComponent implements OnInit {
         context.dataService.updateTraditionSelection({
           noc: selectedCountry,
           currentlySelected: true,
-          source: MapComponent.name
+          source: this.MAP_COMPONENT_TAG
         })
         this.componentHeight = this.COMPONENT_HEIGHT_TRAD
       }else{
@@ -486,7 +487,7 @@ export class MapComponent implements OnInit {
         context.dataService.updateTraditionSelection({
           noc: selectedCountry,
           currentlySelected: false,
-          source: MapComponent.name
+          source: this.MAP_COMPONENT_TAG
         })
         this.componentHeight = this.COMPONENT_HEIGHT
       }
