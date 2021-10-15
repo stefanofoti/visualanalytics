@@ -29,6 +29,10 @@ export class ScatterplotComponent implements OnInit {
 
   showSpinner: boolean = false
 
+  markerSize2D = 7
+  markerSize3D = 7
+  
+
   constructor(private dataService: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => message && this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
@@ -42,7 +46,7 @@ export class ScatterplotComponent implements OnInit {
     let updatedColors = this.extractColors(this.entries, noc)
     let update = {
       marker: {
-        size: 10,
+        size: this.markerSize3D,
         color: updatedColors,
         line: {
           color: 'rgba(0, 0, 0, 1)',
@@ -58,7 +62,7 @@ export class ScatterplotComponent implements OnInit {
     let updatedColors = this.extractColors(this.entries)
     let update = {
       marker: {
-        size: 10,
+        size: this.markerSize3D,
         color: updatedColors,
         line: {
           color: 'rgba(0, 0, 0, 1)',
@@ -86,7 +90,7 @@ export class ScatterplotComponent implements OnInit {
     this.showSpinner = false
     console.log("plotting: data ready...")
     this.entries = entries
-    this.plot3d()
+    this.plotScatter()
   }
 
   ngOnInit(): void {
@@ -142,7 +146,7 @@ export class ScatterplotComponent implements OnInit {
 
   }
 
-  plot3d() {
+  plotScatter() {
     let q: PcaQuery = this.pcaService.query
     let entries = this.entries
     console.log("plotting pca...", entries)
@@ -176,7 +180,7 @@ export class ScatterplotComponent implements OnInit {
         (z ? "z: %{z:.3f}" : "") +
         "<extra></extra>",
       marker: {
-        size: 10,
+        size: this.markerSize3D,
         color: c,
         line: {
           color: 'rgba(0, 0, 0, 1)',
@@ -193,8 +197,8 @@ export class ScatterplotComponent implements OnInit {
     }
 
     if (!q.is3D) {
-      trace1.type = 'satter'
-      trace1.marker.size = 3 
+      trace1.type = 'scattergl'
+      // trace1.marker.size = 1 
     }
 
     var data = [trace1];
@@ -226,29 +230,28 @@ export class ScatterplotComponent implements OnInit {
       //autosize: true,
       //width: "100%",
       //height:"30vh",
-      scene: {
-        xaxis: {
-          color: 'white'
-        },
-        yaxis: {
-          color: 'white'
-        }
-      },
-      margin: {
-        l: 0,
-        r: 0,
-        b: 0,
-        t: 0
-      },
-      title: 'Data Labels on the Plot'
     }
 
     if (q.is3D) {
       layout.modebar.pan3d = {
         color: 'white'
       }
+      layout.scene = {
+        xaxis: {
+          color: 'white'
+        },
+        yaxis: {
+          color: 'white'
+        }
+      }
       layout.scene.zaxis = {
         color: 'white'
+      }
+      layout.margin = {
+        l: 0,
+        r: 0,
+        b: 0,
+        t: 0
       }
     }
 
@@ -256,10 +259,22 @@ export class ScatterplotComponent implements OnInit {
 
       layout.xaxis = {
         zerolinecolor: 'white',
+        rangemode: 'tozero',
+        autorange: true,
+        color: "white"
       },
       layout.yaxis = {
         zerolinecolor: 'white',
+        rangemode: 'tozero',
+        autorange: true,
+        color: "white"
 
+      }
+      layout.margin = {
+        l: 20,
+        r: 20,
+        b: 20,
+        t: 20
       }
 
       // layout.xaxis = {

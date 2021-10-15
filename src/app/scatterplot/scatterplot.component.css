@@ -6,7 +6,7 @@
 .center {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%) translateY(15vh);
-    -moz-transform: translateX(-50%) translateY(15vh);
-    -webkit-transform: translateX(-50%) translateY(15vh);
+    transform: translateX(-50%) translateY(17vh);
+    -moz-transform: translateX(-50%) translateY(17vh);
+    -webkit-transform: translateX(-50%) translateY(17vh);
 }
