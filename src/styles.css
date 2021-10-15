@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+    background: rgba(25, 26, 32, 1);
+    /* background: radial-gradient(circle, rgba(84,87,107,1) 0%, rgba(64,54,54,1) 63%, rgba(65,65,65,1) 77%, rgba(0,0,0,1) 100%); */
+        }
+  
+  .row {
+      background-color: transparent;
+  }
+  
+  body{
+      background-color: transparent;
+   }
+
+   footer{
+    background-color: transparent;
+    }
+html, body { height: 100%; }
+body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
+
+#scene > canvas{
+    background: rgba(47,50,60,1);
+
+}
+
+.main-svg {
+    background: transparent!important;
+
+}
+
+label {
+    color: white!important
+}
+
+p {
+    margin: 0;
+    color: rgba(255, 255, 255, 1)
+}
+text {
+    color: rgba(255, 255, 255, 1)
+}
+.domain{
+    color: white
+}
+.ngx-slider-span {
+    color: white!important
+}
+.mat-input-element{
+    color: white!important;
+    caret-color: white !important;
+}
+
+.mat-custom-light {
+    color: white !important;
+    caret-color: white !important;
+}
+
+.mat-slide-toggle-content{
+    color: white!important
+}
+.form-check-label{
+    color:white
+}
+
+.mat-autocomplete-panel {
+    background-color: rgba(84,87,107,1);
+}
+
+#svg_parcoords > g > g > g > line{
+    color: white;
+}
+#barChartMedals > svg > g > g > g > line{
+    color: white;
+}
+#scatterplot_div > svg > g > g > g > line{
+    color: white;
+}
+
+.items-bg {
+    background: rgba(47,50,60,1)
+}
+
+.map-bg {
+    background: "#a7cdf2";
+}
+
+@media SCREEN AND (min-width: 768px){
+    .autoHeight{ height:auto;  }
+    .heightLine1 { height:54vh;}
+    .heightLine1half { height:27vh;}
+    .heightBarchart { height:33vh;}
+    .heightLegend { height:20vh; margin-bottom: 1vh;}
+    .heightLine2 { height: 36vh; margin-top: 1vh}
+    .heightLineBr { height:10vh;}
+    .heightFooter { height:10vh;}
+  
+  }
+  
+
+span.mat-checkbox-inner-container.mat-checkbox-inner-container-no-side-margin {
+      display: none!important;
+  }
+
+
+
+#scene {
+    border-radius: 100px;
+    background: rgba(47,50,60,1);
+}
