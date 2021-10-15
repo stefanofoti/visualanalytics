@@ -15,6 +15,8 @@ import { bronzes, golds, MouseSelection, PreCheckedSports2, silvers, Team, Teams
 
 export class MedalChartComponent implements OnInit, OnDestroy {
 
+  private CHART_COMPONENT_TAG = "MedalChartComponent"
+
   width: number;
   height: number;
   margin = { top: 20, right: 20, bottom: 30, left: 40 };
@@ -63,7 +65,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   onMouseSelection(message: MouseSelection) {
     console.log("medalchart mouse selection event: ", message)
-    if (message.source && message.source !== MedalChartComponent.name) {
+    if (message.source && message.source !== this.CHART_COMPONENT_TAG) {
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
 
     }
@@ -229,7 +231,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       this.dataService.updateMouseSelection({
         currentlySelected: true,
         noc: c.currentCountryNoc,
-        source: MedalChartComponent.name
+        source: this.CHART_COMPONENT_TAG
       })
     }
 
@@ -251,7 +253,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: c.currentCountryNoc,
-        source: MedalChartComponent.name
+        source: this.CHART_COMPONENT_TAG
       })
     }
     c.currentSelected = {}
