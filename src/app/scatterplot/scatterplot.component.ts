@@ -31,7 +31,7 @@ export class ScatterplotComponent implements OnInit {
 
   markerSize2D = 7
   markerSize3D = 7
-  
+
 
   constructor(private dataService: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => message && this.dataReady(message))
@@ -123,9 +123,6 @@ export class ScatterplotComponent implements OnInit {
 
   extractColors(entries: PCAEntry[], customNoc?: string) {
 
-    // non possiamo ridurre l'opacità degli elemento non selezionati come facciamo altrove perché altrimenti
-    // dove i punti sono sovrapposti il colore risultante è completamente bianco; l'idea è di rendere
-    // gli altri punti più scuri, tranne quelli del noc selezionato
 
     let colorsLight = ColorScale
     let colorsDark = ColorScaleDark
@@ -203,7 +200,7 @@ export class ScatterplotComponent implements OnInit {
 
     var data = [trace1];
 
-    let config:any = {
+    let config: any = {
       responsive: true,
       displaylogo: false
     }
@@ -212,6 +209,10 @@ export class ScatterplotComponent implements OnInit {
 
       config.modeBarButtonsToRemove = ['toImage', 'zoom3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'orbitRotation']
 
+    }
+
+    if(!q.is3D) {
+      config.modeBarButtonsToRemove = ['zoom2d','pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'zoom3d', 'pan3d', 'orbitRotation', 'tableRotation', 'handleDrag3d', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'hoverClosestCartesian', 'hoverCompareCartesian', 'zoomInGeo', 'zoomOutGeo', 'resetGeo', 'hoverClosestGeo', 'hoverClosestGl2d', 'hoverClosestPie', 'toggleHover', 'resetViews', 'toImage', 'sendDataToCloud', 'toggleSpikelines', 'resetViewMapbox']      
     }
 
 
@@ -263,13 +264,13 @@ export class ScatterplotComponent implements OnInit {
         autorange: true,
         color: "white"
       },
-      layout.yaxis = {
-        zerolinecolor: 'white',
-        rangemode: 'tozero',
-        autorange: true,
-        color: "white"
+        layout.yaxis = {
+          zerolinecolor: 'white',
+          rangemode: 'tozero',
+          autorange: true,
+          color: "white"
 
-      }
+        }
       layout.margin = {
         l: 20,
         r: 20,

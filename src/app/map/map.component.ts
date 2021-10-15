@@ -154,7 +154,7 @@ export class MapComponent implements OnInit {
             return (colorScale[8])
           }
         }
-        else return "#000000"
+        else return "#46424d"
       })
     }
 
@@ -170,7 +170,6 @@ export class MapComponent implements OnInit {
     var nationsInInterval = 0
 
     let intervals = [1, 5, 12, 18, 27, 34, 69, 100]
-    let colorScale = ["#ffffff", "#3c8a3e", "#4a984b", "#59a758", "#67b765", "#76c673", "#84d681", "#93e68f", "#a2f69d"]
 
     for (const NOC in this.stats) {
       let currentNOC = NOC

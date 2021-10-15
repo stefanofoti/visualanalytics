@@ -183,20 +183,19 @@ export const Populations: CountryPopulation[] = [
 // export const EuropeColor = "#7851A9"
 // export const OceaniaColor = "#009f3d"
 
-export const AsiaColor = "#ebb134"
-export const AfricaColor = "#7851A9"
-export const NorthAmericaColor = "#367a3c"
-export const SouthAmericaColor = "#1B998B"
-export const EuropeColor = "#3457a8"
-export const OceaniaColor = "#ba6622"
+export const EuropeColor = "#1DA1F2"
+export const AsiaColor = "#FFD100"
+export const AfricaColor = "#9146FF"
+export const NorthAmericaColor = "#1f993e"
+export const SouthAmericaColor = "#523200"
+export const OceaniaColor = "#ff4500"
 
-
-export const AsiaColorDark = "#825d0d"
-export const AfricaColorDark = "#3c2954"
-export const NorthAmericaColorDark = "#1b3e1e"
-export const SouthAmericaColorDark = "#0d4c45"
-export const EuropeColorDark = "#1a2b54"
-export const OceaniaColorDark = "#5d3311"
+export const EuropeColorDark = "#18284e"
+export const AsiaColorDark = "#806800"
+export const AfricaColorDark = "#4100A3"
+export const NorthAmericaColorDark = "#104C1F"
+export const SouthAmericaColorDark = "#291900"
+export const OceaniaColorDark = "#802200"
 
 export const ColorScale = d3.scaleOrdinal()
     .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])

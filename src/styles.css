@@ -107,3 +107,7 @@ span.mat-checkbox-inner-container.mat-checkbox-inner-container-no-side-margin {
     border-radius: 100px;
     background: rgba(47,50,60,1);
 }
+
+button {
+    margin-top: 1vh;
+  }
