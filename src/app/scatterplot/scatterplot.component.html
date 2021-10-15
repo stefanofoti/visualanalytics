@@ -1,10 +1,15 @@
 <!-- <div id="scatterplot_div" class = "autoHeight heightLine1" style="position: relative;"></div> -->
-
 <div id='scatterplot_id' class="autoHeight heightLine1">
 
-    <div class="center color-pink" *ngIf="showSpinner">
-        <mat-spinner></mat-spinner>
-
+    <div *ngIf="this.showSpinner" class="text-center">
+        <div  class="spinner-border" role="status" style="margin-top: 22vh; color: #ff4081!important">
+        </div>
+  
     </div>
+
+<!--     <div class="center color-pink" *ngIf="showSpinner">
+       <mat-spinner></mat-spinner>
+
+    </div> -->
 
 </div>
