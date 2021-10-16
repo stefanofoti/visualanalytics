@@ -22,8 +22,8 @@ export class MapComponent implements OnInit {
   componentHeight = this.COMPONENT_HEIGHT
 
 
-  private width = 1200
-  private height = 400
+  private width
+  private height
   private svg: any
   private g: any
   private path: any
@@ -301,7 +301,7 @@ export class MapComponent implements OnInit {
     let g = this.g
 
     let zoom = d3.zoom()
-      .scaleExtent([1, 10])
+      .scaleExtent([1, 20])
       .on('zoom', (event) => {
         g.selectAll('path')
           .attr('transform', event.transform);
@@ -333,9 +333,9 @@ export class MapComponent implements OnInit {
     this.width = document.getElementById("svg_map").clientWidth || 800
 
     var projection = d3geo.geoNaturalEarth1()
-      .scale(130)
+      .scale(80)
       //.translate([this.width / 2, this.height / 2])
-      .center([50,-20])
+      .center([300,-80])
       //.center([this.width / 2, this.height / 2])
 
 
