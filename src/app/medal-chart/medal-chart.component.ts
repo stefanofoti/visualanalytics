@@ -269,7 +269,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     query.normalize && (labelText+= " normalized")
 
     query.medalsByPop && (labelText += "/country population")
-    query.medalsByGdp && (labelText += "/gdp per capita")
+    query.medalsByGdp && (labelText += "/gdp")
 
     return labelText
   }

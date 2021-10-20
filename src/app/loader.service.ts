@@ -94,6 +94,28 @@ export class LoaderService {
   }
 
   async loadGdpCsv() {
+    let lines = await d3.dsv(";", "/assets/data/gdp.csv")
+    let gdp = {}
+    let currentYear
+    lines.forEach(l => {
+      let noc = l["CountryCode"]
+      let years = []
+      for (currentYear = 1960; currentYear < 2015; currentYear++) {
+        years[currentYear.toString()] = l[currentYear.toString()]
+      }
+      let p: CountryGdp = {
+        id: noc,
+        name: l["CountryName"],
+        years: years
+      }
+      gdp[noc] = p
+    })
+    return gdp
+  }
+
+
+
+  async loadGdpPopCsv() {
     let lines = await d3.csv("/assets/data/gdp-per-capita.csv")
     let gdp = {}
     let currentNoc = ""
@@ -447,13 +469,33 @@ export class LoaderService {
     return ce.res
   }
 
+  getTopNations(gdpDict: {}) {
+    let result = {}
+    // Create items array
+    var items = Object.keys(gdpDict).map(function (key) {
+      return [key, gdpDict[key]];
+    });
+
+    // Sort the array based on the second element
+    items.sort(function (first, second) {
+      return second[1] - first[1];
+    });
+
+    items = items.slice(0, 26)
+    items.forEach(item => {
+      result[item[0]] = item[1]
+    })
+
+    return result
+  }
+
   async computeResult(q: Query) {
 
     if (q.selectedSports.length == 0) {
       q.selectedSports = PreCheckedSports2
     }
     let pastWeight
-    if(q.tradition) {
+    if (q.tradition) {
       pastWeight = isNaN(Number(q.traditionPastWeight)) ? 100 : Number(q.traditionPastWeight)
 
     }
@@ -476,6 +518,7 @@ export class LoaderService {
       NocsList.forEach(c => {
         this.avgGdpDict[c] = this.computeAverageGdpOfNation(range, c)
       })
+      this.avgGdpDict = this.getTopNations(this.avgGdpDict)
       this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])
       console.log("avgGdpDict", this.avgGdpDict)
     }
@@ -511,6 +554,14 @@ export class LoaderService {
                 golds: 0,
                 bronzes: 0,
                 silvers: 0,
+
+                goldsMale: 0,
+                bronzesMale: 0,
+                silversMale: 0,
+                goldsFemale: 0,
+                bronzesFemale: 0,
+                silversFemale: 0,
+
                 total: 0
               }
             }
@@ -545,10 +596,6 @@ export class LoaderService {
             }
 
 
-
-
-
-
             if (q.tradition) {
               goldsAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
               silversAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
@@ -562,9 +609,9 @@ export class LoaderService {
 
 
             if (q.medalsByGdp && !isNaN(this.avgGdpDict[noc])) {
-              incrementSportGold = incrementSportGold * gold.weight / this.avgGdpDict[noc]
-              incrementSportSilver = incrementSportSilver * silver.weight / this.avgGdpDict[noc]
-              incrementSportBronze = incrementSportBronze * bronze.weight / this.avgGdpDict[noc]
+              incrementSportGold = incrementSportGold * gold.weight * 10000000000 / this.avgGdpDict[noc]
+              incrementSportSilver = incrementSportSilver * silver.weight * 10000000000 / this.avgGdpDict[noc]
+              incrementSportBronze = incrementSportBronze * bronze.weight * 10000000000 / this.avgGdpDict[noc]
             }
 
             if (isNaN(this.avgPopDict[noc]) && q.medalsByPop) {
@@ -688,7 +735,8 @@ export class LoaderService {
 
   computeAveragePopulationOfNation(selectedDecades, NOC) {
     let nation = this.countries[NOC] && this.countries[NOC].name
-    if (nation) {let popSum = 0
+    if (nation) {
+      let popSum = 0
       let popYears = 0
       selectedDecades.forEach(y => {
         if (this.populations[nation]) {
@@ -718,18 +766,22 @@ export class LoaderService {
   computeAverageGdpOfNation(range, NOC) {
     let GdpSum = 0
     let GdpYears = 0
+    let isLowGdp = false
     range.forEach(y => {
       if (this.gdp[NOC]) {
-        if (this.gdp[NOC].years[y]) {
+        let n = Number(this.gdp[NOC].years[y])
+        if (!isNaN(n)) {
           GdpSum += Number(this.gdp[NOC].years[y])
           GdpYears++
         }
       }
     })
-    if (GdpYears == 0) {
-      return NaN
+    if (GdpYears == 0 || isLowGdp) {
+      return 0
     }
-    return (GdpSum / GdpYears)
+    let res = GdpSum / GdpYears
+    if (NOC === "RUS") return NaN
+    return res
   }
 
 }

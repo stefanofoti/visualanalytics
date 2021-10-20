@@ -27,7 +27,7 @@ export class ScatterplotComponent implements OnInit {
 
   plotted: boolean = false
 
-  showSpinner: boolean = false
+  showSpinner: boolean = true
 
   markerSize2D = 7
   markerSize3D = 7

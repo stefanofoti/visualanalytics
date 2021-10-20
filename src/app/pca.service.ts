@@ -212,12 +212,17 @@ export class PcaService {
               }
               let gdp
               if (q.isGdp) {
-                this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
+                /*this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
                 !gdp && (gdp = this.avgGdp[nocName])
                 gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                */
+                gdp = this.avgGdp[nocName]
+                gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+
                 if (gdp == 0 || !gdp) {
                   medalSum[noc][year] = undefined
                 }
+
               }
               medalSum[noc][year] && this.PCADetails.push({
                 NOC: nocName,
