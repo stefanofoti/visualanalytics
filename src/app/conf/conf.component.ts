@@ -39,6 +39,7 @@ export class ConfComponent implements OnInit {
   traditionSelectionSubscription: Subscription
 
   sportsList: Sport[]
+  fullSportsList: Sport[]
   countryList: Country[]
   traditionCountry: string
 
@@ -52,10 +53,12 @@ export class ConfComponent implements OnInit {
 
   isMaleChecked: boolean = true
   isFemaleChecked: boolean = true
-  
+
 
   isTradition: boolean = false
-  
+  isWinter: boolean = true
+  isSummer: boolean = true
+
   is3D: boolean = true
 
   @Input() @BooleanInput()
@@ -98,6 +101,7 @@ export class ConfComponent implements OnInit {
       this.isOlympicsDataReady && this.updateData()
     })
     this.sportsReadinessSubscription = this.data.sportsReadinessMessage.subscribe(message => {
+      this.fullSportsList = message
       this.sportsList = message
       this.initSportsChecklist()
     })
@@ -109,7 +113,7 @@ export class ConfComponent implements OnInit {
       this.initCountryChecklist()
     })
     this.traditionSelectionSubscription = this.data.traditionSelectionMessage.subscribe(message => {
-      if(this.isOlympicsDataReady){
+      if (this.isOlympicsDataReady) {
         this.traditionCountry = message.noc
         this.isTradition = message.currentlySelected
         // disattivare input paesi
@@ -121,21 +125,36 @@ export class ConfComponent implements OnInit {
         message.currentlySelected && this.countryControl.disable()
         !message.currentlySelected && this.countryControl.enable()
         this.updateData()
-  
+
       }
     })
     data.pcaDataReadyMessage.subscribe(message => {
       console.log("pca data: ", message)
       message && (this.actionsEnabled = true)
-    
+
     })
 
 
   }
 
 
+  updateSeason(event) {
+    this.sportsList = []
+    this.isWinter && this.isSummer && (this.sportsList = this.fullSportsList)
+    this.isSummer && !this.isWinter && (this.fullSportsList.forEach(s => s.season === "winter" && (s.isChecked = false)))
+    this.isSummer && !this.isWinter && (this.sportsList = this.fullSportsList.filter(s => s.season === "summer"))
+    !this.isSummer && this.isWinter && (this.fullSportsList.forEach(s => s.season === "summer" && (s.isChecked = false)))
+    !this.isSummer && this.isWinter && (this.sportsList = this.fullSportsList.filter(s => s.season === "winter"))
+    this.initSportsChecklist()
+  }
 
+  selectAllSports() {
+    this.sportsList.forEach(s => { s.isChecked = true })
+  }
 
+  deselectAllSports() {
+    this.sportsList.forEach(s => { s.isChecked = false })
+  }
 
 
   ngOnInit(): void {
@@ -151,6 +170,7 @@ export class ConfComponent implements OnInit {
   }
 
   initSportsChecklist(): void {
+    this.selectedSports = []
     this.sportsList.forEach(s => { s.isChecked && this.selectedSports.push(s) })
     this.filteredSports = this.sportControl.valueChanges.pipe(
       startWith<string | Sport[]>(''),
@@ -163,9 +183,9 @@ export class ConfComponent implements OnInit {
     this.lastFilter = filter;
     let items = this.sportsList
     console.log("sports length: " + this.sportsList.length)
-    items.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-    items.sort((a,b) => (a.group > b.group) ? 1 : ((b.group > a.group) ? -1 : 0))
-    items.sort((a,b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
+    items.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    items.sort((a, b) => (a.group > b.group) ? 1 : ((b.group > a.group) ? -1 : 0))
+    items.sort((a, b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
     // TODO
     if (filter) {
       return items.filter(sport => {
@@ -179,8 +199,8 @@ export class ConfComponent implements OnInit {
   countryFilter(filter: string): Country[] {
     this.lastCountryFilter = filter;
     let items = this.countryList
-    items.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-    items.sort((a,b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
+    items.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    items.sort((a, b) => (!a.isChecked) ? 1 : ((!b.isChecked) ? -1 : 0))
 
     if (filter) {
       return items.filter(c => {
@@ -253,12 +273,15 @@ export class ConfComponent implements OnInit {
     console.log("conf: Invoke updateData()")
     let selMedals: string[] = []
     let medalsList = ld.cloneDeep(this.medalsList)
-    medalsList.forEach(m => {m.isChecked && selMedals.push(m.id)})
-    medalsList.forEach (m => m.weight = m.weight ? Number(m.weight) : 1)
+    medalsList.forEach(m => { m.isChecked && selMedals.push(m.id) })
+    medalsList.forEach(m => m.weight = m.weight ? Number(m.weight) : 1)
     let selSports: string[] = this.selectedSports.map(s => s.name)
-    let selCountries: string[] = this.selectedCountry.length>0 ? this.selectedCountry.map(s => s.id) : [] 
+    if (selSports.length === 0) {
+      selSports = this.sportsList.map(s => s.name)
+    }
+    let selCountries: string[] = this.selectedCountry.length > 0 ? this.selectedCountry.map(s => s.id) : []
     console.log("conf. is tradition: ", this.isTradition)
-    console.log("conf. medalsList:",medalsList)
+    console.log("conf. medalsList:", medalsList)
     let q: PcaQuery = {
       start: this.yearRange[0],
       end: this.yearRange[1],
@@ -273,9 +296,9 @@ export class ConfComponent implements OnInit {
       isFemale: this.isFemaleChecked,
       is3D: this.is3D
     }
-    let tradCount= this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
+    let tradCount = this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
     let tradWeight = this.traditionPastWeight ? this.traditionPastWeight : 100
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, tradCount, tradWeight).then(res  => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, tradCount, tradWeight).then(res => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max
@@ -283,9 +306,9 @@ export class ConfComponent implements OnInit {
       this.data.updateNewData([stats, max, maxSingleSport, r.sportsList, selMedals, this.yearRange, selCountries])
       console.log("conf: updateData() result: ", stats)
 
-      if (this.isTradition){
+      if (this.isTradition) {
         q.selectedNocs = ld.cloneDeep(Object.keys(stats))
-      }      
+      }
       this.pcaService.computePca(q, this.loaderService.csvLines)
 
 
@@ -375,18 +398,18 @@ export class ConfComponent implements OnInit {
   }
 
   numberOnly(event, medal): boolean {
-    if(!medal.weight){
+    if (!medal.weight) {
       return !isNaN(event.key)
     }
-    return !isNaN(medal.weight+event.key)
+    return !isNaN(medal.weight + event.key)
   }
 
 
   numberOnlyInteger(event, nrStr, min, max): boolean {
     let str = event.key
-    nrStr && (str = nrStr+str)
+    nrStr && (str = nrStr + str)
     let n = Number(str)
-    return !isNaN(n) && n%1==0 && n<=max && n>min
+    return !isNaN(n) && n % 1 == 0 && n <= max && n > min
   }
 
 }

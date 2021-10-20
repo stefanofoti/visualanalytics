@@ -1,13 +1,15 @@
 <div class="item-box scroll items-bg rounded" style="margin-bottom: 1vh" [ngStyle]="{'height': [componentHeight]}">
     <div class="row">
         <div class="col-md-4">
-
+            
             <mat-form-field class="search-full-width">
                 <input type="text" placeholder="Select countries..." aria-label="Select Countries" matInput
                     [matAutocomplete]="auto_country" [formControl]="countryControl">
                 <mat-hint class="mat-custom-light">Enter text to find countries</mat-hint>
             </mat-form-field>
 
+            <div (click)="selectAllSports()">Select all</div>
+            <div (click)="deselectAllSports()">Deselect all</div>
             <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
                 <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
                     <div (click)="optionCountryClicked($event, c)">
@@ -90,6 +92,13 @@
 
             <div class="row pt-2">
                 <div>
+                    <mat-slide-toggle [(ngModel)]="isSummer" (change)=updateSeason($event)>Summer
+                    </mat-slide-toggle>
+
+                    <mat-slide-toggle [(ngModel)]="isWinter" (change)=updateSeason($event)>Winter
+                    </mat-slide-toggle>
+
+
                     <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>by Population
                     </mat-slide-toggle>
                 </div>

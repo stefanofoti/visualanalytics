@@ -1,7 +1,7 @@
 import { Injectable, NgModule, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
-import { bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry, MainComputationResult, NocsList } from 'src/data/data';
+import { WinterSports, bronzes, golds, PreCheckedSports2, PreCheckedSports, silvers, Sport, Country, CountryPopulation, Decades, CountryGdp, Medal, Sports, Query, CacheEntry, MainComputationResult, NocsList } from 'src/data/data';
 import { DataService } from './data.service';
 import * as ld from "lodash";
 
@@ -220,12 +220,16 @@ export class LoaderService {
           silversFemale: 0,
           bronzesFemale: 0
         }
+
+        let season = WinterSports.includes(sport) ? "winter" : "summer"
+
         this.selectedSports.push({
           id: this.selectedSports.length,
           isChecked: PreCheckedSports.includes(sport),
           name: sport,
           group: line.Sport,
-          totalMedals: 0
+          totalMedals: 0,
+          season: season
         })
       }
     })

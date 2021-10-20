@@ -70,6 +70,7 @@ export interface Sport {
     group: string;
     isChecked: boolean;
     totalMedals: number;
+    season: string;
 }
 
 export interface Medal {
@@ -214,6 +215,7 @@ export const ColorScaleDark = d3.scaleOrdinal()
 
 
 
+export const WinterSports = ["Swimming", "Cycling", "Baseball", "Alpinism"]
 
 
 
