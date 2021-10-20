@@ -125,12 +125,12 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       );*/
   }
 
-  onDataInitialized() {
-    // console.log(this.golds)
-    this.filterData()
-    this.initChart()
-    this.updateChart()
-  }
+  // onDataInitialized() {
+  //   // console.log(this.golds)
+  //   this.filterData()
+  //   this.initChart()
+  //   this.updateChart()
+  // }
 
   filterData() {
     // this.goldsFiltered = this.golds.filter(t => this.teamsList.some(t2 => t.team == t2.name && t2.isChecked));

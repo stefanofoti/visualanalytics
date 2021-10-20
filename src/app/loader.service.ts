@@ -469,7 +469,10 @@ export class LoaderService {
     return ce.res
   }
 
-  getTopNations(gdpDict: {}) {
+
+
+
+  getTop40Nations(gdpDict: {}) {
     let result = {}
     // Create items array
     var items = Object.keys(gdpDict).map(function (key) {
@@ -481,7 +484,7 @@ export class LoaderService {
       return second[1] - first[1];
     });
 
-    items = items.slice(0, 26)
+    items = items.slice(0, 40)
     items.forEach(item => {
       result[item[0]] = item[1]
     })
@@ -518,7 +521,7 @@ export class LoaderService {
       NocsList.forEach(c => {
         this.avgGdpDict[c] = this.computeAverageGdpOfNation(range, c)
       })
-      this.avgGdpDict = this.getTopNations(this.avgGdpDict)
+      this.avgGdpDict = this.getTop40Nations(this.avgGdpDict)
       this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])
       console.log("avgGdpDict", this.avgGdpDict)
     }
@@ -527,6 +530,7 @@ export class LoaderService {
       NocsList.forEach(c => {
         this.avgPopDict[c] = this.computeAveragePopulationOfNation(decadesSelected, c)
       })
+      this.avgPopDict = this.getTop40Nations(this.avgPopDict)
       this.dataService.avgGdpPopReady([this.avgGdpDict, this.avgPopDict])
     }
 

@@ -212,11 +212,8 @@ export class PcaService {
               }
               let gdp
               if (q.isGdp) {
-                /*this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
+                this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
                 !gdp && (gdp = this.avgGdp[nocName])
-                gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
-                */
-                gdp = this.avgGdp[nocName]
                 gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
 
                 if (gdp == 0 || !gdp) {
@@ -233,7 +230,15 @@ export class PcaService {
                 Pop: population,
                 Sex: Number(sex) == 0 ? "M" : "F"
               })
-              medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+              if (q.isGdp && Object.keys(this.avgGdp).includes(nocName)){
+                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+              }
+              else if (q.isPop && Object.keys(this.avgPop).includes(nocName)){
+                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+              }
+              else if (!q.isGdp && !q.isPop){
+                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+              }
             })
           })
         }
