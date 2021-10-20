@@ -22,14 +22,15 @@ export class MapComponent implements OnInit {
   componentHeight = this.COMPONENT_HEIGHT
 
 
-  private width = 1200
-  private height = 400
+  private width
+  private height
   private svg: any
   private g: any
   private path: any
   private div: any
   private max: number
 
+  private MAP_COMPONENT_TAG = "MapComponent"
 
   private isDataReady: Boolean = false
   private selectedSports: string[] = PreCheckedSports
@@ -60,7 +61,7 @@ export class MapComponent implements OnInit {
 
   onMouseSelection(message: MouseSelection) {
     console.log("map mouse selection event: ", message)
-    if (message.source && message.source !== MapComponent.name) {
+    if (message.source && message.source !== this.MAP_COMPONENT_TAG) {
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
     }
   }
@@ -300,7 +301,7 @@ export class MapComponent implements OnInit {
     let g = this.g
 
     let zoom = d3.zoom()
-      .scaleExtent([1, 10])
+      .scaleExtent([1, 20])
       .on('zoom', (event) => {
         g.selectAll('path')
           .attr('transform', event.transform);
@@ -332,9 +333,9 @@ export class MapComponent implements OnInit {
     this.width = document.getElementById("svg_map").clientWidth || 800
 
     var projection = d3geo.geoNaturalEarth1()
-      .scale(130)
+      .scale(80)
       //.translate([this.width / 2, this.height / 2])
-      .center([50,-20])
+      .center([300,-80])
       //.center([this.width / 2, this.height / 2])
 
 
@@ -405,7 +406,7 @@ export class MapComponent implements OnInit {
       this.dataService.updateMouseSelection({
         currentlySelected: true,
         noc: d.properties.NOC,
-        source: MapComponent.name
+        source: this.MAP_COMPONENT_TAG
       })
       context.selectedStats.name_str = d.properties && d.properties.name || ""
 
@@ -445,7 +446,7 @@ export class MapComponent implements OnInit {
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: d.properties.NOC,
-        source: MapComponent.name
+        source: this.MAP_COMPONENT_TAG
       })
       noc = d.properties.NOC
     }
@@ -476,7 +477,7 @@ export class MapComponent implements OnInit {
         context.dataService.updateTraditionSelection({
           noc: selectedCountry,
           currentlySelected: true,
-          source: MapComponent.name
+          source: this.MAP_COMPONENT_TAG
         })
         this.componentHeight = this.COMPONENT_HEIGHT_TRAD
       }else{
@@ -486,7 +487,7 @@ export class MapComponent implements OnInit {
         context.dataService.updateTraditionSelection({
           noc: selectedCountry,
           currentlySelected: false,
-          source: MapComponent.name
+          source: this.MAP_COMPONENT_TAG
         })
         this.componentHeight = this.COMPONENT_HEIGHT
       }

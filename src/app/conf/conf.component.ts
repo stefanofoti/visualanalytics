@@ -273,7 +273,9 @@ export class ConfComponent implements OnInit {
       isFemale: this.isFemaleChecked,
       is3D: this.is3D
     }
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, this.traditionCountriesNumber, this.traditionPastWeight).then(res  => {
+    let tradCount= this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
+    let tradWeight = this.traditionPastWeight ? this.traditionPastWeight : 100
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, tradCount, tradWeight).then(res  => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max

@@ -32,6 +32,7 @@ export class ScatterplotComponent implements OnInit {
   markerSize2D = 7
   markerSize3D = 7
 
+  private SCATTER_COMPONENT_TAG = "ScatterplotComponent"
 
   constructor(private dataService: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => message && this.dataReady(message))
@@ -44,13 +45,15 @@ export class ScatterplotComponent implements OnInit {
 
   highlight(noc: string) {
     let updatedColors = this.extractColors(this.entries, noc)
+    let q: PcaQuery = this.pcaService.query
+    let borderWidth = q.is3D ? 0.1 : 0.5
     let update = {
       marker: {
         size: this.markerSize3D,
         color: updatedColors,
         line: {
           color: 'rgba(0, 0, 0, 1)',
-          width: 0.1
+          width: borderWidth
         },
         opacity: 1
       }
@@ -60,13 +63,15 @@ export class ScatterplotComponent implements OnInit {
 
   doNotHighlight() {
     let updatedColors = this.extractColors(this.entries)
+    let q: PcaQuery = this.pcaService.query
+    let borderWidth = q.is3D ? 0.1 : 0.5
     let update = {
       marker: {
         size: this.markerSize3D,
         color: updatedColors,
         line: {
           color: 'rgba(0, 0, 0, 1)',
-          width: 0.1
+          width: borderWidth
         },
         opacity: 1
       }
@@ -76,11 +81,11 @@ export class ScatterplotComponent implements OnInit {
 
   onMouseSelection(message: MouseSelection) {
     console.log("scatterplot got selection event", message)
-    if (this.plotted && message.currentlySelected && message.source !== ScatterplotComponent.name) {
+    if (this.plotted && message.currentlySelected && message.source !== this.SCATTER_COMPONENT_TAG) {
       let selectedNoc = message.noc
       this.highlight(selectedNoc)
     }
-    if (this.plotted && !message.currentlySelected && message.source !== ScatterplotComponent.name) {
+    if (this.plotted && !message.currentlySelected && message.source !== this.SCATTER_COMPONENT_TAG) {
       this.doNotHighlight()
     }
 
@@ -196,6 +201,7 @@ export class ScatterplotComponent implements OnInit {
     if (!q.is3D) {
       trace1.type = 'scattergl'
       // trace1.marker.size = 1 
+      trace1.marker.line.width = 0.5
     }
 
     var data = [trace1];
@@ -303,7 +309,7 @@ export class ScatterplotComponent implements OnInit {
           this.dataService.updateMouseSelection({
             currentlySelected: true,
             noc: newSelected,
-            source: ScatterplotComponent.name
+            source: this.SCATTER_COMPONENT_TAG
           })
           this.highlight(newSelected)
         }
@@ -315,7 +321,7 @@ export class ScatterplotComponent implements OnInit {
         this.dataService.updateMouseSelection({
           currentlySelected: false,
           noc: this.currentlySelectedNoc,
-          source: ScatterplotComponent.name
+          source: this.SCATTER_COMPONENT_TAG
         })
         this.currentlySelectedNoc = undefined
         this.doNotHighlight()

@@ -11,12 +11,7 @@ const routes: Routes = [
     component: AppComponent, // this is the component with the <router-outlet> in the template
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'overview'
-      },
-      {
-        path: 'overview', // child route path
+        path: '', // child route path
         component: OverviewComponent, // child route component that the router renders
       },
       {

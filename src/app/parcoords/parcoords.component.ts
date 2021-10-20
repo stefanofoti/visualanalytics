@@ -14,6 +14,9 @@ import * as ld from "lodash";
 })
 export class ParcoordsComponent implements OnInit {
 
+  private PARCOORDS_COMPONENT_TAG = "ParcoordsComponent"
+
+
   dimensions: any
   private subDataReadiness: Subscription
   private subYearRangeChanged: Subscription
@@ -67,7 +70,7 @@ export class ParcoordsComponent implements OnInit {
   }
 
   onMouseSelection(message: MouseSelection) {
-    if (message.source && message.source !== ParcoordsComponent.name) {
+    if (message.source && message.source !== this.PARCOORDS_COMPONENT_TAG) {
       console.log("onMouseSelection parcoords")
       console.log(message)
       message.currentlySelected ? this.highlight(null, message.noc, this) : this.doNotHighlight(null, message.noc, this)
@@ -344,7 +347,7 @@ export class ParcoordsComponent implements OnInit {
       this.dataService.updateMouseSelection({
         currentlySelected: true,
         noc: c.currentCountryNoc,
-        source: ParcoordsComponent.name
+        source: this.PARCOORDS_COMPONENT_TAG
       })
     }
     d3.selectAll(".parcoord-line")
@@ -373,7 +376,7 @@ export class ParcoordsComponent implements OnInit {
       this.dataService.updateMouseSelection({
         currentlySelected: false,
         noc: c.currentCountryNoc,
-        source: ParcoordsComponent.name
+        source: this.PARCOORDS_COMPONENT_TAG
       })
     }
     d3.selectAll(".parcoord-line")
