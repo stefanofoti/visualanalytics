@@ -8,9 +8,17 @@
                 <mat-hint class="mat-custom-light">Enter text to find countries</mat-hint>
             </mat-form-field>
 
-            <div (click)="selectAllSports()">Select all</div>
-            <div (click)="deselectAllSports()">Deselect all</div>
+
             <mat-autocomplete #auto_country="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
+                <mat-option>
+                    <div>
+                        <mat-checkbox [(ngModel)]="isEveryCountrySelected"
+                            (click)="selectAllCountries(); $event.stopPropagation()">
+                            Select all
+                        </mat-checkbox>
+                    </div>
+                </mat-option>
+
                 <mat-option *ngFor="let c of filteredCountries | async" [value]="selectedCountry">
                     <div (click)="optionCountryClicked($event, c)">
                         <mat-checkbox [checked]="c.isChecked" (change)="toggleSelectionCountry(c)"
@@ -31,6 +39,15 @@
             </mat-form-field>
 
             <mat-autocomplete #auto_sport="matAutocomplete" [displayWith]="displayFn.bind(this)">
+                <mat-option>
+                    <div>
+                        <mat-checkbox [(ngModel)]="isEverySportSelected"
+                            (click)="selectAllSports(); $event.stopPropagation()">
+                            Select all
+                        </mat-checkbox>
+                    </div>
+                </mat-option>
+
                 <mat-option *ngFor="let sport of filteredSports | async" [value]="selectedSports">
                     <div (click)="optionClicked($event, sport)">
                         <mat-checkbox [checked]="sport.isChecked" (change)="toggleSelection(sport)"

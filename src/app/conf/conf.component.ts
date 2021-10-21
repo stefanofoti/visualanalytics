@@ -27,6 +27,9 @@ export class ConfComponent implements OnInit {
 
   componentHeight = this.COMPONENT_HEIGHT
 
+  isEverySportSelected = false
+  isEveryCountrySelected = false
+
   formConf: FormGroup
   teamsList: Team[] = Teams
   medalsList: Medal[]
@@ -149,11 +152,19 @@ export class ConfComponent implements OnInit {
   }
 
   selectAllSports() {
-    this.sportsList.forEach(s => { s.isChecked = true })
+    if(!this.isEverySportSelected) {
+      this.sportsList.forEach(s => { s.isChecked = true })
+      return
+    }
+    this.sportsList.forEach(s => { s.isChecked = false })
   }
 
-  deselectAllSports() {
-    this.sportsList.forEach(s => { s.isChecked = false })
+  selectAllCountries() {
+    if(!this.isEveryCountrySelected) {
+      this.countryList.forEach(c => { c.isChecked = true })
+      return
+    }
+    this.countryList.forEach(c => { c.isChecked = false })
   }
 
 

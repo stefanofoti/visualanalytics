@@ -206,16 +206,25 @@ export const ColorScaleDark = d3.scaleOrdinal()
     .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
     .range([AsiaColorDark, AfricaColorDark, NorthAmericaColorDark, SouthAmericaColorDark, EuropeColorDark, OceaniaColorDark])
 
-
-
-
-
-
-
-
-
-
-export const WinterSports = ["Swimming", "Cycling", "Baseball", "Alpinism"]
+export const WinterSports = [
+    "Speed Skating",
+    "Cross Country Skiing",
+    "Ice Hockey",
+    "Biathlon",
+    "Alpine Skiing",
+    "Luge",
+    "Bobsleigh",
+    "Figure Skating",
+    "Nordic Combined",
+    "Freestyle Skiing",
+    "Ski Jumping",
+    "Curling",
+    "Snowboarding",
+    "Short Track Speed Skating",
+    "Skeleton",
+    "Military Ski Patrol",
+    "Alpinism"
+]
 
 
 
