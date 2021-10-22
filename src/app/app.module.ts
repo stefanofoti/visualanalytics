@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { FirstChartComponent } from './first-chart/first-chart.component';
 import { SecondChartComponent } from './second-chart/second-chart.component';
 import { MedalChartComponent } from './medal-chart/medal-chart.component';
+import { MedalProgressionChartComponent } from './medal-progression-chart/medal-progression-chart.component';
 import { ConfComponent } from './conf/conf.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataService } from './data.service';
@@ -34,6 +35,7 @@ import { LegendComponent } from './legend/legend.component'
     FirstChartComponent,
     SecondChartComponent,
     MedalChartComponent,
+    MedalProgressionChartComponent,
     ConfComponent,
     MedalRegionChartComponent,
     MapComponent,

@@ -103,16 +103,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  initSvg() {
-    this.svg = d3Sel.select('#barChartMedals')
-      .append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%')
-    //.attr('viewBox', '0 0 900 500');
-    this.g = this.svg.append('g')
-      .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')');
-  }
-
   plotGraph() {
     // this.initData()
     /*d3Sel.selectAll("rect")
@@ -190,8 +180,6 @@ export class MedalChartComponent implements OnInit, OnDestroy {
 
   initChart() {
     this.firstRun = false
-    //this.initSvg()
-
     // set the dimensions and margins of the graph
     var margin = { top: 30, right: 30, bottom: 70, left: 60 }
 

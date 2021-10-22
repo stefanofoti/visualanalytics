@@ -20,6 +20,8 @@ export class PcaService {
   PCADetails = []
   TradNocs = []
 
+  yearlyData ={}
+
   query: PcaQuery
 
   constructor(private dataService: DataService, private loaderService: LoaderService) {
@@ -34,9 +36,8 @@ export class PcaService {
 
   aggregateData(lines, q: PcaQuery) {
 
-
-
     let aggregateLines = []
+    let yearlyLines = []
     let medalSum = {}
     let gold = ""
     let silver = ""
@@ -101,11 +102,6 @@ export class PcaService {
                   }
                 }
                 else {
-
-                  
-                  
-                  
-
                   medalSum[currentNOC][currentYear][currentSport][currentSex] = {
                     totalMedals: q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight,
                     totalMedalsGolds: currentMedalType === "Gold" ? (q.isTradition ? weight * Math.pow(100, 1 / (q.end - currentYear + 1)) : weight) : 0,
@@ -137,7 +133,6 @@ export class PcaService {
                 sportName: currentSportName
               }
               medalSum[currentNOC][currentYear][currentSport][currentSex].medals = [medal]
-
             }
           } else {
             medalSum[currentNOC] = {
@@ -232,18 +227,23 @@ export class PcaService {
               })
               if (q.isGdp && Object.keys(this.avgGdp).includes(nocName)){
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
               }
               else if (q.isPop && Object.keys(this.avgPop).includes(nocName)){
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
               }
               else if (!q.isGdp && !q.isPop){
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
+                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
               }
             })
           })
         }
       })
     })
+
+    this.dataService.onYearlyDataReady(yearlyLines)
 
     let removeNocs: Number
     let removeSports: Number
@@ -340,10 +340,10 @@ export class PcaService {
     this.query = q
     let pcaId = this.getCacheId(q)
     let cacheValue = JSON.parse(localStorage.getItem(pcaId))
-    if (cacheValue) {
-      this.dataService.pcaDataReady(cacheValue)
-      return cacheValue
-    }
+    // if (cacheValue) {
+    //   this.dataService.pcaDataReady(cacheValue)
+    //   return cacheValue
+    // }
 
     let data = this.filterData(q, lines)
     if (data.length <= 0) {

@@ -52,6 +52,9 @@ export class DataService {
   private avgGdpPopSource = new BehaviorSubject({})
   avgGdpPopMessage = this.avgGdpPopSource.asObservable()
 
+  private yearlyDataSource = new BehaviorSubject({})
+  yearlyDataMessage = this.yearlyDataSource.asObservable()
+
   constructor() { }
 
   changeMessage(message: Team[]) {
@@ -112,6 +115,10 @@ export class DataService {
 
   avgGdpPopReady(message: any) {
     this.avgGdpPopSource.next(message)
+  }
+
+  onYearlyDataReady(message: any){
+    this.yearlyDataSource.next(message)
   }
 
 }

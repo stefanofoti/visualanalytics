@@ -34,8 +34,8 @@ export class LoaderService {
 
   yearStats = {}
 
-  private avgGdpDict = {}
-  private avgPopDict = {}
+  avgGdpDict = {}
+  avgPopDict = {}
 
   private isOlympicsDataReady: Boolean = false
 
@@ -441,7 +441,7 @@ export class LoaderService {
         res: res,
         traditionRes: traditionRes
       }
-      this.cache.push(ce)
+      //this.cache.push(ce)
     }
     if (tradition) {
       let tradResAffinity: MainComputationResult = ld.cloneDeep(ce.traditionRes)

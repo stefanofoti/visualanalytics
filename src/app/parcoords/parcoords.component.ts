@@ -251,6 +251,7 @@ export class ParcoordsComponent implements OnInit {
       .range([0, c.width - 50])
       .domain(c.dimensions);
     //})
+    console.log("x and y", c.x, c.y)
   }
 
 
