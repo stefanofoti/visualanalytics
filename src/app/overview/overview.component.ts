@@ -9,6 +9,8 @@ export class OverviewComponent implements OnInit {
 
   constructor() { }
 
+  isScatter = true
+
   ngOnInit(): void {
   }
 

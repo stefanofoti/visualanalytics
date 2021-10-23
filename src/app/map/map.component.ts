@@ -379,7 +379,7 @@ export class MapComponent implements OnInit {
 
   highlight(e, d, context) {
     //console.log(d)
-    if (!context.highlightToggle) {
+    if (!d || !context.highlightToggle) {
       return
     }
     let noc
@@ -434,7 +434,7 @@ export class MapComponent implements OnInit {
   }
 
   doNotHighlight(e, d, context) {
-    if (!context.highlightToggle) {
+    if (!d || !context.highlightToggle) {
       return
     }
     context.selectedStats = undefined
