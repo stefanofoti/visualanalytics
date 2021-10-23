@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import * as d3Sel from 'd3-selection';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { bronzes, ColorScale, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, silvers, Sport } from 'src/data/data';
+import { bronzes, ColorScale, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, ScatterConf, silvers, Sport } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
 import * as ld from "lodash";
@@ -18,7 +18,7 @@ import * as d3Axis from 'd3';
   templateUrl: './medal-progression-chart.component.html',
   styleUrls: ['./medal-progression-chart.component.css']
 })
-export class MedalProgressionChartComponent {
+export class MedalProgressionChartComponent implements OnInit {
 
   private MEDALPROGRESSION_COMPONENT_TAG = "MedalProgression"
 
@@ -35,6 +35,8 @@ export class MedalProgressionChartComponent {
   private isDataReady: boolean
   private spacing: number = 0
 
+  private initialized = false
+
   private yearRange: number[]
 
   private selectedMedals: string[]
@@ -44,6 +46,8 @@ export class MedalProgressionChartComponent {
   private color: any
 
   private countries: any = {}
+
+  private doc: any = {}
 
   private stats: any
   private maxSelectedSports: number
@@ -85,7 +89,7 @@ export class MedalProgressionChartComponent {
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
 
-    this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
+    // this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.yearlyDataMessage.subscribe(message => this.yearlyDataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
@@ -103,7 +107,7 @@ export class MedalProgressionChartComponent {
     }
   }
 
-  dataReady(message): any {
+  /*dataReady(message): any {
     if (message && message.length == 7) {
       this.stats = Object.values(message[0])
       this.maxSelectedSports = message[2]
@@ -119,7 +123,7 @@ export class MedalProgressionChartComponent {
       //this.neverPlotted && this.firstPlot()
       //this.update()
     }
-  }
+  }*/
 
   yearlyDataReady(message): any {
     let m = message
@@ -198,27 +202,15 @@ export class MedalProgressionChartComponent {
 
       }
     });
-    console.log("myData", this.arrayFormData)
-    console.log("theirData", this.data)
-    this.justChina = []
-    this.arrayFormData.forEach(elem => {
-      if (elem.noc == "AUS") {
-        this.justChina.push(elem)
-      }
-
-    });
-    console.log("ChinaData", this.justChina)
-    // this.neverPlotted && this.firstPlot()
     this.update()
-
-
-
   }
 
   ngOnInit(): void {
-    this.width = document.getElementById("div_medalprogression").clientWidth;
-    this.height = document.getElementById("div_medalprogression").clientHeight;
+    // this.width = document.getElementById("div_medalprogression").clientWidth;
+    // this.height = document.getElementById("div_medalprogression").clientHeight;
     this.neverPlotted = true
+    this.initialized = true
+    this.doc = document
     // this.buildSvg();
     // this.addXandYAxis();
     // this.drawLineAndPath();
@@ -232,17 +224,24 @@ export class MedalProgressionChartComponent {
   // }
 
   private buildSvg() {
+    this.width = ScatterConf.width
+    this.height = ScatterConf.height
+
     if (this.neverPlotted) {
       this.neverPlotted = false
 
-      this.width = this.width - this.margin.left - this.margin.right;
-      this.height = this.height - this.margin.top - this.margin.bottom;
+      /*if(!ScatterConf.isScatter) {
+        this.width = this.width - this.margin.left - this.margin.right;
+        this.height = this.height - this.margin.top - this.margin.bottom;
+      } else {
+      }*/
 
       this.svg = d3Sel.select("#div_medalprogression")
         .append("svg")
         .attr("id", "svg_medalprogression")
         .attr('width', '100%')
         .attr('height', '100%')
+        .attr('viewBox', '0 0 790 420')
         .append("g")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
     }
@@ -374,9 +373,15 @@ export class MedalProgressionChartComponent {
   }
 
   update() {
-    this.buildSvg();
-    this.addXandYAxis();
-    this.drawLineAndPath();
+    if(this.initialized) {
+      this.width = this.doc.getElementById("div_medalprogression").clientWidth;
+      this.height = this.doc.getElementById("div_medalprogression").clientHeight;
+      
+      this.buildSvg();
+      this.addXandYAxis();
+      this.drawLineAndPath();
+  
+    }
   }
 
 }

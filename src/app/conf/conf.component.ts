@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { DataService } from "../data.service";
 import { Observable, Subscription } from 'rxjs';
-import { Country, MainComputationResult, Medal, PCAEntry, PcaQuery, PreCheckedSports, PreCheckedSports2, Query, requiredYearRange, Sport, Team, Teams } from 'src/data/data';
+import { Country, MainComputationResult, Medal, PCAEntry, PcaQuery, PreCheckedSports, PreCheckedSports2, Query, requiredYearRange, ScatterConf, Sport, Team, Teams } from 'src/data/data';
 import { Options } from '@angular-slider/ngx-slider';
 import { of, pipe } from 'rxjs';
 import { map, filter, tap, startWith } from 'rxjs/operators'
@@ -51,6 +51,7 @@ export class ConfComponent implements OnInit {
   @Input() @BooleanInput()
   isMedalsByPop: any
 
+  isScatter: boolean = ScatterConf.isScatter
   //@Input() @BooleanInput()
   isNormalize: boolean = false //any
 
@@ -309,7 +310,7 @@ export class ConfComponent implements OnInit {
     }
     let tradCount = this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
     let tradWeight = this.traditionPastWeight ? this.traditionPastWeight : 100
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, tradCount, tradWeight).then(res => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, this.isScatter, tradCount, tradWeight).then(res => {
       let r = res as MainComputationResult
       let stats = r.stats
       let max = r.max
@@ -421,6 +422,11 @@ export class ConfComponent implements OnInit {
     nrStr && (str = nrStr + str)
     let n = Number(str)
     return !isNaN(n) && n % 1 == 0 && n <= max && n > min
+  }
+
+
+  swicthScatter() {
+    ScatterConf.isScatter = this.isScatter
   }
 
 }

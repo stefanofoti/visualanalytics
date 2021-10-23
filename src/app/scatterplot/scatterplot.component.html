@@ -1,5 +1,5 @@
 <!-- <div id="scatterplot_div" class = "autoHeight heightLine1" style="position: relative;"></div> -->
-<div id='scatterplot_id' class="autoHeight heightLine1">
+<div id='scatterplot_id' class="autoHeight heightLine1" [ngStyle]="{ width: !scatterConf.isScatter ? scatterConf.width : '' }">
 
     <!--<div *ngIf="this.showSpinner" class="text-center">
         <div  class="spinner-border" role="status" style="margin-top: 22vh; color: #ff4081!important">

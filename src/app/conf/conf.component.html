@@ -1,7 +1,7 @@
 <div class="item-box scroll items-bg rounded" style="margin-bottom: 1vh" [ngStyle]="{'height': [componentHeight]}">
     <div class="row">
         <div class="col-md-4">
-            
+
             <mat-form-field class="search-full-width">
                 <input type="text" placeholder="Select countries..." aria-label="Select Countries" matInput
                     [matAutocomplete]="auto_country" [formControl]="countryControl">
@@ -149,6 +149,11 @@
                 <mat-slide-toggle [(ngModel)]="is3D">
                     2D/3D</mat-slide-toggle>
 
+                    Progression chart
+                <mat-slide-toggle [(ngModel)]="isScatter" (change)="swicthScatter()">
+                    Scatterplot</mat-slide-toggle>
+
+
             </div>
 
 
@@ -174,8 +179,8 @@
 
         </div>
         <div class="col-md-4">
-            <button type="button" [disabled]="!actionsEnabled" class="btn btn-primary"
-                (click)="submit()" style="background-color:#ff4081; border-color:#ff4081">Update</button>
+            <button type="button" [disabled]="!actionsEnabled" class="btn btn-primary" (click)="submit()"
+                style="background-color:#ff4081; border-color:#ff4081">Update</button>
         </div>
     </div>
 

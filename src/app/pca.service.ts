@@ -20,7 +20,7 @@ export class PcaService {
   PCADetails = []
   TradNocs = []
 
-  yearlyData ={}
+  yearlyData = {}
 
   query: PcaQuery
 
@@ -183,23 +183,23 @@ export class PcaService {
                 this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmountMale = this.eventsPerSport[year][currentSportName][0])
                 this.eventsPerSport[Number(year)] && this.eventsPerSport[year][currentSportName] && (eventsAmountFemale = this.eventsPerSport[year][currentSportName][1])
 
-                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsGolds = medalSum[noc][year][sport][sex].totalMedalsGolds*this.loaderService.yearStats[year].normConstGoldsMale/eventsAmountMale)
-                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsSilvers = medalSum[noc][year][sport][sex].totalMedalsSilvers*this.loaderService.yearStats[year].normConstSilversMale /eventsAmountMale )
-                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsBronzes = medalSum[noc][year][sport][sex].totalMedalsBronzes*this.loaderService.yearStats[year].normConstBronzesMale /eventsAmountMale )
-                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsGolds = medalSum[noc][year][sport][sex].totalMedalsGolds*this.loaderService.yearStats[year].normConstGoldsFemale /eventsAmountFemale)
-                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsSilvers = medalSum[noc][year][sport][sex].totalMedalsSilvers*this.loaderService.yearStats[year].normConstSilversFemale /eventsAmountFemale)
-                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsBronzes = medalSum[noc][year][sport][sex].totalMedalsBronzes*this.loaderService.yearStats[year].normConstBronzesFemale /eventsAmountFemale)
+                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsGolds = medalSum[noc][year][sport][sex].totalMedalsGolds * this.loaderService.yearStats[year].normConstGoldsMale / eventsAmountMale)
+                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsSilvers = medalSum[noc][year][sport][sex].totalMedalsSilvers * this.loaderService.yearStats[year].normConstSilversMale / eventsAmountMale)
+                Number(sex) == 0 && (medalSum[noc][year][sport][sex].totalMedalsBronzes = medalSum[noc][year][sport][sex].totalMedalsBronzes * this.loaderService.yearStats[year].normConstBronzesMale / eventsAmountMale)
+                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsGolds = medalSum[noc][year][sport][sex].totalMedalsGolds * this.loaderService.yearStats[year].normConstGoldsFemale / eventsAmountFemale)
+                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsSilvers = medalSum[noc][year][sport][sex].totalMedalsSilvers * this.loaderService.yearStats[year].normConstSilversFemale / eventsAmountFemale)
+                Number(sex) == 1 && (medalSum[noc][year][sport][sex].totalMedalsBronzes = medalSum[noc][year][sport][sex].totalMedalsBronzes * this.loaderService.yearStats[year].normConstBronzesFemale / eventsAmountFemale)
 
                 medalSum[noc][year][sport][sex].totalMedals = medalSum[noc][year][sport][sex].totalMedalsGolds + medalSum[noc][year][sport][sex].totalMedalsSilvers + medalSum[noc][year][sport][sex].totalMedalsBronzes
 
-                if(isNaN(medalSum[noc][year][sport][sex].totalMedals)) {
+                if (isNaN(medalSum[noc][year][sport][sex].totalMedals)) {
                   console.log("NaN:", noc, year, sport, sex, medalSum[noc][year][sport][sex])
                 }
               }
               let population
               if (q.isPop) {
                 this.loaderService.countries[nocName] && this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
-                !population && this.avgPop[this.loaderService.countries[nocName]] && (population =this.avgPop[this.loaderService.countries[nocName].name])
+                !population && this.avgPop[this.loaderService.countries[nocName]] && (population = this.avgPop[this.loaderService.countries[nocName].name])
                 population > 0 && (medalSum[noc][year][sport][sex].totalMedals /= population)
                 if (population == 0 || !population) {
                   medalSum[noc][year] = undefined
@@ -225,15 +225,15 @@ export class PcaService {
                 Pop: population,
                 Sex: Number(sex) == 0 ? "M" : "F"
               })
-              if (q.isGdp && Object.keys(this.avgGdp).includes(nocName)){
+              if (q.isGdp && Object.keys(this.avgGdp).includes(nocName)) {
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
                 medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
               }
-              else if (q.isPop && Object.keys(this.avgPop).includes(nocName)){
+              else if (q.isPop && Object.keys(this.avgPop).includes(nocName)) {
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
                 medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
               }
-              else if (!q.isGdp && !q.isPop){
+              else if (!q.isGdp && !q.isPop) {
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
                 medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
               }
@@ -340,12 +340,14 @@ export class PcaService {
     this.query = q
     let pcaId = this.getCacheId(q)
     let cacheValue = JSON.parse(localStorage.getItem(pcaId))
-    // if (cacheValue) {
-    //   this.dataService.pcaDataReady(cacheValue)
-    //   return cacheValue
-    // }
 
     let data = this.filterData(q, lines)
+
+    if (cacheValue) {
+      this.dataService.pcaDataReady(cacheValue)
+      return cacheValue
+    }
+    
     if (data.length <= 0) {
 
       let result: PCAEntry[] = q.selectedNocs.map(n => {
@@ -366,7 +368,6 @@ export class PcaService {
       this.dataService.pcaDataReady(result)
       return result
     }
-
 
 
     if (typeof Worker !== 'undefined') {
@@ -393,7 +394,7 @@ export class PcaService {
         let x: PCAEntry[] = result
         console.log("plotting pca: sending readiness...", x)
         try {
-          localStorage.setItem(pcaId, JSON.stringify(result));          
+          localStorage.setItem(pcaId, JSON.stringify(result));
         } catch (error) {
           console.log(error)
         }

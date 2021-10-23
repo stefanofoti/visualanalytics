@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import { boolean } from 'mathjs';
 
 
 export interface MouseSelection {
@@ -39,8 +40,9 @@ export interface Query {
     tradition?: boolean,
     isMale: boolean,
     isFemale: boolean,
-    traditionCountriesNumber?: number
-    traditionPastWeight?: number
+    isScatter: boolean,
+    traditionCountriesNumber?: number,
+    traditionPastWeight?: number,
 }
 
 export interface PcaQuery {
@@ -168,6 +170,12 @@ export const Sports: Sport[] = [
 export const isEventsPerSportDataReady: any = {};
 
 export const PCAData: PCAEntry[] = []
+
+export var ScatterConf = {
+    isScatter: true,
+    width: 700,
+    height: 450
+}
 
 export const Countries: Country[] = [
 

@@ -13,12 +13,10 @@
             </div>
         </div>
         <div class="col-md-4" style="padding:0;">
-            <button (click)="isScatter = !isScatter">Switch</button>
             <div class="rounded items-bg">
-                <app-scatterplot *ngIf="isScatter"></app-scatterplot>
-                <app-medal-progression-chart *ngIf="!isScatter"></app-medal-progression-chart>
+                <app-scatterplot [ngStyle]="{'display': scatterConf.isScatter ? 'block' : 'none' }"></app-scatterplot>
+                <app-medal-progression-chart [ngStyle]="{'display': scatterConf.isScatter ? 'none' : 'block' }" ></app-medal-progression-chart>
             </div>    
-
         </div>
         <div class="col-md-4">
             <div class="row">

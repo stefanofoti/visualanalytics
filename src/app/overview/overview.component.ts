@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ScatterConf } from 'src/data/data';
+import { ConfComponent } from '../conf/conf.component';
+import { DataService } from '../data.service';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-overview',
@@ -7,11 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
 
-  isScatter = true
+  scatterConf
+
+  constructor() { 
+  }
 
   ngOnInit(): void {
+    this.scatterConf = ScatterConf
   }
 
 }

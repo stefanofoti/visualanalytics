@@ -426,8 +426,8 @@ export class LoaderService {
   }
 
 
-  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale: boolean, traditionCountriesNumber?: number, traditionPastWeight?: number) {
-    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale, traditionCountriesNumber, traditionPastWeight })
+  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale: boolean, isScatter: boolean, traditionCountriesNumber?: number, traditionPastWeight?: number) {
+    let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale, isScatter, traditionCountriesNumber, traditionPastWeight })
     this.query = ld.cloneDeep(query)
     this.query.tradition = tradition
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))

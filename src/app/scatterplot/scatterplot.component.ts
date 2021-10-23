@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as Plotly from 'plotly.js/dist/plotly'
 import { Subscription } from 'rxjs';
-import { AfricaColor, AsiaColor, ColorScale, ColorScaleDark, MouseSelection, PCAEntry, PcaQuery } from 'src/data/data';
+import { AfricaColor, AsiaColor, ColorScale, ColorScaleDark, MouseSelection, PCAEntry, PcaQuery, ScatterConf } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
 import { PcaService } from '../pca.service';
@@ -28,6 +28,8 @@ export class ScatterplotComponent implements OnInit {
   plotted: boolean = false
 
   showSpinner: boolean = true
+
+  scatterConf = ScatterConf
 
   markerSize2D = 7
   markerSize3D = 7
@@ -234,7 +236,7 @@ export class ScatterplotComponent implements OnInit {
           color: 'rgba(255,255,255,1)'
         }
       },
-      //autosize: true,
+      autosize: true,
       //width: "100%",
       //height:"30vh",
     }
@@ -329,6 +331,8 @@ export class ScatterplotComponent implements OnInit {
     })
 
     this.plotted = true
+    ScatterConf.height = document.getElementById("scatterplot_id").clientHeight
+    ScatterConf.width = document.getElementById("scatterplot_id").clientHeight
   }
 
   /*
