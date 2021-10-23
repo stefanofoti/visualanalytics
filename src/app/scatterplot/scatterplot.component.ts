@@ -331,8 +331,9 @@ export class ScatterplotComponent implements OnInit {
     })
 
     this.plotted = true
-    ScatterConf.height = document.getElementById("scatterplot_id").clientHeight
-    ScatterConf.width = document.getElementById("scatterplot_id").clientHeight
+    // ScatterConf.height = document.getElementById("scatterplot_id").clientHeight
+    // ScatterConf.width = document.getElementById("scatterplot_id").clientHeight
+
   }
 
   /*

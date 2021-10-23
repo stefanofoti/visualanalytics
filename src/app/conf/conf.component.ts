@@ -427,6 +427,7 @@ export class ConfComponent implements OnInit {
 
   swicthScatter() {
     ScatterConf.isScatter = this.isScatter
+    window.dispatchEvent(new Event('resize'));
   }
 
 }
