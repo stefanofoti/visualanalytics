@@ -377,6 +377,8 @@ export class MedalProgressionChartComponent implements OnInit {
       this.width = this.doc.getElementById("div_medalprogression").clientWidth;
       this.height = this.doc.getElementById("div_medalprogression").clientHeight;
       
+      this.countries = this.loaderService.countries
+
       this.buildSvg();
       this.addXandYAxis();
       this.drawLineAndPath();
