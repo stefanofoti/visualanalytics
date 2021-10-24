@@ -63,17 +63,6 @@ export class MedalProgressionChartComponent implements OnInit {
   private line: d3Shape.Line<[number, number]>;
 
   public title = 'Line Chart';
-  data: any[] = [
-    { date: 10, value: 40 },
-    { date: 20, value: 93 },
-    { date: 30, value: 95 },
-    { date: 40, value: 130 },
-    { date: 50, value: 110 },
-    { date: 60, value: 120 },
-    { date: 70, value: 129 },
-    { date: 80, value: 107 },
-    { date: 90, value: 140 },
-  ];
 
 
   private neverPlotted = true
@@ -83,8 +72,6 @@ export class MedalProgressionChartComponent implements OnInit {
   currentCountryNoc: string
   selectedTraditionNoc: string
   arrayFormData = []
-  justChina = []
-  chinaYears = [1984, 1988, 1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016]
 
 
   constructor(private loaderService: LoaderService, private dataService: DataService) {
@@ -223,6 +210,19 @@ export class MedalProgressionChartComponent implements OnInit {
   //   this.update()
   // }
 
+  private getLabel(): string {
+    let labelText = 'Medals'
+    let query = this.loaderService.query
+
+    query.tradition && (labelText += " (tradition)")
+    query.normalize && (labelText+= " normalized")
+
+    query.medalsByPop && (labelText += "/country population")
+    query.medalsByGdp && (labelText += "/gdp")
+
+    return labelText
+  }
+
   private buildSvg() {
     this.width = ScatterConf.width
     this.height = ScatterConf.height
@@ -257,9 +257,34 @@ export class MedalProgressionChartComponent implements OnInit {
       .range([0, this.width])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.date));
 
-    this.y = d3Scale.scaleLinear()
+    this.y = d3Scale.scaleSqrt()
       .range([this.height, 0])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.medals));
+
+    let XaxisLabelX = this.width/2;
+    let XaxisLabelY = this.height +35
+    let YaxisLabelX = -40;
+    let YaxisLabelY = this.height/2
+    let labelText = this.getLabel()
+
+    this.svg.select("#MedalProgressionLabelX").remove()
+    this.svg.append("g")
+      .attr('id', "MedalProgressionLabelX")
+      .attr('transform', 'translate(' + XaxisLabelX + ', ' + XaxisLabelY + ')')
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .text("Years")
+      .style("fill", "white");
+
+    this.svg.select("#MedalProgressionLabelY").remove()
+    this.svg.append("g")
+      .attr('id', "MedalProgressionLabelY")
+      .attr('transform', 'translate(' + YaxisLabelX + ', ' + YaxisLabelY + ')')
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('transform', 'rotate(-90)')
+      .text(labelText)
+      .style("fill", "white");
 
     // Configure the X Axis
     this.svg.select("#Xaxis").remove()

@@ -605,9 +605,11 @@ export class LoaderService {
 
 
             if (q.tradition) {
-              goldsAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
-              silversAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
-              bronzesAmount *= Math.pow(pastWeight, 1 / (q.end - i + 1))
+              let tradVar =  pastWeight*0.0001
+              let tradFunction = tradVar*Math.pow((Math.pow((tradVar+1)/tradVar,(1/(q.end-q.start)))), i-q.start) - tradVar
+              goldsAmount *=  tradFunction   //Math.pow(pastWeight, 1/(q.end - i + 1))
+              silversAmount *= tradFunction  //Math.pow(pastWeight, 1/(q.end - i + 1))
+              bronzesAmount *= tradFunction  //Math.pow(pastWeight, 1/(q.end - i + 1))
             }
 
 

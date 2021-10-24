@@ -109,7 +109,7 @@
 
             <div class="row pt-2">
                 <div>
-                    <mat-slide-toggle [(ngModel)]="isSummer" (change)=updateSeason($event)>Summer
+                    <mat-slide-toggle [(ngModel)]="isSummer" (change)=updateSeason($event)>Summer &nbsp;
                     </mat-slide-toggle>
 
                     <mat-slide-toggle [(ngModel)]="isWinter" (change)=updateSeason($event)>Winter
@@ -142,16 +142,15 @@
                 -->
                 <mat-slide-toggle [(ngModel)]="isMaleChecked">
                     Male</mat-slide-toggle>
+
                 <mat-slide-toggle [(ngModel)]="isFemaleChecked">
                     Female</mat-slide-toggle>
 
                 <br>
-                <mat-slide-toggle [(ngModel)]="is3D">
-                    2D/3D</mat-slide-toggle>
-
-                    Progression chart
                 <mat-slide-toggle [(ngModel)]="isScatter" (change)="swicthScatter()">
-                    Scatterplot</mat-slide-toggle>
+                    Scatterplot/Progression Chart</mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="is3D">
+                    2D/3D Scatterplot</mat-slide-toggle>
 
 
             </div>

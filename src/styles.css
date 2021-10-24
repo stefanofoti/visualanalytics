@@ -76,6 +76,10 @@ text {
     color: white;
 }
 
+#div_medalprogression > svg > g > g > g > line{
+    color: white
+}
+
 .items-bg {
     background: rgba(47,50,60,1)
 }
