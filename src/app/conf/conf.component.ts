@@ -153,16 +153,18 @@ export class ConfComponent implements OnInit {
   }
 
   selectAllSports() {
+    this.selectedSports.splice(0,this.selectedSports.length)
     if(!this.isEverySportSelected) {
-      this.sportsList.forEach(s => { s.isChecked = true })
+      this.sportsList.forEach(s => { s.isChecked = true; this.selectedSports.push(s) })
       return
     }
     this.sportsList.forEach(s => { s.isChecked = false })
   }
 
   selectAllCountries() {
+    this.selectedCountry.splice(0,this.selectedCountry.length)
     if(!this.isEveryCountrySelected) {
-      this.countryList.forEach(c => { c.isChecked = true })
+      this.countryList.forEach(c => { c.isChecked = true; this.selectedCountry.push(c) })
       return
     }
     this.countryList.forEach(c => { c.isChecked = false })
