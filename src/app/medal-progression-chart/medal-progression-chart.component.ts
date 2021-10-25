@@ -257,7 +257,7 @@ export class MedalProgressionChartComponent implements OnInit {
       .range([0, this.width])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.date));
 
-    this.y = d3Scale.scaleSqrt()
+    this.y = d3Scale.scaleLinear()
       .range([this.height, 0])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.medals));
 
@@ -300,6 +300,7 @@ export class MedalProgressionChartComponent implements OnInit {
       .call(d3Axis.axisLeft(this.y));
   }
   private drawLineAndPath() {
+    let tradition = this.loaderService.query.tradition
     this.line = d3Shape.line()
       .x((d: any) => this.x(d.date))
       .y((d: any) => this.y(d.medals));
@@ -317,16 +318,32 @@ export class MedalProgressionChartComponent implements OnInit {
       list.push(afd)
     })
 
+    let keys = Object.keys(objToDraw)
+
+    if (tradition) {
+      objToDraw["BORDER"]=objToDraw[this.selectedTraditionNoc]
+      let selectedLine = keys.findIndex(e => e === this.selectedTraditionNoc)
+      delete keys[selectedLine]
+      keys.push("BORDER",this.selectedTraditionNoc)
+      console.log("keys", keys)
+    }
+
 
 
     this.svg.selectAll(".progression-line").remove()
-    Object.keys(objToDraw).forEach(k => {
+    keys.forEach(k => {
       let color = ColorScale(this.countries[k] && this.countries[k].continent ? this.countries[k].continent : "")
       this.svg.append('path')
         .datum(objToDraw[k])
         .style("fill", "none")
-        .attr("stroke", color)
-        .attr("stroke-width", 3)
+        .attr("stroke", _ => {
+          if (k === "BORDER") return "#000000"
+          return color})
+        .attr("stroke-width", _ => {
+            if (k === this.selectedTraditionNoc) return 5
+            if (k === "BORDER") return 9
+            return 3
+          })
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
@@ -364,15 +381,23 @@ export class MedalProgressionChartComponent implements OnInit {
       .transition().duration(200)
       .style("opacity", "0.07")
     // Second the hovered specie takes its color
-    d3.select("#line-" + noc)
-      .transition().duration(200)
-      .style("opacity", "1")
     d3.select("#progression-" + noc)
       .transition().duration(200)
-      .style("opacity", "0.5")
-    d3.select("#line-" + "BORDER")
+      .style("opacity", "1")
+    d3.select("#progression-" + this.selectedTraditionNoc)
       .transition().duration(200)
       .style("opacity", "0.5")
+    d3.select("#progression-" + "BORDER")
+      .transition().duration(200)
+      .style("opacity", "0.5")
+    if (noc == "BORDER" || noc == this.selectedTraditionNoc) {
+      d3.select("#progression-" + "BORDER")
+      .transition().duration(200)
+      .style("opacity", "1")
+      d3.select("#progression-" + this.selectedTraditionNoc)
+      .transition().duration(200)
+      .style("opacity", "1")
+    }
   }
 
   // Unhighlight

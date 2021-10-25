@@ -208,11 +208,11 @@ export const OceaniaColorDark = "#802200"
 
 export const ColorScale = d3.scaleOrdinal()
     .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-    .range([AsiaColor, AfricaColor, NorthAmericaColor, SouthAmericaColor, EuropeColor, OceaniaColor])
+    .range([AsiaColor, AfricaColor, NorthAmericaColor, NorthAmericaColor, EuropeColor, OceaniaColor])
 
 export const ColorScaleDark = d3.scaleOrdinal()
     .domain(["Asia", "Africa", "North America", "South America", "Europe", "Oceania"])
-    .range([AsiaColorDark, AfricaColorDark, NorthAmericaColorDark, SouthAmericaColorDark, EuropeColorDark, OceaniaColorDark])
+    .range([AsiaColorDark, AfricaColorDark, NorthAmericaColorDark, NorthAmericaColorDark, EuropeColorDark, OceaniaColorDark])
 
 export const WinterSports = [
     "Speed Skating",

@@ -70,7 +70,8 @@ export class PcaService {
         let currentSex = lines[elem].Sex_value
         let weight = 1
         let pastWeight = this.loaderService.query.traditionPastWeight
-        let tradVar = pastWeight*0.0001
+        let interval = q.end-q.start
+        let tradVar =  pastWeight*0.01*(10/Math.pow(interval, 3/2))
         let tradFunction = tradVar*Math.pow((Math.pow((tradVar+1)/tradVar,(1/(q.end-q.start)))), currentYear-q.start) - tradVar
 
         if (currentMedalType === "Gold") {
@@ -213,7 +214,12 @@ export class PcaService {
               if (q.isGdp) {
                 this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
                 !gdp && (gdp = this.avgGdp[nocName])
-                gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                if (Number(year)<1960) {
+                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals = 0)
+
+                } else {
+                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                }
 
                 if (gdp == 0 || !gdp) {
                   medalSum[noc][year] = undefined
