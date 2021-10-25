@@ -70,7 +70,8 @@ export class PcaService {
         let currentSex = lines[elem].Sex_value
         let weight = 1
         let pastWeight = this.loaderService.query.traditionPastWeight
-        let tradVar = pastWeight*0.0001
+        let interval = q.end-q.start
+        let tradVar =  pastWeight*0.01*(10/Math.pow(interval, 3/2))
         let tradFunction = tradVar*Math.pow((Math.pow((tradVar+1)/tradVar,(1/(q.end-q.start)))), currentYear-q.start) - tradVar
 
         if (currentMedalType === "Gold") {

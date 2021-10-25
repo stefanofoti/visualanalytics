@@ -364,8 +364,11 @@ export class ParcoordsComponent implements OnInit {
     d3.select("#line-" + "BORDER")
     .transition().duration(200)
     .style("opacity", "0.5")
-    if (d.name == "BORDER" || d.name == this.selectedTraditionNoc) {
+    if (d.name == "BORDER" || c.currentCountryNoc == this.selectedTraditionNoc) {
       d3.select("#line-" + "BORDER")
+      .transition().duration(200)
+      .style("opacity", "1")
+      d3.select("#line-" + this.selectedTraditionNoc)
       .transition().duration(200)
       .style("opacity", "1")
     }
