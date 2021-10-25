@@ -214,7 +214,12 @@ export class PcaService {
               if (q.isGdp) {
                 this.loaderService.gdp[nocName] && this.loaderService.gdp[nocName].years[Number(year)] && (gdp = this.loaderService.gdp[nocName].years[Number(year)])
                 !gdp && (gdp = this.avgGdp[nocName])
-                gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                if (Number(year)<1960) {
+                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals = 0)
+
+                } else {
+                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                }
 
                 if (gdp == 0 || !gdp) {
                   medalSum[noc][year] = undefined

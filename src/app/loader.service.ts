@@ -100,7 +100,7 @@ export class LoaderService {
     lines.forEach(l => {
       let noc = l["CountryCode"]
       let years = []
-      for (currentYear = 1960; currentYear < 2015; currentYear++) {
+      for (currentYear = 1960; currentYear <= 2016; currentYear++) {
         years[currentYear.toString()] = l[currentYear.toString()]
       }
       let p: CountryGdp = {
@@ -791,7 +791,6 @@ export class LoaderService {
       return 0
     }
     let res = GdpSum / GdpYears
-    if (NOC === "RUS") return NaN
     return res
   }
 

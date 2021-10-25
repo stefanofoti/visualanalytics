@@ -257,7 +257,7 @@ export class MedalProgressionChartComponent implements OnInit {
       .range([0, this.width])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.date));
 
-    this.y = d3Scale.scaleSqrt()
+    this.y = d3Scale.scaleLinear()
       .range([this.height, 0])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.medals));
 
