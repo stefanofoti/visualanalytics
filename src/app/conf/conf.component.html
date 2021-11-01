@@ -118,11 +118,28 @@
 
                     <mat-slide-toggle [checked]="isMedalsByPop" (change)=onSlideTogglePopChanged($event)>by Population
                     </mat-slide-toggle>
+                    <div *ngIf="this.isMedalsByPop">
+                        <mat-form-field appearance="fill" style="width: 18vh;">
+                            <input (keypress)="numberOnlyInteger($event, topNationsAmount, 0, 100)"
+                                [(ngModel)]="topNationsAmount" [ngModelOptions]="{standalone: true}" type="text" matInput
+                                placeholder="#top countries">
+                        </mat-form-field>
+                    </div>
+
                 </div>
                 <div>
                     <mat-slide-toggle [checked]="isMedalsByGdp" (change)=onSlideToggleGdpChanged($event)>
                         by GDP</mat-slide-toggle>
-                </div>
+
+                    <div *ngIf="this.isMedalsByGdp">
+                        <mat-form-field appearance="fill" style="width: 18vh;">
+                            <input (keypress)="numberOnlyInteger($event, topNationsAmount, 0, 100)"
+                                [(ngModel)]="topNationsAmount" [ngModelOptions]="{standalone: true}" type="text" matInput
+                                placeholder="#top countries">
+                        </mat-form-field>
+                    </div>
+                    
+                    </div>
                 <div>
                     <mat-slide-toggle [(ngModel)]="isNormalize">
                         Normalize data</mat-slide-toggle>

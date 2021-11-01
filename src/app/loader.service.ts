@@ -37,6 +37,8 @@ export class LoaderService {
   avgGdpDict = {}
   avgPopDict = {}
 
+  topNationsAmount:number = 40
+
   private isOlympicsDataReady: Boolean = false
 
   constructor(private dataService: DataService) {
@@ -426,11 +428,12 @@ export class LoaderService {
   }
 
 
-  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale: boolean, isScatter: boolean, traditionCountriesNumber?: number, traditionPastWeight?: number) {
+  async computeMedalsByNationInRange(start: number, end: number, medals: Medal[], selectedSports: string[], medalsByPop: boolean, medalsByGdp: boolean, normalize: boolean, tradition: boolean, selectedCountries: string[], isMale: boolean, isFemale: boolean, isScatter: boolean, topNationsAmount:number, traditionCountriesNumber?: number, traditionPastWeight?: number) {
     let query: Query = ld.cloneDeep({ start, end, medals, selectedCountries, selectedSports, medalsByPop, medalsByGdp, normalize, isMale, isFemale, isScatter, traditionCountriesNumber, traditionPastWeight })
     this.query = ld.cloneDeep(query)
     this.query.tradition = tradition
     let ce: CacheEntry = this.cache.find(ce => ld.isEqual(ce.query, query))
+    this.topNationsAmount = topNationsAmount
     if (!ce) {
       let result = this.computeResult({ ...query, tradition: false })
       let traditionResult = this.computeResult({ ...query, tradition: true })
@@ -492,7 +495,7 @@ export class LoaderService {
       return second[1] - first[1];
     });
 
-    items = items.slice(0, 40)
+    items = items.slice(0, this.topNationsAmount)
     items.forEach(item => {
       result[item[0]] = item[1]
     })
