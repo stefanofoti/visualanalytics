@@ -449,6 +449,10 @@ export class LoaderService {
       tradResAffinity.stats = this.computeAffinity(tradResAffinity.stats, this.selectedTradition, countriesAmount)
       let selectedStats: Object = tradResAffinity.stats[this.selectedTradition]
 
+      if(!selectedStats) {
+        return undefined
+      }
+
       let max = 0
 
       Object.values(tradResAffinity.stats).forEach(element => {
