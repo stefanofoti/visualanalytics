@@ -137,6 +137,7 @@ export class MedalChartComponent implements OnInit, OnDestroy {
       traditionDeltasArray.sort((a,b) => a.value-b.value)
       this.statsFiltered = traditionDeltasArray.map(elem => this.statsFiltered.find(s => s.name === elem.noc))
     }
+    this.statsFiltered = this.statsFiltered.filter(s => s !== undefined)
     this.statsFiltered = this.statsFiltered.slice(0, 25)
     console.log("medal chart stats filtered:")
     console.log(this.statsFiltered)

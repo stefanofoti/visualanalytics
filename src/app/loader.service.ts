@@ -475,6 +475,7 @@ export class LoaderService {
       let sortedSports = values.map(v => v && v.sport)
       tradResAffinity.sportsList = sortedSports
       tradResAffinity.maxSingleSport = max
+      console.log("tradition res", tradResAffinity)
       return tradResAffinity
     }
     return ce.res
