@@ -205,7 +205,7 @@ export class PcaService {
               if (q.isPop) {
                 this.loaderService.countries[nocName] && this.loaderService.populations[this.loaderService.countries[nocName].name] && this.loaderService.populations[this.loaderService.countries[nocName].name].years[val] && (population = this.loaderService.populations[this.loaderService.countries[nocName].name].years[val])
                 !population && this.avgPop[this.loaderService.countries[nocName]] && (population = this.avgPop[this.loaderService.countries[nocName].name])
-                population > 0 && (medalSum[noc][year][sport][sex].totalMedals /= population)
+                population > 0 && (medalSum[noc][year][sport][sex].totalMedalsDiv = medalSum[noc][year][sport][sex].totalMedals/population)
                 if (population == 0 || !population) {
                   medalSum[noc][year] = undefined
                 }
@@ -216,9 +216,10 @@ export class PcaService {
                 !gdp && (gdp = this.avgGdp[nocName])
                 if (Number(year)<1960) {
                   gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals = 0)
+                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedalsDiv = 0)
 
                 } else {
-                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedals /= gdp)
+                  gdp > 0 && (medalSum[noc][year][sport][sex].totalMedalsDiv = medalSum[noc][year][sport][sex].totalMedals/gdp)
                 }
 
                 if (gdp == 0 || !gdp) {
@@ -236,12 +237,12 @@ export class PcaService {
                 Sex: Number(sex) == 0 ? "M" : "F"
               })
               if (q.isGdp && Object.keys(this.avgGdp).includes(nocName)) {
-                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
-                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
+                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals, gdp])
+                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedalsDiv])
               }
               else if (q.isPop && Object.keys(this.avgPop).includes(nocName)) {
-                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
-                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedals])
+                medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals, population])
+                medalSum[noc][year] && yearlyLines.push([nocName, Number(year), Number(sport), Number(sex) == 0 ? "M" : "F", medalSum[noc][year][sport][sex].totalMedalsDiv])
               }
               else if (!q.isGdp && !q.isPop) {
                 medalSum[noc][year] && aggregateLines.push([Number(noc), Number(year), Number(sport), Number(sex), medalSum[noc][year][sport][sex].totalMedals])
