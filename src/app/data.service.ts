@@ -52,7 +52,7 @@ export class DataService {
   private avgGdpPopSource = new BehaviorSubject({})
   avgGdpPopMessage = this.avgGdpPopSource.asObservable()
 
-  private yearlyDataSource = new BehaviorSubject({})
+  private yearlyDataSource = new BehaviorSubject(undefined)
   yearlyDataMessage = this.yearlyDataSource.asObservable()
 
   constructor() { }

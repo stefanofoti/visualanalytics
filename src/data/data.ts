@@ -40,6 +40,8 @@ export interface Query {
     tradition?: boolean,
     isMale: boolean,
     isFemale: boolean,
+    isSummer: boolean,
+    isWinter: boolean,
     isScatter: boolean,
     traditionCountriesNumber?: number,
     traditionPastWeight?: number,
@@ -241,7 +243,9 @@ export const WinterSports = [
 
 
 
-
+export const SummerYears: number[] = [1896, 1900, 1904, 1906, 1908, 1912, 1920, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016];
+export const WinterYears: number[] = [1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1994, 1998, 2002, 2006, 2010, 2014]
+export const BothYears: number[] = [1896, 1900, 1904, 1906, 1908, 1912, 1920, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016]
 
 
 // export const AllNocs: string[] = ["AFG", "AHO", "ALB", "ALG", "AND", "ANG", "ANT", "ANZ", "ARG", "ARM", "ARU", "ASA", "AUS", "AUT", "AZE", "BAH", "BAN", "BAR", "BDI", "BEL", "BEN", "BER", "BHU", "BIH", "BIZ", "BLR", "BOH", "BOL", "BOT", "BRA", "BRN", "BRU", "BUL", "BUR", "CAF", "CAM", "CAN", "CAY", "CGO", "CHA", "CHI", "CHN", "CIV", "CMR", "COD", "COK", "COL", "COM", "CPV", "CRC", "CRO", "CRT", "CUB", "CYP", "CZE", "DEN", "DJI", "DMA", "DOM", "ECU", "EGY", "ERI", "ESA", "ESP", "EST", "ETH", "EUN", "FIJ", "FIN", "FRA", "FRG", "FSM", "GAB", "GAM", "GBR", "GBS", "GDR", "GEO", "GEQ", "GER", "GHA", "GRE", "GRN", "GUA", "GUI", "GUM", "GUY", "HAI", "HKG", "HON", "HUN", "INA", "IND", "IOA", "IRI", "IRL", "IRQ", "ISL", "ISR", "ISV", "ITA", "IVB", "JAM", "JOR", "JPN", "KAZ", "KEN", "KGZ", "KIR", "KOR", "KOS", "KSA", "KUW", "LAO", "LAT", "LBA", "LBR", "LCA", "LES", "LIB", "LIE", "LTU", "LUX", "MAD", "MAL", "MAR", "MAS", "MAW", "MDA", "MDV", "MEX", "MGL", "MHL", "MKD", "MLI", "MLT", "MNE", "MON", "MOZ", "MRI", "MTN", "MYA", "NAM", "NBO", "NCA", "NED", "NEP", "NFL", "NGR", "NIG", "NOR", "NRU", "NZL", "OMA", "PAK", "PAN", "PAR", "PER", "PHI", "PLE", "PLW", "PNG", "POL", "POR", "PRK", "PUR", "QAT", "RHO", "ROT", "ROU", "RSA", "RUS", "RWA", "SAA", "SAM", "SCG", "SEN", "SEY", "SIN", "SKN", "SLE", "SLO", "SMR", "SOL", "SOM", "SRB", "SRI", "SSD", "STP", "SUD", "SUI", "SUR", "SVK", "SWE", "SWZ", "SYR", "TAN", "TCH", "TGA", "THA", "TJK", "TKM", "TLS", "TOG", "TPE", "TTO", "TUN", "TUR", "TUV", "UAE", "UAR", "UGA", "UKR", "UNK", "URS", "URU", "USA", "UZB", "VAN", "VEN", "VIE", "VIN", "VNM", "WIF", "YAR", "YEM", "YMD", "YUG", "ZAM", "ZIM"]

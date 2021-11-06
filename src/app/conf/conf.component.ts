@@ -314,7 +314,7 @@ export class ConfComponent implements OnInit {
     let tradCount = this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
     let tradWeight = this.traditionPastWeight ? this.traditionPastWeight : 100
     let topAmount = this.topNationsAmount ? this.topNationsAmount : 40
-    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, this.isScatter, topAmount, tradCount, tradWeight).then(res => {
+    this.loaderService.computeMedalsByNationInRange(this.yearRange[0], this.yearRange[1], medalsList, selSports, this.isMedalsByPop, this.isMedalsByGdp, this.isNormalize, this.isTradition, selCountries, this.isMaleChecked, this.isFemaleChecked, this.isSummer, this.isWinter, this.isScatter, topAmount, tradCount, tradWeight).then(res => {
       if(!res) {
         alert("No data to show with the selected filters.")
         this.actionsEnabled = true

@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import * as d3Sel from 'd3-selection';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { bronzes, ColorScale, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, ScatterConf, silvers, Sport } from 'src/data/data';
+import { BothYears, bronzes, ColorScale, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, ScatterConf, silvers, Sport, SummerYears, WinterYears } from 'src/data/data';
 import { DataService } from '../data.service';
 import { LoaderService } from '../loader.service';
 import * as ld from "lodash";
@@ -77,7 +77,7 @@ export class MedalProgressionChartComponent implements OnInit {
   constructor(private loaderService: LoaderService, private dataService: DataService) {
 
     // this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
-    dataService.yearlyDataMessage.subscribe(message => this.yearlyDataReady(message))
+    dataService.yearlyDataMessage.subscribe(message => message && this.yearlyDataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     this.traditionSelectionSubscription = this.dataService.traditionSelectionMessage.subscribe(message => {
       this.selectedTraditionNoc = message.currentlySelected ? message.noc : undefined
@@ -115,39 +115,41 @@ export class MedalProgressionChartComponent implements OnInit {
   yearlyDataReady(message): any {
     let m = message
     let yearlyData = {}
-
+    let start = this.loaderService.query.start
+    let end = this.loaderService.query.end
+    let isSummer = this.loaderService.query.isSummer
+    let isWinter = this.loaderService.query.isWinter
+    let isBoth = (isSummer && isWinter) || (!isSummer && !isWinter)
+    let years: number[]
+    if (isBoth) {
+      years = BothYears
+    } else if (isWinter) {
+      years = WinterYears
+    } else if (isSummer) {
+      years = SummerYears
+    }
+    years = years.filter(y => y >= start && y <= end)
+    let empty = {
+      total: 0,
+      M: 0,
+      F: 0
+    }
     Object.keys(m).forEach(element => {
       let noc = m[element][0]
       let year = m[element][1]
       let sex = m[element][3]
       let medals = m[element][4]
 
-      if (yearlyData[noc]) {
-        if (yearlyData[noc][year]) {
-          if (yearlyData[noc][year][sex]) {
-            yearlyData[noc][year][sex] += medals
-            yearlyData[noc][year].total += medals
-          }
-          else {
-            yearlyData[noc][year][sex] = medals
-            yearlyData[noc][year].total += medals
-
-          }
-        }
-        else {
-          yearlyData[noc][year] = {}
-          yearlyData[noc][year][sex] = medals
-          yearlyData[noc][year].total = medals
-        }
-      }
-      else {
+      if (!yearlyData[noc]) {
         yearlyData[noc] = {}
-        yearlyData[noc][year] = {}
-        yearlyData[noc][year][sex] = medals
-        yearlyData[noc][year].total = medals
+        years.forEach(y => {
+          yearlyData[noc][y] = ld.cloneDeep(empty)
+        })
       }
-
+      yearlyData[noc][year][sex] += medals
+      yearlyData[noc][year].total += medals
     });
+
     console.log("yearlydata", yearlyData)
 
     let q = this.loaderService.query
@@ -215,7 +217,7 @@ export class MedalProgressionChartComponent implements OnInit {
     let query = this.loaderService.query
 
     query.tradition && (labelText += " (tradition)")
-    query.normalize && (labelText+= " normalized")
+    query.normalize && (labelText += " normalized")
 
     query.medalsByPop && (labelText += "/country population")
     query.medalsByGdp && (labelText += "/gdp")
@@ -261,10 +263,10 @@ export class MedalProgressionChartComponent implements OnInit {
       .range([this.height, 0])
       .domain(d3Array.extent(this.arrayFormData, (d) => d.medals));
 
-    let XaxisLabelX = this.width/2;
-    let XaxisLabelY = this.height +35
+    let XaxisLabelX = this.width / 2;
+    let XaxisLabelY = this.height + 35
     let YaxisLabelX = -40;
-    let YaxisLabelY = this.height/2
+    let YaxisLabelY = this.height / 2
     let labelText = this.getLabel()
 
     this.svg.select("#MedalProgressionLabelX").remove()
@@ -321,10 +323,10 @@ export class MedalProgressionChartComponent implements OnInit {
     let keys = Object.keys(objToDraw)
 
     if (tradition) {
-      objToDraw["BORDER"]=objToDraw[this.selectedTraditionNoc]
+      objToDraw["BORDER"] = objToDraw[this.selectedTraditionNoc]
       let selectedLine = keys.findIndex(e => e === this.selectedTraditionNoc)
       delete keys[selectedLine]
-      keys.push("BORDER",this.selectedTraditionNoc)
+      keys.push("BORDER", this.selectedTraditionNoc)
       console.log("keys", keys)
     }
 
@@ -338,12 +340,13 @@ export class MedalProgressionChartComponent implements OnInit {
         .style("fill", "none")
         .attr("stroke", _ => {
           if (k === "BORDER") return "#000000"
-          return color})
+          return color
+        })
         .attr("stroke-width", _ => {
-            if (k === this.selectedTraditionNoc) return 5
-            if (k === "BORDER") return 9
-            return 3
-          })
+          if (k === this.selectedTraditionNoc) return 5
+          if (k === "BORDER") return 9
+          return 3
+        })
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
@@ -392,11 +395,11 @@ export class MedalProgressionChartComponent implements OnInit {
       .style("opacity", "0.5")
     if (noc == "BORDER" || noc == this.selectedTraditionNoc) {
       d3.select("#progression-" + "BORDER")
-      .transition().duration(200)
-      .style("opacity", "1")
+        .transition().duration(200)
+        .style("opacity", "1")
       d3.select("#progression-" + this.selectedTraditionNoc)
-      .transition().duration(200)
-      .style("opacity", "1")
+        .transition().duration(200)
+        .style("opacity", "1")
     }
   }
 
@@ -423,16 +426,16 @@ export class MedalProgressionChartComponent implements OnInit {
   }
 
   update() {
-    if(this.initialized) {
+    if (this.initialized) {
       this.width = this.doc.getElementById("div_medalprogression").clientWidth;
       this.height = this.doc.getElementById("div_medalprogression").clientHeight;
-      
+
       this.countries = this.loaderService.countries
 
       this.buildSvg();
       this.addXandYAxis();
       this.drawLineAndPath();
-  
+
     }
   }
 
