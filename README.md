@@ -6,7 +6,11 @@ In this work we focus on the amount of medal won by every country, looking for r
 ## How to run
 npm install && npm run start
 
-## About us
+## Documentation
+
+[Complete report here](hhttps://github.com/stefanofoti/visualanalytics/blob/main/docs/report.pdf)
+[Presentation](hhttps://github.com/stefanofoti/visualanalytics/blob/main/docs/presentation.pdf)
+
 
 ## About us
 We are two students currently enrolled in the Master's Degree course "Engineering in Computer Science".    
