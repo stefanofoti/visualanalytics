@@ -1,5 +1,9 @@
 <!-- <div id="scatterplot_div" class = "autoHeight heightLine1" style="position: relative;"></div> -->
-<div id='scatterplot_id' class="autoHeight heightLine1" [ngStyle]="{ width: !scatterConf.isScatter ? scatterConf.width : '' }">
+<div class="center color-pink" style="z-index: 4;">
+    <mat-spinner [ngStyle]="{ display: (showSpinner && scatterConf.isScatter) ? 'block' : 'none' }"></mat-spinner>
+ </div>
+
+<div id='scatterplot_id' class="autoHeight heightLine1" style="z-index: 0;" [ngStyle]="{ width: !scatterConf.isScatter ? scatterConf.width : '' }">
 
     <!--<div *ngIf="this.showSpinner" class="text-center">
         <div  class="spinner-border" role="status" style="margin-top: 22vh; color: #ff4081!important">
@@ -8,9 +12,6 @@
     </div>-->
 
 
- <div class="center color-pink" >
-       <mat-spinner [ngStyle]="{ display: showSpinner ? 'block' : 'none' }"></mat-spinner>
-
-    </div>
 
 </div>
+
