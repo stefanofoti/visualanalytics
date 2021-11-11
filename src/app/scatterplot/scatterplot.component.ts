@@ -33,13 +33,17 @@ export class ScatterplotComponent implements OnInit {
 
   markerSize2D = 7
   markerSize3D = 7
-
+  is3D = true
   private SCATTER_COMPONENT_TAG = "ScatterplotComponent"
 
   constructor(private dataService: DataService, private loaderService: LoaderService, private pcaService: PcaService) {
     this.subPCAReady = dataService.pcaDataReadyMessage.subscribe(message => message && this.dataReady(message))
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     dataService.updateReadinessMessage.subscribe(message => message && message.length > 0 && (this.showSpinner = true))
+    dataService.scatter3DMessage.subscribe(message => {
+      this.is3D = message
+      this.plotScatter()
+    })
 
 
 
@@ -47,8 +51,9 @@ export class ScatterplotComponent implements OnInit {
 
   highlight(noc: string) {
     let updatedColors = this.extractColors(this.entries, noc)
-    let q: PcaQuery = this.pcaService.query
-    let borderWidth = q.is3D ? 0.1 : 0.5
+    // let q: PcaQuery = this.pcaService.query
+    let is3D = this.is3D
+    let borderWidth = is3D ? 0.1 : 0.5
     let update = {
       marker: {
         size: this.markerSize3D,
@@ -66,7 +71,8 @@ export class ScatterplotComponent implements OnInit {
   doNotHighlight() {
     let updatedColors = this.extractColors(this.entries)
     let q: PcaQuery = this.pcaService.query
-    let borderWidth = q.is3D ? 0.1 : 0.5
+    let is3D = this.is3D
+    let borderWidth = is3D ? 0.1 : 0.5
     let update = {
       marker: {
         size: this.markerSize3D,
@@ -151,14 +157,18 @@ export class ScatterplotComponent implements OnInit {
   }
 
   plotScatter() {
-    let q: PcaQuery = this.pcaService.query
+    // let q: PcaQuery = this.pcaService.query
+    if(this.entries.length == 0){
+      return
+    }
+    let is3D = this.is3D
     let entries = this.entries
     console.log("plotting pca...", entries)
 
     let x = this.extractComponents(entries, "x")
     let y = this.extractComponents(entries, "y")
     let z
-    if (q.is3D) {
+    if (is3D) {
       z = this.extractComponents(entries, "z")
     }
     let nocs = this.extractComponents(entries, "details", "NOC")
@@ -194,13 +204,13 @@ export class ScatterplotComponent implements OnInit {
       },
     };
 
-    if (q.is3D) {
+    if (is3D) {
       trace1.z = z
       trace1.type = 'scatter3d'
 
     }
 
-    if (!q.is3D) {
+    if (!is3D) {
       trace1.type = 'scattergl'
       // trace1.marker.size = 1 
       trace1.marker.line.width = 0.5
@@ -213,13 +223,13 @@ export class ScatterplotComponent implements OnInit {
       displaylogo: false
     }
 
-    if (q.is3D) {
+    if (is3D) {
 
       config.modeBarButtonsToRemove = ['toImage', 'zoom3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'orbitRotation']
 
     }
 
-    if(!q.is3D) {
+    if(!is3D) {
       config.modeBarButtonsToRemove = ['zoom2d','pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'zoom3d', 'pan3d', 'orbitRotation', 'tableRotation', 'handleDrag3d', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d', 'hoverClosestCartesian', 'hoverCompareCartesian', 'zoomInGeo', 'zoomOutGeo', 'resetGeo', 'hoverClosestGeo', 'hoverClosestGl2d', 'hoverClosestPie', 'toggleHover', 'resetViews', 'toImage', 'sendDataToCloud', 'toggleSpikelines', 'resetViewMapbox']      
     }
 
@@ -241,7 +251,7 @@ export class ScatterplotComponent implements OnInit {
       //height:"30vh",
     }
 
-    if (q.is3D) {
+    if (is3D) {
       layout.modebar.pan3d = {
         color: 'white'
       }
@@ -264,7 +274,7 @@ export class ScatterplotComponent implements OnInit {
       }
     }
 
-    if (!q.is3D) {
+    if (!is3D) {
 
       layout.xaxis = {
         zerolinecolor: 'white',

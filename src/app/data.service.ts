@@ -55,6 +55,10 @@ export class DataService {
   private yearlyDataSource = new BehaviorSubject(undefined)
   yearlyDataMessage = this.yearlyDataSource.asObservable()
 
+  private scatter3DSource = new BehaviorSubject(true)
+  scatter3DMessage = this.scatter3DSource.asObservable()
+
+
   constructor() { }
 
   changeMessage(message: Team[]) {
@@ -119,6 +123,10 @@ export class DataService {
 
   onYearlyDataReady(message: any){
     this.yearlyDataSource.next(message)
+  }
+
+  onChangeScatterType(message: boolean){
+    this.scatter3DSource.next(message)
   }
 
 }

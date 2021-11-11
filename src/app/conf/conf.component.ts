@@ -309,7 +309,7 @@ export class ConfComponent implements OnInit {
       isPop: this.isMedalsByPop,
       isMale: this.isMaleChecked,
       isFemale: this.isFemaleChecked,
-      is3D: this.is3D
+      is3D: true
     }
     let tradCount = this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
     let tradWeight = this.traditionPastWeight ? this.traditionPastWeight : 100
@@ -437,6 +437,10 @@ export class ConfComponent implements OnInit {
   swicthScatter() {
     ScatterConf.isScatter = this.isScatter
     window.dispatchEvent(new Event('resize'));
+  }
+
+  scatter3D2D() {
+    this.data.onChangeScatterType(this.is3D)
   }
 
 }

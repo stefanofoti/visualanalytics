@@ -113,6 +113,7 @@ export class MedalProgressionChartComponent implements OnInit {
   }*/
 
   yearlyDataReady(message): any {
+    console.log("yearlyData medal progression chart", message)
     let m = message
     let yearlyData = {}
     let start = this.loaderService.query.start
@@ -145,6 +146,9 @@ export class MedalProgressionChartComponent implements OnInit {
         years.forEach(y => {
           yearlyData[noc][y] = ld.cloneDeep(empty)
         })
+      }
+      if(!yearlyData[noc][year]) {
+        console.log("year not found "+ year + " - " + noc)
       }
       yearlyData[noc][year][sex] += medals
       yearlyData[noc][year].total += medals

@@ -9,7 +9,7 @@
 
 
  <div class="center color-pink" >
-       <mat-spinner *ngIf="showSpinner"></mat-spinner>
+       <mat-spinner [ngStyle]="{ display: showSpinner ? 'block' : 'none' }"></mat-spinner>
 
     </div>
 

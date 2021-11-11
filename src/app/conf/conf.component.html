@@ -165,8 +165,8 @@
 
                 <br>
                 <mat-slide-toggle [(ngModel)]="isScatter" (change)="swicthScatter()">
-                    Scatterplot/Progression Chart</mat-slide-toggle>
-                <mat-slide-toggle [(ngModel)]="is3D">
+                    Progression/Scatterplot</mat-slide-toggle>
+                <mat-slide-toggle *ngIf="isScatter" [(ngModel)]="is3D" (change)="scatter3D2D()">
                     2D/3D Scatterplot</mat-slide-toggle>
 
 
