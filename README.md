@@ -1,4 +1,4 @@
-# A visual analysis OF THE Olympic games
+# A visual analysis of the Olympic games
 The first Olympic Game took place in 1986. At that time, and for many years, few countries take part to games and USA used to be the undisputed leader of the competition. 
 
 In this work we focus on the amount of medal won by every country, looking for relationship with population and economy by starting from the conclusion of most relevant previous works in the field. We also focus on gender differences in olympic games.
