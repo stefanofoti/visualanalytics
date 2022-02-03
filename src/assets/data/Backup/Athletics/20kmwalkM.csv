@@ -1,0 +1,766 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1, Massimo Stano,ITA,1:21:05
+2020,2, Koki Ikeda,JPN,1:21:14
+2020,3, Toshikazu Yamanishi,JPN,1:21:28
+2020,4, Álvaro Martin,ESP,1:21:46
+2020,5, Christopher Linke,GER,1:21:50
+2020,6, Diego Garcia,ESP,1:21:57
+2020,7, Wang Kaihua,CHN,1:22:03
+2020,8, Zhang Jun,CHN,1:22:16
+2020,9, Perseus Karlström,SWE,1:22:29
+2020,10, Callum Wilkinson,GBR,1:22:38
+2020,11, Andres Olivas Nunez,MEX,1:22:46
+2020,12, Brian Pintado,ECU,1:22:54
+2020,13, Caio Bonfim,BRA,1:23:21
+2020,14, Manuel Esteban Soto,COL,1:23:32
+2020,15, Francesco Fortunato,ITA,1:23:43
+2020,16, Kevin Campion,FRA,1:23:53
+2020,17, Declan Tingay,AUS,1:24:00
+2020,18, Eider Arévalo,COL,1:24:10
+2020,19, David Hurtado,ECU,1:24:31
+2020,20, Wayne Snyman,RSA,1:24:33
+2020,21, Cesar Rodriguez,PER,1:24:40
+2020,22, Leo Kopp,GER,1:24:46
+2020,23, Sandeep Kumar,IND,1:25:07
+2020,24, Gabriel Bordier,FRA,1:25:23
+2020,25, Tom Bosworth,GBR,1:25:57
+2020,26, Cai Zelin,CHN,1:26:39
+2020,27, Jhon Alexander Castaneda,COL,1:26:41
+2020,28, Nils Brembach,GER,1:26:45
+2020,29, David Kenny,IRL,1:26:54
+2020,30, Jose Oswaldo Calel,GUA,1:26:55
+2020,31, Miguel Ángel López,ESP,1:27:12
+2020,32, Eiki Takahashi,JPN,1:27:29
+2020,33, Marius Ziukas,LTU,1:27:35
+2020,34, Sahin Senoduncu,TUR,1:27:39
+2020,35, Jordy Rafael Jimenez Arrobo,ECU,1:27:52
+2020,36, Kyle Swan,AUS,1:27:55
+2020,37, Choe Byeongkwang,KOR,1:28:12
+2020,38, Noel Chama,MEX,1:28:23
+2020,39, Georgiy Sheiko,KAZ,1:28:38
+2020,40, Jose Ortiz,GUA,1:28:57
+2020,41, Miroslav Uradnik,SVK,1:29:25
+2020,42, Jesus Tadeo Vega,MEX,1:30:37
+2020,43, Luis Henry Campos,PER,1:30:58
+2020,44, Federico Tontodonati,ITA,1:31:19
+2020,45, Aliaksandr Liakhovich,BLR,1:31:28
+2020,46, Matheus Correa,BRA,1:31:47
+2020,47, Rahul Rohilla,IND,1:32:06
+2020,48, Abdulselam Imuk,TUR,1:32:27
+2020,49, Ivan Losev,UKR,1:33:26
+2020,50, Nick Christie,USA,1:34:37
+2020,51, Irfan Kolothum Thodi,IND,1:34:41
+2020,52, Eduard Zabuzhenko,UKR,1:39:38
+2020, , Salih Korkmaz,TUR,dnf
+2020,-, Lucas Mazzo,BRA,dnf
+2020, , Lukasz Niedzialek,POL,dnf
+2020, , Jose Alejandro Barrondo,GUA,dq
+2020, , Vasiliy Mizinov,ROC,dq
+2016,1, Wang Zhen,CHN,1:19:14
+2016,2, Cai Zelin,CHN,1:19:26
+2016,3, Dane Bird-Smith,AUS,1:19:37
+2016,4, Caio Bonfim,BRA,1:19:42
+2016,5, Christopher Linke,GER,1:20:00
+2016,6, Tom Bosworth,GBR,1:20:13
+2016,7, Daisuke Matsunaga,JPN,1:20:22
+2016,8, Matteo Giupponi,ITA,1:20:27
+2016,9, Esteban Soto,COL,1:20:36
+2016,10, Evan Dunfee,CAN,1:20:49
+2016,11, Miguel Ángel López,ESP,1:20:58
+2016,12, Iñaki Gómez,CAN,1:21:12
+2016,13, Manish Singh,IND,1:21:21
+2016,14, Ever Palma,MEX,1:21:24
+2016,15, Eider Arévalo,COL,1:21:36
+2016,16, Ruslan Dmytrenko,UKR,1:21:40
+2016,17, Kim Hyunsub,KOR,1:21:44
+2016,18, Hagen Pohle,GER,1:21:44
+2016,19, Jakub Bogdan Jelonek,POL,1:21:52
+2016,20, Aléxandros Papamichail,GRE,1:21:55
+2016,21, Isamu Fujisawa,JPN,1:22:03
+2016,22, Álvaro Martin,ESP,1:22:11
+2016,23, Pedro Gomez,MEX,1:22:22
+2016,24, Richard Vargas,VEN,1:22:23
+2016,25, Yerko Araya,CHI,1:22:23
+2016,26, Marius Ziukas,LTU,1:22:27
+2016,27, Benjamin Thorne,CAN,1:22:28
+2016,28, Mate Helebrandt,HUN,1:22:31
+2016,29, Luis Fernando López,COL,1:22:32
+2016,30, Ersin Tacir,TUR,1:22:53
+2016,31, João Vieira,POR,1:23:03
+2016,32, Antón Kucmin,SVK,1:23:17
+2016,33, Rhydian Cowley,AUS,1:23:30
+2016,34, Georgiy Sheiko,KAZ,1:23:31
+2016,35, Ihor Hlavan,UKR,1:23:32
+2016,36, Hassanine Sebei,TUN,1:23:44
+2016,37, Brian Pintado,ECU,1:23:44
+2016,38, Nils Brembach,GER,1:23:46
+2016,39, Chen Ding,CHN,1:23:54
+2016,40, Nazar Kovalenko,UKR,1:24:40
+2016,41, Paolo Yurivilca,PER,1:24:48
+2016,42, Eiki Takahashi,JPN,1:24:59
+2016,43, Aliaksandr Liakhovich,BLR,1:25:04
+2016,44, Lebogang Shange,RSA,1:25:07
+2016,45, Marco Rodriguez,BOL,1:25:11
+2016,46, Alex Wright,IRL,1:25:25
+2016,47, Artur Brzozowski,POL,1:25:29
+2016,48, Erik Tysse,NOR,1:26:06
+2016,49, Kevin Campion,FRA,1:26:22
+2016,50, Érick Barrondo,GUA,1:27:01
+2016,51, Juan Manuel Cano,ARG,1:27:27
+2016,52, Julio Salazar,MEX,1:27:38
+2016,53, Sérgio Vieira,POR,1:27:39
+2016,54, Hamidreza Zooravand,IRI,1:27:45
+2016,55, Francisco Arcilla,ESP,1:27:50
+2016,56, Jose Raymundo,GUA,1:29:07
+2016,57, Choe Byeongkwang,KOR,1:29:08
+2016,58, Wayne Snyman,RSA,1:29:20
+2016,59, Marius Savelskis,LTU,1:29:26
+2016,60, Ngung Nguyen Thanh,VIE,1:30:01
+2016,61, Byun Youngjun,KOR,1:30:38
+2016,62, Mert Atli,TUR,1:31:36
+2016,63, Moacir Zimmermann,BRA,1:33:58
+2016, , Jose Bagio,BRA,dnf
+2016,-, Dzianis Simanovich,BLR,dnf
+2016, , Samuel Gathimba,KEN,dnf
+2016, , Simon Wachira,KEN,dnf
+2016, , Perseus Karlström,SWE,dnf
+2016, , Andrés Chocho,ECU,dq
+2016, , Lukasz Nowak,POL,dq
+2016, , Quentin Rew,NZL,dq
+2016, , Gurmeet Singh,IND,dq
+2016, , Jose Mauricio Arteaga,ECU,dq
+2016, , Ganapathi Krishnan,IND,dq
+2012,1, Chen Ding,CHN,1:18:46,OR
+2012,2, Érick Barrondo,GUA,1:18:57
+2012,3, Wang Zhen,CHN,1:19.25
+2012,4, Cai Zelin,CHN,1:19:44
+2012,5, Miguel Ángel López,ESP,1:19:49
+2012,6, Eder Sánchez,MEX,1:19:52
+2012,7, Jared Tallent,AUS,1:20:02
+2012,8, Bertrand Moulinet,FRA,1:20:12
+2012,9, Robert Heffernan,IRL,1:20:18
+2012,10, Irfan Kolothum Thodi,IND,1:20:21
+2012,11, João Vieira,POR,1:20:41
+2012,12, Dzianis Simanovich,BLR,1:20:42
+2012,13, Iñaki Gómez,CAN,1:20:58
+2012,14, Erik Tysse,NOR,1:21:00
+2012,15, Alexandros Papamihail,GRE,1:21:12
+2012,16, Ivan Trotski,BLR,1:21:23
+2012,17, Kim Hyun-sub,KOR,1:21:36
+2012,18, Isamu Fujisawa,JPN,1:21:48
+2012,19, Dawid Tomala,POL,1:21:55
+2012,20, Eider Arévalo,COL,1:22:00
+2012,21, Andre Höhne,GER,1:22:02
+2012,22, Juan Manuel Cano,ARG,1:22:10
+2012,23, Antón Kucmin,SVK,1:22:25
+2012,24, Grzegorz Sudol,POL,1:22:40
+2012,25, Takumi Saito,JPN,1:22:43
+2012,26, Trevor Barron,USA,1:22:46
+2012,27, Nazar Kovalenko,UKR,1:22:54
+2012,28, James Rendón,COL,1:22:54
+2012,29, Rafal Augustyn,POL,1:23:17
+2012,30, Ruslan Dmytrenko,UKR,1:23:21
+2012,31, Byun Youngjun,KOR,1:23:26
+2012,32, Mate Helebrandt,HUN,1:23:32
+2012,33, Gurmeet Singh,IND,1:23:34
+2012,34, Isaac Palma,MEX,1:23:35
+2012,35, Georgiy Sheiko,KAZ,1:23:52
+2012,36, Yusuke Suzuki,JPN,1:23:53
+2012,37, Andrey Krivov,RUS,1:24:17
+2012,38, Chris Erickson,AUS,1:24:19
+2012,39, Caio Bonfim,BRA,1:24:45
+2012,40, Marius Ziukas,LTU,1:24:45
+2012,41, Yerko Arayo,CHI,1:25:27
+2012,42, Giorgio Rubino,ITA,1:25:28
+2012,43, Baljinder Singh,IND,1:25:39
+2012,44, Jose Mauricio Arteaga,ECU,1:25:51
+2012,45, Arnis Rumbenieks,LAT,1:26:26
+2012,46, Ever Palma,MEX,1:26:30
+2012,47, Ivan Losev,UKR,1:26:50
+2012,48, Predrag Filipovic,SRB,1:27:22
+2012, , Hassanine Sebei,TUN,dnf
+2012,-, Adam Rutter,AUS,dnf
+2012, , Park Chilsung,KOR,dnf
+2012, , Álvaro Martin,ESP,dnf
+2012, , Ebrahim Rahimian,IRI,dnf
+2012, , Luis Fernando López,COL,dq
+2012, , Valeriy Borchin,RUS,dnf,dq(d)*
+2012, , Vladimir Kanaykin,RUS,dq,dq(d)**
+2008,1, Valeriy Borchin,RUS,1:19:01
+2008,2, Jefferson Pérez,ECU,1:19:15
+2008,3, Jared Tallent,AUS,1:19:42
+2008,4, Wang Hao,CHN,1:19:47
+2008,5, Ivano Brugnetti,ITA,1:19:51
+2008,6, Luke Adams,AUS,1:19:57
+2008,7, Francisco Fernandez,ESP,1:20:32
+2008,8, Robert Heffernan,IRL,1:20:36
+2008,9, Luis Fernando López,COL,1:20:59
+2008,10, Chu Yafei,CHN,1:21:17
+2008,11, Yuki Yamazaki,JPN,1:21:18
+2008,12, Juan Manuel Molina,ESP,1:21:25
+2008,13, Benjamin Sanchez,ESP,1:21:38
+2008,14, Jose Bagio,BRA,1:21:43
+2008,15, Eder Sánchez,MEX,1:21:53
+2008,16, Koichiro Morioka,JPN,1:21:57
+2008,17, Ilya Markov,RUS,1:22:02
+2008,18, Giorgio Rubino,ITA,1:22:11
+2008,19, David Kimutai Rotich,KEN,1:22:21
+2008,20, Rolando Saquipay,ECU,1:22:32
+2008,21, Erik Tysse,NOR,1:22:43
+2008,22, Ivan Trotski,BLR,1:22:55
+2008,23, Kim Hyun-sub,KOR,1:22:57
+2008,24, Andrii Kovenko,UKR,1:22:59
+2008,25, Andre Höhne,GER,1:23:13
+2008,26, Matej Tóth,SVK,1:23:17
+2008,27, Hatem Ghoula,TUN,1:23:44
+2008,28, Dzianis Simanovich,BLR,1:23:53
+2008,29, Rafal Augustyn,POL,1:24:25
+2008,30, Dong Jimin,CHN,1:24:34
+2008,31, James Rendón,COL,1:24:41
+2008,32, João Vieira,POR,1:25:05
+2008,33, Park Chil-seung,KOR,1:25:07
+2008,34, Hassanine Sebei,TUN,1:25:23
+2008,35, Marius Ziukas,LTU,1:25:36
+2008,36, David Mejia,MEX,1:26:45
+2008,37, Jean Nkouloukidi,ITA,1:26:53
+2008,38, Andrés Chocho,ECU,1:27:09
+2008,39, Allan Segura,CRC,1:27:10
+2008,40, Juan Manuel Cano,ARG,1:27:17
+2008,41, Predrag Filipovic,SRB,1:28:15
+2008,42, Rustam Kuvatov,KAZ,1:28:25
+2008,43, Kevin Eastler,USA,1:28:44
+2008,44, Siarhei Charnou,BLR,1:29:38
+2008,45, Sérgio Vieira,POR,1:29:51
+2008,46, Jakub Bogdan Jelonek,POL,1:30:37
+2008,47, Fedoseiy Ciumacenco,MDA,1:31:37
+2008,48, Mohamed Ameur,ALG,1:32:21
+2008,49, Recep Celik,TUR,1:32:54
+2008, , Chris Erickson,AUS,dq
+2008,-, Takayuki Tanii,JPN,dq
+2004,1, Ivano Brugnetti,ITA,1:19:40
+2004,2, Francisco Fernandez,ESP,1:19:45
+2004,3, Nathan Deakes,AUS,1:20:02
+2004,4, Jefferson Pérez,ECU,1:20:38
+2004,5, Juan Manuel Molina,ESP,1:20:55
+2004,6, Zhu Hongjun,CHN,1:21:40
+2004,7, Vladimir Andreyev,RUS,1:21:53
+2004,8, Andre Höhne,GER,1:21:56
+2004,9, Aigars Fadejevs,LAT,1:22:08
+2004,10, João Vieira,POR,1:22:19
+2004,11, Hatem Ghoula,TUN,1:22:59
+2004,12, Beniamin Kucinski,POL,1:23:08
+2004,13, Marco Giungi,ITA,1:23:30
+2004,14, Jose Alessandro Baggio,BRA,1:23:33
+2004,15, Takayuki Tanii,JPN,1:23:38
+2004,16, Luke Adams,AUS,1:23:52
+2004,17, Rolando Saquipay,ECU,1:24:07
+2004,18, Omar Segura,MEX,1:24:35
+2004,19, Yevgeniy Misyulya,BLR,1:25:10
+2004,20, Timothy Seaman,USA,1:25:17
+2004,21, Kevin Eastler,USA,1:25:20
+2004,22, Viktor Burayev,RUS,1:25:36
+2004,23, Ivan Trotsky,BLR,1:25:53
+2004,24, Luis Fernando López,COL,1:26:34
+2004,25, Liu Yunfeng,CHN,1:27:21
+2004,26, John Nunn,USA,1:27:38
+2004,27, Valeriy Borisov,KAZ,1:27:39
+2004,28, Gintaras Andriuskevicius,LTU,1:27:56
+2004,29, Shin Il-yong,KOR,1:28:02
+2004,30, Gyula Dudas,HUN,1:28:18
+2004,31, Moussa Aouanouk,ALG,1:28:38
+2004,32, Matej Tóth,SVK,1:28:49
+2004,33, Lee Dae-ro,KOR,1:28:59
+2004,34, Fedoseiy Ciumacenco,MDA,1:29:06
+2004,35, Andrey Talashko,BLR,1:29:36
+2004,36, Eleftherios Thanopoulos,GRE,1:30:15
+2004,37, Jose David Dominguez,ESP,1:30:16
+2004,38, Vladimir Parvatkin,RUS,1:31:13
+2004,39, Predrag Filipovic,SCG,1:31:35
+2004,40, Han Yucheng,CHN,1:32:18
+2004,41, Park Chil-sung,KOR,1:32:41
+2004, , Yuki Yamazaki,JPN,dnf
+2004,-, Alessandro Gandellini,ITA,dnf
+2004, , Bernardo Segura,MEX,dnf
+2004, , Robert Heffernan,IRL,dq
+2004, , Xavier Moreno,ECU,dq
+2004, , Noe Hernandez,MEX,dq
+2004, , Jiri Malysa,CZE,dq
+2000,1, Robert Korzeniowski,POL,1:18:59,OR
+2000,2, Noe Hernandez,MEX,1:19:03
+2000,3, Vladimir Andreyev,RUS,1:19:27
+2000,4, Jefferson Pérez,ECU,1:20:18
+2000,5, Andreas Erm,GER,1:20:25
+2000,6, Roman Rasskazov,RUS,1:20:57
+2000,7, Francisco Javier Fernandez,ESP,1:21:01
+2000,8, Nathan Deakes,AUS,1:21:03
+2000,9, Alessandro Gandellini,ITA,1:21:14
+2000,10, Nicholas A'Hern,AUS,1:21:34
+2000,11, Michele Didoni,ITA,1:21:43
+2000,12, Daniel Garcia Cordova,MEX,1:22:05
+2000,13, Yu Guohui,CHN,1:22:32
+2000,14, Aigars Fadejevs,LAT,1:22:43
+2000,15, Ilya Markov,RUS,1:23:03
+2000,16, Giovanni Di Benedictis,ITA,1:23:14
+2000,17, Andrey Makarov,BLR,1:23:33
+2000,18, Costica Balan,ROU,1:23:42
+2000,19, Jiri Malysa,CZE,1:24:08
+2000,20, David Marquez Laguna,ESP,1:24:36
+2000,21, Artur Meleshkevich,BLR,1:24:50
+2000,22, Satoshi Yanagisawa,JPN,1:25:03
+2000,23, Moussa Aouanouk,ALG,1:25:04
+2000,24, Arturo Huerta,CAN,1:25:24
+2000,25, Dion Russell,AUS,1:25:26
+2000,26, Timothy Berrett,CAN,1:25:29
+2000,27, Daisuke Ikeshima,JPN,1:25:34
+2000,28, Robert Heffernan,IRL,1:26:04
+2000,29, Sandor Urbanik,HUN,1:26:16
+2000,30, Shin Il-yong,KOR,1:26:22
+2000,31, Igor Kollar,SVK,1:26:31
+2000,32, Luis Garcia Bechinie,GUA,1:27:16
+2000,33, Anthony Gillet,FRA,1:27:36
+2000,34, Mikhail Khmelnitskiy,BLR,1:28:02
+2000,35, Jose David Dominguez,ESP,1:28:16
+2000,36, Hatem Ghoula,TUN,1:28:16
+2000,37, Gyula Dudas,HUN,1:28:34
+2000,38, Valeriy Borisov,KAZ,1:28:36
+2000,39, David Kimutai Rotich,KEN,1:28:45
+2000,40, Timothy Seaman,USA,1:30:32
+2000,41, Robert Valicek,SVK,1:30:46
+2000,42, Julius Sawe,KEN,1:30:55
+2000,43, Julio Martinez,GUA,1:31:47
+2000,44, Ramy Al Deeb,PLE,1:32:32
+2000, , Efim Motpan,MDA,dnf
+2000,-, Bernardo Segura,MEX,dq
+2000, , Maris Putenis,LAT,dq
+1996,1, Jefferson Pérez,ECU,1:20:07
+1996,2, Ilya Markov,RUS,1:20:16
+1996,3, Bernardo Segura,MEX,1:20:23
+1996,4, Nicholas Ahern,AUS,1:20:31
+1996,5, Rishat Shafikov,RUS,1:20:41
+1996,6, Aigars Fadejevs,LAT,1:20:47
+1996,7, Mikhail Shchennikov,RUS,1:21:09
+1996,8, Robert Korzeniowski,POL,1:21:13
+1996,9, Yevgeniy Misyulya,BLR,1:21:16
+1996,10, Thierry Toutain,FRA,1:21:56
+1996,11, Daniel Plaza,ESP,1:22:05,(dq)*
+1996,12, Mikhail Khmelnitskiy,BLR,1:22:17
+1996,13, Sandor Urbanik,HUN,1:22:18
+1996,14, Denis Langlois,FRA,1:23:08
+1996,15, Nischan Daimer,GER,1:23:23
+1996,16, Giovanni Perricelli,ITA,1:23:41
+1996,17, Robert Ihly,GER,1:23:47
+1996,18, Valeriy Borisov,KAZ,1:23:52
+1996,19, Daniel Garcia Cordova,MEX,1:24:10
+1996,20, Valentin Massana,ESP,1:24:14
+1996,21, Yu Guohui,CHN,1:24:30
+1996,22, Daisuke Ikeshima,JPN,1:24:54
+1996,23, David Kimtai,KEN,1:25:01
+1996,24, Andreas Erm,GER,1:25:08
+1996,25, Jiri Malysa,CZE,1:25:13
+1996,26, Sergio Galdino,BRA,1:25:14
+1996,27, Giovanni Di Benedictis,ITA,1:25:22
+1996,28, Li Zewen,CHN,1:25:28
+1996,29, Claus Jørgensen,DEN,1:25:28
+1996,30, Jan Staf,SWE,1:25:30
+1996,31, Jose Cardoso Urbano,POR,1:25:32
+1996,32, Scott Nelson,NZL,1:25:50
+1996,33, Hatem Ghoula,TUN,1:25:52
+1996,34, Michele Didoni,ITA,1:26:02
+1996,35, Jean-Olivier Brosseau,FRA,1:26:29
+1996,36, Martin St. Pierre,CAN,1:26:37
+1996,37, Mohieddin Ben Daoud,TUN,1:27:15
+1996,38, Robert Valicek,SVK,1:27:27
+1996,39, Fernando Vazquez Martinez,ESP,1:27:35
+1996,40, Justus Kavulanya,KEN,1:27:49
+1996,41, Fedoseiy Ciumacenco,MDA,1:27:57
+1996,42, Arturo Huerta,CAN,1:28:23
+1996,43, Luis Garcia Bechinie,GUA,1:28:28
+1996,44, Valdas Kazlauskas,LTU,1:28:33
+1996,45, Costica Balan,ROU,1:29:36
+1996,46, Pavol Blazek,SVK,1:29:41
+1996,47, Dion Russell,AUS,1:30:04
+1996,48, Tomas Kratochvil,CZE,1:30:11
+1996,49, Claudio Bertolino,BRA,1:31:04
+1996,50, Curt Clausen,USA,1:31:30
+1996,51, James McDonald,IRL,1:32:11
+1996,52, Hubert Sonnek,CZE,1:32:42
+1996,53, Htai Myint,MYA,1:42:28
+1996, , Hector Moreno,COL,dnf
+1996,-, Miguel Angel Rodriguez,MEX,dq
+1996, , Julio Martinez,GUA,dq
+1996, , Igor Kollar,SVK,dq
+1996, , Julius Sawe,KEN,dq
+1996, , Li Mingcai,CHN,dq
+1996, , Roberto Oscal,GUA,dq
+1996,-,"* Daniel Plaza ESP disqualified for doping but in 2006 he was cleared of the ban by Spain's Supreme Court. 
+
+
+
+
+Men's 20 km walk - Athletics - Atlanta 1996 Summer Olympics
+Event Format:
+     
+     The competition was a mass start event where all athletes started together at the same time. The first athlete to pass the finishing line was the Gold Medal winner. Event facts: Men's 20 km walk competition was held at the Olympic Stadium and 60 athletes participated in the event. 
+
+
+
+
+
+These results for Men's 20 km walk - Atlanta 1996 Summer Olympics - are based on the official olympic reports and the Olympian Database
+ ",Men's 20 km walk - Athletics - Atlanta 1996 Summer Olympics,"Event Format:
+     
+     The competition was a mass start event where all athletes started together at the same time: The first athlete to pass the finishing line was the Gold Medal winner: Event facts: Men's 20 km walk competition was held at the Olympic Stadium and 60 athletes participated in the event: ",These results for Men's 20 km walk - Atlanta 1996 Summer Olympics - are based on the official olympic reports and the Olympian Database
+1992,1, Daniel Plaza,ESP,1:21:45
+1992,2, Guillaume Leblanc,CAN,1:22:25
+1992,3, Giovanni Di Benedictis,ITA,1:23:11
+1992,4, Maurizio Damilano,ITA,1:23:39
+1992,5, Chen Shaoguo,CHN,1:24:06
+1992,6, James McDonald,IRL,1:25:16
+1992,7, Daniel Garcia Cordova,MEX,1:25:35
+1992,8, Sandor Urbanik,HUN,1:26:08
+1992,9, Hector Moreno,COL,1:26:23
+1992,10, Miguel Prieto,ESP,1:26:38
+1992,11, Robert Ihly,GER,1:26:56
+1992,12, Mikhail Shchennikov,EUN,1:27:17
+1992,13, Vladimir Andreyev,EUN,1:28:25
+1992,14, Timothy Berrett,CAN,1:28:25
+1992,15, Stefan Johansson,SWE,1:28:37
+1992,16, Christopher Maddocks,GBR,1:28:45
+1992,17, Pavol Blazek,TCH,1:29:23
+1992,18, Walter Arena,ITA,1:29:34
+1992,19, Igor Kollar,TCH,1:29:38
+1992,20, Axel Noack,GER,1:29:55
+1992,21, Joel Sanchez,MEX,1:30:12
+1992,22, Nicholas A'Hern,AUS,1:31:39
+1992,23, Andrew Penn,GBR,1:31:40
+1992,24, Martin Rush,GBR,1:31:56
+1992,25, Shemisu Hassan,ETH,"1:32:39"
+1992,26, Viktoras Meskauskas,LTU,1:33:24
+1992,27, Sergio Galdino,BRA,1:33:32
+1992,28, Jan Zahoncik,TCH,1:33:37
+1992,29, Ernesto Canto,MEX,1:33:51
+1992,30, Allen James,USA,1:35:12
+1992,31, Andrew Jachno,AUS,1:36:49
+1992,32, Marcelo Palma,BRA,1:40:11
+1992, , Jefferson Pérez,ECU,dnf
+1992,-, Robert Korzeniowski,POL,dnf
+1992, , Li Mingcai,CHN,dnf
+1992, , Ademar Kammler,BRA,dnf
+1992, , Oleg Troshin,EUN,dnf
+1992, , Valentin Massana,ESP,dq
+1992, , Thierry Toutain,FRA,dq
+1992, , Jose Cardoso Urbano,POR,dq
+1992, , Robert O'Leary,IRL,dq
+1992, , Saleumphone Sopraseut,LAO,dq
+1988,1, Jozef Pribilinec,TCH,1:19:57,OR
+1988,2, Ronald Weigel,GDR,1:20:00
+1988,3, Maurizio Damilano,ITA,1:20:14
+1988,4, José Marin,ESP,1:20:34
+1988,5, Roman Mrazek,TCH,1:20:43
+1988,6, Mikhail Shchennikov,URS,1:20:47
+1988,7, Carlos Mercenario,MEX,1:20:53
+1988,8, Axel Noack,GDR,1:21:14
+1988,9, Giovanni Di Benedictis,ITA,1:21:18
+1988,10, Guillaume Leblanc,CAN,1:21:29
+1988,11, Simon Baker,AUS,1:21:47
+1988,12, Daniel Plaza,ESP,1:21:53
+1988,13, Ian McCombie,GBR,1:22:03
+1988,14, Alexei Perchine,URS,1:22:32
+1988,15, Pavol Blazek,TCH,1:22:39
+1988,16, Martial Fesselier,FRA,1:22:43
+1988,17, James McDonald,IRL,1:22:45
+1988,18, Thierry Toutain,FRA,1:22:55
+1988,19, Carlo Mattioli,ITA,1:22:58
+1988,20, Jean-Claude Corre,FRA,1:23:09
+1988,21, Sandor Urbanik,HUN,1:23:18
+1988,22, Erling Andersen,NOR,1:23:30
+1988,23, Ricardo Pueyo,ESP,1:23:40
+1988,24, Christopher Maddocks,GBR,1:23:46
+1988,25, Stefan Johansson,SWE,1:23:51
+1988,26, Hirofumi Sakai,JPN,1:24:08
+1988,27, Evgueni Missioulla,URS,1:24:39
+1988,28, Andrew Jachno,AUS,1:24:52
+1988,29, Jose Cardoso Urbano,POR,1:24:56
+1988,30, Jan Staaf,SWE,1:24:59
+1988,31, Jose Pinto,POR,1:26:33
+1988,32, Abdelouahab Ferguene,ALG,1:26:33
+1988,33, Hector Moreno,COL,1:27:06
+1988,34, Mohamed Bouhalla,ALG,1:27:10
+1988,35, Godfried Dejonckheere,BEL,1:27:14
+1988,36, Zdzislaw Szlapkin,POL,1:27:23
+1988,37, Gary Morgan,USA,1:27:26
+1988,38, Jim Heiring,USA,1:27:30
+1988,39, Helder Oliveira,POR,1:27:39
+1988,40, Santiago Fonseca,HON,1:27:41
+1988,41, Li Baojin,CHN,1:27:57
+1988,42, Reima Salonen,FIN,1:28:25
+1988,43, Lyubomir Ivanov,BUL,1:28:43
+1988,44, Timothy Lewis,USA,1:31:00
+1988,45, Marcelo Palma,BRA,1:31:42
+1988,46, Chung Pil-hwa,KOR,1:32:23
+1988,47, Tadahiro Kosaka,JPN,1:32:46
+1988,48, Rafael Valladares Lopez,HON,1:37:09
+1988,49, Jung Myong-oh,KOR,1:40:09
+1988, , Querubin Moreno,COL,dnf
+1988,-, Joel Sanchez,MEX,dq
+1988, , Ernesto Canto,MEX,dq
+1988, , Marc Sowa,LUX,dq
+1984,1, Ernesto Canto,MEX,1:23:13,OR
+1984,2, Raul Gonzalez Rodriguez,MEX,1:23:20
+1984,3, Maurizio Damilano,ITA,1:23:26
+1984,4, Guillaume Leblanc,CAN,1:24:29
+1984,5, Carlo Mattioli,ITA,1:25:07
+1984,6, José Marin,ESP,1:25:32
+1984,7, Marco Evoniuk,USA,1:25:42
+1984,8, Erling Andersen,NOR,1:25:54
+1984,9, Querubin Moreno,COL,1:26:04
+1984,10, David Smith,AUS,1:26:48
+1984,11, Francois Lapointe,CAN,1:27:06
+1984,12, Hector Moreno,COL,1:27:12
+1984,13, Philip Vesty,GBR,1:27:28
+1984,14, Simon Baker,AUS,1:27:43
+1984,15, Gerard Lelievre,FRA,1:27:50
+1984,16, Willi Sawall,AUS,1:28:24
+1984,17, Marcelino Colin,MEX,1:28:26
+1984,18, Francisco Vargas,COL,1:28:46
+1984,19, Lan McCombie,GBR,1:28:53
+1984,20, Martial Fesselier,FRA,1:29:46
+1984,21, Marcel Jobin,CAN,1:29:49
+1984,22, Chand Ram,IND,1:30:06
+1984,23, Jim Heiring,USA,1:30:20
+1984,24, Steven Barry,GBR,1:30:46
+1984,25, Jose Pinto,POR,1:30:54
+1984,26, Abdelouahab Ferguene,ALG,1:31:24
+1984,27, Zhang Fuxin,CHN,1:32:10
+1984,28, Alessandro Pezzatini,ITA,1:32:27
+1984,29, Martin Toporek,AUT,1:33:58
+1984,30, Benamar Kechkouche,ALG,1:34:12
+1984,31, Santiago Folseca,HON,1:34:47
+1984,32, Pius Munyasia,KEN,1:34:53
+1984,33, Daniel O'Connor,USA,1:35:12
+1984,34, José Victor Alonzo,GUA,1:35:32
+1984,35, Stefano Casali,SMR,1:35:48
+1984,36, Osvaldo Morejon,BOL,1:44:42
+1984,37, Luis Campos,ESA,1:48:45
+1984,38, Amjad Tawalbeh,JOR,1:49:35
+1984, , Reima Salonen,FIN,dns
+1984,-, Dominique Guebey,FRA,dns
+1984, , Lars Ove Moen,NOR,dns
+1984, , Dieter Hoffmann,FRG,dns
+1980,1, Maurizio Damilano,ITA,1:23:35.5,OR
+1980,2, Pyotr Pochichuk,URS,1:24:45.4
+1980,3, Roland Wieser,GDR,1:25:58.2
+1980,4, Yevgeny Yevsyukov,URS,1:26:28.3
+1980,5, José Marin,ESP,1:26:45.6
+1980,6, Raul Gonzalez Rodriguez,MEX,1:27:48.6
+1980,7, Bohdan Bulakowski,POL,1:28:36.3
+1980,8, Karl-Heinz Stadtmüller,GDR,1:29:21.7
+1980,9, Reima Salonen,FIN,1:31:32.0
+1980,10, Roger Mills,GBR,1:32:37.8
+1980,11, Giorgio Damilano,ITA,1:33:26.2
+1980,12, Janos Szalas,HUN,1:34:10.5
+1980,13, Alf Brandt,SWE,1:34:44.0
+1980,14, Pavol Blazek,TCH,1:35:30.8
+1980,15, Aristidis Karageorgos,GRE,1:36:53.4
+1980,16, Hunde Tore,ETH,1:37:16.6
+1980,17, Enrique Pena,COL,1:38:00.0
+1980,18, Singh Ranjit,IND,1:38:27.2
+1980,19, Ernesto Alfaro,COL,1:42:19.7
+1980,20, Jozef Pribilinec,TCH,1:42:52.4
+1980,21, Martin Toporek,AUT,1:44:56.0
+1980,22, Johann Siegele,AUT,1:45:17.8
+1980,23, Tekeste Mitiku,ETH,1:45:45.7
+1980,24, Stefano Casali,SMR,1:49:21.3
+1980,25, Thipsamay Chanthaphone,LAO,2:20:22.0
+1980, , Lucien Faber,LUX,dnf
+1980,-, Wilfried Siegele,AUT,dnf
+1980, , Bo Gustafsson,SWE,dq
+1980, , Daniel Bautista,MEX,dq
+1980, , Domingo Colin,MEX,dq
+1980, , David Smith,AUS,dq
+1980, , Anatoli Solomin,URS,dq
+1980, , Werner Heyer,GDR,dq
+1980, , Juraj Bencik,TCH,dq
+1976,1, Daniel Bautista,MEX,1:24:40.6,OR
+1976,2, Hans-Georg Reimann,GDR,1:25:13.6
+1976,3, Peter Frenkel,GDR,1:25:29.4
+1976,4, Karl-Heinz Stadtmüller,GDR,1:26:50.6
+1976,5, Raul Gonzalez,MEX,1:28:18.2
+1976,6, Armando Zambaldo,ITA,1:28:25.2
+1976,7, Vladimir Holubnychy,URS,1:29:24.6
+1976,8, Vittorio Visini,ITA,1:29:31.6
+1976,9, Gerard Lelievre,FRA,1:29:53.6
+1976,10, Roberto Buccione,ITA,1:30:40.0
+1976,11, Brian Adams,GBR,1:30:46.2
+1976,12, Ross Haywood,AUS,1:30:59.2
+1976,13, Otto Barch,URS,1:31:12.4
+1976,14, Oliver Flynn,GBR,1:31:42.4
+1976,15, Viktor Semyonov,URS,1:31:59.0
+1976,16, Imre Stankovics,HUN,1:32:06.6
+1976,17, Jan Ornoch,POL,1:32:19.2
+1976,18, Gerhard Weidner,FRG,1:32:56.8
+1976,19, Ernesto Alfaro,COL,1:33:13.8
+1976,20, Ronald Laird,USA,1:33:27.6
+1976,21, Boguslaw Duda,POL,1:33:53.4
+1976,22, Larry Walker,USA,1:34:19.4
+1976,23, Marcel Jobin,CAN,1:34:33.4
+1976,24, Vinko Galusic,YUG,1:34:46.8
+1976,25, Godfried de Jonckheere,BEL,1:34:03.8
+1976,26, Bengt Simonsen,SWE,1:35:31.8
+1976,27, Santiago Fonseca,HON,1:36:07.0
+1976,28, Lucien Faber,LUX,1:36:21.2
+1976,29, Todd Scully,USA,1:36:37.4
+1976,30, Paul Nihill,GBR,1:36:40.4
+1976,31, Rafael Vega,COL,1:37:27.4
+1976,32, Koh Chong Beng,MAS,1:40:16.8
+1976,33, Patrick Farrelly,CAN,1:41:36.2
+1976,34, Yoshio Morikawa,JPN,1:42:20.6
+1976,35, Alexander Oakley,CAN,1:44:08.8
+1976,36, Henry Klein,ISV,1:50:50.4
+1976, , Bernd Kannenberg,FRG,dnf
+1976,-, Domingo Colin,MEX,dq
+1972,1, Peter Frenkel,GDR,1:26:42.4,OR
+1972,2, Vladimir Holubnychy,URS,1:26:55.2
+1972,3, Hans-Georg Reimann,GDR,1:27:16.6
+1972,4, Gerhard Sperling,GDR,1:27:55.0
+1972,5, Nikolai Smaha,URS,1:28:16.6
+1972,6, Paul Nihill,GBR,1:28:44.4
+1972,7, Jan Ornoch,POL,1:32:01.6
+1972,8, Vittorio Visino,ITA,1:32:30.0
+1972,9, Jose Oliveros,MEX,1:32:40.6
+1972,10, Larry Young,USA,1:32.53.4
+1972,11, Jan Rolstad,NOR,1:33:03.2
+1972,12, Pedro Aroche,MEX,1:33:05.0
+1972,13, Heinz Mayr,FRG,1:33:13.8
+1972,14, Philip Embleton,GBR,1:33:22.2
+1972,15, Thomas Dooley,USA,1:34:58.8
+1972,16, Wilfried Wesch,FRG,1:35:20.6
+1972,17, Peter Marlow,GBR,1:35:38.8
+1972,18, Charles Sowa,LUX,1:36:23.8
+1972,19, Goetz Klopfer,USA,1:38:33.6
+1972,20, Hunde Toure,ETH,1:43:11.6
+1972,21, Jose Valle,NCA,1:45:09.4
+1972,22, Ismael Avila,MEX,1:45:45.4
+1972, , Bernd Kannenberg,FRG,dnf
+1972,-, Yevgeny Ivchenko,URS,dq
+1968,1, Vladimir Holubnychy,URS,1:33:58.4
+1968,2, Jose Pedraza,MEX,1:34:00.0
+1968,3, Nikolai Smaha,URS,1:34:03.4
+1968,4, Rudolph Haluza,USA,1:35:00.2
+1968,5, Gerhard Sperling,GDR,1:35:27.2
+1968,6, Otto Barch,URS,1:36:16.8
+1968,7, Hans-Georg Reimann,GDR,1:36:31.4
+1968,8, Stefan Ingvarsson,SWE,1:36:43.4
+1968,9, Leonida Karaiosifoglu,ROU,1:37:07.6
+1968,10, Peter Frenkel,GDR,1:37:20.8
+1968,11, Arthur Jones,GBR,1:37:32.0
+1968,12, Pasquale Busca,ITA,1:37:32.0
+1968,13, Jose Oliveros,MEX,1:38:17.0
+1968,14, Antal Kiss,HUN,1:38:24.0
+1968,15, Stig-Erik Lindberg,SWE,1:40:03.0
+1968,16, Frank Clark,AUS,1:40:06.0
+1968,17, Thomas Dooley,USA,1:40:08.0
+1968,18, Karl-Heinz Merschenz,CAN,1:40:11.0
+1968,19, Charles Sowa,LUX,1:40:17.0
+1968,20, Eladio Campos,MEX,1:41:52.0
+1968,21, Stig Andersson,SWE,1:41:58.0
+1968,22, John Webb,GBR,1:42:51.0
+1968,23, René Pfister,SUI,1:43:36.0
+1968,24, Robert Hughes,GBR,1:43:50.0
+1968,25, Ronald Laird,USA,1:44:38.0
+1968,26, Mieczyslaw Rutyna,POL,1:47:29.0
+1968,27, Euclides Calzado,CUB,1:49:27.0
+1968,28, Julio Ortiz,GUA,1:54:48.0
+1968,29, Roberto Castellanos,ESA,1:58:48.0
+1968, , Jose Valle,NCA,dnf
+1968,-, Kazuo Saito,JPN,dnf
+1968, , Carlos Vanegas,NCA,dnf
+1968, , Felix Cappella,CAN,dnf
+1968, , Julius Müller,FRG,dq
+1964,1, Kenneth Matthews,GBR,1:29:34,OR
+1964,2, Dieter Lindner,GER,1:31:13
+1964,3, Vladimir Holubnychy,URS,1:31:59
+1964,4, Noel Freeman,AUS,1:32:06
+1964,5, Gennady Solodov,URS,1:32:33
+1964,6, Ronald Zinn,USA,1:32:43
+1964,7, Boris Khrolovich,URS,1:32:45
+1964,8, John Edgington,GBR,1:32:46
+1964,9, Gerhard Sperling,GER,1:33:15
+1964,10, John Paddick,GBR,1:33:28
+1964,11, Alexander Bilek,TCH,1:33:45
+1964,12, Hans-Georg Reimann,GER,1:34:51
+1964,13, Henri Delerue,FRA,1:34:58
+1964,14, Tommy Kristensen,DEN,1:35:30
+1964,15, Istvan Göri,HUN,1:35:38
+1964,16, Charles Sowa,LUX,1:36:16
+1964,17, John Mortland,USA,1:36:35
+1964,18, Aake Söderlund,SWE,1:36:53
+1964,19, John Ljunggren,SWE,1:37:03
+1964,20, Roine Karlsson,SWE,1:37:07
+1964,21, Antal Kiss,HUN,1:38:27
+1964,22, Ronald Crawford,AUS,1:38:47
+1964,23, Noboru Ishiguro,JPN,1:39:40
+1964,24, Chedli El Marghni,TUN,1:41:11
+1964,25, Kiue Kuribayashi,JPN,1:43:07
+1964,26, Mieczyslaw Rutyna,POL,1:48:41
+1964, , Robert Gardiner,AUS,dnf
+1964,-, Alexander Oakley,CAN,dnf
+1964, , Ronald Laird,USA,dq
+1964, , Yasuo Naito,JPN,dq
+1960,1, Vladimir Holubnychy,URS,1:34:07.2
+1960,2, Noel Freeman,AUS,1:34:16.4
+1960,3, Stanley Vickers,GBR,1:34:56.4
+1960,4, Dieter Lindner,GER,1:35:33.8
+1960,5, Norman Read,NZL,1:36:59.0
+1960,6, Lennart Back,SWE,1:37:17.0
+1960,7, John Ljunggren,SWE,1:37:59.0
+1960,8, Ladislav Moc,TCH,1:38:32.4
+1960,9, Alexander Oakley,CAN,1:38:46.0
+1960,10, Eric Hall,GBR,1:38:54.0
+1960,11, Ronald Crawford,AUS,1:39:16.2
+1960,12, Henri Delerue,FRA,1:39:37.6
+1960,13, George Hazle,RSA,1:40:16.2
+1960,14, Lennart Carlsson,SWE,1:40:25.0
+1960,15, Tommy Kristensen,DEN,1:41:07.6
+1960,16, Johannes Koch,GER,1:41:53.4
+1960,17, Louis Marquis,SUI,1:41:59.6
+1960,18, Charles Sowa,LUX,1:42:43.8
+1960,19, Ronald Zinn,USA,1:42:47.0
+1960,20, Zora Singh,IND,1:43:18.8
+1960,21, Stefano Erchinich,ITA,1:43:58.6
+1960,22, Luigi De Rosso,ITA,1:45:04.2
+1960,23, Robert Mimm,USA,1:45:09.0
+1960,24, Rudolph Haluza,USA,1:45:11.0
+1960,25, Leo Rosschou Larsen,DEN,1:46:35.8
+1960,26, Gianni Corsaro,ITA,1:46:47.2
+1960,27, Khalifa Bahrouni,TUN,1:47:09.6
+1960,28, Naoui Zlassi,TUN,1:55:21.0
+1960, , Kenneth Matthews,GBR,dnf
+1960,-, Gennady Solodov,URS,dq
+1960, , Anatoly Vedyakov,URS,dq
+1960, , Gabriel Reymond,SUI,dq
+1960, , Ajit Singh,IND,dq
+1960, , Mohamed Ben Lazhar,TUN,dq
+1960, , Siegfried Lefanczik,GER,dq
+1960, , Tibor Balajcza,HUN,dq
+1956,1, Leonid Spirin,URS,1:31:27.4,OR
+1956,2, Antanas Mikenas,URS,1:32:03.0
+1956,3, Bruno Junk,URS,1:32:12.0
+1956,4, John Ljunggren,SWE,1:32:24.0
+1956,5, Stanley Vickers,GBR,1:32:34.2
+1956,6, Donald Keane,AUS,1:33:52.0
+1956,7, George Coleman,GBR,1:34:01.8
+1956,8, Roland Hardy,GBR,1:34:40.4
+1956,9, Giuseppe Dordoni,ITA,1:35:00.4
+1956,10, Edward Allsopp,AUS,1:35:43.0
+1956,11, Abdon Pamich,ITA,1:36:03.6
+1956,12, Helmut Laskau,USA,1:38:46.8
+1956,13, Ronald Crawford,AUS,1:39:35.0
+1956,14, Dumitru Paraschivescu,ROU,1:39:57.4
+1956,15, Ion Barbu,ROU,1:41:37.8
+1956,16, Bruce MacDonald,USA,1:43:25.6
+1956,17, James Hewson,USA,1:46:24.8
+1956, , Dieter Lindner,GER,dq
+1956,-, Alexander Oakley,CAN,dq
+1956, , Josef Dolezal,TCH,dq
+1956, , Lars Hindmar,SWE,dq

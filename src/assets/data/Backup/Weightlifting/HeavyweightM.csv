@@ -1,0 +1,423 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2016,1, Ruslan Nurudinov,UZB,431
+2016,2, Simon Martirosyan,ARM,417
+2016,3, Alexandr Zaichikov,KAZ,416
+2016,4, Yang Zhe,CHN,415
+2016,5, Ivan Efremov,UZB,414
+2016,6, Mohammad Reza Barari,IRI,406
+2016,7, Arkadiusz Michalski,POL,400
+2016,8, Arturs Plesnieks,LAT,399
+2016,9, Salwan Jasim Abbood,IRQ,394
+2016,10, Jürgen Spiess,GER,390
+2016,11, Sargis Martirosjan,AUT,389
+2016,12, Gaber Mohamed,EGY,377
+2016,13, Hernan Viera Espinoza,PER,351
+2016,14, David Katoatau,KIR,349
+2016, , Bartloniei Bonk,POL,dnf
+2016,-, Giorgi Chkheidze,GEO,dnf
+2016, , Mateus Gregorio Machado,BRA,dnf
+2012,1, Navab Nasirshelal,IRI,411
+2012,2, Bartlomiej Wojciech Bonk,POL,410
+2012,3, Ivan Efremov,UZB,401
+2012,4, Ahed Jughli,SYR,398
+2012,5, Arturs Plesnieks,LAT,390
+2012,6, Jorge Arroyo Valdez,ECU,385
+2012,7, Jürgen Spiess,GER,374
+2012,8, Sergiy Tagirov,UKR,374
+2012,9, Martin Tesovic,SVK,363
+2012,10, Alexandr Zaichikov,KAZ,360
+2012,11, Jorge Garcia Bustos,CHI,341
+2012,12, Walid Bidani,ALG,340
+2012, , Marcin Dolega,POL,dnf
+2012,-, Gia Machavariani,GEO,dnf
+2012, , Kim Wha-seung,KOR,dnf
+2012, , Ruslan Nurudinov,UZB,(404),dq(d)**
+2012, , Oleksiy Torokhtiy,UKR,(412),dq(d)*
+2008,1, Andrei Aramnau,BLR,436,WR
+2008,2, Dmitriy Klokov,RUS,423
+2008,3, Marcin Dolega,POL,420
+2008,4, Bakhyt Akhmetov,KAZ,415
+2008,5, Albert Kuzilov,GEO,409
+2008,6, Sergey Istomin,KAZ,406
+2008,7, Robert Dolega,POL,405
+2008,8, Nikolaos Kourtidis,GRE,397
+2008,9, Mohsen Biranvand,IRI,390
+2008,10, Oleksiy Torokhtiy,UKR,390
+2008,11, Ahed Joughili,SYR,386
+2008,12, Abdelrahman El Sayed,EGY,385
+2008,13, Bunyami Sudas,TUR,373
+2008,14, Libor Walzer,CZE,350
+2008,15, Christian Lopez Bobadilla,GUA,336
+2008,16, Moreno Boer,ITA,330
+2008, , Ramunas Vysniauskas,LTU,dnf
+2008,-, Martin Tesovic,SVK,dns
+2008, , Igor Razoronov,UKR,(410),dq(d)**
+2008, , Dmitriy Lapikov,RUS,(420),dq(d)*
+2004,1, Dmitriy Berestov,RUS,425.0
+2004,2, Igor Razoronov,UKR,420.0
+2004,3, Gleb Pisarevskiy,RUS,415.0
+2004,4, Alexandru Bratan,MDA,415.0
+2004,5, Ramunas Vysniauskas,LTU,410.0
+2004,6, Alan Naniyev,AZE,410.0
+2004,7, Matthias Steiner,AUT,405.0
+2004,8, Alexander Urinov,UZB,400.0
+2004,9, Mikhail Audzeyev,BLR,400.0
+2004,10, Andre Rohde,GER,395.0
+2004,11, Michel Batista de Moya,CUB,395.0
+2004,12, Tomas Matykiewicz,CZE,392.5
+2004,13, Sam Pera,COK,305.0
+2004,14, Eleei Elalio,ASA,295.0
+2004, , Said Asif Asaad,QAT,dnf
+2004,-, Robert Dolega,POL,dnf
+2004, , Mohsen Biranvand,IRI,dnf
+2004, , Martin Tesovic,SVK,dnf
+2004, , Akos Sandor,CAN,dnf
+2004, , Zoltan Kovacs,HUN,dq(d)*
+2004, , Mykola Hordiychuk,UKR,(395.0),dq(d)**
+2004, , Ferenc Gyurkovics,HUN,(420.0),dq(d)***
+2000,1, Hossein Tavakoli,IRI,425.0
+2000,2, Alan Tsagaev,BUL,422.5
+2000,3, Said Asif Asaad,QAT,422.5
+2000,4, Igor Razoryonov,UKR,420.0
+2000,5, Yevgeny Tchiguichev,RUS,415.0
+2000,6, Alexandru Bratan,MDA,410.0
+2000,7, Florin Vlad,ROU,405.0
+2000,8, Grzegorz Kleszcz,POL,405.0
+2000,9, Mariusz Jedra,POL,390.0
+2000,10, Boris Burov,ECU,387.5
+2000,11, Ramunas Vysniauskas,LTU,385.0
+2000,12, Moreno Boer,ITA,365.0
+2000,13, Tevita Kofe Ngalu,TGA,295.0
+2000, , Anatoly Khrapaty,KAZ,dnf
+2000,-, Denys Hotfrid,UKR,dnf
+2000, , Yevgeny Shishlyannikov,RUS,dnf
+2000, , Abdul Aziz Alpak,TUR,dnf
+2000, , Choi Jong-kun,KOR,dnf
+2000, , Mukhran Gogia,GEO,dnf
+2000, , Thomas Yule,GBR,dnf
+1996,1, Timur Taimazov,UKR,430.0
+1996,2, Sergei Syrtsov,RUS,420.0
+1996,3, Nicu Vlad,ROU,420.0
+1996,4, Vladimir Yemelyanov,BLR,407.5
+1996,5, Cui Wenhua,CHN,405.0
+1996,6, Wesley Barnett,USA,395.0
+1996,7, Ara Vardanian,ARM,395.0
+1996,8, Dariusz Osuch,POL,392.5
+1996,9, Mario Kalinke,GER,390.0
+1996,10, Viktors Scerbatihs,LAT,390.0
+1996,11, Dimitri Prochorow,GER,390.0
+1996,12, Konstantine Starikovich,USA,387.5
+1996,13, Chun Sang-suk,KOR,380.0
+1996,14, Janne Kanerva,FIN,360.0
+1996,15, Hisaya Yoshimoto,JPN,360.0
+1996,16, Valentin Manushev,UZB,350.0
+1996,17, Nopadol Wanwang,THA,317.5
+1996,18, Shirish Rummun,MRI,287.5
+1996,19, Ali Kavuma,UGA,260.0
+1996, , Sergey Flerko,RUS,dnf
+1996,-, Alexandros Panatidis,GRE,dnf
+1996, , Igor Rasorenov,UKR,dnf
+1996, , Gennadiy Shchekalo,BLR,dnf
+1992,1, Ronny Weller,GER,432.5
+1992,2, Artur Akoyev,EUN,430.0
+1992,3, Stefan Botev Khristov,BUL,417.5
+1992,4, Nicu Vlad,ROU,405.0
+1992,5, Dariusz Osuch,POL,397.5
+1992,6, Frank Seipelt,GER,390.0
+1992,7, Flavio Villavicenia Cabrera,CUB,387.5
+1992,8, Pavlos Saltsidis,GRE,385.0
+1992,9, Dede Dekaj,ALB,380.0
+1992,10, Norberto Oberburger,ITA,375.0
+1992,11, Maurys Charon,CUB,375.0
+1992,12, Laszlo Nemeth,HUN,372.5
+1992,13, Arto Savonen,FIN,357.5
+1992,14, Mohammed Jowad,IRQ,357.5
+1992,15, Tibor Stark,HUN,355.0
+1992,16, Milos Ciernik,TCH,352.5
+1992,17, Raymond Kopka,GBR,350.0
+1992,18, Rich Schutz,USA,347.5
+1992,19, Mozafar Ajali,IRI,345.0
+1992,20, Mehmed Skender,BIH,320.0
+1992, , Ebraheem El-Bakh,EGY,dnf
+1992,-, Chun Sang-suk,KOR,dnf
+1992, , Anders Lindsjö,SWE,dnf
+1992, , Piotr Banaszak,POL,dnf
+1988,1, Yuri Zakharevich,URS,455.0,WR
+1988,2, Jozsef Jacso,HUN,427.5
+1988,3, Ronny Weller,GDR,425.0
+1988,4, Michael Schubert,GDR,425.0
+1988,5, Aleksandr Popov,URS,420.0
+1988,6, Norberto Oberburger,ITA,415.0
+1988,7, Stanislaw Malysa,POL,395.0
+1988,8, Frank Seipelt,FRG,387.5
+1988,9, Rickard Nilsson,SWE,375.0
+1988,10, Frank Juul Strømbo,DEN,367.5
+1988,11, Rich Schutz,USA,360.0
+1988,12, Mark Thomas,GBR,360.0
+1988,13, Jeff Michels,USA,360.0
+1988,14, Omar Yousfi,ALG,310.0
+1988,15, Pius Ochieng,KEN,295.0
+1988,16, Tauama Timoti,ASA,260.0
+1988,17, Milan Cukovic,GUM,220.0
+1988, , Anton Baraniak,TCH,dnf
+1988,-, Eduard Ohlinger,FRG,dnf
+1988, , Andrew Davies,GBR,nm
+1984,1, Norberto Oberburger,ITA,390.0
+1984,2, Stefan Tasnadi,ROU,380.0
+1984,3, Guy Carlton,USA,377.5
+1984,4, Frank Seipelt,FRG,367.5
+1984,5, Albert Squires,CAN,365.0
+1984,6, Richard Eaton,USA,352.5
+1984,7, Ioannis Gerontas,GRE,350.0
+1984,8, Olaf Peters,FRG,347.5
+1984,9, Calvin Stamp,JAM,320.0
+1984,10, Abuaihuda Ozon,SYR,315.0
+1984, , George Panayotakis,GRE,"dnf"
+1984,-, Gary Taylor,GBR,dnf
+1984, , Ashraf Mohamed,EGY,dnf
+1984, , John Kyazze,UGA,dnf
+1984, , Göran Pettersson,SWE,(360.0),dq(d)*
+1984,-,"* Göran Pettersson SWE disqualified for doping. 
+
+
+
+
+Men's Heavyweight - Weightlifting - Los Angeles 1984 Summer Olympics
+Event Format:
+     
+     Athletes competed in two types of lift: the snatch, in which they raised the bar over the head in one movement, and the clean & jerk, in which they raised the bar i two movements using the combined strength of arms and legs. Each athlete was allowed three attempts at each type of lift. The best result in each type of lift counted in the final score for the athlete.  Event facts: Men's Heavyweight competition was held at the Albert Gersten Pavilion and 15 athletes participated in the event. 
+
+
+
+
+
+These results for Men's Heavyweight - Los Angeles 1984 Summer Olympics - are based on the official olympic reports and the Olympian Database
+ ",Men's Heavyweight - Weightlifting - Los Angeles 1984 Summer Olympics,"Event Format:
+     
+     Athletes competed in two types of lift: the snatch. in which they raised the bar over the head in one movement. and the clean & jerk. in which they raised the bar i two movements using the combined strength of arms and legs: Each athlete was allowed three attempts at each type of lift: The best result in each type of lift counted in the final score for the athlete:  Event facts: Men's Heavyweight competition was held at the Albert Gersten Pavilion and 15 athletes participated in the event: ",These results for Men's Heavyweight - Los Angeles 1984 Summer Olympics - are based on the official olympic reports and the Olympian Database
+1980,1, Leonid Taranenko,URS,422.5,WR
+1980,2, Valentin Hristov,BUL,405.0
+1980,3, György Szalai,HUN,390.0
+1980,4, Leif Nilsson,SWE,380.0
+1980,5, Vinzenz Hörtnagl,AUT,372.5
+1980,6, Stefan Tasnadi,ROU,360.0
+1980,7, Donald Mitchell,AUS,352.5
+1980,8, Dimitrios Zarzavatsidis,GRE,347.5
+1980,9, Viktor Sirkiä,FIN,342.5
+1980,10, Andrzej Drzewiecki,GBR,320.0
+1980,11, Ali Kader Maneer,IRQ,300.0
+1980,12, Mario Rodriguez,DOM,287.5
+1980, , Pavel Khek,TCH,dnf
+1976,1, Yuri Zaitsev,URS,385.0,OR
+1976,2, Krustiu Semerdzhiev,BUL,385.0
+1976,3, Tadeusz Rutkowski,POL,377.5
+1976,4, Pierre Gourrier,FRA,372.5
+1976,5, Jürgen Ciezki,GDR,372.5
+1976,6, Javier Gonzalez,CUB,365.0
+1976,7, Leif Nilsson,SWE,365.0
+1976,8, Rudolf Strejcek,TCH,362.5
+1976,9, Russ Prior,CAN,362.5
+1976,10, Taito Haara,FIN,360.0
+1976,11, Lennart Dahlgren,SWE,355.0
+1976,12, Gary Drinnon,USA,352.5
+1976,13, Vinzenz Hörtnagl,AUT,350.0
+1976,14, John Burns,GBR,347.5
+1976,15, John Barrett,NZL,342.5
+1976,16, Robert Santavy,CAN,337.5
+1976,17, Houshang Kargarnejad,IRI,322.5
+1976, , Ali Valli,IRI,dnf
+1976,-, Stephen Wyatt,AUS,dnf
+1976, , Brian Strange,GBR,dnf
+1976, , Mark Cameron,USA,(375.0),dq(d)**
+1976, , Valentin Hristov,BUL,(400.0),dq(d)*
+1972,1, Jaan Talts,URS,580.0,OR
+1972,2, Aleksandr Kraichev,BUL,562.5
+1972,3, Stefan Grützner,GDR,555.0
+1972,4, Helmut Losch,GDR,547.5
+1972,5, Roberto Vezzani,ITA,545.0
+1972,6, Janos Hazslik,HUN,542.5
+1972,7, Kauko Kangasniemi,FIN,537.5
+1972,8, Rainer Dörrzapf,FRG,522.5
+1972,9, Rudolf Strejcek,TCH,522.5
+1972,10, Frank Capsouras,USA,520.0
+1972,11, Alan Ball,USA,515.0
+1972,12, Javier Gonzalez,CUB,510.0
+1972,13, David Hancock,GBR,510.0
+1972,14, Jean-Paul Fouletier,FRA,505.0
+1972,15, Andres Martinez Arencibia,CUB,500.0
+1972,16, Edgar Kjerran,NOR,495.0
+1972,17, Peter Phillips,AUS,487.5
+1972,18, Kenneth Price,GBR,480.0
+1972,19, Oskar Sigurpalsson,ISL,477.5
+1972,20, Pablo Juan Campos,PUR,472.5
+1972,21, Bent Harsmann,DEN,465.0
+1972,22, Price Morris,CAN,457.5
+1972,23, Henry Phillips,PAN,455.0
+1972, , Taito Haara,FIN,dnf
+1972,-, Eivind Rekustad,NOR,dnf
+1972, , Stancho Penchev,BUL,dnf
+1968,1, Leonid Zhabotynsky,URS,572.5,EOR
+1968,2, Serge Reding,BEL,555.0
+1968,3, Joseph Dube,USA,555.0
+1968,4, Manfred Rieger,GDR,532.5
+1968,5, Rudolf Mang,FRG,525.0
+1968,6, Mauno Lindroos,FIN,495.0
+1968,7, Kalevi Lahdenranta,FIN,492.5
+1968,8, Donald Oliver,NZL,490.0
+1968,9, Pieter van der Kruk,NED,487.5
+1968,10, Terence Perdue,GBR,487.5
+1968,11, Roger Levecq,FRA,477.5
+1968,12, Leston Sprauve,ISV,467.5
+1968, , Hwang Ho-dong,KOR,dnf
+1968,-, Ove Johansson,SWE,dnf
+1968, , Jean-Paul Fouletier,FRA,dnf
+1968, , Raymond Rigby,AUS,dnf
+1968, , George Ernest Pickett,USA,dnf
+1964,1, Leonid Zhabotynsky,URS,572.5,OR
+1964,2, Yuriy Vlasov,URS,570.0
+1964,3, Norbert Schemansky,USA,537.5
+1964,4, Gary Gubner,USA,512.5
+1964,5, Karoly Ecser,HUN,507.5
+1964,6, Mohamed Mahmoud Ibrahim,EGY,495.0
+1964,7, Ivan Veselinov,BUL,490.0
+1964,8, Hwang Ho-dong,KOR,482.5
+1964,9, Donald Oliver,NZL,480.0
+1964,10, Serge Reding,BEL,477.5
+1964,11, Manfred Rieger,GER,475.0
+1964,12, Manuchehr Borumand,IRI,465.0
+1964,13," Arthur Shannos",AUS,465.0
+1964,14, Oun Yao-ling,TPE,460.0
+1964,15, Ernesto Varona Morell,CUB,457.5
+1964,16, Abdul Khalik Juad,IRQ,445.0
+1964,17, Humberto Selvetti,ARG,445.0
+1964,18, Udo Querch,AUT,442.5
+1964,19, Hadi Abdul Jabbar,IRQ,440.0
+1964,20, Brandon Bailey,TTO,425.0
+1964, , Eino Mäkinen,FIN,dnf
+1960,1, Yuriy Vlasov,URS,537.5,WR
+1960,2, James Bradford,USA,512.5
+1960,3, Norbert Schemansky,USA,500.0
+1960,4, Mohamed Mahmoud Ibrahim,EGY,455.0
+1960,5, Eino Mäkinen,FIN,455.0
+1960,6, William David Baillie,CAN,450.0
+1960,7, Alberto Pigaiani,ITA,450.0
+1960,8, Vaclav Syrovy,TCH,435.0
+1960,9, Arthur Shannos,AUS,435.0
+1960,10, Hadi Abdul Jabbar,IRQ,432.5
+1960,11, Cornel Wilczek,AUS,430.0
+1960,12, Werner Arnold,GER,425.0
+1960,13, Donald Oliver,NZL,425.0
+1960,14, William Swaluk,CAN,412.5
+1960,15, Dennis Hillman,GBR,402.5
+1960,16, Henri Mersch,LUX,340.0
+1960, , Ivan Veselinov,BUL,dnf
+1960,-, Beto Adriano,AHO,dnf
+1956,1, Paul Anderson,USA,500.0,OR
+1956,2, Humberto Selvetti,ARG,500.0
+1956,3, Alberto Pigaiani,ITA,452.5
+1956,4, Firouz Pejhan,IRI,450.0
+1956,5, Eino Mäkinen,FIN,432.5
+1956,6, William David Baillie,CAN,432.5
+1956,7, Franz Hölbl,AUT,425.0
+1956,8, Richard Jones,NZL,397.5
+1956,9, Dandamudi Rajagopal,IND,360.0
+1952,1, John Davis,USA,460.0,OR
+1952,2, James Bradford,USA,437.5
+1952,3, Humberto Selvetti,ARG,432.5
+1952,4, Heinz Schattner,GER,422.5
+1952,5, William David Baillie,CAN,420.0
+1952,6, Norberto Ferreira,ARG,410.0
+1952,7, Robert Harold Cleghorn,NZL,400.0
+1952,8, Franz Hölbl,AUT,387.5
+1952,9, Lage Andersson,SWE,380.0
+1952,10, Adelfino Mancinelli,ITA,372.5
+1952,11, Eino Mäkinen,FIN,367.5
+1952,12, Valdemar Vianna da Silveira,BRA,362.5
+1952, , Abraham Charite,NED,dnf
+1948,1, John Davis,USA,452.5,OR
+1948,2, Norbert Schemansky,USA,425.0
+1948,3, Abraham Charite,NED,412.5
+1948,4, Alfred Knight,GBR,390.0
+1948,5, Hanafi Mustafa,EGY,385.0
+1948,6, Niels Petersen,DEN,382.5
+1948,7, Robert Allart,BEL,377.5
+1948,8, Piet Taljaard,RSA,375.0
+1948,9, Eduardo Parera Alonso,CUB,372.5
+1948,10, Carlos Dominguez Mavila,PER,362.5
+1948,11, Hugo Vallarino,ARG,357.5
+1948,12, Raymond Magee,AUS,357.5
+1948,13, Leopoldo Briola,ARG,347.5
+1948,14, Franz Eibler,AUT,327.5
+1948,15, Muhammad Naqi Butt,PAK,320.0
+1948,16, Dandamudi Rajagopal,IND,305.0
+1936,1, Josef Manger,GER,410.0,WR
+1936,2, Vaclav Psenicka Sr.,TCH,402.5
+1936,3, Arnold Luhäär,EST,400.0
+1936,4, Ronald Walker,GBR,397.5
+1936,5, Hussein Mokhtar,EGY,395.0
+1936,6, Josef Zemann,AUT,387.5
+1936,7, Paul Wahl,GER,375.0
+1936,8, Rudolf Schilberg,AUT,372.5
+1936,9, John Grimek,USA,357.5
+1936,10, Marcel Dumoulin,FRA,355.0
+1936,11, Vaclav Becvar,TCH,355.0
+1936,12, David Mayor,USA,352.5
+1936,13, Ernst Fischer,SUI,317.5
+1932,1, Jaroslav Skobla,TCH,380.0,OR
+1932,2, Vaclav Psenicka Sr.,TCH,377.5
+1932,3, Josef Strassberger,GER,377.5
+1932,4, Marcel Dumoulin,FRA,342.5
+1932,5, Albert Manger,USA,315.0
+1932,6, Howard Turbyfill,USA,305.0
+1928,1, Josef Strassberger,GER,372.5,WR
+1928,2, Arnold Luhäär,EST,360.0
+1928,3, Jaroslav Skobla,TCH,357.5
+1928,4, Karlis Leilands,LAT,355.0
+1928,4, Josef Leppelt,AUT,355.0
+1928,4, Rudolf Schilberg,AUT,355.0
+1928,7, Giuseppe Tonani,ITA,352.5
+1928,8, Hermann Volz,GER,340.0
+1928,9, Claudius Dutrieve,FRA,330.0
+1928,10, Marcel Dumoulin,FRA,327.5
+1928,10, Francesco Mercoli,ITA,327.5
+1928,12, Dominicus Verheijen,NED,325.0
+1928,13, Harold Wood,GBR,315.0
+1928,14, Franz Riederer,SUI,300.0
+1928,15, Marcel Planen,BEL,280.0
+1928,16, Walter Gasser,SUI,267.5
+1928, , Hendrik Verheijen,NED,dnf
+1924,1, Giuseppe Tonani,ITA,517.5
+1924,2, Franz Aigner,AUT,515.0
+1924,3, Harald Tammer,EST,497.5
+1924,4, Louis Dannoux,FRA,497.5
+1924,5, Karlis Leilands,LAT,497.5
+1924,6, Filippo Bottino,ITA,495.0
+1924,7, Kaljo-Feliks Raag,EST,490.0
+1924,8, Claudius Dutrieve,FRA,467.5
+1924,9, Georges Bernaert,BEL,465.0
+1924,10, Gustav Becker,AUT,460.0
+1924,11, Josef Leppelt,AUT,455.0
+1924,11, Salvatore Epicoco,ITA,455.0
+1924,13, Richard Brunn,SWE,452.5
+1924,14, Albert Oord,NED,447.5
+1924,15, Rene Dupont,FRA,440.0
+1924,16, Frantisek Fiser,TCH,435.0
+1924,17, Harold Wood,GBR,417.5
+1924, , Joseph Alzin,LUX,dnf
+1924,-, Eugene Peney,SUI,dnf
+1920,1, Filippo Bottino,ITA,265.0,OR
+1920,2, Joseph Alzin,LUX,260.0
+1920,3, Louis Bernot,FRA,255.0
+1920,4, Ejnar Jensen,DEN,250.0
+1920,5, Richard Brunn,SWE,250.0
+1920,6, Joseph Duchateau,FRA,247.5
+1904,1, Perikles Kakousis,GRE,111.70
+1904,2, Oscar Osthoff,USA,84.37
+1904,3, Frank Kungler,USA,79.61
+1904,4, Oscar G. Olson,USA,68.04
+1896,1, Viggo Jensen,DEN,111.5
+1896,2, Launceston Elliott,GBR,111.5
+1896,3, Sotirios Versis,GRE,90.0
+1896,4, Carl Schuhmann,GER,90.0
+1896,4, Georgios Papasideris,GRE,90.0
+1896,6, Momcsillo Tapavicza,HUN,80.0

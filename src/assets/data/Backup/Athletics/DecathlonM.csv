@@ -1,0 +1,783 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1, Damian Warner,CAN,9018,OR
+2020,2, Kevin Mayer,FRA,8726
+2020,3, Ashley Moloney,AUS,8649
+2020,4, Garrett Scantling,USA,8611
+2020,5, Pierce Lepage,CAN,8604
+2020,6, Zachery Ziemek,USA,8435
+2020,7, Lindon Victor,GRN,8414
+2020,8, Ilya Shkurenyov,ROC,8413
+2020,9, Jorge Urena,ESP,8322
+2020,10, Steven Bastien,USA,8236
+2020,11, Johannes Erm,EST,8213
+2020,12, Pawel Wiesiolek,POL,8176
+2020,13, Vitaliy Zhuk,BLR,8131
+2020,14, Kai Kazmirek,GER,8126
+2020,15, Maicel Uibo,EST,8037
+2020,16, Adam Helcelet,CZE,8004
+2020,17, Jiri Sykora,CZE,7943
+2020,18, Felipe Dos Santos,BRA,7880
+2020,19, Martin Rø,NOR,7863
+2020,20, Karel Tilga,EST,7018
+2020,21, Cedric Dubler,AUS,7008
+2020, , Thomas van der Plaetsen,BEL,dnf
+2020,-, Niklas Kaul,GER,dnf
+2016,1, Ashton Eaton,USA,8893
+2016,2, Kevin Mayer,FRA,8834
+2016,3, Damian Warner,CAN,8666
+2016,4, Kai Kazmirek,GER,8580
+2016,5, Larbi Bourrada,ALG,8521
+2016,6, Leonel Suárez,CUB,8460
+2016,7, Zach Ziemek,USA,8392
+2016,8, Thomas van der Plaetsen,BEL,8332
+2016,9, Kurt Felix,GRN,8323
+2016,10, Luis Alberto De Araújo,BRA,8315
+2016,11, Jeremy Taiwo,USA,8300
+2016,12, Adam Helcelet,CZE,8291
+2016,13, Bastien Auzeil,FRA,8064
+2016,14, Cedric Dubler,AUS,8024
+2016,15, Arthur Abele,GER,8013
+2016,16, Lindon Victor,GRN,7998
+2016,17, Pau Tonnesen,ESP,7982
+2016,18, Yordani Garcia,CUB,7961
+2016,19, Dominik Distelberger,AUT,7954
+2016,20, Keisuke Ushiro,JPN,7952
+2016,21, Pawel Wiesiolek,POL,7784
+2016,22, Akihiko Nakamura,JPN,7612
+2016,23, Karl Robert Saluri,EST,7223
+2016,24, Maicel Uibo,EST,7170
+2016,25, Jiri Sykora,CZE,6237
+2016, , Leonid Andreev,UZB,dnf
+2016,-, Oleksiy Kasyanov,UKR,dnf
+2016, , Rico Freimuth,GER,dnf
+2016, , Willem Coertzen,RSA,dnf
+2016, , Mihail Dudas,SRB,dnf
+2016, , Eelco Sintnicolaas,NED,dnf
+2016, , Pieter Braun,NED,dnf
+2012,1, Ashton Eaton,USA,8869
+2012,2, Trey Hardee,USA,8671
+2012,3, Leonel Suárez,CUB,8523
+2012,4, Hans van Alphen,BEL,8447
+2012,5, Damian Warner,CAN,8442
+2012,6, Rico Freimuth,GER,8320
+2012,7, Oleksiy Kasyanov,UKR,8283
+2012,8, Sergey Sviridov,RUS,8219
+2012,9, Willem Coertzen,RSA,8173
+2012,10, Pascal Behrenbruch,GER,8126
+2012,11, Eelco Sintnicholaas,NED,8034
+2012,12, Brent Newdick,NZL,7988
+2012,13, Gonzalo Barroilhet,CHI,7972
+2012,14, Yordani Garcia,CUB,7956
+2012,15, Kevin Mayer,FRA,7952
+2012,16, Ilya Shkurenev,RUS,7948
+2012,17, Eduard Mikhan,BLR,7928
+2012,18, Dmitriy Karpov,KAZ,7926
+2012,19, Luis Alberto De Araújo,BRA,7849
+2012,20, Keisuke Ushiro,JPN,7842
+2012,21, Ingmar Vos,NED,7805
+2012,22, Edgars Erins,LAT,7649
+2012,23, Jangy Addy,LBR,7586
+2012,24, Attila Szabo,HUN,7581
+2012,25, Darius Draudvila,LTU,7557
+2012,26, Rifat Artikov,UZB,7203
+2012, , Roman Šebrle,CZE,dnf
+2012,-, Daniel Awde,GBR,dnf
+2012, , Jan Felix Knobel,GER,dnf
+2012, , Kurt Felix,GRN,dnf
+2012, , Mihail Dudas,SRB,dnf
+2008,1, Bryan Clay,USA,8791
+2008,2, Andrei Krauchanka,BLR,8551
+2008,3, Leonel Suárez,CUB,8527
+2008,4, Romain Barras,FRA,8253
+2008,5, Roman Šebrle,CZE,8241
+2008,6, Oleksiy Kasyanov,UKR,8238
+2008,7, Andre Niklaus,GER,8220
+2008,8, Maurice Smith,JAM,8205
+2008,9, Michael Schrader,GER,8194
+2008,10, Mikk Pahapill,EST,8178
+2008,11, Aleksey Drozdov,RUS,8154
+2008,12, Andres Raja,EST,8118
+2008,13, Eugene Martineau,NED,8055
+2008,14, Yordani Garcia,CUB,7992
+2008,15, Mikalai Shubianok,BLR,7906
+2008,16, Aliaksandr Parkhomenka,BLR,7838
+2008,17, Qi Haifeng,CHN,7835
+2008,18, Massimo Bertocchi,CAN,7714
+2008,19, Jangy Addy,LBR,7665
+2008,20, Daniel Awde,GBR,7516
+2008,21, Hadi Sepehrzad,IRI,7483
+2008,22, Damjan Sitar,SLO,7336
+2008,23, Slaven Dizdarevic,SVK,7021
+2008,24, David Gomez,ESP,6876
+2008,25, Mikko Halvari,FIN,6486
+2008, , Gonzalo Barroilhet,CHI,dnf
+2008,-, Trey Hardee,USA,dnf
+2008, , Janis Karlivans,LAT,dnf
+2008, , Alexey Sysoev,RUS,dnf
+2008, , Pavel Andreev,UZB,dnf
+2008, , Carlos Chinin,BRA,dnf
+2008, , Victor Covalenco,MDA,dnf
+2008, , Frederic Xhonneux,BEL,dnf
+2008, , Arthur Abele,GER,dnf
+2008, , Vitaliy Smirnov,UZB,dnf
+2008, , Tom Pappas,USA,dnf
+2008, , Attila Zsivoczky,HUN,dnf
+2008, , Dmitriy Karpov,KAZ,dnf
+2008, , Hans van Alphen,BEL,dnf
+2008, , Aleksandr Pogorelov,RUS,(8328),dq(d)*
+2008,-,"* Aleksandr Pogorelov RUS disqualified for an anti-doping rule violation according to IOC Disciplinary Commissions desicion of August 15 2016.  
+
+
+
+
+Men's Decathlon - Athletics - Beijing 2008 Summer Olympics
+Event Format:
+     
+     Men's decathlon included ten events held over a two-days period. On the first day the athletes competed in 100 m, long jump, shot put, high jump and 400 m. On the second day they competed in 110 m hurdles, discus throw, pole vault, javelin throw and 1500 m. Rules for the events were generally the same as for the individual events. Points were scored according to a points-table approved by IAAF. Event facts: Men's Decathlon competition was held at the Beijing National Stadium and 40 athletes participated in the event. 
+
+
+
+
+
+These results for Men's Decathlon - Beijing 2008 Summer Olympics - are based on the official olympic reports and the Olympian Database
+ ",Men's Decathlon - Athletics - Beijing 2008 Summer Olympics,"Event Format:
+     
+     Men's decathlon included ten events held over a two-days period: On the first day the athletes competed in 100 m. long jump. shot put. high jump and 400 m: On the second day they competed in 110 m hurdles. discus throw. pole vault. javelin throw and 1500 m: Rules for the events were generally the same as for the individual events: Points were scored according to a points-table approved by IAAF: Event facts: Men's Decathlon competition was held at the Beijing National Stadium and 40 athletes participated in the event: ",These results for Men's Decathlon - Beijing 2008 Summer Olympics - are based on the official olympic reports and the Olympian Database
+2004,1, Roman Šebrle,CZE,8893,OR
+2004,2, Bryan Clay,USA,8820
+2004,3, Dmitriy Karpov,KAZ,8725
+2004,4, Dean Macey,GBR,8414
+2004,5, Chiel Warners,NED,8343
+2004,6, Attila Zsivoczky,HUN,8287
+2004,7, Laurent Hernu,FRA,8237
+2004,8, Erki Nool,EST,8235
+2004,9, Claston Bernard,JAM,8225
+2004,10, Roland Schwarzl,AUT,8102
+2004,11, Aleksandr Pogorelov,RUS,8084
+2004,12, Florian Schönbeck,GER,8077
+2004,13, Romain Barras,FRA,8067
+2004,14, Maurice Smith,JAM,8023
+2004,15, Nikolay Averyanov,RUS,8021
+2004,16, Jaako Ojaniemi,FIN,8006
+2004,17, Vitaliy Smirnov,UZB,7993
+2004,18, Qi Haifeng,CHN,7934
+2004,19, Stefan Drews,GER,7926
+2004,20, Aleksandr Parkhomenko,BLR,7918
+2004,21, Paul Terek,USA,7893
+2004,22, David Gomez,ESP,7865
+2004,23, Indrek Turi,EST,7708
+2004,24, Santiago Lorenzo,ARG,7592
+2004,25, Janis Karlivans,LAT,7583
+2004,26, Prodromos Korkizoglou,GRE,7573
+2004,27, Hans Olav Uldal,NOR,7495
+2004,28, Paolo Casarsa,ITA,7404
+2004,29, Eugene Martineau,NED,7185
+2004,30, Victor Covalenko,MDA,6543
+2004, , Tom Pappas,USA,dnf
+2004,-, Tomas Dvorak,CZE,dnf
+2004, , Jon Arnar Magnusson,ISL,dnf
+2004, , Kristian Rahnu,EST,dnf
+2004, , Dennis Leyckes,GER,dnf
+2004, , Luiggy Llanos,POR,dnf
+2004, , Ahmed Hassan Moussa,QAT,dnf
+2004, , Lev Lobodin,RUS,dnf
+2004, , Pavel Andreyev,UZB,dnf
+2000,1, Erki Nool,EST,8641
+2000,2, Roman Šebrle,CZE,8606
+2000,3, Chris Huffins,USA,8595
+2000,4, Dean Macey,GBR,8567
+2000,5, Tom Pappas,USA,8425
+2000,6, Tomas Dvorak,CZE,8385
+2000,7, Frank Busemann,GER,8351
+2000,8, Attila Zsivoczky,HUN,8277
+2000,9, Stefan Schmid,GER,8206
+2000,10, Henrik Dagaard,SWE,8178
+2000,11, Zsolt Kürtösi,HUN,8149
+2000,12, Mario Anibal,POR,8136
+2000,13, Lev Lobodin,RUS,8071
+2000,14, Jiri Ryba,CZE,8056
+2000,15, Raul Duany,CUB,8054
+2000,16, Oleksandr Yurkov,UKR,7993
+2000,17, Indrek Kaseorg,EST,7932
+2000,18, Klaus Ambrosch,AUT,7917
+2000,19, Laurent Hernu,FRA,7909
+2000,20, Wilfrid Boulineau,FRA,7821
+2000,21, Kip Janvrin,USA,7726
+2000,22, Volodymyr Mykhaylenko,UKR,7676
+2000,23, Fedir Laukhin,UKR,7652
+2000,24, Eduard Hämäläinen,FIN,7520
+2000,25, Mike Maczey,GER,7228
+2000, , Claston Bernard,JAM,dnf
+2000,-, Jon Arnar Magnusson,ISL,dnf
+2000, , Sebastien Levicq,FRA,dnf
+2000, , Francisco Benet Martin,ESP,dnf
+2000, , Eugenio Balanque,CUB,dnf
+2000, , Philipp Huber,SUI,dnf
+2000, , Prodromos Korkizoglou,GRE,dnf
+2000, , Scott Ferrier,AUS,dnf
+2000, , Roman Razbeyko,RUS,dnf
+2000, , Georgios Andreou,CYP,dnf
+2000, , Aki Heikkinen,FIN,dnf
+2000, , Trond Høiby,NOR,dnf
+2000, , Oleg Veretelnikov,UZB,dnf
+1996,1, Dan O'Brien,USA,8824,OR
+1996,2, Frank Busemann,GER,8706
+1996,3, Tomas Dvorak,CZE,8664
+1996,4, Steve Fritz,USA,8644
+1996,5, Eduard Hämäläinen,BLR,8613
+1996,6, Erki Nool,EST,8543
+1996,7, Robert Zmelik,CZE,8422
+1996,8, Ramil Ganiyev,UZB,8318
+1996,9, Antonio Penalver,ESP,8307
+1996,10, Chris Huffins,USA,8300
+1996,11, Christian Plaziat,FRA,8282
+1996,12, Jon Arnar Magnusson,ISL,8274
+1996,13, Michael Smith,CAN,8271
+1996,14, Frank Müller,GER,8253
+1996,15, Sebastian Chmara,POL,8249
+1996,16, Damil Damasek,CZE,8229
+1996,17, Sebastien Levicq,FRA,8129
+1996,18, Marcel Dost,NED,8111
+1996,19, Francisco Benet Martin,ESP,8107
+1996,20, Dirk-Achim Pajonk,GER,8045
+1996,21, Jack Rosendaal,NED,8035
+1996,22, Vitaliy Kolpakov,UKR,8025
+1996,23, Rojs Piziks,LAT,7994
+1996,24, Doug Pirini,NZL,7961
+1996,25, Eugenio Balanque,CUB,7873
+1996,26, Raul Duany,CUB,7802
+1996,27, Zsolt Kürtösi,HUN,7755
+1996,28, Philipp Huber,SUI,7743
+1996,29, Alper Kasapoglu,TUR,7575
+1996,30, Beniamino Poserina,ITA,7013
+1996,31, Nikolai Afanasyev,RUS,6711
+1996, , Dezsö Szabo,HUN,dnf
+1996,-, Victor Houston,BAR,dnf
+1996, , Andrey Nazarov,EST,dnf
+1996, , Indrek Kaseorg,EST,dnf
+1996, , Scott Ferrier,AUS,dnf
+1996, , Oleg Veretelnikov,UZB,dnf
+1996, , Lev Lobodin,UKR,dnf
+1996, , Peter Winter,AUS,dnf
+1996, , Alexander Kruger,GBR,dnf
+1992,1, Robert Zmelik,TCH,8611
+1992,2, Antonio Penalver,ESP,8412
+1992,3, David Johnson,USA,8309
+1992,4, Dezsö Szabo,HUN,8199
+1992,5, Robert Muzzio,USA,8195
+1992,6, Paul Meier,GER,8192
+1992,7, William Motti,FRA,8164
+1992,8, Ramil Ganiyev,EUN,8160
+1992,9, Sten Ekberg,SWE,8136
+1992,10, Robert De Witt,NED,8109
+1992,11, Gernot Kellermayr,AUT,8076
+1992,12, Viktor Radchenko,EUN,8071
+1992,13, Frank Müller,GER,8066
+1992,14, Andrey Nazarov,EST,8052
+1992,15, Alain Blondel,FRA,8031
+1992,16, Alvaro Burrell,ESP,7952
+1992,17, Thorsten Dauth,GER,7951
+1992,18, David Bigham,GBR,7754
+1992,19, Dean Smith,AUS,7703
+1992,20, Sandor Munkacsy,HUN,7698
+1992,21, Beat Gähwiler,SUI,7676
+1992,22, Francisco Benet Martin,ESP,7484
+1992,23, Alper Kasapoglu,TUR,7205
+1992,24, Albert Miller,FIJ,6971
+1992,25, Eric Momberger,PNG,6780
+1992,26, Homelo Vi,TGA,6768
+1992,27, Ibrahim Al Matrooshi,UAE,6124
+1992,28, Jorge Flores,HON,5746
+1992, , Erki Nool,EST,dnf
+1992,-, Christian Plaziat,FRA,dnf
+1992, , Michael Smith,CAN,dnf
+1992, , Petri Keskitalo,FIN,dnf
+1992, , Simon Poelman,NZL,dnf
+1992, , Pedro da Silva Filho,BRA,dnf
+1992, , Aric Long,USA,dnf
+1992, , Eduard Hämäläinen,EUN,dnf
+1988,1, Christian Schenk,GDR,8488
+1988,2, Torsten Voss,GDR,8399
+1988,3, David Steen,CAN,8328
+1988,4, Daley Thompson,GBR,8306
+1988,5, Christian Plaziat,FRA,8272
+1988,6, Alain Blondel,FRA,8268
+1988,7, Timothy Bright,USA,8216
+1988,8, Robert De Witt,NED,8189
+1988,9, David Johnson,USA,8180
+1988,10, Pavel Tarnovetski,URS,8167
+1988,11, Petri Keskitalo,FIN,8143
+1988,12, Beat Gähwiler,SUI,8114
+1988,13, Dezsö Szabo,HUN,8093
+1988,14, Michael Smith,CAN,8083
+1988,15, Simon Shirley,AUS,8036
+1988,16, Simon Poelman,NZL,8021
+1988,17, Mikael Olander,SWE,7869
+1988,18, Uwe Freimuth,GDR,7860
+1988,19, Lars Warming,DEN,7859
+1988,20, Roman Hraban,TCH,7781
+1988,21, Georg Werthner,AUT,7753
+1988,22, Christian Gugler,SUI,7745
+1988,23, Antonio Penalver,ESP,7743
+1988,24, Alexander Kruger,GBR,7623
+1988,25, Lee Fu-an,TPE,7579
+1988,26, Santiago Mellado,ESA,7517
+1988,27, Severin Moser,SUI,7502
+1988,28, Veroslav Valenta,TCH,7442
+1988,29, Carlos O'Connell,IRL,7310
+1988,30, Gregory Richards,GBR,7237
+1988,31, Gong Guohua,CHN,7231
+1988,32, Albert Miller,FIJ,7016
+1988,33, Lee Gwang-ik,KOR,6917
+1988,34, Dambar Kuwar,NEP,5339
+1988, , Jürgen Hingsen,FRG,dnf
+1988,-, Fidel Solorzano,ECU,dnf
+1988, , Valter Külvet,URS,dnf
+1988, , Gary Kinder,USA,dnf
+1988, , Aleksandr Apaichev,URS,dnf
+1984,1, Daley Thompson,GBR,8797,OR
+1984,2, Jürgen Hingsen,FRG,8673
+1984,3, Siegfried Wentz,FRG,8412
+1984,4, Guido Kratschmer,FRG,8326
+1984,5, William Motti,FRA,8266
+1984,6, John Crist,USA,8130
+1984,7, James Wooding,USA,8091
+1984,8, David Steen,CAN,8047
+1984,9, Georg Werthner,AUT,8012
+1984,10, Michele Rüfenacht,SUI,7924
+1984,11, Bradley McStravick,GBR,7890
+1984,12, Timothy Bright,USA,7862
+1984,13, Patrick Vetterli,SUI,7739
+1984,14, Peter Hadfield,AUS,7683
+1984,15, Weng Kangqiang,CHN,7662
+1984,16, Guu Jin-shoei,TPE,7629
+1984,17, Trond Skramstad,NOR,7579
+1984,18, Douglas Fernansez,VEN,7553
+1984,19, Lee Fu-an,TPE,7541
+1984,20, Colin Boreham,GBR,7485
+1984,21, Mohamed Mansour Salah,QAT,6589
+1984,22, Claudio Escaurisa,PAR,6546
+1984,23, Fidel Solorzano,ECU,6519
+1984,24, Angel Diaz,GUA,6342
+1984,25, Vivian Coralie,MRI,6084
+1984, , Albert Miller,FIJ,dnf
+1980,1, Daley Thompson,GBR,8495
+1980,2, Yuri Kutsenko,URS,8331
+1980,3, Sergei Zhelanov,URS,8135
+1980,4, Georg Werthner,AUT,8050
+1980,5, Josef Zeilbauer,AUT,8007
+1980,6, Dariusz Ludwig,POL,7978
+1980,7, Atanas Andonov,BUL,7927
+1980,8, Steffen Grummt,GDR,7892
+1980,9, Esa Jokinen,FIN,7826
+1980,10, Janusz Szczerkowski,POL,7822
+1980,11, Johannes Lahti,FIN,7765
+1980,12, Stephan Niklaus,SUI,7762
+1980,13, Peter Hadfield,AUS,7709
+1980,14, Razvigor Yankov,BUL,7624
+1980,15, Bradley McStravick,GBR,7616
+1980,16, Columba Blango,SLE,5080
+1980, , Siegfried Stark,GDR,dnf
+1980,-, Miro Ronac,PER,dnf
+1980, , Valeriu Caceanov,URS,dnf
+1980, , Sandro Brogini,ITA,dnf
+1980, , Rainer Pottel,GDR,dnf
+1976,1, Bruce Jenner,USA,8618,WR
+1976,2, Guido Kratschmer,FRG,6411
+1976,3, Nikolai Avilov,URS,8369
+1976,4, Raimo Pihl,SWE,8218
+1976,5, Ryszard Skowronek,POL,8113
+1976,6, Siegfried Stark,GDR,8048
+1976,7, Leonid Litvinenko,URS,8025
+1976,8, Lennart Hedmark,SWE,7974
+1976,9, Aleksandr Grebenyuk,URS,7803
+1976,10, Claus Marek,FRG,7767
+1976,11, Johannes Lahti,FIN,7711
+1976,12, Ryszard Katus,POL,7616
+1976,13, Ludek Pernica,TCH,7602
+1976,14, Philippe Bobin,FRA,7580
+1976,15, Frederick Samara,USA,7504
+1976,16, Georg Werthner,AUT,7493
+1976,17, Gilles Gemise-Fareau,FRA,7486
+1976,18, Daley Thompson,GBR,7434
+1976,19, Roger Lespagnard,BEL,7322
+1976,20, Runald Beckman,SWE,7319
+1976,21, Eberhard Stroot,FRG,7063
+1976,22, Tito Steiner,ARG,7052
+1976,23, Frederick Dixon,USA,6754
+1976, , Josef Zeilbauer,AUT,dnf
+1976,-, Regis Ghesquire,BEL,dnf
+1976, , Elias Sveinsson,ISL,dnf
+1976, , Eltjo Schutter,NED,dnf
+1976, , Heikki Leppänen,FIN,dnf
+1972,1, Nikolai Avilov,URS,8454,OR
+1972,2, Leonid Litvinenko,URS,8035
+1972,3, Ryszard Katus,POL,7984
+1972,4, Jeff Bennett,USA,7974
+1972,5, Stefan Schreyer,GDR,7950
+1972,6, Freddy Herbrand,BEL,7947
+1972,7, Steen Smidt-Jensen,DEN,7947
+1972,8, Tadeusz Janczenko,POL,7861
+1972,9, Josef Zeilbauer,AUT,7741
+1972,10, Bruce Jenner,USA,7722
+1972,11, Regis Ghesquire,BEL,7677
+1972,12, Yves Le Roy,FRA,7675
+1972,13, Boris Ivanov,URS,7657
+1972,14, Roger Lespagnard,BEL,7519
+1972,15, Barry King,GBR,7468
+1972,16, Radu Gavrilas,ROU,7417
+1972,17, Vijay Chauhan,IND,7378
+1972,18, Jean-Pierre Schoebel,FRA,7273
+1972,19, Heinz Born,SUI,7217
+1972,20, Jozsef Bakai,HUN,7071
+1972,21, Jeffrey Bannister,USA,7022
+1972,22, Wilfred Mwalawanda,MAW,3227
+1972, , Ryszard Skowronek,POL,dnf
+1972,-, Lennart Hedmark,SWE,dnf
+1972, , Hans-Joachim Walde,FRG,dnf
+1972, , Joachim Kirst,GDR,dnf
+1972, , Guerrino Moro,CAN,dnf
+1972, , Peter Gabbett,GBR,dnf
+1972, , Rudolf Mangisch,SUI,dnf
+1972, , Luis Flores,GUA,dnf
+1972, , Clifford Brooks,BAR,dnf
+1972, , Hans-Joachim Perk,FRG,dnf
+1972, , Horst Beyer,FRG,dnf
+1968,1, William Toomey,USA,8193,OR
+1968,2, Hans-Joachim Walde,FRG,8111
+1968,3, Kurt Bendlin,FRG,8064
+1968,4, Nikolai Avilov,URS,7909
+1968,5, Joachim Kirst,GDR,7861
+1968,6, Thomas Waddell,USA,7719
+1968,7, Rick Sloan,USA,7692
+1968,8, Steen Smidt-Jensen,DEN,7648
+1968,9, Ed de Noorlander,NED,7554
+1968,10, Manfred Tiedtke,GDR,7551
+1968,11, Lennart Hedmark,SWE,7481
+1968,12, Walter Diesl,AUT,7465
+1968,13, Clive Longe,GBR,7338
+1968,14, Janis Lanka,URS,7227
+1968,15, Wu Ah-min,TPE,7209
+1968,16, Spas Dzhurov,BUL,7173
+1968,17, Roger Lespagnard,BEL,7125
+1968,18, Urs Trautmann,SUI,7044
+1968,19, Franz Biedermann,LIE,6323
+1968,20, Donald Velez Espinoza,NCA,5943
+1968, , Rein Aun,URS,dnf
+1968,-, Valbjørn Thorlaksson,ISL,dnf
+1968, , Werner Duttweiler,SUI,dnf
+1968, , Chen Chuan-show,TPE,dnf
+1968, , Gert Herunter,AUT,dnf
+1968, , Hansrüdi Kunz,SUI,dnf
+1968, , Charlemagne Anyamah,FRA,dnf
+1968, , Herbert Wessel,GDR,dnf
+1968, , Ho Henh Phuroc,VIE,dnf
+1968, , Horst Mandl,AUT,dnf
+1968, , Dominique Rakotorahalahy,MAD,dnf
+1968, , Werner von Moltke,FRG,dnf
+1968, , Roberto Carmona Botello,MEX,dnf
+1964,1, Willi Holdorf,GER,7887,OR
+1964,2, Rein Aun,URS,7842
+1964,3, Hans-Joachim Walde,GER,7809
+1964,4, Paul Herman,USA,7787
+1964,5, Yang Chuang-kwang,TPE,7650
+1964,6, Horst Beyer,GER,7647
+1964,7, Vassily Kuznetsov,URS,7569
+1964,8, Mikhail Storozhenko,URS,7464
+1964,9, Russell Hodge,USA,7325
+1964,10, Richard Emberger,USA,7292
+1964,11, William Gairdner,CAN,7234
+1964,12, Valbjørn Thorlaksson,ISL,7135
+1964,13, Franco Sar,ITA,7054
+1964,14, Alois Büchel,LIE,6849
+1964,15, Shosuke Suzuki,JPN,6838
+1964,16, Guerrino Moro,CAN,6716
+1964,17, Koech Kiprop,KEN,6707
+1964,18, Dramane Sereme,MLI,5917
+1964, , Evert Kamerbeek,NED,dnf
+1964,-, Wu Ah-min,TPE,dnf
+1964, , Werner Duttweiler,SUI,dnf
+1964, , Hector Thomas Martinez,VEN,dnf
+1960,1, Rafer Johnson,USA,7901,OR
+1960,2, Yang Chuang-kwang,TPE,7820
+1960,3, Vassily Kuznetsov,URS,7527
+1960,4, Yuri Kutenko,URS,7401
+1960,5, Evert Kamerbeek,NED,7212
+1960,6, Franco Sar,ITA,7140
+1960,7, Markus Kahma,FIN,7112
+1960,8, Klaus Grogorenz,GER,7032
+1960,9, Joze Brodnik,YUG,6918
+1960,10, Manfred Bock,GER,6894
+1960,11, Fritz Vogelsang,SUI,6767
+1960,12, Seppo Suutari,FIN,6751
+1960,13, Luciano Paccagnella,ITA,6279
+1960,14, Bjørgvin Holm,ISL,6261
+1960,15, Herman Timme,NED,6206
+1960,16, Walter Meier,GER,6000
+1960,17, Hans Muchitsch,AUT,5950
+1960,18, Leopold Marien,BEL,5919
+1960,19, Juris Laipenieks,CHI,5865
+1960,20, Hector Thomas Martinez,VEN,5753
+1960,21, Rodolfo Mijares,MEX,5413
+1960,22, George Stulac,CAN,5198
+1960,23, Panagiotis Epitropopoulos,GRE,4737
+1960, , Gurbachan Randhawa Singh,IND,dnf
+1960,-, Alois Büchel,LIE,dnf
+1960, , Iuri Diachkovi,URS,dnf
+1960, , Philip Mulkey,USA,dnf
+1960, , Mirko Kolnik,YUG,dnf
+1960, , Julio Vilar Santos,POR,dnf
+1960, , David Edstrom,USA,dnf
+1956,1, Milton Campbell,USA,7937,OR
+1956,2, Rafer Johnson,USA,7587
+1956,3, Vassily Kuznetsov,URS,7465
+1956,4, Uno Palu,URS,6930
+1956,5, Martin Lauer,GER,6853
+1956,6, Walter Meier,GER,6773
+1956,7, Torbjörn Lassenius,FIN,6565
+1956,8, Yang Chuang-kwang,TPE,6521
+1956,9, Patrick Leane,AUS,6427
+1956,10, John Cann,AUS,6278
+1956,11, Ian Bruce,AUS,6025
+1956,12, Nadjmeddin Farabi,IRI,5103
+1956, , Yuri Kutenko,URS,dnf
+1956,-, Robert Richards,USA,dnf
+1956, , Walter Herssens,BEL,dnf
+1952,1, Robert Mathias,USA,7887,WR
+1952,2, Milton Campbell,USA,6975
+1952,3, Floyd Simmons,USA,6788
+1952,4, Vladimir Volkov,URS,6674
+1952,5, Josef Hipp,GER,6449
+1952,6, Göran Widenfeldt,SWE,6388
+1952,7, Kjell Taannander,SWE,6308
+1952,8, Friedel Schirmer,GER,6118
+1952,9, Geoffrey Elliot,GBR,6044
+1952,10, Sergey Kuznetsov,URS,5937
+1952,11, Hugues Frayer,FRA,5772
+1952,12, Brigido Iriarte,VEN,5770
+1952,13, Olavi Reikko,FIN,5725
+1952,14, Eeles Landström,FIN,5694
+1952,15, Oto Rebula,YUG,5648
+1952,16, Fernando Fernandes,POR,5604
+1952,17, Hernan Figueroa,CHI,5592
+1952,18, Max Wehrli,SUI,5561
+1952,19, Robert Adams,CAN,5530
+1952,20, Hector Roman Selva,PUR,5264
+1952,21, Reinaldo Oliver,PUR,5228
+1952,22, Erkki Hautamäki,FIN,5185,dnf
+1952,23, Ignace Heinrich,FRA,4448,dnf
+1952,24, Carlos Vera Guardia,CHI,2741,dnf
+1952,25, Georges Breitman,FRA,1661,dnf
+1952,26, Fotios Kosmas,GRE,1299,dnf
+1952,27, Pyotr Kozhevnikov,URS,1234,dnf
+1952,28, Patrick Leane,AUS,964,dnf
+1948,1, Robert Mathias,USA,7139
+1948,2, Ignace Heinrich,FRA,6974
+1948,3, Floyd Simmons,USA,6950
+1948,4, Enrique Kistenmacher,ARG,6929
+1948,5, Erik Peter Andersson,SWE,6877
+1948,6, Peter Mullins,AUS,6739
+1948,7, Per Axel Eriksson,SWE,6731
+1948,8, Irving Mondschein,USA,6715
+1948,9, Edward Adamczyk,POL,6712
+1948,10, Godtfred Holmvang,NOR,6663
+1948,11, Per Stavem,NOR,6552
+1948,12, Örn Clausen,ISL,6444
+1948,13, Yrjö Mäkelä,FIN,6421
+1948,14, Pierre Sprecher,FRA,6401
+1948,15, Kjell Taannander,SWE,6325
+1948,16, Waclaw Kuzmicki,POL,6153
+1948,17, Hannes Sonck,FIN,6142
+1948,18, Davorin Marcelja,YUG,6141
+1948,19, Witold Gerutto,POL,6106
+1948,20, Hercules Azcune,URU,6026
+1948,20, Hernan Figueroa,CHI,6026
+1948,22, Jacques Cretaine,FRA,5829
+1948,23, Fritz Nussbaum,SUI,5808
+1948,24, Mario Recordon,CHI,5730
+1948,25, Lionel Fournier,CAN,5590
+1948,26, Albert Dayer,BEL,5586
+1948,27, Oskar Gerber,SUI,5558
+1948,28, Sayed Moukhtar,EGY,5031
+1948, , Eduardo Julve,PER,dnf
+1948,-, Oto Rebula,YUG,dnf
+1948, , Baldev Singh,IND,dnf
+1948, , Josef Seger,LIE,dnf
+1948, , Rene Kremer,LUX,dnf
+1948, , Gebhard Büchel,LIE,dnf
+1948, , Armin Scheurer,SUI,dnf
+1936,1, Glenn Morris,USA,7900,WR
+1936,2, Robert Clark,USA,7601
+1936,3, Jack Parker,USA,7275
+1936,4, Erwin Huber,GER,7087
+1936,5, Reindert Brasser,NED,7046
+1936,6, Armin Guhl,SUI,7033
+1936,7, Olle Bexell,SWE,7024
+1936,8, Helmut Bonnet,GER,6939
+1936,9, Jerzy Plawczyk,POL,6871
+1936,10, Edvard Natvig,NOR,6759
+1936,11, Aulis Reinikka,FIN,6855
+1936,12, Peter Bacsalmasi,HUN,6395
+1936,13, Fritz Dällenbach,SUI,6311
+1936,14, Lyuben Doychev,BUL,6307
+1936,15, Osvaldo Wenzel,CHI,6058
+1936,16, Josef Klein,TCH,5883
+1936,17, Maurice Boulanger,BEL,5097
+1936, , Akilles Järvinen,FIN,dnf
+1936,-, Leif Dahlgren,SWE,dnf
+1936, , Zoltan Csanyi,HUN,dnf
+1936, , Willy Bührer,SUI,dnf
+1936, , Franz Sterzl,AUT,dnf
+1936, , Emile Binet,BEL,dnf
+1936, , Martti Topelius,FIN,dnf
+1936, , Janis Dimza,LAT,dnf
+1936, , Erwin Reimer,CHI,dnf
+1936, , Chang Singchow,CHN,dnf
+1936, , Karl Vilmundarson,ISL,dnf
+1932,1, James Bausch,USA,8462,WR
+1932,2, Akilles Järvinen,FIN,8292
+1932,3, Wolrad Eberle,GER,8031
+1932,4, Wilson Charles,USA,7985
+1932,5, Hans Heinrich Sievert,GER,7941
+1932,6, Paavo Yrjölä,FIN,7688
+1932,7, Clyde Coffman,USA,7534
+1932,8, Robert Tisdall,IRL,7327
+1932,9, Erwin Wegner,GER,7180
+1932,10, Peter Bacsalmasi,HUN,7002
+1932,11, Harry Hart,RSA,6799
+1932, , Hector Berra,ARG,dnf
+1932,-, Janis Dimsa,LAT,dnf
+1932, , Zygmunt Siedlecki,POL,dnf
+1928,1, Paavo Yrjölä,FIN,8053,WR
+1928,2, Akilles Järvinen,FIN,7932
+1928,3, John Doherty,USA,7707
+1928,4, James Stewart,USA,7624
+1928,5, Thomas Churchill,USA,7417
+1928,6, Helge Jansson,SWE,7286
+1928,7, Ludwig Vesely,TCH,7274
+1928,8, Albert Andersson,SWE,7109
+1928,9, Henry Lindblad,SWE,7071
+1928,10, Wilhelm Ladewig,GER,6881
+1928,11, Hugo Barth,GER,6850
+1928,12, Tatsuo Toki,JPN,6757
+1928,13, Johannes Meimer,EST,6733
+1928,14, Sven Lundgren,SWE,6727
+1928,15, Erwin Huber,GER,6702
+1928,16, Martti Topelius,FIN,6642
+1928,17, Bernard Berlinger,USA,6619
+1928,18, Antoni Cejzik,POL,6356
+1928,19, Hermann Lemperle,GER,6293
+1928,20, Stylianos Benardis,GRE,6149
+1928,21, Matyas Farkas,HUN,6015
+1928,22, Yonataro Nakazawa,JPN,5672
+1928,23, Gaston Etienne,BEL,5256
+1928,24, Branko Kallay,YUG,5210
+1928,25, Rene Joannes-Powell,BEL,5190
+1928,26, Gheorghe Csegezi,ROU,5081
+1928,27, Gerard Noel,BEL,4606
+1928, , George Weightman-Smith,RSA,dnf
+1928,-, Armas Wahlstedt,FIN,dnf
+1928, , Johannes Viljoen,RSA,dnf
+1928, , Gaston Medecin,MON,dnf
+1928, , Adolf Meier,SUI,dnf
+1928, , Cornelius O'Callaghan,IRL,dnf
+1928, , Howard Ford,GBR,dnf
+1928, , Ion Haydu,ROU,dnf
+1928, , Gunnar Fredriksen,NOR,dnf
+1928, , Gunnar Hagen,NOR,dnf
+1928, , Ion Virgile,ROU,dnf
+1924,1, Harold Osborn,USA,7711,WR
+1924,2, Emerson Norton,USA,7351
+1924,3, Aleksander Klumberg,EST,7329
+1924,4, Anton Huusari,FIN,7005
+1924,5, Edward Sutherland,RSA,6794
+1924,6, Ernst Gerspach,SUI,6744
+1924,7, Helge Jansson,SWE,6656
+1924,8, Harry Frieda,USA,6618
+1924,9, Paavo Yrjölä,FIN,6548
+1924,10, Harry de Keijser,NED,6509
+1924,11, Adolfo Contoli,ITA,6406
+1924,12, Antoni Cejzik,POL,6319
+1924,13, Enrique Thompson,ARG,6310
+1924,14, Gvido Jekals,LAT,5981
+1924,15, Constant Bucher,SUI,5961
+1924,16, Eugen Uuemaa,EST,5899
+1924,17, Joseph Ruth,BEL,5866
+1924,18, Peroslav Ferkovic,YUG,5517
+1924,19, William Shanahan,IRL,5426
+1924,20, Gaston Medecin,MON,5347
+1924,21, Elmar Rähn,EST,5292
+1924,22, Tokushige Noto,JPN,5248
+1924,23, Edouard Armand,HAI,5207
+1924,24, Stylianos Benardis,GRE,5189
+1924,25, Donald Slack,GBR,5148
+1924, , Elemer Somfay,HUN,dnf
+1924,-, Evert Nilsson,SWE,dnf
+1924, , Gabriel Sempe,FRA,dnf
+1924, , Dennis Duigan,AUS,dnf
+1924, , Valter Ever,EST,dnf
+1924, , Bertil Fasten,SWE,dnf
+1924, , Arthur Percy Spark,GBR,dnf
+1924, , Iivari Yrjölä,FIN,dnf
+1924, , Adolf Meier,SUI,dnf
+1924, , Duro Gaspar,YUG,dnf
+1924, , Otto Anderson,USA,dnf
+1920,1, Helge Løvland,NOR,6803
+1920,2, Brutus Hamilton,USA,6771
+1920,3, Bertil Ohlson,SWE,6580
+1920,4, Gustaf Holmer,SWE,6532
+1920,5, Evert Nilsson,SWE,6433
+1920,6, Valdemar Wickholm,FIN,6405
+1920,7, Eugene Vidal,USA,6358
+1920,8, Axel-Erik Gyllenstolpe,SWE,6331
+1920,9, Ernst Gerspach,SUI,5947
+1920,10, Constant Bucher,SUI,5273
+1920,11, Rene Joannes-Powell,BEL,5091
+1920,12, Gensabulo Noguchi,JPN,3775
+1920, , Eero Lehtonen,FIN,dnf
+1920,-, Hugo Lahtinen,FIN,dnf
+1920, , Aleksander Klumberg,EST,dnf
+1920, , Paavo Johansson-Jaale,FIN,dnf
+1920, , Einar Ræder,NOR,dnf
+1920, , Dimitrios Andromedas,GRE,dnf
+1920, , Harry Goelitz,USA,dnf
+1920, , Everett Ellis,USA,dnf
+1920, , Carlo Butti,ITA,dnf
+1920, , Eduard Hasek,TCH,dnf
+1920, , Apostolos Nikolaidis,GRE,dnf
+1912,1, Hugo Wieslander,SWE,7724
+1912,2, James Thorpe,USA,8412,WR
+1912,3, Charles Lomberg,SWE,7414
+1912,4, Gustaf Holmer,SWE,7348
+1912,-, James Donahue,USA,7093
+1912,-, Eugene Mercer,USA,7075
+1912,-, Valdemar Wickholm,FIN,7059
+1912,-, Erik Kugelberg,SWE,6758
+1912,-, Karl von Halt,GER,6682
+1912,-, Josef Schäffer,AUT,6568
+1912,-, Aleksandr Schultz,RUS,6134
+1912,-, Alfreds Alslebens,RUS,5294
+1912, , Georges Andre,FRA,dnf
+1912, , Einar Nilsson,SWE,dnf
+1912, , Harry Babcock,USA,dnf
+1912, , George Philbrook,USA,dnf
+1912, , Ferdinand Bie,NOR,dnf
+1912, , Francis Lukeman,CAN,dnf
+1912, , Avery Brundage,USA,dnf
+1912, , Otto Röhr,GER,dnf
+1912, , Pierre Failliot,FRA,dnf
+1912, , Megerdich Megherian,TUR,dnf
+1912, , Svend Langkjær,DEN,dnf
+1912, , Nils Skotte Jacobsson,SWE,dnf
+1912, , Karl Viktor Hackberg,SWE,dnf
+1912, , Alfredo Pagani,ITA,dnf
+1912, , Gunnar Rönström,SWE,dnf
+1912, , Manlio Legat,ITA,dnf
+1912, , Alexander Abraham,GER,dnf
+1904,1, Thomas Kiely,GBR,6036,OR
+1904,2, Adam Gunn,USA,5907
+1904,3, Thomas Hare,USA,5813
+1904,4, John Holloway,GBR,5273
+1904,5, Ellery Clark,USA,2778,dnf
+1904,6, John Grieb,USA,2199,dnf
+1904, , Max Emmerich,USA,dnf

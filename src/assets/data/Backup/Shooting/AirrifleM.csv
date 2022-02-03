@@ -1,0 +1,438 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1, William Shaner,USA,251.6,OR
+2020,2, Sheng Lihao,CHN,250.9
+2020,3, Yang Haoran,CHN,229.4
+2016,1, Niccolo Campriani,ITA,206.1,OR
+2016,2, Serhiy Kulish,UKR,204.6
+2016,3, Vladimir Maslennikov,RUS,184.2
+2016,4, Abhinay Bindra,IND,163.8
+2016,5, Peter Sidi,HUN,142.7
+2016,6, Illia Charheika,BLR,121.6
+2016,7, Petar Gorsa,CRO,101.0
+2016,8, Oleh Tsarkov,UKR,79.7
+2016,-,Cao Yifei,CHN,625.5
+2016,-,Are Hansen,NOR,624.4
+2016,-,Kim Hyeonjun,KOR,624.4
+2016,-,Milutin Stefanovic,SRB,624.3
+2016,-,Istvan Peni,HUN,624.0
+2016,-,Sergey Richter,ISR,623.8
+2016,-,Alexander Schmirl,AUT,623.7
+2016,-,Sergey Kamenskiy,RUS,623.2
+2016,-,Vitali Bubnovich,BLR,622.9
+2016,-,Julian Justus,GER,622.8
+2016,-,Alin George Moldoveanu,ROU,622.7
+2016,-,Naoya Okada,JPN,622.6
+2016,-,Lucas Kozeniesky,USA,622.3
+2016,-,Pourya Norouziyan,IRI,622.2
+2016,-,Gagan Narang,IND,621.7
+2016,-,Hrachik Babayan,ARM,621.5
+2016,-,Abdullah Hel Baki,BAN,621.2
+2016,-,Valerian Sauveplane,FRA,621.1
+2016,-,Jorge Diaz,ESP,620.9
+2016,-,Vadim Skorovarov,UZB,620.9
+2016,-,Michael Janker,GER,620.8
+2016,-,Marco De Nicolo,ITA,620.5
+2016,-,Yang Haoran,CHN,620.5
+2016,-,Gernot Rumpler,AUT,620.4
+2016,-,Milenko Sebic,SRB,620.0
+2016,-,Daniel Lowe,USA,620.0
+2016,-,Filip Nepejchal,CZE,619.9
+2016,-,Toshikazu Yamashita,JPN,619.5
+2016,-,Dane Sampson,AUS,619.3
+2016,-,Jeremy Monnier,FRA,618.5
+2016,-,Hamada Talat,EGY,618.2
+2016,-,Ole Kristian Bryhn,NOR,617.9
+2016,-,Napis Tortungpanich,THA,617.4
+2016,-,Anton Rizov,BUL,617.3
+2016,-,Jeong Jigeun,KOR,616.7
+2016,-,Yuriy Yurkov,KAZ,615.3
+2016,-,Julio Iemma Hernandez,VEN,612.7
+2016,-,Jack Rossiter,AUS,612.4
+2016,-,Chafik Bouaoud,ALG,612.1
+2016,-,Reinier Estpinan,CUB,610.0
+2016,-,Alexander Molerio Quintana,CUB,607.2
+2016,-,Mangala Samarakoon,SRI,589.6
+2012,1, Alin George Moldoveanu,ROU,702.1
+2012,2, Niccolo Campriani,ITA,701.5
+2012,3, Gagan Narang,IND,701.1
+2012,4, Wang Tao,CHN,700.4
+2012,5, Peter Hellenbrand,NED,699.8
+2012,6, Pierre Edmond Piasecki,FRA,699.1
+2012,7, Illia Charheika,BLR,698.6
+2012,8, Ole Magnus Bakken,NOR,691.5
+2012,-,Sergey Richter,ISR,"595"
+2012,-,Zhu Qinan,CHN,595
+2012,-,Vitaly Bubnovich,BLR,595
+2012,-,Julian Justus,GER,595
+2012,-,Peter Sidi,HUN,594
+2012,-,Are Hansen,NOR,594
+2012,-,Alesey Kamensky,RUS,594
+2012,-,Abhinay Bindra,IND,594
+2012,-,Kim Jonghyun,KOR,593
+2012,-,Serhiy Kulish,UKR,593
+2012,-,Artur Ayvazyan,UKR,593
+2012,-,Aleksandr Sokolov,RUS,593
+2012,-,Ruslan Ismailov,KGZ,593
+2012,-,Anton Rizov,BUL,593
+2012,-,Nyantayn Bayaraa,MGL,593
+2012,-,James Huckle,GBR,593
+2012,-,Tino Mohaupt,GER,592
+2012,-,Jeremy Monnier,FRA,592
+2012,-,Jonathan Hall,USA,592
+2012,-,Thomas Farnik,AUT,591
+2012,-,Amgad Hussain,EGY,591
+2012,-,Nemanja Mirosavljev,SRB,591
+2012,-,Jozef Gönci,SVK,591
+2012,-,Han Jin-seop,KOR,590
+2012,-,Vaclav Haman,CZE,590
+2012,-,Marco De Nicolo,ITA,590
+2012,-,Matthew Emmons,USA,590
+2012,-,Bojan Durkovic,CRO,590
+2012,-,Pascal Loretan,SUI,589
+2012,-,Midori Yajima,JPN,589
+2012,-,Simon Beyeler,SUI,588
+2012,-,William Godward,AUS,588
+2012,-,Javier Lopez Sanchez,ESP,588
+2012,-,Dane Sampson,AUS,587
+2012,-,Petar Gorsa,CRO,586
+2012,-,Nedzad Fazlija,BIH,585
+2012,-,Mangaia Samarakoon,SRI,583
+2012,-,Cory Niefer,CAN,581
+2012,-,Rudi Lausarot,URU,575
+2008,1, Abhinay Bindra,IND,700.5
+2008,2, Zhu Qinan,CHN,699.7
+2008,3, Henri Häkkinen,FIN,699.4
+2008,4, Alin George Moldoveanu,ROU,698.9
+2008,5, Konstantin Prikhodtchenko,RUS,698.4
+2008,6, Peter Sidi,HUN,698.4
+2008,7, Stevan Pletikosic,SRB,697.7
+2008,8, Sergey Kruglov,RUS,697.0
+2008,-,Gagan Narang,IND,595
+2008,-,Thomas Farnik,AUT,594
+2008,-,Oleksandr Lazeykin,UKR,594
+2008,-,Niccolo Campriani,ITA,594
+2008,-,Vaclav Haman,CZE,593
+2008,-,Cao Yifei,CHN,593
+2008,-,Tino Mohaupt,GER,593
+2008,-,Park Bong-duk,KOR,593
+2008,-,Nemanja Mirosavljev,SRB,593
+2008,-,Vitali Bubnovich,BLR,592
+2008,-,Are Hansen,NOR,592
+2008,-,Marco De Nicolo,ITA,592
+2008,-,Artur Ayvazyan,UKR,592
+2008,-,Vebjørn Berg,NOR,592
+2008,-,Jason Parker,USA,591
+2008,-,Jose Luis Sanchez,MEX,591
+2008,-,Roberto Jose Elias,MEX,590
+2008,-,Han Jin-seop,KOR,590
+2008,-,Stephen Scherer,USA,590
+2008,-,Toshikazu Yamashita,JPN,590
+2008,-,Jonathan Hammond,GBR,589
+2008,-,Christian Planer,AUT,589
+2008,-,Rajmond Debevec,SLO,589
+2008,-,Luis Martinez,ESP,589
+2008,-,Robert Kraskowski,POL,589
+2008,-,Oliver Geissmann,LIE,588
+2008,-,Nedzad Fazlija,BIH,588
+2008,-,Michael Winter,GER,588
+2008,-,Petar Gorsa,CRO,588
+2008,-,Vitaliy Dovgun,KAZ,587
+2008,-,Ruslan Ismailov,KGZ,587
+2008,-,Josselin Henry,FRA,587
+2008,-,Doron Egozi,ISR,587
+2008,-,Yuriy Yurkov,KAZ,586
+2008,-,Mohamed Abdellah,EGY,586
+2008,-,Liecer Perez,CUB,585
+2008,-,Simon Beyeler,SUI,583
+2008,-,Mohammad Hossain,BAN,581
+2008,-,Matthew Inabinet,AUS,579
+2008,-,Siddique Umer,PAK,578
+2008,-,Benjamin Burge,AUS,576
+2008,-,Walter Martinez Hernandez,NCA,569
+2008,-,Saso Nestorov,MKD,558
+2004,1, Zhu Qinan,CHN,702.7,WR
+2004,2, Li Jie,CHN,701.3
+2004,3, Jozef Gönci,SVK,697.4
+2004,4, Cheon Min-ho,KOR,696.6
+2004,5, Maik Eckhardt,GER,696.3
+2004,6, Je Sung-tae,KOR,696.3
+2004,7, Abhinay Bindra,IND,694.6
+2004,8, Jason Parker,USA,694.5
+2004,-,Matthew Emmons,USA,594
+2004,-,Matej Meszaros,SVK,594
+2004,-,Masaru Yanagida,JPN,594
+2004,-,Thomas Farnik,AUT,593
+2004,-,Peter Sidi,HUN,593
+2004,-,Gagan Narang,IND,593
+2004,-,Christian Planer,AUT,593
+2004,-,Torsten Krebs,GER,593
+2004,-,Georgios Petsanis,GRE,593
+2004,-,Dirk Boschman,NED,592
+2004,-,Leif Steiner Rolland,NOR,592
+2004,-,Konstantinos Savorgiannakis,GRE,592
+2004,-,Vyacheslav Skoromnov,UZB,592
+2004,-,Artur Ayvazyan,UKR,591
+2004,-,Oliver Geissmann,LIE,591
+2004,-,Yury Sukhorukov,UKR,590
+2004,-,Marco De Nicolo,ITA,590
+2004,-,Artyom Khadzhibekov,RUS,590
+2004,-,Vitaly Bubnovich,BLR,590
+2004,-,Mohamed Abdellah,EGY,590
+2004,-,Rajmond Debevec,SLO,589
+2004,-,Konstantin Prikhodtchenko,RUS,589
+2004,-,Sven Haglund,SWE,589
+2004,-,Peter Thuesen,DEN,589
+2004,-,Marcus Åkerholm,SWE,588
+2004,-,Aleksandr Babchenko,KGZ,588
+2004,-,Nedzad Fazlija,BIH,587
+2004,-,Asif Khan,BAN,587
+2004,-,Timothy Lowndes,AUS,587
+2004,-,Tevarit Majchacheep,THA,587
+2004,-,Stevan Pletikosic,SRB,586
+2004,-,Angel Velarte,ARG,586
+2004,-,Espen Berg-Knutsen,NOR,584
+2004,-,Matthew Inabinet,AUS,584
+2004,-,Pablo Alvarez,ARG,583
+2004,-,Roberto Jose Elias,MEX,582
+2004,-,Juha Hirvi,FIN,580
+2004,-,Tika Shrestha,NEP,579
+2004,-,Marcel Bürge,SUI,576
+2000,1, Cai Yalin,CHN,696.4
+2000,2, Artyom Khadzhibekov,RUS,695.1
+2000,3, Evgueni Aleinikov,RUS,693.8
+2000,4, Anatoly Klimenko,BLR,693.4
+2000,5, Jason Parker,USA,693.1
+2000,6, Nedzad Fazlija,BIH,692.7
+2000,7, Leif Steinar Rolland,NOR,692.2
+2000,8, Artur Ayvazyan,UKR,692.0
+2000,-,Rajmond Debevec,SLO,591
+2000,-,Mario Knögler,AUT,591
+2000,-,Abhinay Bindra,IND,590
+2000,-,Jozef Gonci,SVK,590
+2000,-,Mohamed Abdel Ellah,EGY,590
+2000,-,Lim Young-sueb,KOR,590
+2000,-,Peter Sidi,HUN,589
+2000,-,Yuri Lomov,KGZ,589
+2000,-,Norbert Ettner,GER,589
+2000,-,Thomas Farnik,AUT,588
+2000,-,Juha Hirvi,FIN,588
+2000,-,Jean-Pierre Amat,FRA,588
+2000,-,Wolfram Waibel Jr.,AUT,588
+2000,-,Lee Eun-chul,KOR,588
+2000,-,Wayne Sorensen,CAN,588
+2000,-,Oleg Mykhaylov,UKR,588
+2000,-,Tavarit Majcharcheep,THA,588
+2000,-,Georgy Nekhaev,BLR,588
+2000,-,Marco De Nicolo,ITA,587
+2000,-,Roger Hansson,SWE,587
+2000,-,Nemanja Mirosavljev,YUG,587
+2000,-,Robert Wieland,AUS,587
+2000,-,Franck Badiou,FRA,586
+2000,-,Dirk Boschman,NED,586
+2000,-,Pablo Alvarez,ARG,586
+2000,-,Vaclav Becvar,CZE,585
+2000,-,Masaru Yanagida,JPN,585
+2000,-,Espen Berg-Knutsen,NOR,585
+2000,-,Ferdinand Stipberger,GER,584
+2000,-,Stevan Pletikosic,YUG,583
+2000,-,Roberto Elias Orozco,MEX,583
+2000,-,Kenneth Johnson,USA,583
+2000,-,Oliver Geissmann,LIE,582
+2000,-,Timothy Lowndes,AUS,582
+2000,-,Radim Novak,CZE,581
+2000,-,Hilal Al Rasheedi,OMA,579
+2000,-,Varavut Majchacheeap,THA,575
+2000,-,Walter Martinez Hernandez,NCA,571
+2000,-,Jorge Gonzalez Rodriguez,ESP,0
+2000,-,Hou Yannan,CHN,0
+1996,1, Artyom Khadzhibekov,RUS,695.7
+1996,2, Wolfram Waibel Jr.,AUT,695.2
+1996,3, Jean-Pierre Amat,FRA,693.1
+1996,4, Yevgeny Aleynikov,RUS,692.9
+1996,5, Leif Steinar Rolland,NOR,692.5
+1996,6, Rajmond Debevec,SLO,692.1
+1996,7, Rob Harbison,USA,691.8
+1996,8, Milan Bakes,CZE,690.5
+1996,-,Maik Eckhardt,GER,591
+1996,-,Nils Petter Håkedal,NOR,591
+1996,-,Lee Eun-chul,KOR,590
+1996,-,Anatoly Klimenko,BLR,590
+1996,-,Lim Young-sueb,KOR,590
+1996,-,Petr Kurka,CZE,590
+1996,-,Juha Hirvi,FIN,589
+1996,-,Goran Maksimovic,YUG,589
+1996,-,Nemanja Mirosavljev,YUG,589
+1996,-,Franck Badiou,FRA,588
+1996,-,Johann Riederer,GER,588
+1996,-,Ning Lijia,CHN,588
+1996,-,Dieter Grabner,AUT,588
+1996,-,Masaru Yanagida,JPN,587
+1996,-,Yuri Lomov,KGZ,587
+1996,-,Li Haicong,CHN,587
+1996,-,Nedzad Fazlija,BIH,586
+1996,-,Georgy Nekhaev,BLR,585
+1996,-,Ricardo Rusticucci,ARG,585
+1996,-,Jozef Gonci,SVK,584
+1996,-,Andreas Zumbach,SUI,584
+1996,-,Robert Kraskowski,POL,583
+1996,-,Jean-Francois Senecal,CAN,583
+1996,-,Oleg Mykhaylov,UKR,582
+1996,-,Zsolt Vari,HUN,581
+1996,-,Boris Polak,ISR,581
+1996,-,Saiful Saiful Alam,BAN,581
+1996,-,Darko Naseski,MKD,580
+1996,-,Khalaf Al-Khatry,OMA,578
+1996,-,Sergei Belyayev,KAZ,577
+1996,-,Angel Velarte,ARG,577
+1996,-,Naoki Kurita,JPN,577
+1996,-,Glenn Dubis,USA,576
+1996,-,Jorge Gonzalez,ESP,575
+1996,-,Nabil Tahlak,UAE,569
+1996,-,Walter Martinez,NCA,566
+1992,1, Yuri Fedkin,EUN,695.3,OR
+1992,2, Franck Badiou,FRA,691.9
+1992,3, Johann Riederer,GER,691.7
+1992,4, Jean-Pierre Amat,FRA,691.6
+1992,5, Goran Maksimovic,IOA,690.6
+1992,6, Thomas Farnik,AUT,690.2
+1992,7, Robert Foth,USA,689.4
+1992,8, Chae Keun-bae,KOR,687.8
+1992,-,Rajmond Debevec,SLO,589
+1992,-,Aleksandr Zlydenny,EUN,589
+1992,-,Wolfram Waibel Jr.,AUT,589
+1992,-,David Johnson,USA,589
+1992,-,Zhang Yingzhou,CHN,588
+1992,-,Petr Kurka,TCH,588
+1992,-,Robert Kraskowski,POL,588
+1992,-,Matthias Stich,GER,588
+1992,-,Enrique Claverol,ESP,588
+1992,-,Harald Stenvaag,NOR,587
+1992,-,Masaru Yanagida,JPN,587
+1992,-,Nemanja Mirosavljev,IOA,587
+1992,-,Jorge Gonzalez Rodriguez,ESP,586
+1992,-,Attila Zahonyi,HUN,586
+1992,-,Jl Jong-Koo,KOR,586
+1992,-,Dalimil Nejezchleba,TCH,586
+1992,-,Jari Pälve,FIN,585
+1992,-,Jack van Bekhoven,NED,585
+1992,-,Juha Hirvi,FIN,584
+1992,-,Ryohei Koba,JPN,584
+1992,-,Jean-Claude Kremer,LUX,584
+1992,-,Nils Petter Håkedal,NOR,584
+1992,-,Oliver Gaspar,HUN,583
+1992,-,Samarn Jongsuk,THA,583
+1992,-,Stoyan Stamenov,BUL,583
+1992,-,Du Long,CHN,582
+1992,-,Guy Lorion,CAN,580
+1992,-,Andreas Zumbach,SUI,580
+1992,-,Nigel Wallace,GBR,579
+1992,-,Jean-Francois Senecal,CAN,578
+1992,-,Josef Brendle,LIE,576
+1992,-,Ulrich Minder,SUI,576
+1992,-,Emerito Concepcion,PHI,573
+1992,-,Hugo Romero,ECU,564
+1992,-,Giuliano Ceccoli,SMR,561
+1992,-,Ricardo Rusticucci,ARG,560
+1988,1, Goran Maksimovic,YUG,695.6,OR
+1988,2, Nicolas Berthelot,FRA,694.2
+1988,3, Johann Riederer,FRG,694.0
+1988,4, Robert Foth,USA,692.5
+1988,5, Harald Stenvaag,NOR,692.0
+1988,6, Attila Zahonyi,HUN,691.4
+1988,7, An Byung-kyun,KOR,690.7
+1988,8, Andreas Wolfram,GDR,689.8
+1988,-,Oliver Gaspar,HUN,590
+1988,-,Franck Badiou,FRA,590
+1988,-,Petr Kurka,TCH,590
+1988,-,Ryohei Koba,JPN,589
+1988,-,Lee Eun-chul,KOR,589
+1988,-,Zhang Yingzhou,CHN,588
+1988,-,Sergei Martynov,URS,588
+1988,-,Mart Klepp,CAN,588
+1988,-,Juha Hirvi,FIN,587
+1988,-,Pavel Soukenik,TCH,587
+1988,-,Jan Gundersrud,NOR,587
+1988,-,Abdul Al Bulushi,OMA,587
+1988,-,Roderick Fitz-Randolph,USA,587
+1988,-,Matthias Stich,FRG,587
+1988,-,Hanspeter Ziörjen,SUI,587
+1988,-,Gratchia Petikiane,URS,586
+1988,-,Rajmond Debevec,YUG,585
+1988,-,Guy Lorion,CAN,585
+1988,-,Tapio Saynevirta,FIN,585
+1988,-,Klavs Jørn Christensen,DEN,584
+1988,-,Xu Xiaoguang,CHN,583
+1988,-,Itzchak Yonassi,ISR,583
+1988,-,Per Hansson,SWE,582
+1988,-,Anders Burvall,SWE,582
+1988,-,Gueorgui Poliakov,BUL,582
+1988,-,Albert Deuring,AUT,581
+1988,-,Jean-Claude Kremer,LUX,581
+1988,-,Akihiro Mera,JPN,581
+1988,-,Eduard Papirov,ISR,581
+1988,-,Frank Arens,BEL,580
+1988,-,Jack Van Berkhoven,NED,580
+1988,-,Jorge Gonzalez Rodriguez,ESP,579
+1988,-,Johannes Gufler,AUT,577
+1988,-,Wolfgang Jobst,AUS,574
+1988,-,Gilbert Kaiser,LIE,574
+1988,-,Pierre Dufaux,SUI,573
+1988,-,Hugo Romero,ECU,572
+1988,-,Zal Chitty,SRI,563
+1988,-,Malcolm Cooper,GBR,dns
+1988,-,Alister Allan,GBR,dns
+1988,-,Olaf Hess,GDR,dns
+1984,1, Philippe Heberle,FRA,589
+1984,2, Andreas Kronthaher,AUT,587
+1984,3, Barry Dagger,GBR,587
+1984,4, Nicolas Berthelot,FRA,585
+1984,5, Peter Heinz,FRG,583
+1984,5, John Rost,USA,583
+1984,7, Harald Stenvaag,NOR,582
+1984,7, Itzchak Yonassi,ISR,582
+1984,9, Ignatios Psyllakis,GRE,581
+1984,10, Bernhard Süss,FRG,581
+1984,11, Guy Lorion,CAN,581
+1984,12, Rajmond Debevec,YUG,580
+1984,12, Frank Arens,BEL,580
+1984,12, Ove Sjögren,SWE,580
+1984,15, Malcolm Cooper,GBR,579
+1984,15, Glenn Dubis,USA,579
+1984,15, Sacir Dzeko,YUG,579
+1984,18, Ryohei Koba,JPN,578
+1984,18, Mauri Röppänen,FIN,578
+1984,20, Ricardo Rusticucci,ARG,577
+1984,20, Niels Peder Pedersen,DEN,577
+1984,20, Constantin Stan,ROU,577
+1984,23, Bob Cheyne,CAN,576
+1984,23, Hansüli Minder,SUI,576
+1984,25, Per Erik Løkken,NOR,575
+1984,26, Christian Heller,SWE,574
+1984,26, José María Pigrau,ESP,574
+1984,28, Gerhard Krimbacher,AUT,573
+1984,28, Park Dae-Un,KOR,573
+1984,30, Xu Xiaoguang,CHN,572
+1984,30, Jorge Gonzalez,ESP,572
+1984,32, Pelopidas Iliadis,GRE,571
+1984,33, Pierre Dufaux,SUI,570
+1984,33, Herbert Memelink,NED,570
+1984,35, Justo Moreno,PER,567
+1984,36, José Alvarez,MEX,565
+1984,36, Hua Jiansheng,CHN,565
+1984,38, Yun Deok-Ha,KOR,563
+1984,39, Bhagirath Samai,IND,562
+1984,39, Kamal El-Din Shemais,EGY,562
+1984,41, Hugo Romero,ECU,561
+1984,42, Germán Carrasquilla,COL,560
+1984,43, Abdul Al Bulushi,OMA,558
+1984,43, Manop Leeprasansakul,THA,558
+1984,45, Paulo Pimenta,BRA,557
+1984,46, Víctor Garces,MEX,556
+1984,47, Tanin Thaisinip,THA,554
+1984,48, Khamis Al-Subhi,OMA,552
+1984,49, Dennis Hardman,ZIM,548
+1984,50, Khuwaled Al-Harthi,KSA,545
+1984,51, Pasquale Raschi,SMR,543
+1984,52, Roger Cartin,CRC,511
+1984, , Yair Davidovitz,ISR,dnf
+1984,-, Kaoru Matsuo,JPN,dnf

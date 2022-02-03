@@ -1,0 +1,879 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1, Daniel Ståhl,SWE,68.90
+2020,2, Simon Pettersson,SWE,67.39
+2020,3, Lukas Weisshaidinger,AUT,67.07
+2020,4, Matthew Denny,AUS,67.02
+2020,5, Kristjan Ceh,SLO,66.37
+2020,6, Andrius Gudzius,LTU,64.11
+2020,7, Mauricio Ortega,COL,64.08
+2020,8, Sam Mattis,USA,63.88
+2020,9, Chad Wright,JAM,62.56
+2020,10, Daniel Jasinski,GER,62.44
+2020,11, Clemens Prüfer,GER,61.75
+2020,12, Ola Stunes Isene,NOR,61.18
+2020,-,Piotr Malachowski,POL,62.68
+2020,-,Alin Alexandru Firfirica,ROU,61.90
+2020,-,Lolassonn Djouhan,FRA,60.74
+2020,-,Danijel Furtula,MNE,59.93
+2020,-,Traves Smikle,JAM,59.04
+2020,-,Ehsan Haddadi,IRI,58.98
+2020,-,Juan Caicedo,ECU,57.75
+2020,-,Lawrence Okoye,GBR,nm
+2020,-,Fedrick Dacres,JAM,62.91
+2020,-,Bartlomiej Stoj,POL,62.84
+2020,-,Apostolos Parellis,CYP,62.11
+2020,-,Alex Rose,SAM,61.72
+2020,-,Reginald Jagers,USA,61.47
+2020,-,Mykyta Nesterenko,UKR,60.95
+2020,-,David Wrobel,GER,60.38
+2020,-,Mason Finley,USA,60.34
+2020,-,Yauheni Bahutski,BLR,58.65
+2020,-,Giovanni Faloci,ITA,57.33
+2020,-,Lois Maikel Martinez,ESP,54.69
+2020,-,Gudni Valur Gudnason,ISL,nm
+2016,1, Christoph Harting,GER,68.37
+2016,2, Piotr Malachowski,POL,67.55
+2016,3, Daniel Jasinski,GER,67.05
+2016,4, Martin Kupper,EST,66.58
+2016,5, Gerd Kanter,EST,65.10
+2016,6, Lukas Weisshaidinger,AUT,64.95
+2016,7, Zoltán Kövágó,HUN,64.50
+2016,8, Apostolos Parellis,CYP,63.72
+2016,9, Philip Milanov,BEL,62.22
+2016,10, Axel Harstedt,SWE,62.12
+2016,11, Mason Finlay,USA,62.05
+2016,12, Andrius Gudzius,LTU,60.66
+2016,-,Daniel Ståhl,SWE,62.26
+2016,-,Andrew Evans,USA,61.87
+2016,-,Benn Harradine,AUS,60.85
+2016,-,Jorge Fernández,CUB,60.43
+2016,-,Mykyta Nesterenko,UKR,60.31
+2016,-,Tavis Bailey,USA,59.81
+2016,-,Lois Maikel Martinez,ESP,59.42
+2016,-,Alex Rose,SAM,57.24
+2016,-,Mahmoud Samimi,IRI,56.94
+2016,-,Yevgenyi Labutov,KAZ,55.54
+2016,-,Sultan Mubarak Al Dawoodi,KSA,54.84
+2016,-,Fedrick Dacres,JAM,50.69
+2016,-,Sven Martin Skagestad,NOR,62.45
+2016,-,Robert Harting,GER,62.21
+2016,-,Robert Urbanek,POL,61.76
+2016,-,Mauricio Ortega,COL,61.62
+2016,-,Matthew Denny,AUS,61.16
+2016,-,Gudni Valur Gudnason,ISL,60.45
+2016,-,Ehsan Haddadi,IRI,60.15
+2016,-,Yennifer Frank Casañas,ESP,59.96
+2016,-,Vikas Gowda,IND,58.99
+2016,-,Oleksiy Semenov,UKR,55.35
+2016,-,Danijel Furtula,MNE,nm
+2012,1, Robert Harting,GER,68.27
+2012,2, Ehsan Haddadi,IRI,68.18
+2012,3, Gerd Kanter,EST,68.03
+2012,4, Virgilijus Alekna,LTU,67.38
+2012,5, Piotr Malachowski,POL,67.19
+2012,6, Martin Wierig,GER,65.85
+2012,7, Yennifer Frank Casañas,ESP,65.56
+2012,8, Vikas Gowda,IND,64.79
+2012,9, Benn Harradine,AUS,63.59
+2012,10, Erik Cadée,NED,62.78
+2012,11, Jorge Fernández,CUB,62.02
+2012,12, Lawrence Okoye,GBR,61.03
+2012,-,Apostolos Parellis,CYP,63.48
+2012,-,Jason Young,USA,62.18
+2012,-,Scott Martin,AUS,62.14
+2012,-,Ercument Olgundeniz,TUR,60.87
+2012,-,Märt Israel,EST,60.34
+2012,-,Aleksander Tammert,EST,60.20
+2012,-,Julian Wruck,AUS,60.08
+2012,-,Markus Münch,GER,59.95
+2012,-,Robert Urbanek,POL,59.56
+2012,-,Brett Morse,GBR,58.18
+2012,-,Roland Varga,CRO,58.17
+2012,-,Germán Lauro,ARG,57.54
+2012,-,Jason Morgan,JAM,57.46
+2012,-,Yunio Lastre,CUB,57.33
+2012,-,Mario Pestano,ESP,63.40
+2012,-,Bogdan Pishchalnikov,RUS,63.15
+2012,-,Rutger Smith,NED,63.09
+2012,-,Martin Maric,CRO,62.87
+2012,-,Traves Smikle,JAM,61.85
+2012,-,Lance Brooks,USA,61.17
+2012,-,Przemyslaw Czajkowski,POL,61.08
+2012,-,Gerhard Mayer,AUT,60.81
+2012,-,Omar El Ghazaly,EGY,60.26
+2012,-,Abdul Buhari,GBR,60.08
+2012,-,Jarred Rome,USA,59.57
+2012,-,Sultan Mubarak Al Dawoodi,KSA,59.54
+2012,-,Mykyta Nesterenko,UKR,59.17
+2012,-,Danijel Furtula,MNE,57.48
+2012,-,Ronald Julião,BRA,56.20
+2008,1, Gerd Kanter,EST,68.82
+2008,2, Piotr Malachowski,POL,67.82
+2008,3, Virgilijus Alekna,LTU,67.79
+2008,4, Natalia Ducó,CHI,67.09
+2008,5, Yennifer Frank Casañas,ESP,66.49
+2008,6, Bogdan Pishchalnikov,RUS,65.88
+2008,7, Rutger Smith,NED,65.39
+2008,8, Robert Fazekas,HUN,63.43
+2008,9, Mario Pestano,ESP,63.42
+2008,10, Rashid Al-Dosari,QAT,62.55
+2008,11, Frantz Kruger,RSA,61.98
+2008,12, Aleksander Tammert,EST,61.38
+2008,-,Gabor Mate,HUN,62.44
+2008,-,Dzmitry Sivakou,BLR,61.75
+2008,-,Michael Robertson,USA,61.64
+2008,-,Casey Malone,USA,61.26
+2008,-,Omar El Ghazaly,EGY,60.24
+2008,-,Oleksiy Semenov,UKR,60.18
+2008,-,Abbas Samimi,IRI,59.92
+2008,-,Jorge Fernández,CUB,59.60
+2008,-,Jan Marcell,CZE,59.52
+2008,-,Benn Harradine,AUS,58.55
+2008,-,Sultan Al-Dawodi,KSA,56.29
+2008,-,Vadim Hranovschi,MDA,56.19
+2008,-,Märt Israel,EST,61.98
+2008,-,Ehsan Haddadi,IRI,61.34
+2008,-,Gerhard Mayer,AUT,61.32
+2008,-,Ercument Olgundeniz,TUR,60.83
+2008,-,Zoltán Kövágó,HUN,60.79
+2008,-,Vikas Gowda,IND,60.69
+2008,-,Ian Waltz,USA,60.02
+2008,-,Martin Maric,CRO,59.25
+2008,-,Jorge Balliengo,ARG,58.82
+2008,-,Niklas Arrhenius,SWE,58.22
+2008,-,Hannes Kirchler,ITA,56.44
+2008,-,Haidar Shaheed,IRQ,54.19
+2008,-,Eric Matthias,IVB,53.11
+2004,1, Virgilijus Alekna,LTU,69.89
+2004,2, Zoltán Kövágó,HUN,67.04
+2004,3, Aleksander Tammert,EST,66.66
+2004,4, Vasiliy Kaptyuk,BLR,65.10
+2004,5, Frantz Kruger,RSA,64.34
+2004,6, Casey Malone,USA,64.33
+2004,7, Lars Riedel,GER,62.80
+2004,8, Hannes Hopley,RSA,62.58
+2004,9, Torsten Schmidt,GER,61.18
+2004,10, Libor Malina,CZE,58.78
+2004,11, Gabor Mate,HUN,57.84
+2004, , Robert Fazekas,HUN,(70.93),dq(d)*
+2004,-,Jarred Rome,USA,61.55
+2004,-,Jason Tunks,CAN,61.21
+2004,-,Frank Casanas Hernandez,CUB,60.60
+2004,-,Gerd Kanter,EST,60.05
+2004,-,Ian Waltz,USA,58.97
+2004,-,Emeka Udechuku,GBR,58.41
+2004,-,Leonid Cherevko,BLR,57.98
+2004,-,Marcelo Pugliese,ARG,56.06
+2004,-,Vadim Hranovschi,MDA,55.64
+2004,-,Dragan Mustapic,CRO,54.66
+2004,-,Jaroslav Zitnansky,SVK,"53.30"
+2004,-,Mario Pestano,ESP,61.69
+2004,-,Vikas Gowda,IND,61.39
+2004,-,Rutger Smith,NED,61.11
+2004,-,Wu Tao,CHN,60.60
+2004,-,Michael Möllenbeck,GER,59.79
+2004,-,Savvas Panavoglou,GRE,58.47
+2004,-,Aleksandr Malasevic,BLR,58.45
+2004,-,Aleksandr Borichevskiy,RUS,58.19
+2004,-,Ercument Olgundeniz,TUR,58.17
+2004,-,Abbas Samimi,IRI,57.57
+2004,-,Lois Maikel Martinez,CUB,57.18
+2004,-,Igor Primc,SLO,56.33
+2004,-,Omar El Ghazali,EGY,55.53
+2004,-,Shaka Sola,SAM,51.10
+2004,-,"* Robert Fazekas HUN disqualified for doping. 
+
+
+
+
+Men's Discus throw - Athletics - Athens 2004 Summer Olympics
+Event Format:
+     
+     Athletes competed in a qualifying round followed by the final. Top twelve and ties in the qualifying round and all those reaching the announced qualification limit advanced to the final. In the final all finalists were given three tries. The top eight were then given three more. Event facts: Men's Discus throw competition was held at the Olympic Stadium and 39 athletes participated in the event. 
+
+
+
+
+
+These results for Men's Discus throw - Athens 2004 Summer Olympics - are based on the official olympic reports and the Olympian Database
+ ",Men's Discus throw - Athletics - Athens 2004 Summer Olympics,"Event Format:
+     
+     Athletes competed in a qualifying round followed by the final: Top twelve and ties in the qualifying round and all those reaching the announced qualification limit advanced to the final: In the final all finalists were given three tries: The top eight were then given three more: Event facts: Men's Discus throw competition was held at the Olympic Stadium and 39 athletes participated in the event: ",These results for Men's Discus throw - Athens 2004 Summer Olympics - are based on the official olympic reports and the Olympian Database
+2000,1, Virgilijus Alekna,LTU,69.30
+2000,2, Lars Riedel,GER,68.50
+2000,3, Frantz Kruger,RSA,68.19
+2000,4, Vasiliy Kaptyuk,BLR,67.59
+2000,5, Adam Setliff,USA,66.02
+2000,6, Lieja Tunks,NED,65.80
+2000,7, Vladimir Dubrovshchik,BLR,65.13
+2000,8, Jürgen Schult,GER,64.41
+2000,9, Aleksander Tammert,EST,63.25
+2000,10, Michael Möllenbeck,GER,63.14
+2000,11, Dmitri Shevchenko,RUS,62.65
+2000,12, Anthony Washington,USA,59.87
+2000,-,Li Shaojie,CHN,62.29
+2000,-,Magnus Aron Hallgrimsson,ISL,60.95
+2000,-,Frank Casanas Hernandez,CUB,60.84
+2000,-,Libor Malina,CZE,60.83
+2000,-,Romas Ubartas,LTU,60.50
+2000,-,Robert Weir,GBR,60.01
+2000,-,Olgierd Stanski,POL,59.31
+2000,-,Ian Winchester,NZL,58.64
+2000,-,Leonid Cherevko,BLR,58.32
+2000,-,Dragan Mustapic,CRO,58.10
+2000,-,Mickael Conjungo,CAF,57.85
+2000,-,Marcelo Pugliese,ARG,56.30
+2000,-,John Menton,IRL,54.21
+2000,-,Roman Poltoratskiy,UZB,47.63
+2000,-,Zoltán Kövágó,HUN,nm
+2000,-,Chary Mamedov,TKM,nm
+2000,-,Diego Fortuna,ITA,62.24
+2000,-,Aleksandr Borichevskiy,RUS,61.98
+2000,-,Robert Fazekas,HUN,61.76
+2000,-,John Godina,USA,61.60
+2000,-,Frits Potgieter,RSA,61.56
+2000,-,David Martinez Varela,ESP,61.50
+2000,-,Alexis Elizalde Estevez,CUB,61.13
+2000,-,Jo van Daele,BEL,60.93
+2000,-,Gabor Mate,HUN,60.86
+2000,-,Vitaliy Sidorov,RUS,60.65
+2000,-,Vaclavas Kidykas,LTU,58.96
+2000,-,Kyrylo Chuprynin,UKR,58.38
+2000,-,Nicholas Sweeney,IRL,57.37
+2000,-,Glen Smith,GBR,56.22
+2000,-,Rashid Al-Dosari,QAT,54.47
+2000,-,Costel Grasu,ROU,nm
+2000,-,Jason Gervais,CAN,nm
+1996,1, Lars Riedel,GER,69.40,OR
+1996,2, Vladimir Dubrovshchik,BLR,66.60
+1996,3, Vasiliy Kaptyuk,BLR,65.80
+1996,4, Anthony Washington,USA,65.42
+1996,5, Virgilijus Alekna,LTU,65.30
+1996,6, Jürgen Schult,GER,64.62
+1996,7, Vitaliy Sidorov,UKR,63.78
+1996,8, Vaclavas Kidykas,LTU,62.78
+1996,9, Alexis Elizalde Estevez,CUB,62.70
+1996,10, Attila Horvath,HUN,62.28
+1996,11, Sergey Lyakhov,RUS,60.62
+1996,12, Adam Setliff,USA,56.30
+1996,-,Nicholas Sweeney,IRL,62.04
+1996,-,Robert Weir,GBR,61.64
+1996,-,Adewale Olukoju,NGR,60.98
+1996,-,Diego Fortuna,ITA,60.08
+1996,-,Svein Inge Valvik,NOR,59.60
+1996,-,Roberto Moya Sandoval,CUB,59.22
+1996,-,Dashdendev Makhashiri,MGL,59.16
+1996,-,Igor Primc,SLO,59.12
+1996,-,Costel Grasu,ROU,58.56
+1996,-,Andriy Kokhanovskiy,UKR,57.90
+1996,-,Marcelo Pugliese,ARG,56.72
+1996,-,Aleksandr Borichevskiy,RUS,56.46
+1996,-,Roman Poltoratskiy,UZB,51.96
+1996,-,Jaroslav Zitnansky,SVK,51.50
+1996,-,John Godina,USA,61.82
+1996,-,Ramon Jimenez-Paona,PAR,61.36
+1996,-,Li Shaojie,CHN,60.20
+1996,-,Marek Bilek,CZE,59.86
+1996,-,Aleksander Tammert,EST,59.04
+1996,-,Dragan Mustapic,CRO,57.94
+1996,-,Shakti Singh,IND,56.58
+1996,-,Vesteinn Hafsteinsson,ISL,56.30
+1996,-,Jason Tunks,CAN,55.58
+1996,-,Mickael Conjungo,CAF,55.34
+1996,-,Michael Möllenbeck,GER,55.18
+1996,-,Glen Smith,GBR,54.88
+1996,-,Christopher Saomene,SAM,51.28
+1996,-,David Martinez Varela,ESP,nm
+1992,1, Romas Ubartas,LTU,65.12
+1992,2, Jürgen Schult,GER,64.94
+1992,3, Roberto Moya Sandoval,CUB,64.12
+1992,4, Costel Grasu,ROU,62.86
+1992,5, Attila Horvath,HUN,62.82
+1992,6, Juan Martinez,CUB,62.64
+1992,7, Dmitri Kovtsun,EUN,62.04
+1992,8, Dmitri Shevchenko,EUN,61.78
+1992,9, David Martinez Varela,ESP,60.16
+1992,10, Werner Reiterer,AUS,60.12
+1992,11, Vesteinn Hafsteinsson,ISL,60.06
+1992,12, Anthony Washington,USA,59.96
+1992,-,Lars Riedel,GER,59.98
+1992,-,Vaclavas Kidykas,LTU,59.96
+1992,-,Ramon Jimenez-Paona,PAR,59.78
+1992,-,Mike Buncic,USA,59.12
+1992,-,Imrich Bugar,TCH,58.70
+1992,-,Nikolai Kolev,BUL,58.12
+1992,-,Brian Blutreich,USA,57.08
+1992,-,Simon Williams,GBR,53.12
+1992,-,Dragen Mustapic,BIH,48.80
+1992,-,Herbert Rodriguez,ESA,43.22
+1992,-,Olav Jenssen,NOR,60.00
+1992,-,Yu Wenge,CHN,59.42
+1992,-,Jozsef Ficsor,HUN,58.84
+1992,-,Ray Ladins,CAN,58.26
+1992,-,Nicholas Sweeney,IRL,57.68
+1992,-,Mickael Conjungo,CAF,57.46
+1992,-,Vladimir Zinchenko,EUN,56.94
+1992,-,Christian Erb,SUI,55.16
+1992,-,Khaled Al Khalidi,KSA,47.96
+1992,-,Luciano Zerbini,ITA,nm
+1988,1, Jürgen Schult,GDR,68.82,OR
+1988,2, Romas Ubartas,URS,67.48
+1988,3, Rolf Danneberg,FRG,67.38
+1988,4, Yuri Dumchev,URS,66.42
+1988,5, Mac Wilkins,USA,65.90
+1988,6, Gejza Valent,TCH,65.80
+1988,7, Knut Hjeltnes,NOR,64.94
+1988,8, Alois Hannecker,FRG,63.28
+1988,9, Erik de Bruijn,NED,63.06
+1988,10, Mike Buncic,USA,62.46
+1988,11, Georgi Georgiev,BUL,61.24
+1988,12, Imrich Bugar,TCH,60.88
+1988,-,Vaclavas Kidykas,URS,60.88
+1988,-,Svein Inge Valvik,NOR,60.64
+1988,-,Werner Reiterer,AUS,59.78
+1988,-,Randall Heisler,USA,59.08
+1988,-,Patrick Journoud,FRA,58.94
+1988,-,Wulf Brunner,FRG,57.50
+1988,-,Adewale Olukoju,NGR,54.44
+1988,-,Henry Smith,SAM,49.40
+1988,-,Min Se-hoon,KOR,47.84
+1988,-,Eggert Bogason,ISL,nm
+1988,-,Ibrahim Al Ouiran,KSA,nm
+1988,-,Bradley Cooper,BAH,59.74
+1988,-,Vesteinn Hafsteinsson,ISL,58.94
+1988,-,Paul Mardle,GBR,57.94
+1988,-,Raymond Lazdins,CAN,57.94
+1988,-,Ramon Jimenez Arrellano,PAR,50.90
+1988,-,Mohamed Naguib,EGY,dnf
+1984,1, Rolf Danneberg,FRG,66.60
+1984,2, Mac Wilkins,USA,66.30
+1984,3, John Powell,USA,65.46
+1984,4, Knut Hjeltnes,NOR,65.28
+1984,5, Arthur Burns,USA,64.98
+1984,6, Alwin Wagner,FRG,64.72
+1984,7, Luciano Zerbini,ITA,63.50
+1984,8, Stefan Fernholm,SWE,63.22
+1984,9, Erik de Bruijn,NED,62.32
+1984,10, Robert Weir,GBR,61.36
+1984,11, Konstantin Georgakopoulos,GRE,60.30
+1984, , Marco Martino,ITA,nm
+1984,-,Werner Hartmann,FRG,59.92
+1984,-,Bradley Cooper,BAH,53.70
+1984,-,Henry Smith,SAM,51.90
+1984,-,Dominique Bechard,MRI,41.10
+1984,-,Marco Bucci,ITA,dns
+1984,-,Rob Gray,CAN,59.34
+1984,-,Richard Slaney,GBR,57.66
+1984,-,Mohamed Hamed,EGY,nm
+1984,-,Vesteinn Hafsteinsson,ISL,(59.58),dq(d)*
+1984,-,"* Vesteinn Hafsteinsson ISL disqualified from the competition for doping. 
+
+
+
+
+Men's Discus throw - Athletics - Los Angeles 1984 Summer Olympics
+Event Format:
+     
+     Athletes competed in a qualifying round followed by the final. Top twelve and ties in the qualifying round and all those reaching the announced qualification limit advanced to the final. In the final all finalists were given three tries. The top eight were then given three more. Event facts: Men's Discus throw competition was held at the Los Angeles Memorial Coliseum and 20 athletes participated in the event. 
+
+
+
+
+
+These results for Men's Discus throw - Los Angeles 1984 Summer Olympics - are based on the official olympic reports and the Olympian Database
+ ",Men's Discus throw - Athletics - Los Angeles 1984 Summer Olympics,"Event Format:
+     
+     Athletes competed in a qualifying round followed by the final: Top twelve and ties in the qualifying round and all those reaching the announced qualification limit advanced to the final: In the final all finalists were given three tries: The top eight were then given three more: Event facts: Men's Discus throw competition was held at the Los Angeles Memorial Coliseum and 20 athletes participated in the event: ",These results for Men's Discus throw - Los Angeles 1984 Summer Olympics - are based on the official olympic reports and the Olympian Database
+1980,1, Viktor Rashchupkin,URS,66.64
+1980,2, Imrich Bugar,TCH,66.38
+1980,3, Luis Delis,CUB,66.32
+1980,4, Wolfgang Schmidt,GDR,65.64
+1980,5, Yuri Dumchev,URS,65.58
+1980,6, Igor Duginets,URS,64.04
+1980,7, Emil Vladimirov,BUL,63.18
+1980,8, Velko Velev,BUL,63.04
+1980,9, Markku Tuokko,FIN,61.84
+1980,10, Jose Santa Cruz,CUB,61.52
+1980,11, Hilmar Hosfeld,GDR,61.14
+1980,12, Kenth Gardenkrans,SWE,60.24
+1980,-,Armin Lemme,GDR,59.44
+1980,-,Iosif Nagy,ROU,59.34
+1980,-,Namakoro Niare,MLI,57.34
+1980,-,Adnan Houry,SYR,47.52
+1980,-,Najim Al Enazy,KUW,39.26
+1980,-,Oskar Jakobsson,ISL,nm
+1976,1, Mac Wilkins,USA,67.50
+1976,2, Wolfgang Schmidt,GDR,66.22
+1976,3, John Powell,USA,65.70
+1976,4, Norbert Thiede,GDR,64.30
+1976,5, Siegfried Pachale,GDR,64.24
+1976,6, Pentti Kahma,FIN,63.12
+1976,7, Knut Hjeltnes,NOR,63.06
+1976,8, Jay Silvester,USA,61.98
+1976,9, Ludvik Danek,TCH,61.28
+1976,10, Velko Velev,BUL,60.94
+1976,11, Ferenc Tegla,HUN,60.54
+1976,12, Hein-Direck Neu,FRG,60.46
+1976,13, Josef Silhavy,TCH,58.42
+1976,14, Janos Farago,HUN,57.48
+1976,15, Armando De Vincentiis,ITA,55.86
+1976,-,Markku Tuokko,FIN,59.80
+1976,-,Silvano Simeon,ITA,59.06
+1976,-,Ricky Bruch,SWE,58.06
+1976,-,Nikolay Vikhor,URS,57.50
+1976,-,Bishop Dolegiewicz,CAN,nm
+1976,-,Julian Morrinson,CUB,59.92
+1976,-,Stanislaw Wolodko,POL,59.42
+1976,-,Iosif Nagy,ROU,57.28
+1976,-,Ain Roost,CAN,56.56
+1976,-,Borys Chambul,CAN,55.86
+1976,-,Peter Tancred,GBR,55.50
+1976,-,Georges Schroeder,BEL,54.80
+1976,-,Ibrahima Gueye,SEN,52.82
+1976,-,Salman Hessam,IRI,52.40
+1976,-,Mahmoud Al Zabramawi,KSA,35.94
+1972,1, Ludvik Danek,TCH,64.40
+1972,2, Jay Silvester,USA,63.50
+1972,3, Ricky Bruch,SWE,63.40
+1972,4, John Powell,USA,62.82
+1972,5, Geza Fejer,HUN,62.62
+1972,6, Detlef Thorith,GDR,62.42
+1972,7, Ferenc Tegla,HUN,60.60
+1972,8, Tim Vollmer,USA,60.24
+1972,9, Pentti Kahma,FIN,59.66
+1972,10, Silvano Simeon,ITA,59.34
+1972,11, Jorma Rinne,FIN,59.22
+1972,12, Janos Muranyi,HUN,57.92
+1972,13, Namakoro Niare,MLI,56.48
+1972,14, Leslie Mills,NZL,55.86
+1972,-,Klaus-Peter Hennig,FRG,58.64
+1972,-,Hein-Direck Neu,FRG,58.10
+1972,-,Ain Roost,CAN,56.58
+1972,-,John Watts,GBR,53.86
+1972,-,Kaj Andersen,DEN,53.52
+1972,-,Said Al Turki,KSA,33.79
+1972,-,Armando De Vincentis,ITA,nm
+1972,-,Dirk Wippermann,FRG,58.10
+1972,-,Zdravko Pecar,YUG,57.84
+1972,-,William Tancred,GBR,57.24
+1972,-,Robin Tait,NZL,56.60
+1972,-,Hartmut Losch,GDR,56.54
+1972,-,Erlendur Valdimarsson,ISL,55.38
+1972,-,Praveen Kumar,IND,53.12
+1972,-,Heimo Reinitzer,AUT,52.56
+1968,1, Al Oerter,USA,64.78,OR
+1968,2, Lothar Milde,GDR,63.08
+1968,3, Ludvik Danek,TCH,62.92
+1968,4, Hartmut Losch,GDR,62.12
+1968,5, Jay Silvester,USA,61.78
+1968,6, Gary Carlsen,USA,59.46
+1968,7, Edmund Piatkowski,POL,59.40
+1968,8, Ricky Bruch,SWE,59.28
+1968,9, Hein-Direck Neu,FRG,58.66
+1968,10, Günter Schaumburg,GDR,58.62
+1968,11, Ferenc Tegla,HUN,58.36
+1968,12, Robin Taitt,NZL,57.68
+1968,-,Guram Gudashvili,URS,57.48
+1968,-,George Puce,CAN,57.34
+1968,-,Jens Reimers,FRG,54.02
+1968,-,Namakoro Niare,MLI,56.60
+1968,-,Janos Farago,HUN,56.00
+1968,-,Denis Segui Kragbe,CIV,55.24
+1968,-,Lech Gajdzinski,POL,54.92
+1968,-,Jalal Keshmiri,IRI,53.96
+1968,-,Klaus-Peter Hennig,FRG,53.80
+1968,-,Heimo Reinitzer,AUT,53.52
+1968,-,Modesto Mederos Lopez,CUB,52.30
+1968,-,William Tancred,GBR,51.74
+1968,-,Edy Hubacher,SUI,51.70
+1968,-,Rolando Mendoza,NCA,39.62
+1968,-,Mauricio Jubis,ESA,36.18
+1964,1, Al Oerter,USA,61.00,OR
+1964,2, Ludvik Danek,TCH,60.52
+1964,3, Dave Weill,USA,59.49
+1964,4, Jay Silvester,USA,59.09
+1964,5, Joszef Szecsenyi,HUN,57.23
+1964,6, Zenon Begier,POL,57.06
+1964,7, Edmund Piatkowski,POL,55.81
+1964,8, Vladimir Trusenyev,URS,54.78
+1964,9, Kim Bukhantsev,URS,54.38
+1964,10, Roy Hollingsworth,GBR,53.78
+1964,11, Hartmut Losch,GER,52.08
+1964,12, Viktor Kompaniyets,URS,51.96
+1964,-,Fritz Kühl,GER,53.53
+1964,-,Pentti Repo,FIN,52.93
+1964,-,Lothar Milde,GER,53.39
+1964,-,Dako Radosevic,YUG,52.71
+1964,-,Cornelis Koch,NED,52.57
+1964,-,Jiri Zemba,TCH,52.13
+1964,-,Warwick Selvey,AUS,51.96
+1964,-,Ernst Soudek,AUT,51.78
+1964,-,Leslie Mills,NZL,51.70
+1964,-,Georgios Tsakanikas,GRE,51.03
+1964,-,Sohei Kaneko,JPN,46.46
+1964,-,Denis Segui Kragbe,CIV,46.43
+1964,-,Ignacio Reinosa,PUR,46.36
+1964,-,Gideon Uriel,ISR,46.12
+1964,-,Sayed Mirza Molimadail,IRI,45.24
+1964,-,Kim Byung-ki,KOR,42.73
+1964,-,Lars Haglund,SWE,nm
+1960,1, Al Oerter,USA,59.18,OR
+1960,2, Rink Babka,USA,58.02
+1960,3, Richard Cochran,USA,57.16
+1960,4, Joszef Szecsenyi,HUN,55.79
+1960,5, Edmund Piatkowski,POL,55.12
+1960,6, Viktor Kompaniyets,URS,55.06
+1960,7, Carmelo Rado,ITA,54.00
+1960,8, Kim Bukhantsev,URS,53.61
+1960,9, Pentti Repo,FIN,53.44
+1960,10, Ferenc Klics,HUN,53.37
+1960,11, Stein Haugen,NOR,53.36
+1960,12, Lothar Milde,GER,53.33
+1960,13, Zedenek Cihak,TCH,53.29
+1960,14, Zenon Begier,POL,53.18
+1960,15, Vladimir Trusenyev,URS,52.93
+1960,16, Manfred Grieser,GER,52.69
+1960,17, Adolfo Consolini,ITA,52.44
+1960,18, Antonios Kounadis,GRE,52.42
+1960,19, Zdenek Nemec,TCH,52.14
+1960,20, Todor Todorov,BUL,52.12
+1960,21, Warwick Selvey,AUS,49.34
+1960,22, Cornelis Koch,NED,49.21
+1960,-,Fanie Du Plessis,RSA,51.86
+1960,-,Carol Lindroos,FIN,51.07
+1960,-,Pierre Alard,FRA,51.02
+1960,-,Erik Uddebom,SWE,50.87
+1960,-,Leslie Mills,NZL,50.76
+1960,-,Fritz Kühl,GER,50.40
+1960,-,Haider Khan,PAK,46.57
+1960,-,Nayef Mohamed Hameed,IRQ,39.37
+1960,-,Miguel De La Quadra-Salcedo,ESP,nm
+1960,-,Östen Edlund,SWE,51.76
+1960,-,Franco Grossi,ITA,50.43
+1960,-,Michael Lindsay,GBR,50.15
+1960,-,Mesulame Rakuro,FIJ,47.18
+1956,1, Al Oerter,USA,56.36,OR
+1956,2, Fortune Gordien,USA,54.81
+1956,3, Desmond Koch,USA,54.40
+1956,4, Mark Pharaoh,GBR,54.27
+1956,5, Otto Grigalka,URS,52.37
+1956,6, Adolfo Consolini,ITA,52.21
+1956,7, Ferenc Klics,HUN,51.82
+1956,8, Rado Radosevic,YUG,51.69
+1956,9, Boris Matveyev,URS,51.38
+1956,10, Gerald Carr,GBR,50.72
+1956,11, Günther Kruse,ARG,49.89
+1956,12, Kim Bukhantsev,URS,48.58
+1956,13, Stephanus du Plessis,RSA,48.49
+1956,14, Erik Uddebom,SWE,48.28
+1956,15, Mesulame Rakuro,FIJ,47.24
+1956,16, Hernan Haddad,CHI,46.00
+1956,-,Tadeusz Rut,POL,46.62
+1956,-,Pierre Alard,FRA,46.18
+1956,-,Muhammad Ayub,PAK,44.88
+1956,-,Vesmonis Balodis,AUS,44.24
+1952,1, Sim Iness,USA,55.03,OR
+1952,2, Adolfo Consolini,ITA,53.78
+1952,3, James Dillion,USA,53.28
+1952,4, Fortune Gordien,USA,52.66
+1952,5, Ferenc Klics,HUN,51.13
+1952,6, Otto Grigalka,URS,50.71
+1952,7, Roland Nilsson,SWE,50.06
+1952,8, Giuseppe Tosi,ITA,49.03
+1952,9, Nikolaos Syllas,GRE,48.99
+1952,10, Boris Matveyev,URS,48.70
+1952,11, Boris Butenko,URS,48.15
+1952,12, Veikko Nyqvist,FIN,47.72
+1952,13, Jørgen Munk Plum,DEN,47.26
+1952,14, Gino Pella,CAN,46.63
+1952,15, Constantinos Giataganas,GRE,46.23
+1952,16, Per Stavem,NOR,46.00
+1952,17, Jean Maissant,FRA,43.40
+1952,-,Stein Johnson,NOR,45.19
+1952,-,Fridrik Gudmundsson,ISL,45.00
+1952,-,Oskar Häfliger,SUI,44.73
+1952,-,Lucien Guillier,FRA,43.88
+1952,-,Kristian Johansen,NOR,43.46
+1952,-,Josef Hipp,GER,43.38
+1952,-,Hernan Haddad,CHI,42.89
+1952,-,Arvo Huutoniemi,FIN,42.79
+1952,-,Raymond Kintziger,BEL,41.46
+1952,-,Orion Gallin,ISR,40.76
+1952,-,Heikki Partanen,FIN,45.71
+1952,-,Mark Pharaoh,GBR,45.24
+1952,-,Ian Reed,AUS,45.12
+1952,-,Thorsteinn Löve,ISL,44.28
+1952,-,Nuri Turan,TUR,41.45
+1948,1, Adolfo Consolini,ITA,52.78,OR
+1948,2, Giuseppe Tosi,ITA,51.78
+1948,3, Fortune Gordien,USA,50.77
+1948,4, Ivar Ramstad,NOR,49.21
+1948,5, Ferenc Klics,HUN,48.21
+1948,6, Veikko Nyqvist,FIN,47.33
+1948,7, Nikolaos Syllas,GRE,47.25
+1948,8, Stein Johnson,NOR,46.54
+1948,9, Arvo Huutoniemi,FIN,45.28
+1948,10, Uno Fransson,SWE,45.25
+1948,11, Hermann Tunner,AUT,44.43
+1948,12, Eduardo Julve,PER,44.05
+1948,-,William Burton,USA,43.78
+1948,-,Felix Erauzquin,ESP,43.66
+1948,-,Giorgio Oberweger,ITA,43.13
+1948,-,Danilo Zerjal,YUG,43.07
+1948,-,Manuel Consiglieri,PER,43.01
+1948,-,Emilio Malchiodi,ARG,42.98
+1948,-,James Nesbitt,GBR,42.09
+1948,-,Victor Frank,USA,42.00
+1948,-,Ernest John Brewer,GBR,41.95
+1948,-,Cummin Clancy,IRL,40.73
+1948,-,Eric Coy,CAN,39.53
+1948,-,Roger Verhaes,BEL,39.14
+1948,-,Laurence Reavell-Carter,GBR,38.04
+1948,-,Nazar Khan Malik,PAK,36.23
+1948,-,Ahmed Zahur Khan,PAK,36.23
+1948,-,An Yeong-han,KOR,nm
+1936,1, Kenneth Carpenter,USA,50.48,OR
+1936,2, Gordon Dunn,USA,49.36
+1936,3, Giorgio Oberweger,ITA,49.23
+1936,4, Reidar Sørlie,NOR,48.77
+1936,5, Willy Schröder,GER,47.93
+1936,6, Nikolaos Syllas,GRE,47.75
+1936,7, Gunnar Bergh,SWE,47.22
+1936,8, Aake Hedvall,SWE,46.20
+1936,9, Johann Wotapek,AUT,46.05
+1936,10, Helge Sivertsen,NOR,45.89
+1936,11, Hans Fritsch,GER,45.10
+1936,13, Jules Noel,FRA,44.56
+1936,14, Walter Wood,USA,43.83
+1936, , Paul Winter,FRA,dnq
+1936,-, Endre Madarasz,HUN,dnq
+1936, , Kalevi Kotkas,FIN,dnq
+1936, , Jean Wagner,LUX,dnq
+1936, , Emil Janausch,AUT,dnq
+1936, , Veljko Narancic,YUG,dnq
+1936, , Laurence Reavell-Carter,GBR,dnq
+1936, , Bernaar Pendergast,GBR,dnq
+1936, , Guo Jie,CHN,dnq
+1936, , Gerhard Hilbrecht,GER,dnq
+1936, , Harald Andersson,SWE,dnq
+1936, , Ling Peigeng,CHN,dnq
+1936, , Miroslav Vitek,TCH,dnq
+1936, , Nicola Kleut,YUG,dnq
+1936, , Oskar Ospelt,LIE,dnq
+1936, , Petre Havalet,ROU,dnq
+1936, , Ruggero Biancani,ITA,dnq
+1936, , Valer Barac,TCH,dnq
+1932,1, John Anderson,USA,49.49,OR
+1932,2, Henri Jean Laborde,USA,48.47
+1932,3, Paul Winter,FRA,47.85
+1932,4, Jules Noel,FRA,47.74
+1932,5, Istvan Donogan,HUN,47.08
+1932,6, Endre Madarasz,HUN,46.52
+1932,7, Kalevi Kotkas,FIN,45.87
+1932,8, Paul Jessup,USA,45.25
+1932,9, Jozsef Remetz,HUN,45.02
+1932,10, Emil Janausch,AUT,44.82
+1932,11, Hans Heinrich Sievert,GER,44.51
+1932,12, Harry Hart,RSA,43.33
+1932,13, Zygmunt Heljasz,POL,42.59
+1932,14, Emil Hirschfeld,GER,42.42
+1932,15, Frantisek Douda,TCH,42.39
+1932,16, Clement Duhour,FRA,40.22
+1932,17, Veljko Narancic,YUG,36.51
+1932,18, Pedro Elsa,ARG,34.36
+1928,1, Clarence Houser,USA,47.32,OR
+1928,2, Antero Kivi,FIN,47.23
+1928,3, James Corson,USA,47.10
+1928,4, Harald Stenerud,NOR,45.80
+1928,5, John Anderson,USA,44.87
+1928,6, Eino Kenttä,FIN,44.17
+1928,-,Johan Trandem,NOR,45.79
+1928,-,Frederick Weicker,USA,43.81
+1928,-,Istvan Donogan,HUN,41.78
+1928,-,Frantisek Douda,TCH,41.19
+1928,-,Camillo Zemi,ITA,39.95
+1928,-,Gerrit Postma,NED,35.94
+1928,-,Sigismond Zinner,BEL,34.35
+1928,-,Gustav Kalkun,EST,43.09
+1928,-,Janis Jordans,LAT,42.78
+1928,-,Hermann Hänchen,GER,42.08
+1928,-,Dimitrios Karabatis,GRE,31.87
+1928,-,Ketil Askildt,NOR,42.57
+1928,-,Arturo Conturbia,SUI,41.90
+1928,-,Kalman Egri,HUN,41.89
+1928,-,Gerrit Eijsker,NED,39.80
+1928,-,Hans Hoffmeister,GER,39.17
+1928,-,Raoul Paoli,FRA,36.82
+1928,-,Yoshio Okita,JPN,36.38
+1928,-,Jesus Aguirre Delgado,MEX,33.21
+1928,-,Ernst Paulus,GER,44.15
+1928,-,Heikki Taskinen,FIN,43.00
+1928,-,Jozef Baran-Bilewski,POL,41.77
+1928,-,Albino Pighi,ITA,41.42
+1928,-,Kalman Marvalits,HUN,41.17
+1928,-,Jules Noel,FRA,40.23
+1928,-,Hector Benapres,CHI,38.18
+1928,-,Ichiro Furuyama,JPN,37.89
+1928,-,Ion David,ROU,37.49
+1924,1, Clarence Houser,USA,46.15,OR
+1924,2, Vilho Niittymaa,FIN,44.95
+1924,3, Thomas Lieb,USA,44.83
+1924,4, Augustus Pope,USA,44.42
+1924,5, Ketil Askildt,NOR,43.40
+1924,6, Glenn Hartranft,USA,42.49
+1924,-,Heikki Malmivirta,FIN,41.16
+1924,-,Sandor Toldi,HUN,41.09
+1924,-,Armas Taipale,FIN,40.21
+1924,-,Karl Jensen,DEN,39.78
+1924,-,Paul Beranger,FRA,38.93
+1924,-,Camillo Zemi,ITA,67.46
+1924,-,Veljko Narancic,YUG,37.35
+1924,-,Teodors Sukatnieks,LAT,35.98
+1924,-,Octavio Zani,BRA,35.72
+1924,-,Otto Garnus,SUI,35.16
+1924,-,Antonio Martins Sr.,POR,32.40
+1924,-,Dimitrios Karabatis,GRE,nm
+1924,-,Elmer Niklander,FIN,42.09
+1924,-,Kalman Marvalits,HUN,40.82
+1924,-,Gustav Kalkun,EST,38.46
+1924,-,Werner Nüesch,SUI,38.20
+1924,-,Giuseppe Galimberti,BRA,36.52
+1924,-,Albino Pighi,ITA,34.98
+1924,-,Gabino Lizarza,ESP,34.20
+1924,-,Frantisek Janda-Suk,TCH,34.08
+1924,-,Georgios Zakharopoulos,GRE,34.02
+1924,-,Patrick Bermingham,IRL,40.42
+1924,-,Daniel Pierre,FRA,37.01
+1924,-,Arvids Kibilds,LAT,35.79
+1924,-,Slawosz Szydlowski,POL,35.71
+1924,-,Armando Poggioli,ITA,35.29
+1920,1, Elmer Niklander,FIN,44.68
+1920,2, Armas Taipale,FIN,44.19
+1920,3, Augustus Pope,USA,42.13
+1920,4, Edvin Zallhagen,SWE,41.07
+1920,5, Kenneth Bartlett,USA,40.87
+1920,6, Allan Eriksson,SWE,39.41
+1920,-,Valther Jensen,DEN,38.23
+1920,-,Ville Pörhöla,FIN,38.19
+1920,-,Aurelio Lenzi,ITA,37.73
+1920,-,Kenneth Wilson,USA,37.58
+1920,-,Andre Tison,FRA,37.35
+1920,-,Jonni Myyrä,FIN,37.00
+1920,-,Frantisek Hoplicek,TCH,36.75
+1920,-,Emile Ecuyer,FRA,36.10
+1920,-,Daniel Pierre,FRA,35.53
+1920,-,Arthur Delaender,BEL,32.00
+1912,1, Armas Taipale,FIN,45.21,OR
+1912,2, Richard Byrd,USA,42.32
+1912,3, James Duncan,USA,42.28
+1912,4, Elmer Niklander,FIN,42.09
+1912,5, Hans Tronner,AUS,41.24
+1912,6, Arlie Mucks,USA,40.93
+1912,7, George Philbrook,USA,40.92
+1912,8, Emil Magnusson,SWE,39.91
+1912,9, Rezsö Ujlaki,HUN,39.82
+1912,10, Einar Nilsson,SWE,69.69
+1912,11, Ralph Rose,USA,39.65
+1912,12, Emil Muller,USA,39.35
+1912,13, Mikael Dorizas,GRE,39.28
+1912,14, Duncan Gillis,CAN,39.01
+1912,15, Werner Järvinen,FIN,38.60
+1912,16, Josef Waitzer,GER,38.44
+1912,17, Frantisek Janda-Suk,BOH,38.31
+1912,18, Aurelio Lenzi,ITA,38.19
+1912,19, Karoly Kobulszky,HUN,38.15
+1912,20, Lawrence Whitney,USA,37.91
+1912,21, György Luntzer,HUN,37.88
+1912,22, Avery Brundage,USA,37.85
+1912,23, Ernst Nilsson,SWE,37.44
+1912,24, Emil Welz,GER,37.24
+1912,25, Samu Foti,HUN,36.37
+1912,26, Gunnar Bolander,SWE,36.22
+1912,27, Carl Johan Lind,SWE,36.07
+1912,28, Folke Fleetwood,SWE,35.06
+1912,29, Josef Schäffer,AUT,34.87
+1912,30, Andre Tison,FRA,34.73
+1912,31, Marcel Pelletier,LUX,33.73
+1912,32, Walter Henderson,GBR,33.61
+1912,33, Moric Koczan,HUN,33.30
+1912,34, Megerdich Megherian,TUR,32.98
+1912,35, Nikolay Neklepayev,RUS,32.59
+1912,36, Charles Lagarde,FRA,32.35
+1912,37, Henning Möller,SWE,32.23
+1912,38, Miroslav Sustera,BOH,31.83
+1912,39, Otto Nilsson,SWE,31.07
+1912,40, Eriks Vanags,RUS,31.34
+1912, , Paul Willführ,GER,nm
+1908,1, Martin Sheridan,USA,40.89,OR
+1908,2, Merritt Giffin,USA,40.70
+1908,3, Marquis Horr,USA,39.44
+1908,4, Werner Järvinen,FIN,39.42
+1908,5, Arthur Dearborn,USA,38.52
+1908,6, Leander Talbott,USA,38.40
+1908,7, György Luntzer,HUN,38.34
+1908,8, Andre Tison,FRA,38.30
+1908,9, Wilbur Burroughs,USA,37.43
+1908,10, Emil Welz,GER,37.00
+1908, , Elmer Niklander,FIN,--
+1908,-, Platt Adams,USA,--
+1908, , John Garrels,USA,--
+1908, , Nikolaos Georgantas,GRE,--
+1908, , John Flanagan,USA,--
+1908, , Erik Lemming,SWE,--
+1908, , Moric Koczan,HUN,--
+1908, , Hugo Wieslander,SWE,--
+1908, , Edward Barrett,GBR,--
+1908, , Jalmari Sauli,FIN,--
+1908, , Mikael Dorizas,GRE,--
+1908, , Otto Nilsson,SWE,--
+1908, , Aarne Salovaara,FIN,--
+1908, , Imre Mudin,HUN,--
+1908, , Simon Gillis,USA,--
+1908, , Folke Fleetwood,SWE,--
+1908, , Walter Henderson,GBR,--
+1908, , Henry Leeke,GBR,--
+1908, , Ernest May,GBR,--
+1908, , John Murray,GBR,--
+1908, , Ludwig Uettwiller,GER,--
+1908, , Charles Lagarde,FRA,--
+1908, , Alfred Flaxman,GBR,--
+1908, , Ferenc Jesina,HUN,--
+1908, , Lauri Pihkala,FIN,--
+1908, , Michael Collins,GBR,--
+1908, , Lauri Wilskman,FIN,--
+1908, , Miroslav Sustera,BOH,--
+1908, , Frantisek Soucek,BOH,--
+1908, , Gustav Neijström,SWE,--
+1908, , Umberto Avattaneo,ITA,--
+1908, , John Falchenberg,NOR,--
+1904,1, Martin Sheridan,USA,39.28,OR
+1904,2, Ralph Rose,USA,39.28
+1904,3, Nikolaos Georgantas,GRE,37.68
+1904,4, John Flanagan,USA,--
+1904,5, John Biller,USA,--
+1904,6, James Mitchel,USA,--
+1900,1, Rudolf Bauer,HUN,36.04,OR
+1900,2, Frantisek Janda-Suk,BOH,35.14
+1900,3, Richard Sheldon,USA,34.60
+1900,4, Panagiotis Paraskevopoulos,GRE,34.50
+1900,5, Rezsö Crettier,HUN,33.65
+1900,6, Gustaf Söderström,SWE,33.07
+1900,7, John Flanagan,USA,33.00
+1900,8, Erik Lemming,SWE,32.50
+1900,8, Charles Winckler,DEN,32.50
+1900,10, Josiah McCracken,USA,32.00
+1900,11, Launceston Elliot,GBR,31.00
+1900,11, Artur Coray,HUN,31.00
+1900,13, Emile Gontier,FRA,30.00
+1900,14, Gyula Strausz,HUN,29.80
+1900, , Robert Garrett,USA,nm
+1900,-, Truxtun Hare,USA,nm
+1896,1, Robert Garrett,USA,29.15,OR
+1896,2, Panagiotis Paraskevopoulos,GRE,28.95
+1896,3, Sotirios Versis,GRE,27.78
+1896,4, George Robertson,GBR,--
+1896, , Alphonse Grisel,FRA,--
+1896,-, Henrik Sjöberg,SWE,--
+1896, , Georgios Papasideris,GRE,--
+1896, , Viggo Jensen,DEN,--
+1896, , Holger Nielsen,DEN,--

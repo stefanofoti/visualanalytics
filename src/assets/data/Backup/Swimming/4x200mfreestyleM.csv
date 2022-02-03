@@ -1,0 +1,358 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1,Thomas Dean,GBR,6:58.58
+2020,2,Martin Malyutin,ROC,7:01.81
+2020,3,Alexander Graham,AUS,7:01.84
+2016,1,Dwyer Conor,USA,7:00.66
+2016,2,Stephen Milne,GBR,7:03.13
+2016,3,Kosuke Hagino,JPN,7:03.50
+2016,4,Thomas Fraser-Holmes,AUS,7:04.18
+2016,5,Danila Izotov,RUS,7:05.70
+2016,6,Florian Vogel,GER,7:07.28
+2016,7,Dion Dreesens,NED,7:09.10
+2016,8,Louis Croenen,BEL,7:11.64
+2016,-,Andrea D'Arrigo,ITA,7:09.20
+2016,-,Devon Myles Brown,RSA,7:12.61
+2016,-,Victor Martin Martin,ESP,7:12.62
+2016,-,Jordan Pothain,FRA,7:13.71
+2016,-,Luiz Altamir,BRA,7:13.84
+2016,-,Jan Switkowski,POL,dq
+2016,-,Anders Lie Nielsen,DEN,7:12.66
+2016,-,Peter Bernek,HUN,dq
+2012,1,Ryan Lochte,USA,6:59.70
+2012,2,Amaury Leveaux,FRA,7:02.77
+2012,3,Hao Yun,CHN,7:06.30
+2012,4,Paul Biedermann,GER,7:06.59
+2012,5,Thomas Fraser-Holmes,AUS,7:07.00
+2012,6,Robert Renwick,GBR,7:09.33
+2012,7,Darian Townsend,RSA,7:09.65
+2012,8,Dominik Kozma,HUN,7:13.66
+2012,-,Tim Wallburger,GER,7:09.23,"q"
+2012,-,Yuki Kobori,JPN,7:11.74
+2012,-,Gianluca Maglia,ITA,7:12.69
+2012,-,Daniel Skaaning,DEN,7:15.04
+2012,-,Matthew Stanley,NZL,7:17.18
+2012,-,Artem Lobuzov,RUS,7:11.86
+2012,-,Dieter Dekoninck,BEL,7:14.44
+2012,-,Blake Worsley,CAN,7:15.22
+2012,-,David Brandl,AUT,7:17.94
+2008,1,Michael Phelps,USA,6:58.56,WR
+2008,2,Nikita Lobintsev,RUS,7:03.70
+2008,3,Leith Brodie,AUS,7:04.98
+2008,4,Marco Belotti,ITA,7:05.35
+2008,5,Colin Russell,CAN,7:05.77
+2008,6,David Carry,GBR,7:05.95
+2008,7,Yoshihiro Okumura,JPN,7:10.31
+2008,8,Jean Basson,RSA,7:13.02
+2008,-,Zhang Lin,CHN,7:13.57
+2008,-,Clement Lefert,FRA,7:13.57
+2008,-,Paul Biedermann,GER,7:13.92
+2008,-,Nicolas Cesar de Oliveira,BRA,7:19.54
+2008,-,David Walters,USA,7:04.66,OR
+2008,-,Dominik Koll,AUT,7:11.45
+2008,-,Gergö Kis,HUN,7:14.14
+2008,-,Lukasz Gasior,POL,7:18.09
+2008,-,Andreas Zisimos,GRE,7:18.26
+2004,1,Michael Phelps,USA,7:07.33
+2004,2,Grant Hackett,AUS,7:07.46
+2004,3,Emiliano Brembilla,ITA,7:11.83
+2004,4,Simon Burnett,GBR,7:12.60
+2004,5,Brent Hayden,CAN,7:13.33
+2004,6,Jens Schreiber,GER,7:16.51
+2004,7,Amaury Leveaux,FRA,7:17.43
+2004,8,Apostolos Antonopoulos,GRE,7:23.02
+2004,-,Liu Yu,CHN,7:22.87
+2004,-,Sergiy Fesenko,UKR,7:24.13
+2004,-,Luis Monteiro,POR,7:27.99
+2004,-,Joshua Ilika Brenner,MEX,7:29.54
+2004,-,Rodrigo Rocha Castro,BRA,7:22.70
+2004,-,Maksim Kuznetsov,RUS,7:23.97
+2004,-,Michal Rubacek,CZE,7:26.26
+2004,-,Tamas Kerekjarto,HUN,7:31.78
+2000,1,Ian Thorpe,AUS,7:07.05,WR
+2000,2,Scott Goldblatt,USA,7:12.64
+2000,3,Martijn Zuijdweg,NED,7:12.70
+2000,4,Andrea Beccari,ITA,7:12.91
+2000,5,Edward Sinclair,GBR,7:12.98
+2000,6,Stefan Pohl,GER,7:20.19
+2000,7,Mark Johnston,CAN,7:21.92
+2000,8,Dmitriy Chernyshov,RUS,7:24.37
+2000,-,Attila Czene,HUN,7:24.48
+2000,-,Igor Koleda,BLR,7:24.83
+2000,-,Edvaldo Silva Filho,BRA,7:26.42
+2000,-,Ivan Ivanov,KGZ,dq
+2000,-,Dragos Coman,ROU,7:24.06
+2000,-,Jacob Carstensen,DEN,7:24.63
+2000,-,Sergiy Fesenko,UKR,7:32.16
+2000,-,Athanasios Oikonomou,GRE,7:35.77
+1996,1,Josh Davis,USA,7:14.74
+1996,2,Bengt Christer Wallin,SWE,7:17.56
+1996,3,Aimo Heilmann,GER,7:17.71
+1996,4,Daniel Kowalski,AUS,7:18.47
+1996,5,Paul Palmer,GBR,7:18.74
+1996,6,Massimiliano Rosolino,ITA,7:19.92
+1996,7,Marcel Wouda,NED,7:21.96
+1996,8,Yann de Fabrique,FRA,7:24.85
+1996,-,Cassiano Leal,BRA,7:28.82
+1996,-,Francisco Sanchez,VEN,7:32.63
+1996,-,Gordan Kozulj,CRO,7:43.69
+1996,-,Trent Bray,NZL,7:24.35
+1996,-,Vyacheslav Kabanov,UZB,7:40.60
+1996,-,Roberto Delgado,ECU,7:54.37
+1996,-,Sergey Ashikhmin,KGZ,8:00.00
+1996,-,Koh Yun-ho,KOR,7:45.98
+1996,-,Sng Ju Wei,SIN,7:54.19
+1992,1,Dmitri Lepikov,EUN,7:11.95,WR
+1992,2,Bengt Christer Wallin,SWE,7:15.51
+1992,3,Joseph Hudepohl,USA,7:16.23
+1992,4,Peter Sitt,GER,7:16.58
+1992,5,Roberto Gleria,ITA,7:18.10
+1992,6,Paul Palmer,GBR,7:22.57
+1992,7,Gustavo Borges,BRA,7:24.03
+1992, ,Christopher Fydler,AUS,dq
+1992,-,Jani Sievinen,FIN,7:28.71
+1992,-,Mariusz Podkoscielny,POL,7:29.59
+1992,-,Andres Sedano Villalta,GUA,8:07.30
+1992,-,Christophe Bordeau,FRA,7:26.22
+1992,-,Trent Bray,NZL,7:26.36
+1992,-,Jarl Melberg,NOR,7:31.35
+1992,-,Kai Yien Li,HKG,7:54.30
+1992,-,Edward Parenti,CAN,7:25.61
+1992,-,Jorge Herrera Soto,PUR,7:35.63
+1992,-,Mohamed Bin Abid,UAE,8:39.72
+1988,1,Troy Dalbey,USA,7:12.51,WR
+1988,2,Uwe Dassler,GDR,7:13.68
+1988,3,Erik Hochstein,FRG,7:14.35
+1988,4,Thomas Stachewicz,AUS,7:15.23
+1988,5,Roberto Gleria,ITA,7:16.00
+1988,6,Anders Holmertz,SWE,7:19.10
+1988,7,Michel Pou,FRA,7:24.69
+1988,8,Turlough O'Hare,CAN,7:24.91
+1988,-,Kevin Boyd,GBR,7:29.77
+1988,-,Franz Mortensen,DEN,7:33.31
+1988,-,Kwon Sang-won,KOR,7:52.93
+1988,-,Hans Foerster,ISV,8:15.51
+1988,-,Cristiano Michelena,BRA,7:32.11
+1988,-,Ahmad Faraj,UAE,9:01.03
+1988,-,Ignacio Escamilla,MEX,dq
+1988,-,Sergey Kudryayev,URS,dq
+1984,1,Michael Heath,USA,7:15.69,WR
+1984,2,Thomas Fahrner,FRG,7:15.73
+1984,3,Neil Cochran,GBR,7:24.78
+1984,4,Peter Dale,AUS,7:25.63
+1984,5,Donald Goss,CAN,7:26.51
+1984,6,Michael Söderlund,SWE,7:26.63
+1984,7,Hans Kroes,NED,7:26.72
+1984,8,Stephan Caron,FRA,7:30.16
+1984,-,Geoffrey Gaberino,USA,7:18.87,OR
+1984,-,Cyro Marques Delgado,BRA,7:30.41
+1984,-,Taihei Saka,JPN,dq
+1984,-,Jean-Marie Francois,VEN,7:31.79
+1984,-,Juan Enrique Escalas,ESP,7:32.21
+1984,-,Gokhan Attaroglu,TUR,7:59.36
+1984,-,Marco Colombo,ITA,dq
+1980,1,Sergey Koplyakov,URS,7:23.50
+1980,2,Frank Pfütze,GDR,7:28.60
+1980,3,Jorge Fernandes Leite,BRA,7:29.30
+1980,4,Michael Söderlund,SWE,7:30.10
+1980,5,Paolo Revelli,ITA,7:30.37
+1980,6,Douglas Campbell,GBR,7:30.81
+1980,7,Graeme Brewer,AUS,7:30.82
+1980,8,Fabien Noel,FRA,7:36.08
+1980,-,Cornelis Vervoorn,NED,7:42.85
+1980,-,Abdelhakim Bitat,ALG,8:23.22
+1980,-,Daniel Machek,TCH,7:42.18
+1980,-,David Lopez-Zubero,ESP,7:42.69
+1980,-,Petr Kochanov,BUL,dq
+1976,1,Michael Bruner,USA,7:23.22,WR
+1976,2,Vladimir Raskatov,URS,7:27.97
+1976,3,Alan McClatchey,GBR,7:32.11
+1976,4,Klaus Steinbach,FRG,7:32.27
+1976,5,Roger Pyttel,GDR,7:38.92
+1976,6,Abdul Ressang,NED,7:42.56
+1976,7,Pär Arvidsson,SWE,7:42.84
+1976,8,Marcello Guarducci,ITA,7:43.39
+1976,-,Bent Brask,NOR,7:46.42
+1976,-,Marc Lazarro,FRA,7:47.39
+1976,-,Fernando Canales,PUR,8:05.21
+1976,-,Graham Windeatt,AUS,7:44.42
+1976,-,Petar Gheorghiev,BUL,7:57.08
+1976,-,Jose Gomes Pereira,POR,8:26.68
+1976,-,Andras Hargitay,HUN,dns
+1976,-,David Lopez-Zubero,ESP,7:49.22
+1976,-,Guillermo Garcia Castillo,MEX,8:05.12
+1976,-,Ramon Volcan,VEN,8:08.38
+1976,-,Stephen Badger,CAN,dq
+1972,1,John Kinsella,USA,7:35.78,WR
+1972,2,Klaus Steinbach,FRG,7:41.69
+1972,3,Igor Grivennikov,URS,7:45.76
+1972,4,Bengt Gingsjö,SWE,7:47.37
+1972,5,Michael  Wenden,AUS,7:48.66
+1972,6,Wilfried Hartung,GDR,7:49.11
+1972,7,Bruce Robertson,CAN,7:53.61
+1972,8,Brian Brinkley,GBR,7:55.59
+1972,-,Peter Prijdekker,NED,8:00.87
+1972,-,Guillermo Garcia Castillo,MEX,8:08.39
+1972,-,Alfredo Machado,BRA,8:17.91
+1972,-,Dae Imfani,PHI,8:44.01
+1972,-,Viktor Aboimov,URS,7:51.44,"q"
+1972,-,Pierre Caland,FRA,8:00.79
+1972,-,Roberto Pangaro,ITA,8:03.98
+1968,1,John Nelson,USA,7:52.3
+1968,2,Gregory Rogers,AUS,7:53.7
+1968,3,Vladimir Bure,URS,8:01.6
+1968,4,George Smith,CAN,8:03.2
+1968,5,Michel Rousseau,FRA,8:03.7
+1968,6,Hans-Joachim Fassnacht,FRG,8:04.03
+1968,7,Frank Wiegand,GDR,8:06.0
+1968,8,Hans Ljungberg,SWE,8:12.1
+1968,-,John Thurley,GBR,8:16.3
+1968,-,Tomas Becerra,COL,8:26.7
+1968,-,José Ferriouli,PUR,8:40.2
+1968,-,Dirk Langerhorst,NED,8:17.0
+1968,-,Roosevelt Abdulgafur,PHI,8:41.0
+1968,-,Kunihiro Iwasaki,JPN,8:14.1
+1968,-,Juan Fortuny Vidal,ESP,8:23.6
+1968,-,Juan Alanis,MEX,dq
+1964,1,Stephen Clark,USA,7:52.1,WR
+1964,2,Horst-Günter Gregor,GER,7:59.3
+1964,3,Makoto Fukui,JPN,8:03.8
+1964,4,David Dickson,AUS,8:05.7
+1964,5,Mats Gunnar Svensson,SWE,8:08.0
+1964,6,Jean-Pascal Curtillet,FRA,8:08.7
+1964,7,Semyon Belits-Geiman,URS,8:15.1
+1964,8,Sergio De Gregorio,ITA,8:18.1
+1964,-,Ronald Jacks,CAN,8:22.2
+1964,-,Johan Klaas Bontekoe,NED,8:27.7
+1964,-,Rafael Hernandez Rojas,MEX,8:50.3
+1964,-,William Mettler,USA,8:09.0,OR
+1964,-,Ilkka Suvanto,FIN,8:23.3
+1964,-,Gyula Dobay,HUN,8:24.4
+1964,-,John Martin Dye,GBR,8:30.9
+1964,-,Juan Fortuny Vidal,ESP,8:32.6
+1960,1,George Harrison,USA,8:10.2,WR
+1960,2,Makoto Fukui,JPN,8:13.2
+1960,3,David Dickson,AUS,8:13.8
+1960,4,Hamilton Milton,GBR,8:28.1
+1960,5,Ilkka Suvanto,FIN,8:29.7
+1960,6,Sven-Göran Johansson,SWE,8:31.0
+1960,7,Frank Wiegand,GER,8:31.8
+1960,8,Igor Luzhkovsky,URS,8:32.2
+1960,-,Andrzej Salamon,POL,8:32.0
+1960,-,Jean-Pascal Curtillet,FRA,8:41.2
+1960,-,Peter Bärtschi,SUI,9:18.1
+1960,-,György Müller,HUN,8:32.6
+1960,-,Federico Dennerlein,ITA,8:38.1
+1960,-,Milan Jeger,YUG,8:49.8
+1960,-,Raul Guzman,MEX,8:50.4
+1956,1,Kevin O'Halloran,AUS,8:23.6,WR
+1956,2,Richard Hanley,USA,8:31.5
+1956,3,Vitaly Sorokin,URS,8:34.7
+1956,4,Manabu Koga,JPN,8:36.6
+1956,5,Hans Köhler,GER,8:43.4
+1956,6,Kenneth Williams,GBR,8:45.2
+1956,7,Federico Dennerlein,ITA,8:46.2
+1956,8,William Steuart,RSA,8:49.5
+1956,-,Aldo Eminente,FRA,8:56.5
+1956,-,Gyula Dobay,HUN,8:57.2
+1956,-,Dakula Arabani,PHI,9:05.7
+1952,1,Wayne Moore,USA,8:31.1,OR
+1952,2,Hiroshi Suzuki,JPN,8:33.5
+1952,3,Joseph Bernardo,FRA,8:45.9
+1952,4,Lars Svanteson,SWE,8:46.8
+1952,5,Laszlo Gyöngyösi,HUN,8:52.6
+1952,6,Roy Botham,GBR,8:52.9
+1952,7,Graham Johnston,RSA,8:55.1
+1952,8,Federico Zwanck,ARG,8:56.9
+1952,-,Rex Aubrey,AUS,9:01.4
+1952,-,Viktor Drobinsky,URS,9:01.9
+1952,-,Carlo Pedersoli,ITA,9:17.9
+1952,-,Pentti Ikonen,FIN,9:26.6
+1952,-,Haroldo de Melo Lara,BRA,9:09.0
+1952,-,Kamiel Reynders,BEL,9:45.5
+1952,-,Gerry McNamee,CAN,9:10.9
+1952,-,Gotfryd Gremlowski,POL,9:13.7
+1952,-,Alberto Isaac,MEX,9:15.7
+1948,1,Walter Ris,USA,8:46.0,WR
+1948,2,Elemer Szathmary,HUN,8:48.4
+1948,3,Joseph Bernardo,FRA,9:08.0
+1948,4,Martin Lunden,SWE,9:09.1
+1948,5,Ivan Illic,YUG,9:14.0
+1948,6,Horacio White,ARG,9:19.2
+1948,7,Ramon Bravo,MEX,9:20.2
+1948,8,Sergio Rodrigues,BRA,9:31.0
+1948,-,Augusto Canton,ARG,9:16.9
+1948,-,Jesus Dominguez,ESP,9:28.3
+1948,-,Anwar Chaudhry,PAK,12:25.8
+1948,-,Walter Bardgett,BER,dq
+1948,-,Frank Botham,GBR,9:26.6
+1948,-,Franklin Douglas Gibson,CAN,9:43.2
+1948,-,Ali Bagdadi,EGY,10:25.0
+1936,1,Masanori Yusa,JPN,8:51.5,WR
+1936,2,Ralph Flanagan,USA,9:03.0
+1936,3,Arpad Lengyel,HUN,9:12.3
+1936,4,Alfred Nakache,FRA,9:18.2
+1936,5,Werner Plath,GER,9:19.0
+1936,6,Morsyn Ffrench-Williams,GBR,9:21.5
+1936,7,Frederick Munroe Bourne,CAN,9:27.5
+1936,8,Björn Borg,SWE,9:37.5
+1936,-,Aluizio Courrage Lage,BRA,9:42.5
+1936,-,Jikirum Adjaluddin,PHI,9:45.8
+1936,-,Hubert Leonard Spence,BER,10:50.5
+1936,-,Angelos Vlakhos,GRE,10:51.0
+1936,-,Poul Petersen,DEN,9:39.6
+1936,-,Günther Zobernig,AUT,10:58.4
+1936,-,Norbert Franck,LUX,10:59.8
+1936,-,Joachim Karliczek,POL,dq
+1936,-,Drasko Vilfan,YUG,9:40.3
+1936,-,Said Higazi,EGY,10:05.3
+1932,1,Yasuji Miyazaki,JPN,8:58.4,WR
+1932,2,Frank Booth,USA,9:10.5
+1932,3,Andras Wanie,HUN,9:31.4
+1932,4,George Larson,CAN,9:36.3
+1932,5,Joseph Whiteside,GBR,9:45.8
+1932,6,Carlos Kennedy,ARG,10:13.1
+1932,7,Manoel Lourenco,BRA,10:36.5
+1928,1,Austin Clapp,USA,9:36.2,WR
+1928,2,Hiroshi Yoneyama,JPN,9:41.4
+1928,3,Frederick Munroe Bourne,CAN,9:47.8
+1928,4,Andras Wanie,HUN,9:57.0
+1928,5,Aulo Gustafsson,SWE,10:01.8
+1928,6,Reginald Sutton,GBR,10:15.8
+1928,7,Jose Gonzalez Esplugas,ESP,--
+1928,-,Francisco Uranga,ARG,--
+1928,-,Philippe Tisson,FRA,10:31.4
+1928,-,Hendrik van Essen,NED,--
+1928,-,Louis van Parijs,BEL,--
+1928,-,Karl Schubert,GER,dq
+1928,-,Giuseppe Perentin,ITA,dq
+1924,1,Wallace O'Connor,USA,9:53.4,WR
+1924,2,Maurice Christie,AUS,10:02.2
+1924,3,Georg Werner,SWE,10:06.8
+1924,4,Torahiko Miyahata,JPN,10:15.2
+1924,5,John Thomson,GBR,10:29.4
+1924,-,Guy Middleton,FRA,10:39.4
+1924,-,Gerardus Dekker,NED,11:29.0
+1924,-,Ralph Breyer,USA,9:59.4,WR
+1924,-,Emilio Polli,ITA,11:00.4
+1924,-,Antun Roje,YUG,12:02.4
+1924,-,Jose Pinillo,ESP,12:21.2
+1924,-,Edgardo Moreau,ARG,11:25.0
+1924,-,A. Buydens,BEL,11:14.8
+1920,1,Perry McGillivray,USA,10:04.4,WR
+1920,2,Harry Hay,AUS,10:25.4
+1920,3,Leslie Savage,GBR,10:37.2
+1920,4,Robert Andersson,SWE,10:50.2
+1920,5,Mario Massa,ITA,--
+1920,-,Albert Mayaud,FRA,11:53.0
+1920,-,Pierre Vermetten,BEL,11:12.2
+1912,1,Cecil Healy,ANZ,10:11.6,WR
+1912,2,Kenneth Huszagh,USA,10:20.2
+1912,3,William Foster,GBR,10:28.2
+1912,4,Oskar Schiele,GER,10:37.0
+1912, ,Laszlo Beleznai,HUN,dns
+1908,1,John Derbyshire,GBR,10:55.6,WR
+1908,2,Jozsef Munk,HUN,10:59.0
+1908,3,Harry Hebner,USA,11:02.8
+1908,4,Francis Beaurepaire,ANZ,--
+1908,-,Poul Holm,DEN,12:53.0
+1908,-,Gustaf Wretman,SWE,--

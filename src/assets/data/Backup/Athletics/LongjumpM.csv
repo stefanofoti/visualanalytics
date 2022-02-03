@@ -1,0 +1,979 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1, Miltiadis Tentoglou,GRE,8.41
+2020,2, Juan Miguel Echevarria,CUB,8.41
+2020,3, Maykel Masso,CUB,8.21
+2020,4, Eusebio Cáceres,ESP,8.18
+2020,5, Juvaughn Harrison,USA,8.15
+2020,6, Yuki Hashioka,JPN,8.10
+2020,7, Thobias Montler,SWE,8.08
+2020,8, Filippo Randazzo,ITA,7.99
+2020,9, Kristian Pulli,FIN,7.92
+2020,10, Huang Changzhou,CHN,7.72
+2020,11, Tajay Gayle,JAM,7.69
+2020,12, Fabian Heinle,GER,7.62
+2020,-,Emiliano Lasa,URU,7.95
+2020,-,Henry Frayne,AUS,7.93
+2020,-,Steffin McCarter,USA,7.92
+2020,-,Samory Fraga,BRA,7.88
+2020,-,Izmir Smajlaj,ALB,7.86
+2020,-,Wang Jianan,CHN,7.81
+2020,-,Carey McLeod,JAM,7.75
+2020,-,Shoutarou Shiroyama,JPN,7.70
+2020,-,Vladyslav Mazur,UKR,7.60
+2020,-,Bachana Khorava,GEO,7.41
+2020,-,Augustin Bey,FRA,nm
+2020,-,Cheswill Johnson,RSA,nm
+2020,-,Gao Xinglong,CHN,7.86
+2020,-,Marquis Dendy,USA,7.85
+2020,-,Ruswahl Samaai,RSA,7.74
+2020,-,Lester Alcides Lescay Gay,CUB,7.69
+2020,-,Murali Sreeshankar,IND,7.69
+2020,-,Hibiki Tsuha,JPN,7.61
+2020,-,Alexsandro De Melo,BRA,6.95
+2020,-,Andwuelle Wright,TTO,dns
+2016,1, Jeff Henderson,USA,8.38
+2016,2, Luvo Manyonga,RSA,8.37
+2016,3, Greg Rutherford,GBR,8.29
+2016,4, Jarrion Lawson,USA,8.25
+2016,5, Wang Jianan,CHN,8.17
+2016,6, Emiliano Lasa,URU,8.10
+2016,7, Henry Frayne,AUS,8.06
+2016,8, Kafetien Gomis,FRA,8.05
+2016,9, Rushwal Samaai,RSA,7.97
+2016,10, Fabrice Lapierre,AUS,7.87
+2016,11, Huang Changzhou,CHN,7.86
+2016,12, Damar Forbes,JAM,7.82
+2016,-,Kim Deok-hyeon,KOR,7.82
+2016,-,Tyrone Smith,BER,7.81
+2016,-,Fabian Heinle,GER,7.79
+2016,-,Izmir Smajlaj,ALB,7.72
+2016,-,Michel Tornéus,SWE,7.65
+2016,-,Miltiadis Tentoglou,GRE,7.64
+2016,-,Gao Xinglong,CHN,nm
+2016,-,Aubrey Smith,JAM,nm
+2016,-,Radek Juska,CZE,7.84
+2016,-,Maykel Masso,CUB,7.81
+2016,-,Ming Tai Chan,HKG,7.79
+2016,-,Bachana Khorava,GEO,7.77
+2016,-,Jean Marie Okutu,ESP,7.75
+2016,-,Stefan Brits,RSA,7.71
+2016,-,Kantstantsin Barycheuski,BLR,7.67
+2016,-,Ankit Sharma,IND,7.67
+2016,-,Mike Hartfield,USA,7.66
+2016,-,Higor Alves,BRA,7.59
+2016,-,Mohammad Arzandeh,IRI,7.31
+2016,-,Alyn Camara,GER,5.16
+2012,1, Greg Rutherford,GBR,8.31
+2012,2, Mitchell Watt,AUS,8.16
+2012,3, Will Claye,USA,8.12
+2012,4, Michel Tornéus,SWE,8.11
+2012,5, Sebastian Bayer,GER,8.10
+2012,6, Christopher Tomlinson,GBR,8.07
+2012,7, Mauro Vinicius da Silva,BRA,8.01
+2012,8, Godfrey Khotso Mokoena,RSA,7.93
+2012,9, Henry Frayne,AUS,7.85
+2012,10, Marquise Goodwin,USA,7.80
+2012,11, Aleksandr Menkov,RUS,7.78
+2012,12, Tyrone Smith,BER,7.70
+2012,-,Christian Reif,GER,7.92
+2012,-,Eusebio Cáceres,ESP,7.92
+2012,-,Mohammad Arzandeh,IRI,7.84
+2012,-,Damar Forbes,JAM,7.79
+2012,-,Alyn Camara,GER,7.72
+2012,-,Salim Sdiri,FRA,7.71
+2012,-,Loúis Tsátoumas,GRE,7.53
+2012,-,Stepan Wagner,CZE,7.50
+2012,-,Lin Ching-hsuan,TPE,7.38
+2012,-,Supanara Sukhasvastina,THA,7.38
+2012,-,Boleslav Skhirtladze,GEO,7.26
+2012,-,Zhang Xiaoyi,CHN,7.25
+2012,-,Vardan Pahlevanyan,ARM,6.55
+2012,-,Aleksandr Petrov,RUS,7.89
+2012,-,Sergey Morgunov,RUS,7.87
+2012,-,Ignisious Gaisah,GHA,7.79
+2012,-,Li Jinzhe,CHN,7.77
+2012,-,Raymond Higgs,BAH,7.76
+2012,-,Ndiss Kaba Badji,SEN,7.66
+2012,-,Arsen Sargsyan,ARM,7.62
+2012,-,Povilas Mykolaitis,LTU,7.61
+2012,-,Stanley Gbagbeke,NGR,7.59
+2012,-,Marcos Chuva,POR,7.55
+2012,-,Viktor Kuznetsov,UKR,7.50
+2012,-,Luis Rivera Morales,MEX,7.42
+2012,-,Mohamed Difallah,EGY,7.08
+2012,-,Roman  Novotny,CZE,6.96
+2012,-,George Kitchens,USA,6.84
+2012,-,Irving Saladino,PAN,nm
+2012,-,Luis Felipe Meliz Linares,ESP,nm
+2008,1, Irving Saladino,PAN,8.34
+2008,2, Godfrey Khotso Mokoena,RSA,8.24
+2008,3, Ibrahim Camejo,CUB,8.20
+2008,4, Ngonidzashe Makusha,ZIM,8.19
+2008,5, Ndiss Kaba Badji,SEN,8.16
+2008,6, Luis Felipe Meliz Linares,ESP,8.07
+2008,7, Roman  Novotny,CZE,8.00
+2008,8, Gable Garenamotse,BOT,7.85
+2008,9, Greg Rutherford,GBR,7.84
+2008,10, Hussain Al Saba,KSA,7.80
+2008, , Loúis Tsátoumas,GRE,nm
+2008,-, Wilfredo Martinez,CUB,(8.19),dq(d)*
+2008,-,Stephan  Louw,NAM,7.93
+2008,-,Yahya Berrabah,MAR,7.88
+2008,-,Tommi Evila,FIN,7.88
+2008,-,Salim Sdiri,FRA,7.81
+2008,-,Sebastian Bayer,GER,7.77
+2008,-,Hugo Chila,ECU,7.77
+2008,-,Mauro da Silva,BRA,7.75
+2008,-,Li Runrun,CHN,7.70
+2008,-,Morten Jensen,DEN,7.63
+2008,-,Marcin Starzak,POL,7.62
+2008,-,Henry Dagmil,PHI,7.58
+2008,-,Nikolay Atanasov,BUL,7.54
+2008,-,Vladimir Malyavin,RUS,7.35
+2008,-,Mohammed Al Khuwaildi,KSA,7.93
+2008,-,Tyrone Smith,BER,7.91
+2008,-,Fabrice Lapierre,AUS,7.90
+2008,-,Trevell Quinley,USA,7.87
+2008,-,Andrew Howe,ITA,7.81
+2008,-,Brian Johnson,USA,7.79
+2008,-,Andrii Makarchev,UKR,7.77
+2008,-,Christopher Tomlinson,GBR,7.70
+2008,-,Tarik Bouguetaib,MAR,7.69
+2008,-,Herbert McGregor,JAM,7.64
+2008,-,Louis Tristan,PER,7.62
+2008,-,Julien Fivaz,SUI,7.53
+2008,-,Miguel Pate,USA,7.34
+2008,-,Zhou Can,CHN,nm
+2008,-,"* Wilfredo Martinez CUB disqualified for an anti-doping rule violation according to IOC Disciplinary Commissions desicion of October 19 2016.  
+
+
+
+
+Men's Long jump - Athletics - Beijing 2008 Summer Olympics
+Event Format:
+     
+     Athletes competed in a qualifying round followed by the final. Top twelve and ties in the qualifying round and all those reaching the announced qualification limit advanced to the final. In the final all finalists were given three tries. The top eight were then given three more. Event facts: Men's Long jump competition was held at the Beijing National Stadium and 39 athletes participated in the event. 
+
+
+
+
+
+These results for Men's Long jump - Beijing 2008 Summer Olympics - are based on the official olympic reports and the Olympian Database
+ ",Men's Long jump - Athletics - Beijing 2008 Summer Olympics,"Event Format:
+     
+     Athletes competed in a qualifying round followed by the final: Top twelve and ties in the qualifying round and all those reaching the announced qualification limit advanced to the final: In the final all finalists were given three tries: The top eight were then given three more: Event facts: Men's Long jump competition was held at the Beijing National Stadium and 39 athletes participated in the event: ",These results for Men's Long jump - Beijing 2008 Summer Olympics - are based on the official olympic reports and the Olympian Database
+2004,1, Dwight Phillips,USA,8.59
+2004,2, John Moffitt,USA,8.47
+2004,3, Joan Lino Martinez,ESP,8.32
+2004,4, James Beckford,JAM,8.31
+2004,5, Christopher Tomlinson,GBR,8.25
+2004,6, Ignisious Gaisah,GHA,8.24
+2004,7, Ivan Pedroso,CUB,8.23
+2004,8, Bogdan Tarus,ROU,8.21
+2004,9, Vitaliy Shkurlatov,RUS,8.04
+2004,10, Jonathan Chimier,MRI,8.03
+2004,11, Yago Lamela,ESP,7.98
+2004,12, Salim Sdiri,FRA,7.94
+2004,-,Kafetien Gomis,FRA,7.99
+2004,-,Kirill Sosunov,RUS,7.94
+2004,-,Nikolay Atanasov,BUL,7.90
+2004,-,Vladimir Zyuskov,UKR,7.88
+2004,-,Nicola Trentin,ITA,7.86
+2004,-,Gable Garenamotse,BOT,7.78
+2004,-,Sinisa Ergotic,CRO,7.77
+2004,-,Ndiss Kaba Badji,SEN,7.74
+2004,-,Shinichi Terano,JPN,7.70
+2004,-,Yahya Berrabah,MAR,7.62
+2004,-,Zhou Can,CHN,7.47
+2004,-,Dimitrios Filindras,GRE,7.45
+2004,-,Tamas Margl,HUN,7.38
+2004,-,Gregor Cankar,SLO,7.32
+2004,-,Petar Dachev,BUL,8.04
+2004,-,Victor Castillo,VEN,7.98
+2004,-,Kareem Streete-Thompson,CAY,7.85
+2004,-,Osbourne Moxey,BAH,7.81
+2004,-,Loúis Tsátoumas,GRE,7.81
+2004,-,Walter Davis,USA,7.80
+2004,-,Tarik Bouguetaib,MAR,7.79
+2004,-,Yann Domenech,FRA,7.73
+2004,-,Nils Winter,GER,7.51
+2004,-,Jadel Gregorio,BRA,7.50
+2004,-,Gaspar Araujo,POR,7.49
+2004,-,Irving Saladino,PAN,7.42
+2004,-,Abdulrahman Faraj,QAT,7.41
+2000,1, Ivan Pedroso,CUB,8.55
+2000,2, Jai Taurima,AUS,8.49
+2000,3, Roman Schurenko,UKR,8.31
+2000,4, Olexiy Lukashevych,UKR,8.26
+2000,5, Kofi Amoah Prah,GER,8.19
+2000,6, Peter Burge,AUS,8.15
+2000,7, Luis Meliz,CUB,8.08
+2000,8, Dwight Phillips,USA,8.06
+2000,9, Bogdan Tarus,ROU,8.00
+2000,10, Carlos Calado,POR,7.94
+2000,11, Petar Dachev,BUL,7.80
+2000,12, Vladimir Malyavin,RUS,7.67
+2000,-,Kareem Streete-Thompson,CAY,7.99
+2000,-,Gregor Cankar,SLO,7.98
+2000,-,Younes Moudrik,MAR,7.95
+2000,-,Cheikh Toure,FRA,7.87
+2000,-,Savanté Stringfellow,USA,7.84
+2000,-,Masaki Morinaga,JPN,7.84
+2000,-,Peter Häggström,SWE,7.83
+2000,-,Melvin Lister,USA,7.82
+2000,-,Danil Burkenia,RUS,7.79
+2000,-,Tomas Bardauskas,LTU,7.70
+2000,-,Nikolay Atanasov,BUL,7.62
+2000,-,Richard Duncan,CAN,7.60
+2000,-,Hatem Mersal,EGY,7.59
+2000,-,Erik Nys,BEL,7.52
+2000,-,Rustam Khusnutdinov,UZB,7.24
+2000,-,Wendell Williams,TTO,7.22
+2000,-,Stephan  Louw,NAM,nm
+2000,-,Sung Hee-jun,KOR,nm
+2000,-,Liu Hongnin,CHN,nm
+2000,-,Dimitrios Serelis,GRE,nm
+2000,-,Abdulrahman Al Nubi,QAT,nm
+2000,-,Sanjay Rai,IND,nm
+2000,-,James Beckford,JAM,7.98
+2000,-,Kirill Sosunov,RUS,7.97
+2000,-,Husain Al Sabee,KSA,7.94
+2000,-,Yago Lamela,ESP,7.89
+2000,-,Danial Jahic,YUG,7.85
+2000,-,Ronald Servius,FRA,7.66
+2000,-,Matthias Sunneborn,SWE,7.63
+2000,-,El Mehdi El Ghazouani,MAR,7.60
+2000,-,Mark Awere,GHA,7.57
+2000,-,Arnaud Casquette,MRI,7.57
+2000,-,Sinisa Ergotic,CRO,7.53
+2000,-,Ian Lowe,CAN,7.51
+2000,-,Konstantinos Koukodimos,GRE,7.44
+2000,-,Lao Jianfeng,CHN,7.41
+2000,-,Georges Teko Folligan,TOG,7.40
+2000,-,Mesut Yavas,TUR,7.35
+2000,-,Nelson Ferreira Junior,BRA,7.32
+2000,-,Shirak Poghosyan,ARM,7.24
+2000,-,Daisuke Watanabe,JPN,nm
+1996,1, Carl Lewis,USA,8.50
+1996,2, James Beckford,JAM,8.29
+1996,3, Joe Greene,USA,8.24
+1996,4, Emmanuel Bangue,FRA,8.19
+1996,5, Mike Powell,USA,8.17
+1996,6, Gregor Cankar,SLO,8.11
+1996,7, Aleksandr Glovatskiy,BLR,8.07
+1996,8, Matthias Sunneborn,SWE,8.06
+1996,9, Geng Huang,CHN,7.99
+1996,10, Yuri Naumkin,RUS,7.96
+1996,11, Andrey Ignatov,RUS,7.83
+1996,12, Ivan Pedroso,CUB,7.75
+1996,13, Erik Nijs,BEL,7.72
+1996,-,Andrew Owusu,GHA,7.91
+1996,-,Nai Hui-fang,TPE,7:91
+1996,-,Bogdan Tudor,ROU,7.88
+1996,-,Milan Gombala,CZE,7.88
+1996,-,Konstantinos Koukodimos,GRE,7.82
+1996,-,Carlos Calado,POR,7.81
+1996,-,Vitaliy Kyrylenko,UKR,7.77
+1996,-,Nelson Ferreira Junior,BRA,7.76
+1996,-,Jaime Jefferson,CUB,7.65
+1996,-,Aleksey Petrukhnov,RUS,7.50
+1996,-,Remmy Lima,KEN,7.46
+1996,-,Francois Fouche,RSA,7.44
+1996,-,Kenny Lewis,GRN,7.41
+1996,-,Keita Cline,IVB,7.26
+1996,-,Victor Shabangu,SWZ,6.79
+1996,-,Sinisa Ergotic,CRO,nm
+1996,-,Benny Fernando,SRI,nm
+1996,-,Hans Peter Lott,GER,nm
+1996,-,Sung Hee-jun,KOR,nm
+1996,-,Franck Zio,BUR,nm
+1996,-,Spyros Vasdekis,GRE,7.98
+1996,-,Bogdan Tarus,ROU,7.96
+1996,-,Cheikh Tidiane Toure,SEN,7.91
+1996,-,Georg Ackermann,GER,7.86
+1996,-,Janos Uzsoki,HUN,7.82
+1996,-,Simone Bianchi,ITA,7.79
+1996,-,Robert Emmiyan,ARM,7.76
+1996,-,Chen Jing,CHN,7.70
+1996,-,Chao Chih-kuo,TPE,7.67
+1996,-,Jesus Olivan Mallen,ESP,7.64
+1996,-,Douglas de Souza,BRA,7.61
+1996,-,Richard Duncan,CAN,7.61
+1996,-,Nobuharu Asahara,JPN,7.46
+1996,-,Andreja Marinkovic,YUG,7.17
+1996,-,Marcia da Cruz,BRA,7.12
+1996,-,Craig Hepburn,BAH,dns
+1996,-,Vladimir Malyavin,TKM,nm
+1996,-,Ellsworth Manuel,AHO,nm
+1996,-,Ivaylo Mladenov,BUL,nm
+1996,-,Ousman Sallah,GAM,nm
+1992,1, Carl Lewis,USA,8.67
+1992,2, Mike Powell,USA,8.64
+1992,3, Joe Greene,USA,8.34
+1992,4, Ivan Pedroso,CUB,8.11
+1992,5, Jaime Jefferson,CUB,8.08
+1992,6, Konstantinos Koukodimos,GRE,8.04
+1992,7, Dmitri Bagryanov,EUN,7.98
+1992,8, Geng Huang,CHN,7.87
+1992,9, Borut Bilac,SLO,7.76
+1992,10, Chen Zunrong,CHN,7.75
+1992,11, David Culbert,AUS,7.73
+1992,12, Bogdan Tudor,ROU,7.61
+1992,-,Craig Hepburn,BAH,7.89
+1992,-,Spyros Vasdekis,GRE,7.82
+1992,-,Masaki Morinaga,JPN,7.79
+1992,-,Galin Georgiev,BUL,7.75
+1992,-,Ian James,CAN,7.74
+1992,-,Milan Gombala,TCH,7.69
+1992,-,Thomas Ganda,SLE,7.67
+1992,-,Eugene Licorish,GRN,7.60
+1992,-,Serge Helan,FRA,7.60
+1992,-,Konstantin Krause,GER,7.50
+1992,-,Laszlo Szalma,HUN,7.47
+1992,-,Michael Francis Aponte,PUR,7.47
+1992,-,Benjamin Koech,KEN,7.44
+1992,-,Kareem Streete-Thompson,CAY,7.39
+1992,-,Angelo Iannuzzelli,ESA,7.31
+1992,-,Khaled Ahmed Musa,SUD,7.03
+1992,-,Ndabezinhle Mdhlongwa,ZIM,6.96
+1992,-,Vadim Ivanov,EUN,5.97
+1992,-,Soryba Diakite,GUI,dnf
+1992,-,Giovanni Evangelisti,ITA,nm
+1992,-,Angel Hernandez Yanez,ESP,nm
+1992,-,Dietmar Haaf,GER,7.85
+1992,-,Mark Mason,GUY,7.83
+1992,-,Jesus Olivan Mallen,ESP,7.78
+1992,-,Franck Lestage,FRA,7.72
+1992,-,Mark Forsythe,GBR,7.71
+1992,-,Elmer Williams Gonzalez,PUR,7.70
+1992,-,Franck Zio,BUR,7.70
+1992,-,Csaba Almasi,HUN,7.69
+1992,-,Edrick Floreal,CAN,7.62
+1992,-,Roman Golanowski,POL,7.61
+1992,-,James Sabulei,KEN,7.50
+1992,-,Daniel Beauchamp,SEY,7.44
+1992,-,Abdullah Al Sheib,QAT,7.27
+1992,-,Gabriele Qoro,FIJ,7.22
+1992,-,Elston Shaw,BIZ,6.57
+1992,-,Abdel Klouchi,ALG,5.33
+1992,-,Sizwe Mdluli,SWZ,nm
+1988,1, Carl Lewis,USA,8.72
+1988,2, Mike Powell,USA,8.49
+1988,3, Larry Myricks,USA,8.27
+1988,4, Giovanni Evangelisti,ITA,8.08
+1988,5, Antonio Corgos,ESP,8.03
+1988,6, Laszlo Szalma,HUN,8.00
+1988,7, Norbert Brige,FRA,7.97
+1988,8, Leonid Voloshin,URS,7.89
+1988,9, Pang Yan,CHN,7.86
+1988,10, Jarmo Kärnä,FIN,7.82
+1988,11, Emiel Mellaard,NED,7.71
+1988,12, Mark Forsythe,GBR,7.54
+1988,-,Stewart Faulkner,GBR,7.74
+1988,-,Bruny Surin,CAN,7.73
+1988,-,James Browne,ANT,7.67
+1988,-,David Culbert,AUS,7.64
+1988,-,Andreas Steiner,AUT,7.61
+1988,-,Glenroy Gilbert,CAN,7.61
+1988,-,John King,GBR,7.57
+1988,-,Ian James,CAN,7.52
+1988,-,Nai Hui-fang,TPE,7.45
+1988,-,Jose Banquart Leitao,POR,6.99
+1988,-,Ricardo Valiente,PER,6.92
+1988,-,Shahanuddin Choudhury,BAN,nm
+1988,-,Abdullah Al Sheib,QAT,nm
+1988,-,Sizwe Mdluli,SWZ,nm
+1988,-,David Lamai,KEN,nm
+1988,-,Orde Ballantyne,VIN,nm
+1988,-,Yussuf Alli,NGR,7.73
+1988,-,Kim Jong-il,KOR,7.70
+1988,-,Chen Zunrong,CHN,7.66
+1988,-,Frederic Ebong-Salle,CMR,7.65
+1988,-,Stephen Hanna,BAH,7.54
+1988,-,Hiroyuki Shibata,JPN,7.48
+1988,-,Theodor Steinmayr,AUT,7.36
+1988,-,Lotfi Khaida,ALG,7.10
+1988,-,Muhammad Urfaq,PAK,7.09
+1988,-,Francis Keita,SLE,6.87
+1988,-,Junichi Usui,JPN,nm
+1988,-,Reynaldo Quinones,PUR,nm
+1988,-,Robert Emmiyan,URS,nm
+1984,1, Carl Lewis,USA,8.54
+1984,2, Gary Honey,AUS,8.24
+1984,3, Giovanni Evangelisti,ITA,8.24
+1984,4, Larry Myricks,USA,8.16
+1984,5, Liu Yuhuang,CHN,7.99
+1984,6, Joey Wells,BAH,7.97
+1984,7, Junichi Usui,JPN,7.87
+1984,8, Kim Jong-il,KOR,7.81
+1984,9, Yussuf Alli,NGR,7.78
+1984,10, Antonio Corgos,ESP,7.69
+1984,11, Mike McRae,USA,7.63
+1984,12, Joshua Kio,NGR,7.57
+1984,-,Nenad Stekic,YUG,7.60
+1984,-,Moses Kiayi,KEN,7.51
+1984,-,Wang Shijie,CHN,7.36
+1984,-,Lee Fu-an,TPE,7.23
+1984,-,Kristjan Hardarson,ISL,7.09
+1984,-,Fidel Solorzano,ECU,6.93
+1984,-,Abdoulaye Traore,MLI,6.92
+1984,-,Bilanday Bodjona,TOG,6.82
+1984,-,Rene Gloor,SUI,7.71
+1984,-,Lester Benjamin,ANT,7.57
+1984,-,Kemobe Djirmassal,CHA,7.37
+1984,-,Lyndon Sands,BAH,7.32
+1984,-,Stephen Hanna,BAH,7.10
+1984,-,Shahad Mubarak,UAE,6.80
+1984,-,Ghabi Issa Khouri,LIB,6.80
+1984,-,Oscar Diesel,PAR,6.78
+1984,-,Ernest Tche-Noubossie,CMR,6.76
+1984,-,Dimitrios Araouzos,CYP,5.67
+1984,-,Stephen Walsh,NZL,nm
+1980,1, Lutz Dombrowski,GDR,8.54
+1980,2, Frank Paschek,GDR,8.21
+1980,3, Valery Podluzhny,URS,8.18
+1980,4, Laszlo Szalma,HUN,8.13
+1980,5, Stanislaw Jaskulka,POL,8.13
+1980,6, Viktor Belsky,URS,8.10
+1980,7, Antonio Corgos,ESP,8.09
+1980,8, Yordan Yanev,BUL,8.02
+1980,9, Rolf Bernhard,SUI,7.88
+1980,10, Philippe Deroche,FRA,7.77
+1980,11, Kayode Elegbede,NGR,7.49
+1980, , Joao de Oliveira,BRA,dns
+1980,-,Andrzej Klimaszewski,POL,7.76
+1980,-,Dimitrios Delifotis,GRE,7.74
+1980,-,Alberto Solanas,ESP,7.73
+1980,-,Peter Rieger,GDR,7.59
+1980,-,David Giralt Agramonte,CUB,7.57
+1980,-,Ivan Tuparov,BUL,7.46
+1980,-,Nenad Stekic,YUG,5.75
+1980,-,Joshua Kio,NGR,7.77
+1980,-,William Rea,AUT,7.74
+1980,-,Jan Leitner,TCH,7.68
+1980,-,Amadou N'Diaye,SEN,7.66
+1980,-,Gary Honey,AUS,7.44
+1980,-,Yussuf Alli,NGR,7.43
+1980,-,Bela Bakosi,HUN,7.29
+1980,-,Theophile Hounou,BEN,7.07
+1980,-,Stelio Craveirinha,MOZ,6.94
+1980,-,Ronald Raborg,PER,6.85
+1980,-,Abebe Gessese,ETH,6.66
+1980,-,Essa Abbas,KUW,nm
+1980,-,Fidelis Ndyabagye,UGA,nm
+1976,1, Arnie Robinson,USA,8.35
+1976,2, Randy Williams,USA,8.11
+1976,3, Frank Wartenberg,GDR,8.02
+1976,4, Jacques Rousseau,FRA,8.00
+1976,5, Joao de Oliveira,BRA,8.00
+1976,6, Nenad Stekic,YUG,7.89
+1976,7, Valery Podluzhny,URS,7.88
+1976,8, Hans Baumgartner,FRG,7.84
+1976,9, Rolf Bernhard,SUI,7.74
+1976,10, Aleksei Pereverchev,URS,7.66
+1976,11, Fletcher Lewis,BAH,7.61
+1976, , Larry Myricks,USA,dns
+1976,-,Grzegorz Cybulski,POL,7.71
+1976,-,Hans-Jürgen Berger,FRG,7.70
+1976,-,Milan Matos,CUB,7.57
+1976,-,Tönu Lepik,URS,7.49
+1976,-,Neil Swanston,TTO,7.40
+1976,-,Philippe Deroche,FRA,7.38
+1976,-,Roy Mitchell,GBR,7.69
+1976,-,Thyadathuvilla Yohannan,IND,7.67
+1976,-,Ronald Desruelles,BEL,7.60
+1976,-,Richard Rock,CAN,7.57
+1976,-,Jim Buchanan,CAN,7.49
+1976,-,Jim McAndrew,CAN,7.48
+1976,-,Roberto Veglia,ITA,7.48
+1976,-,Christopher Commons,AUS,7.46
+1976,-,Panagiotis Hatzistathis,GRE,7.33
+1976,-,Kouakou Brou,CIV,7.20
+1976,-,Ibrahim Ba,SEN,6.96
+1976,-,Calvin Greenway,AHO,6.96
+1976,-,Antony Moore,FIJ,6.81
+1976,-,Ghassan Faddoul,LBR,nm
+1972,1, Randy Williams,USA,8.24
+1972,2, Hans Baumgartner,FRG,8.18
+1972,3, Arnie Robinson,USA,8.03
+1972,4, Joshua Owusu,GHA,8.01
+1972,5, Preston Carrington,USA,7.99
+1972,6, Max Klauss,GDR,7.96
+1972,7, Alan Lerwill,GBR,7.91
+1972,8, Leonid Barkovskiy,URS,7.75
+1972,9, Valery Podluzhny,URS,7.72
+1972,10, Jacques Rousseau,FRA,7.65
+1972,11, Ari Väänänen,FIN,7.62
+1972,12, Grzegorz Cybulski,POL,7.58
+1972,-,Jaroslav Broz,TCH,7.76
+1972,-,Bruce Field,AUS,7.76
+1972,-,Rolf Bernhard,SUI,7.68
+1972,-,Gabor Katona,HUN,7.68
+1972,-,Lynn Davies,GBR,7.64
+1972,-,Jerzy Homziuk,POL,7.63
+1972,-,Finn Bendixen,NOR,7.61
+1972,-,Carol Corbu,ROU,7.54
+1972,-,Henry Jackson,JAM,7.50
+1972,-,Michael Ahey,GHA,7.39
+1972,-,Mohinder Singh Gill,IND,7.30
+1972,-,Lionel Caero,BOL,6.77
+1972,-,Bilal Said Al Azma,KSA,6.32
+1972,-,Igor Ter-Ovanesian,URS,7.77
+1972,-,Josef Schwarz,FRG,7.63
+1972,-,Andreas Glörfeld,FRG,7.60
+1972,-,Wilfredo Maisonave,PUR,7.58
+1972,-,Christian Tourret,FRA,7.55
+1972,-,Milan Matos,CUB,7.47
+1972,-,Takayoshi Kawagoe,JPN,7.47
+1972,-,Martin Adouna,TOG,7.25
+1972,-,Linus Rebmann,SUI,7.25
+1972,-,Chen Chin-long,TPE,6.79
+1972,-,Jesper Tørring,DEN,nm
+1968,1, Bob Beamon,USA,8.90,WR
+1968,2, Klaus Beer,GDR,8.19
+1968,3, Ralph Boston,USA,8.16
+1968,4, Igor Ter-Ovanesian,URS,8.12
+1968,5, Tönu Lepik,URS,8.09
+1968,6, Allen Crawley,AUS,8.02
+1968,7, Jacques Pani,FRA,7.97
+1968,8, Andrzej Stalmach,POL,7.94
+1968,9, Lynn Davies,GBR,7.94
+1968,10, Hiroomi Yamada,JPN,7.93
+1968,11, Leonid Barkovski,URS,7.90
+1968,12, Reinholdt Boschert,FRG,7.89
+1968,13, Michael Ahey,GHA,7.71
+1968,14, Lars-Olof Höök,SWE,7.66
+1968,15, Victor Brooks,JAM,7.51
+1968,16, Gerard Ugolini,FRA,7.44
+1968, , Charles Mays,USA,dns
+1968,-,Alan Lerwill,GBR,7.62
+1968,-,Shinji Ogura,JPN,7.57
+1968,-,Philippe Housiaux,BEL,7.44
+1968,-,Clement Sagna,SEN,7.31
+1968,-,Gerald Wisdom,BAH,6.99
+1968,-,Chen Ming-chi,TPE,6.71
+1968,-,Owen Meighan,BIZ,6.06
+1968,-,Peter Reed,GBR,nm
+1968,-,Pertti Pousi,FIN,7.63
+1968,-,Laurent Sarr,SEN,7.61
+1968,-,Galdino Flores,MEX,7.59
+1968,-,Naoki Abe,JPN,7.58
+1968,-,Wellesley Clayton,JAM,7.57
+1968,-,Michel Charland,CAN,7.35
+1968,-,Soo Wen-ho,TPE,7.30
+1968,-,Nyak Voon Chong,MAS,7.29
+1968,-,Donald Velez Espinoza,NCA,6.63
+1968,-,Jean Cochard,FRA,6.11
+1964,1, Lynn Davies,GBR,8.07
+1964,2, Ralph Boston,USA,8.03
+1964,3, Igor Ter-Ovanesian,URS,7.99
+1964,4, Wariboko West,NGR,7.60
+1964,5, Jean Cochard,FRA,7.44
+1964,6, Luis Felipe Areta,ESP,7.34
+1964,7, Michael Ahey,GHA,7.30
+1964,8, Andrzej Stalmach,POL,7.26
+1964,9, Hiroomi Yamada,JPN,7.16
+1964,10, Glenn Davis,USA,7.15
+1964,11, John Morbey,GBR,7.09
+1964, , Gayle Hopkins,USA,nm
+1964,-,Pentti Eskola,FIN,7.43
+1964,-,Antanas Vaupsias,URS,7.43
+1964,-,Leonid Barkovskiy,URS,7.39
+1964,-,Sunday Akpata,NGR,7.34
+1964,-,Raycho Tsonev,BUL,7.33
+1964,-,Hans-Helmut Trense,GER,7.30
+1964,-,Wellesley Clayton,JAM,7.28
+1964,-,Koru Kawazu,JPN,7.28
+1964,-,Klaus Beer,GER,7.27
+1964,-,Frederick Alsop,GBR,7.26
+1964,-,Philip Shinnick,USA,7.26
+1964,-,Alain Lefevre,FRA,7.24
+1964,-,Dimitrios Manglaras,GRE,7.21
+1964,-,Satoshi Takayanagi,JPN,7.15
+1964,-,Ian Tomlinson,AUS,7.07
+1964,-,Henrik Kalocsai,HUN,6.99
+1964,-,Bondata Satyanarayan,IND,6.76
+1964,-,Samuel Cruz,PUR,6.74
+1964,-,Ming Chu,HKG,6.41
+1964,-,Iftikhar Shah,PAK,nm
+1960,1, Ralph Boston,USA,8.12,OR
+1960,2, Irving Robertson,USA,8.11
+1960,3, Igor Ter-Ovanesian,URS,8.04
+1960,4, Manfred Steinbach,GER,8.00
+1960,5, Jorma Valkama,FIN,7.69
+1960,6, Christian Collardot,FRA,7.68
+1960,7, Henk Visser,NED,7.66
+1960,8, Dmitri Bondarenko,URS,7.58
+1960,9, Manfred Molzberger,GER,7.49
+1960,10, Attilio Bravi,ITA,7.47
+1960,11, Dimitrios Manglaras,GRE,7.45
+1960,12, Paul Foreman,BWI,7.26
+1960,13, Frederick Alsop,GBR,7.25
+1960, , Takayuki Okazaki,JPN,dns
+1960,-,Kazimierz Kropidlowski,POL,7.37
+1960,-,Yukishige Yasuma,JPN,7.34
+1960,-,Gustav Schlosser,SUI,7.27
+1960,-,Fermi­ Donazar,URU,7.24
+1960,-,Bondata Satyanarayan,IND,7.08
+1960,-,Luis Felipe Areta,ESP,7.04
+1960,-,Suh Yong-joo,KOR,6.98
+1960,-,John Baguley,AUS,6.96
+1960,-,Mahmoud Fattah,EGY,6.94
+1960,-,Romain Pote,BEL,6.92
+1960,-,Jun Ebina,JPN,6.83
+1960,-,Vilhjalmur Einarsson,ISL,6.76
+1960,-,Kaimar-Ud-Din Maidin,MAS,6.74
+1960,-,Abdul Razzak,IRQ,6.37
+1960,-,John Oladipo Oladitan,NGR,7.38
+1960,-,Juhani Manninen,FIN,7.34
+1960,-,Fritz Köppen,GER,7.32
+1960,-,Anthony Watson,USA,7.32
+1960,-,Jan Netopilik,TCH,7.26
+1960,-,Roberto Procel,MEX,7.23
+1960,-,Ali Brakchi,FRA,7.20
+1960,-,John Howell,GBR,7.19
+1960,-,Dave Norris,NZL,7.04
+1960,-,Ian Tomlinson,AUS,7.03
+1960,-,Virsa Singh,IND,6.70
+1960,-,Bevyn Baker,AUS,6.43
+1960,-,David Kushnir,ISR,7.20
+1960,-,Pedro de Almeida,POR,7.10
+1960,-,Roar Berthelsen,NOR,7.09
+1960,-,Yalcin Ünsal,TUR,6.97
+1960,-,Revaz Kvachakidze,URS,6.82
+1960,-,Prajim Wongsuwan,THA,6.78
+1960,-,Clive Bonas Simmons,VEN,nm
+1960,-,Muhammad Ramzan Ali,PAK,nm
+1960,-,Luigi Ulivelli,ITA,nm
+1956,1, Gregory Bell,USA,7.83
+1956,2, John Bennett,USA,7.68
+1956,3, Jorma Valkama,FIN,7.48
+1956,4, Dmitri Bondarenko,URS,7.44
+1956,5, Karim Olowu,NGR,7.36
+1956,6, Kazimierz Kropidlowski,POL,7.30
+1956,7, Neville Price,RSA,7.28
+1956,8, Oleg Fedoseyev,URS,7.27
+1956,9, Roy Cruttenden,GBR,7.15
+1956,10, Henryk Grabowski,POL,7.15
+1956,11, Kenneth Wilmshurst,GBR,7.14
+1956,12, Fermin Donazar,URU,6.57
+1956, , Igor Ter-Ovanesian,URS,nm
+1956,-,Yoshiro Sonoda,JPN,7.12
+1956,-,Masaji Tajima,JPN,7.11
+1956,-,Ling Te-sheng,TPE,7.11
+1956,-,Muhammad Ramzan Ali,PAK,7.11
+1956,-,Suh Yong-joo,KOR,7.09
+1956,-,Michael Moroney,AUS,7.09
+1956,-,Ary Facanha de Sa,BRA,7.00
+1956,-,Odon Földessy,HUN,6.96
+1956,-,Ram Mehar,IND,6.92
+1956,-,Ian Bruce,AUS,6.91
+1956,-,Hugh Jack,AUS,6.90
+1956,-,David Kushnir,ISR,6.89
+1956,-,Frederick Hammer,LUX,6.74
+1956,-,Lawrence Ogwang,UGA,6.62
+1956,-,Wilhelm Porrassalmi,FIN,6.58
+1956,-,Rafio Oluwa,NGR,6.53
+1956,-,Muhammad Rashid,PAK,6.13
+1956,-,Edward Martins,LBR,6.01
+1956,-,Torgny Wåhlander,SWE,nm
+1952,1, Jerome Biffle,USA,7.57
+1952,2, Meredith Gourdine,USA,7.53
+1952,3, Odon Földessy,HUN,7.30
+1952,4, Ary Facanha de Sa,BRA,7.23
+1952,5, Jorma Valtonen,FIN,7.16
+1952,6, Leonid Grigoryev,URS,7.14
+1952,7, Karl-Erik Israelsson,FIN,7.10
+1952,8, Paul Faucher,FRA,7.02
+1952,9, Pentti Snellman,FIN,7.02
+1952,10, Masaji Tajima,JPN,7.00
+1952,11, Neville Price,RSA,6.40
+1952, , Henk Visser,NED,nm
+1952,-, George Brown,USA,nm
+1952,-,Anton Breder,SAA,6.88
+1952,-,Brigido Iriarte,VEN,6.82
+1952,-,Henryk Grabowski,POL,6.77
+1952,-,Nikolay Andryushchenko,URS,6.74
+1952,-,Avni Akgün,TUR,nm
+1952,-,Carlos Vera Guardia,CHI,7.07
+1952,-,Felix Würth,AUT,6.99
+1952,-,Sylvanus Williams,NGR,6.98
+1952,-,Jorma Valkama,FIN,6.97
+1952,-,Karim Olowu,NGR,6.96
+1952,-,Geraldo de Oliveira,BRA,6.71
+1952,-,Patrick Leane,AUS,6.40
+1952,-,Kamtorn Sanidwong,THA,5.31
+1952,-,Baldadash Madatov,URS,nm
+1948,1, Willie Steele,USA,7.82
+1948,2, Theodore Bruce,AUS,7.55
+1948,3, Herbert Douglas,USA,7.54
+1948,4, Lorenzo Wright,USA,7.45
+1948,5, Adegboyega Adedoyin,GBR,7.27
+1948,6, Georges Damitio,FRA,7.07
+1948,7, Harold Whittle,GBR,7.03
+1948,8, Felix Würth,AUT,7.00
+1948,9, Harry Askew,GBR,6.93
+1948,10, Enrique Kistenmacher,ARG,6.80
+1948,11, Edward Adamczyk,POL,6.73
+1948, , Balder Singh,IND,dns
+1948,-,Jaroslav Fikejz,TCH,6.86
+1948,-,Kyros Marinis,GRE,6.75
+1948,-,Kim Won-kwon,KOR,6.71
+1948,-,Jorge Aguirre Martin,MEX,5.91
+1948,-,Jean Studer,SUI,6.94
+1948,-,Finnbjörn Thorvaldsson,ISL,6.89
+1948,-,Alvaro Dias,POR,6.86
+1948,-,Charles Thompson,GUY,6.58
+1948,-,G. Peiris,SRI,nm
+1936,1, Jesse Owens,USA,8.06,OR
+1936,2, Luz Long,GER,7.87
+1936,3, Naoto Tajima,JPN,7.74
+1936,4, Wilhelm Leichum,GER,7.73
+1936,4, Arturo Maffei,ITA,7.73
+1936,6, Robert Clark,USA,7.67
+1936,7, John Brooks,USA,7.41
+1936,8, Robert Paul,FRA,7.34
+1936,9, Arthur Bäumle,GER,7.32
+1936,10, Otto Berg,NOR,7.30
+1936,10, Åke Stenqvist,SWE,7.30
+1936,12, Gianni Caldana,ITA,7.26
+1936,13, Josef Volsolsobe,TCH,7.18
+1936,14, Samuel Richardsson,CAN,7.13
+1936,15, Marcio De Oliveira,BRA,7.05
+1936,16, Kenshi Togami,JPN,6.18
+1936,17, Masao Harada,JPN,dnq
+1936,17, Jean Studer,SUI,dnq
+1936,17, Marten Klasema,NED,dnq
+1936,17, Edward Boyce,GBR,dnq
+1936,17, Hoh Chunde,CHN,dnq
+1936,17, Emile Binet,BEL,dnq
+1936,17, Mohammad Kahn,AFG,dnq
+1936,17, Willy Rasmussen,DEN,dnq
+1936,17, Ruudi Toomsalu,EST,dnq
+1936,17, Francois Mersch,LUX,dnq
+1936,17, Claude Heim,FRA,dnq
+1936,17, Andre Prebolin,FRA,dnq
+1936,17, Bondoc Ionescu-Crum,ROU,dnq
+1936,17, Carlos De La Guerre,PER,dnq
+1936,17, George Traynor,GBR,dnq
+1936,17, Grigorios Lambrakis,GRE,dnq
+1936,17, Chang Chia-Gwe,CHN,dnq
+1936,17, Henrik Koltai,HUN,dnq
+1936,17, Ivo Buratovic,YUG,dnq
+1936,17, Jiri Hoffmann,TCH,dnq
+1936,17, Max Berendson,PER,dnq
+1936,17, Martti Tolamo,FIN,dnq
+1936,17, Nino Ramirez,PHI,dnq
+1936,17, Onni Rajasaari,FIN,dnq
+1936,17, Pascual Gutierrez,MEX,dnq
+1936,17, Rudolf Polame,TCH,dnq
+1936,17, Situ Guong,CHN,dnq
+1932,1, Edward Gordon,USA,7.64
+1932,2, Charles Redd,USA,7.60
+1932,3, Chuhei Nambu,JPN,7.45
+1932,4, Erik Svensson,SWE,7.41
+1932,5, Richard Barber,USA,7.39
+1932,6, Naoto Tajima,JPN,7.15
+1932,7, Hector Berra,ARG,6.66
+1932,8, Clovis Figueiredo Raposo,BRA,6.43
+1932,9, Sylvio Cator,HAI,5.93
+1932,10, Esteban Crespo,MEX,5.83
+1932,11, Erich Köchermann,GER,5.75
+1932, , Leonard Hutton,CAN,nm
+1928,1, Edward Hamm,USA,7.73
+1928,2, Sylvio Cator,HAI,7.58
+1928,3, Alfred Bates,USA,7.40
+1928,4, Willi Meier,GER,7.39
+1928,5, Erich Köchermann,GER,7.35
+1928,6, Hannes de Boer,NED,7.32
+1928,-,Erling Aastad,NOR,7.07
+1928,-,Toon van Welsenes,NED,6.96
+1928,-,Patrick Anglim,IRL,6.81
+1928,-,Jacques Flouret,FRA,6.64
+1928,-,Gaston Medecin,MON,6.51
+1928,-,Oscar Alvarado,CHI,6.51
+1928,-,Tibor Püspöki,HUN,6.45
+1928,-,Alfred Sutter,SUI,6.23
+1928,-,Olof Hallberg,SWE,7.18
+1928,-,Toimi Tulikoura,FIN,6.88
+1928,-,Imre Fekete,HUN,6.77
+1928,-,Virgilio Tommasi,ITA,6.76
+1928,-,Zdzislaw Nowak,POL,6.57
+1928,-,Dalip Singh,IND,6.45
+1928,-,James Cohen,GBR,6.39
+1928,-,Edward Gordon,USA,7.32
+1928,-,Erik Svensson,SWE,7.29
+1928,-,Mikio Oda,JPN,7.11
+1928,-,Helmut Schlöske,GER,6.99
+1928,-,Gijsbert Lamoree,NED,6.87
+1928,-,Lajos Balogh,HUN,6.79
+1928,-,Enrico Torre,ITA,6.76
+1928,-,Konstantinos Petridis,GRE,6.63
+1928,-,Reginald Revans,GBR,6.58
+1928,-,Johannes Viljoen,RSA,6.44
+1928,-,Chuhei Nambu,JPN,7.25
+1928,-,Vilho Tuulos,FIN,7.11
+1928,-,William DeHart Hubbard,USA,7.11
+1928,-,Alfonso de Gortari,MEX,6.97
+1928,-,Rudolf Dobermann,GER,6.91
+1928,-,Adolf Meier,SUI,6.80
+1928,-,Charles Alzieu,FRA,6.70
+1928,-,Hermann Brügmann,DEN,6.62
+1928,-,Arild Lenth,NOR,6.60
+1928,-,Fernando Labourdette-Liaresq,ESP,6.16
+1924,1, William DeHart Hubbard,USA,7.44
+1924,2, Edward Gourdin,USA,7.27
+1924,3, Sverre Hansen,NOR,7.26
+1924,4, Vilho Tuulos,FIN,7.07
+1924,5, Louis Wilhelme,FRA,6.99
+1924,6, Christopher Macintosh,GBR,6.92
+1924,7, Virgilio Tommasi,ITA,6.89
+1924,-,Paul Johannes Sandström,FIN,6.83
+1924,-,Richard Honner,AUS,6.63
+1924,-,Dalip Singh,IND,6.63
+1924,-,Alois Sobotka,TCH,6.59
+1924,-,Valter Ever,EST,6.58
+1924,-,Louis-Henri Albinet,FRA,6.55
+1924,-,Gaston Medecin,MON,6.51
+1924,-,Kiril Petrunov,BUL,6.00
+1924,-,Konstantinos Pantelidis,GRE,5.94
+1924,-,Jose Francisco Contreras,MEX,5.73
+1924,-,Stanislaw Sosnicki,POL,5.67
+1924,-,Albert Rose,USA,6.85
+1924,-,Paul Couillaud,FRA,6.22
+1924,-,Josef Machan,TCH,6.09
+1924,-,Alberto Jurado,ECU,5.68
+1924,-,Alfonso Stoopen,MEX,5.48
+1924,-,Jacob Boot,NED,6.86
+1924,-,Mikio Oda,JPN,6.83
+1924,-,Erling Aastad,NOR,6.72
+1924,-,Adolf Meier,SUI,6.61
+1924,-,Väinö Rainio,FIN,6.54
+1924,-,Joseph Hilger,LUX,5.68
+1924,-,William Comins,USA,nm
+1924,-,Sylvio Cator,HAI,6.81
+1924,-,Marcel Guillouet,FRA,6.62
+1924,-,Paul Hammer,LUX,6.24
+1924,-,Hannes de Boer,NED,nm
+1920,1, William Petersson,SWE,7.15
+1920,2, Carl Johnson,USA,7.09
+1920,3, Erik Abrahamsson,SWE,7.08
+1920,4, Robert Templeton,USA,6.95
+1920,5, Erling Aastad,NOR,6.88
+1920,6, Rolf Franksson,SWE,6.73
+1920,-,Solomon Butler,USA,6.60
+1920,-,Einar Ræder,NOR,6.58
+1920,-,Gösta Bladin,SWE,6.57
+1920,-,Johan Johansen,NOR,6.56
+1920,-,John Merchant,USA,6.50
+1920,-,Eugene Coulon,FRA,6.50
+1920,-,William Hunter,GBR,6.42
+1920,-,Marcel Orfidan,FRA,6.39
+1920,-,Hans Kindler,SUI,6.34
+1920,-,Eero Lehtonen,FIN,6.28
+1920,-,Charles Courtin,FRA,6.23
+1920,-,Henri de Bruyne,BEL,6.20
+1920,-,Hugo Lahtinen,FIN,6.19
+1920,-,Harold Abrahams,GBR,6.05
+1920,-,Edmond Medecin,MON,6.03
+1920,-,Charles Lively,GBR,5.87
+1920,-,Henri Pleger,LUX,5.81
+1920,-,Jean Lefevre,BEL,5.79
+1920,-,Julien Lehouck,BEL,5.76
+1920,-,Frantisek Sretr,TCH,5.55
+1920,-,Charles Guezille,FRA,5.48
+1920,-,Paul Hammer,LUX,5.45
+1920,-,Nicolas Kanive,LUX,5.41
+1912,1, Albert Gutterson,USA,7.60,OR
+1912,2, Calvin Bricker,CAN,7.21
+1912,3, Georg Åberg,SWE,7.18
+1912,4, Harry Worthington,USA,7.03
+1912,5, Eugene Mercer,USA,6.97
+1912,6, Fred Allen,USA,6.94
+1912,7, James Thorpe,USA,6.89
+1912,8, Robert Pasemann,GER,6.82
+1912,9, Francis Irons,USA,6.80
+1912,10, Henry Ashington,GBR,6.78
+1912,11, Ferdinand Bie,NOR,6.75
+1912,12, Sidney Abrahams,GBR,6.72
+1912,13, Nils Fiksdal,NOR,6.71
+1912,14, Edward Farrell,USA,6.71
+1912,15, Philip Kingsford,GBR,6.65
+1912,16, Andre Campana,FRA,6.64
+1912,17, Charles Lomberg,SWE,6.62
+1912,18, Viktor Franzl,AUT,6.57
+1912,19, Angelo Tonini,ITA,6.44
+1912,20, Patrik Ohlsson,SWE,6.28
+1912,21, Gustav Betzen,SWE,6.24
+1912,22, Aleksandr Schultz,RUS,6.15
+1912,23, Philipp Ehrenreich,AUT,6.14
+1912,24, Emil Kukko,FIN,6.11
+1912,25, Pal Szalay,HUN,5.98
+1912,26, Nandor Kovacs,HUN,5.96
+1912,27, Alfredo Pagani,ITA,5.95
+1912,28, Arthur Maranda,CAN,5.87
+1912,29, Manlio Legat,ITA,5.50
+1912, , Paul Fournelle,LUX,nm
+1908,1, Francis Irons,USA,7.48,OR
+1908,2, Daniel Kelly,USA,7.09
+1908,3, Calvin Bricker,CAN,7.08
+1908,4, Edward Cook,USA,6.97
+1908,5, John Brennan,USA,6.86
+1908,6, Frank Pleasant,USA,6.82
+1908,7, Albert Weinstein,GBR,6.77
+1908,8, Timothy Ahearne,GBR,6.72
+1908,9, Denis Murray,GBR,6.71
+1908,10, Gunnar Rönström,SWE,6.67
+1908,11, Charles Williams,GBR,6.65
+1908,12, Samuel Bellah,USA,6.64
+1908,13, Francis Lukeman,CAN,6.59
+1908,14, Ödön Holits,HUN,6.54
+1908,15, Arthur Hoffmann,GER,6.50
+1908,16, Alfred Bellerby,GBR,6.44
+1908,17, William Watt,GBR,6.42
+1908,18, George Barber,CAN,6.41
+1908,19, Carl Silfverstrand,SWE,6.34
+1908,20, Wilfred Bleaden,GBR,6.13
+1908, , Garfield McDonald,CAN,--
+1908,-, Hugo Wieslander,SWE,--
+1908, , Hermann von Bönninghausen,GER,--
+1908, , Bram Evers,NED,--
+1908, , Ludwig Uettwiller,GER,--
+1908, , Jacobus Hoogveld,NED,--
+1908, , Karl Ringstrand,SWE,--
+1908, , James O'Connell,USA,--
+1908, , Henri Gutierrez,FRA,--
+1908, , Lionel Cornish,GBR,--
+1908, , Geza Kövesdi,HUN,--
+1908, , Henry Olsen,NOR,--
+1904,1, Meyer Prinstein,USA,7.34,OR
+1904,2, Daniel Frank,USA,6.89
+1904,3, Robert Stanglard,USA,6.88
+1904,4, Frederick Englehardt,USA,6.63
+1904,5, George Van Cleaf,USA,--
+1904,6, John Hagerman,USA,--
+1904, , Corrie Gardner,AUS,ac
+1904,-, Leslie McPherson,AUS,ac
+1904, , Bela de Mezö,HUN,ac
+1904, , John Oxley,USA,ac
+1900,1, Alvin Kraenzlein,USA,7.18,OR
+1900,2, Meyer Prinstein,USA,7.17
+1900,3, Patrick Leahy,GBR,6.95
+1900,4, William Remington,USA,6.82
+1900,5, Albert Delannoy,FRA,6.75
+1900,6, John McLean,USA,6.65
+1900,7, Thaddeus McClain,USA,6.43
+1900,8, Waldemar Steffen,GER,6.30
+1900,9, Ernö Schubert,HUN,6.05
+1900,10, Gyula Strausz,HUN,6.01
+1900,11, Tore Blom,SWE,5.77
+1900,12, Erik Lemming,SWE,5.50
+1896,1, Ellery Clark,USA,6.35,OR
+1896,2, Robert Garrett,USA,6.00
+1896,3, James Connolly,USA,5.84
+1896,4, Alexandros Chalkokondilis,GRE,5.74
+1896,5, Alexandre Tufferi,FRA,--
+1896, , Alphonse Grisel,FRA,--
+1896,-, Athanasios Skaltsogiannis,GRE,--
+1896, , Henrik Sjöberg,SWE,--
+1896, , Carl Schuhmann,GER,--

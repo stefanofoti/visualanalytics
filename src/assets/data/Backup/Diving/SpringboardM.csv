@@ -1,0 +1,695 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2016,1, Cao Yuan,CHN,547.60
+2016,2, Jack Laugher,GBR,523.85
+2016,3, Patrick Hausding,GER,498.90
+2016,4, Evgeny Kuznetsov,RUS,481.35
+2016,5, Kristian Ipsen,USA,475.80
+2016,6, Illya Kvasha,UKR,475.10
+2016,7, Rommel Pacheco,MEX,451.20
+2016,8, Oliver Dingley,IRL,442.90
+2016,9, Cesar de Castro,BRA,436.00
+2016,10, Michael Hixon,USA,431.65
+2016,11, Philippe Gagne,CAN,425.30
+2016,12, Sebastian Morales,COL,364.50
+2016,-,Michele Benedetti,ITA,387.30
+2016,-,Yona Knight-Wisdom,JAM,381.40
+2016,-,Grant Nel,AUS,368.35
+2016,-,Rodrigo Diego,MEX,356.05
+2016,-,Stephan Feck,GER,354.20
+2016,-,Ilya Zakharov,RUS,345.60
+2016,-,Freddie Woodward,GBR,388.15
+2016,-,Ken Terauchi,JPN,380.85
+2016,-,He Chao,CHN,380.35
+2016,-,Sho Sakai,JPN,373.70
+2016,-,Matthieu Rosset,FRA,373.40
+2016,-,Woo Haram,KOR,364.10
+2016,-,Youssef Selim,EGY,360.95
+2016,-,Kevin Chavez Banda,AUS,356.55
+2016,-,Constantin Blaha,AUT,351.95
+2016,-,Andrea Chiarabini,ITA,350.40
+2016,-,Ahmad Amsyar Azman,MAS,341.70
+2012,1, Ilya Zakharov,RUS,555.90
+2012,2, Qin Kai,CHN,541.75
+2012,3, He Chong,CHN,524.14
+2012,4, Patrick Hausding,GER,505.55
+2012,5, Troy Dumais,USA,498.35
+2012,6, Yahel Castillo Huerta,MEX,492.70
+2012,7, Ethan Warren,AUS,188.95
+2012,8, Illya Kvasha,UKR,462.25
+2012,9, Chris Mears,GBR,439.75
+2012,10, Ken Nee Yeoh,MAS,437.45
+2012,11, Alexandre Despatie,CAN,413.35
+2012,12, Javier Illana Garcia,ESP,371.60
+2012,-,Francois Imbeau-Dulac,CAN,440.20
+2012,-,Evgeny Kuznetsov,RUS,437.70
+2012,-,Matthieu Rosset,FRA,422.50
+2012,-,Oleksiy Prygorov,UKR,414.15
+2012,-,Cesar de Castro,BRA,388.40
+2012,-,Chris Colwill,USA,339.80
+2012,-,Qiang Huang,MAS,433.85
+2012,-,Michele Benedetti,ITA,433.05
+2012,-,Sebastian Villa Castaneda,COL,414.90
+2012,-,Damien Cely,FRA,413.30
+2012,-,Daniel Islas Arroyo,MEX,410.60
+2012,-,Tommaso Rinaldi,ITA,400.00
+2012,-,Robert Paez Rodriguez,VEN,382.60
+2012,-,Stefanos Paparounas,GRE,366.10
+2012,-,Jack Laugher,GBR,330.00
+2012,-,Edickson Contreras Bracho,VEN,301.45
+2012,-,Stephan Feck,GER,133.80
+2008,1, He Chong,CHN,572.90
+2008,2, Alexandre Despatie,CAN,536.65
+2008,3, Qin Kai,CHN,530.10
+2008,4, Dmitry Sautin,RUS,512.65
+2008,5, Pavlo Rozenberg,GER,485.60
+2008,6, Troy Dumais,USA,472.50
+2008,7, Yahel Castillo Huerta,MEX,462.10
+2008,8, Patrick Hausding,GER,462.05
+2008,9, Robert Newbery,AUS,461.05
+2008,10, Juan Guillermo Uran,COL,454.50
+2008,11, Ken Terauchi,JPN,442.50
+2008,12, Chris Colwill,USA,425.90
+2008,-,Joona Puhakka,FIN,451.95
+2008,-,Nicola Marconi,ITA,444.55
+2008,-,Illya Kvasha,UKR,439.55
+2008,-,Matthew Mitcham,AUS,427.45
+2008,-,Aleksandr Dobroskok,RUS,412.00
+2008,-,Reuben Ross,CAN,395.85
+2008,-,Jorge Betancourt Garcia,CUB,428.25
+2008,-,Javier Illana Garcia,ESP,423.90
+2008,-,Ramon Fumado,VEN,419.05
+2008,-,Constantin Blaha,AUT,407.55
+2008,-,Yuriy Shliakhov,UKR,405.05
+2008,-,Cesar de Castro,BRA,400.60
+2008,-,Sergey Kuchmasov,BLR,399.40
+2008,-,Benjamin Swain,GBR,390.30
+2008,-,Jorge Pupo,CUB,388.70
+2008,-,Tommaso Marconi,ITA,360.15
+2008,-,Son Seong-cheol,KOR,353.35
+2004,1, Bo Peng,CHN,787.38
+2004,2, Alexandre Despatie,CAN,755.97
+2004,3, Dmitry Sautin,RUS,753.27
+2004,4, Wang Feng,CHN,750.72
+2004,5, Fernando Platas,MEX,704.25
+2004,6, Troy Dumais,USA,701.46
+2004,7, Aleksandr Dobroskok,RUS,697.29
+2004,8, Ken Terauchi,JPN,690.00
+2004,9, Cesar de Castro,BRA,662.97
+2004,10, Rommel Pacheco,MEX,642.69
+2004,11, Dmitri Lysenko,UKR,629.64
+2004,12, Robert Newbery,AUS,620.34
+2004,-,Philippe Comtois,CAN,629.22
+2004,-,Joona Puhakka,FIN,624.60
+2004,-,Tony Ally,GBR,617.13
+2004,-,Steven Barnett,AUS,614.76
+2004,-,Ramon Furnado,VEN,605.79
+2004,-,Mark Shipman,GBR,599.88
+2004,-,Javier Illana Garcia,ESP,385.80
+2004,-,Nicola Marconi,ITA,384.63
+2004,-,Jorge Betancourt Garcia,CUB,382.56
+2004,-,Erick Fornaris Alvarez,CUB,380.07
+2004,-,Andreas Wels,GER,378.93
+2004,-,Tommaso Marconi,ITA,378.72
+2004,-,Sergey Kuchmasov,BLR,377.61
+2004,-,Yuriy Shliakhov,UKR,377.19
+2004,-,Tobias Schellenberg,GER,371.85
+2004,-,Nikolaos Siranidis,GRE,363.75
+2004,-,Jukka Piekkanen,FIN,359.22
+2004,-,Aleksandr Varlamov,BLR,357.09
+2004,-,Juan Guillermo Uran,COL,344.40
+2004,-,Justin Wilcock,USA,225.87
+2000,1, Ni Xiong,CHN,708.72
+2000,2, Fernando Platas,MEX,708.42
+2000,3, Dmitry Sautin,RUS,703.20
+2000,4, Xiao Hailiang,CHN,671.04
+2000,5, Dean Pullar,AUS,647.40
+2000,6, Troy Dumais,USA,642.72
+2000,7, Mark Ruiz,USA,638.22
+2000,8, Ken Terauchi,JPN,634.47
+2000,9, Stefan Ahrens,GER,619.17
+2000,10, Andreas Wels,GER,616.53
+2000,11, Imre Lengyel,HUN,613.47
+2000,12, Tony Ally,GBR,583.80
+2000,-,Aleksandr Dobroskok,RUS,598.62
+2000,-,Cassius Duran,BRA,598.14
+2000,-,Robert Newbery,AUS,594.90
+2000,-,Donald Miranda,ITA,584.04
+2000,-,Rafael Alvarez Serrano,ESP,578.61
+2000,-,Yoendris Salazar,CUB,575.10
+2000,-,Jeffrey Liberty,CAN,375.06
+2000,-,Jukka Piekkanen,FIN,373.41
+2000,-,Luis Villarroel,VEN,365.97
+2000,-,Ken Nee Yeoh,MAS,364.38
+2000,-,Vyacheslav Khamulkin,BLR,357.03
+2000,-,Abel Sanchez,PER,356.40
+2000,-,Eduard Safonov,UKR,355.05
+2000,-,Nicola Marconi,ITA,351.12
+2000,-,Dmitri Lysenko,UKR,345.54
+2000,-,Ramon Fumado,VEN,343.89
+2000,-,Carlos Joel Rodriguez,MEX,336.51
+2000,-,Joona Puhakka,FIN,332.58
+2000,-,Richard Frece,AUT,328.68
+2000,-,Thomas Bimis,GRE,324.72
+2000,-,Jose Gil Canizares,ESP,318.72
+2000,-,Kwon Kyung-min,KOR,318.45
+2000,-,Gabriel Chereches,ROU,318.27
+2000,-,Nikolaos Siranidis,GRE,317.88
+2000,-,Erick Fornaris Alvarez,CUB,313.86
+2000,-,Evan Stewart,ZIM,313.53
+2000,-,Jaroslav Makohin,CZE,311.67
+2000,-,Frederic Pierre,FRA,310.74
+2000,-,Juan Guillermo Uran,COL,308.10
+2000,-,Alisher Seitov,KAZ,307.62
+2000,-,Meerit Insawang,THA,306.24
+2000,-,Zardo Domenios,PHI,300.42
+2000,-,Jean Delaloye,SUI,292.68
+2000,-,Mark Shipman,GBR,285.90
+2000,-,Pak Yong-ryong,PRK,271.47
+2000,-,Yu Yuet,HKG,227.64
+2000,-,Chen Han-hung,TPE,188.46
+1996,1, Ni Xiong,CHN,701.46
+1996,2, Yu Zhuocheng,CHN,690.93
+1996,3, Mark Lenzi,USA,686.49
+1996,4, Scott Donie,USA,666.93
+1996,5, Dmitry Sautin,RUS,644.67
+1996,6, Michael Murphy,AUS,640.95
+1996,7, Jan Hempel,GER,622.32
+1996,8, Fernando Platas,MEX,619.98
+1996,9, Valery Statsenko,RUS,597.69
+1996,10, Andrei Semeniouk,BLR,595.56
+1996,11, Roman Volodkov,UKR,593.13
+1996,12, Andreas Wels,GER,583.56
+1996,-,Evan Stewart,ZIM,567.96
+1996,-,Richard Frece,AUT,563.64
+1996,-,Davide Lorenzini,ITA,559.35
+1996,-,Philippe Comtois,CAN,551.28
+1996,-,Imre Lengyel,HUN,551.25
+1996,-,Antonio Ali-Ally,GBR,548.79
+1996,-,David Bedard,CAN,342.33
+1996,-,Johan Sjödin,SWE,339.93
+1996,-,Vyacheslav Khamulkin,BLR,331.86
+1996,-,Arne Joakim Andersson,SWE,331.83
+1996,-,Maksym Lapyn,UKR,328.23
+1996,-,Robert Morgan,GBR,318.69
+1996,-,Dario di Fazio,VEN,317.04
+1996,-,Nikolaos Siranidis,GRE,316.50
+1996,-,Tony Iglesias,BOL,307.83
+1996,-,Russell Butler,AUS,305.79
+1996,-,Ramon Sandin,PUR,302.55
+1996,-,Joel Rodriguez,MEX,296.91
+1996,-,Jose Gil Canizares,ESP,295.47
+1996,-,Lee Jong-hee,KOR,293.52
+1996,-,Ali Al-Hasan,KUW,272.40
+1996,-,Suchat Pichi,THA,257.13
+1996,-,Janaka Biyanwila,SRI,247.44
+1996,-,Rafael Alvarez Serrano,ESP,208.83
+1996,-,Chen Han-hung,TPE,194.13
+1996,-,Sinisa Zugic,SCG,181.17
+1996,-,Sergey Orin,TJK,162.66
+1992,1, Mark Lenzi,USA,676.53
+1992,2, Tan Liangde,CHN,645.57
+1992,3, Dmitry Sautin,EUN,627.78
+1992,4, Michael Murphy,AUS,611.97
+1992,5, Kent Ferguson,USA,609.12
+1992,6, Jorge Mondragon,MEX,604.14
+1992,7, Edwin Jongejans,NED,581.40
+1992,8, Valery Statsenko,EUN,577.92
+1992,9, Arne Joakim Andersson,SWE,562.74
+1992,10, Albin Killat,GER,556.35
+1992,11, Mark Rourke,CAN,540.66
+1992,12, Davide Lorenzini,ITA,527.73
+1992,-,David Bedard,CAN,372.54
+1992,-,Lan Wei,CHN,369.09
+1992,-,Robert Morgan,GBR,366.66
+1992,-,Simon McCormack,AUS,358.05
+1992,-,Fernando Platas,MEX,355.47
+1992,-,Jan Hempel,GER,353.85
+1992,-,Christian Styren,NOR,347.94
+1992,-,Evan Stewart,ZIM,345.87
+1992,-,Isao Yamagishi,JPN,344.40
+1992,-,Niki Stajkovic,AUT,339.75
+1992,-,Jose Gil Canizares,ESP,336.84
+1992,-,Jürgen Richter,AUT,336.78
+1992,-,Dario di Fazio,VEN,332.43
+1992,-,Alexei Kogalev,BEL,323.46
+1992,-,Petar Trifonov,BUL,320.82
+1992,-,Alessandro De Botton,ITA,312.69
+1992,-,Philippe Duvernay,FRA,310.14
+1992,-,Craig Vaughan,RSA,297.51
+1992,-,Keita Kaneto,JPN,295.74
+1992,-,Grzegorz Kozdranski,POL,228.06
+1988,1, Greg Louganis,USA,730.80
+1988,2, Tan Liangde,CHN,704.88
+1988,3, Li Deliang,CHN,665.28
+1988,4, Albin Killat,FRG,661.47
+1988,5, Mark Bradshaw,USA,642.99
+1988,6, Jorge Mondragon,MEX,616.02
+1988,7, Jesus Mena,MEX,598.77
+1988,8, Edwin Jongejans,NED,588.33
+1988,9, Niki Stajkovic,AUT,570.60
+1988,10, Aleksandr Portnov,URS,563.37
+1988,11, Keita Kaneto,JPN,562.05
+1988,12, Valeri Gontcharov,URS,554.16
+1988,-,Massimo Castellani,ITA,553.74
+1988,-,Arne Joakim Andersson,SWE,549.99
+1988,-,Tom Lemaire,BEL,549.09
+1988,-,Piero Italiani,ITA,542.67
+1988,-,Larry Flewwelling,CAN,541.14
+1988,-,Isao Yamagishi,JPN,540.72
+1988,-,Erich Pils,AUT,532.92
+1988,-,David Bedard,CAN,532.62
+1988,-,Willi Meyer,FRG,511.98
+1988,-,Juha Ovaskainen,FIN,500.76
+1988,-,Graeme Banks,AUS,499.41
+1988,-,Jerome Nalliod,FRA,496.17
+1988,-,Jose Gil Canizares,ESP,483.12
+1988,-,Graham Morris,GBR,478.74
+1988,-,Tomasz Rossa,POL,475.44
+1988,-,Russell Butler,AUS,470.19
+1988,-,Robert Morgan,GBR,457.65
+1988,-,Abraham Suarez,ECU,446.82
+1988,-,Majed Altaqi,KUW,387.60
+1988,-,Lee Sun-Gee,KOR,362.58
+1988,-,Christopher Honey,BAR,347.22
+1988,-,Kei Shan Tang,HKG,298.08
+1988,-,Kin Chung Wong,HKG,263.16
+1984,1, Greg Louganis,USA,754.41
+1984,2, Tan Liangde,CHN,662.31
+1984,3, Ronald Merriott,USA,661.32
+1984,4, Li Hongping,CHN,646.35
+1984,5, Christopher Snode,GBR,609.51
+1984,6, Pietro Italiani,ITA,578.94
+1984,7, Albin Killat,FRG,569.52
+1984,8, Stephen Foley,AUS,"561.93"
+1984,9, Jorge Mondragon,MEX,550.35
+1984,10, Dieter Dörr,FRG,549.33
+1984,11, Juha Ovaskainen,FIN,548.55
+1984,12, Carlos Giron,MEX,530.04
+1984,-,Jon Grunde Vegard,NOR,531.48
+1984,-,Randy Sageman,CAN,527.97
+1984,-,Nigel Stanton,GBR,521.61
+1984,-,Tom Lemaire,BEL,515.16
+1984,-,Ricardo Camacho,ESP,509.10
+1984,-,Robert Graham,NZL,497.55
+1984,-,Fernando Henderson,DOM,492.15
+1984,-,Reynaldo Castro,DOM,485.16
+1984,-,Carlos Isturiz,VEN,483.00
+1984,-,Gary Lamb,NZL,477.66
+1984,-,Michel Mourant,CAN,476.19
+1984,-,Andrew Kwan,HKG,433.89
+1984,-,Isao Yamagishi,JPN,427.14
+1984,-,Said Daw,EGY,407.88
+1984,-,Yang Wai Kam,HKG,387.63
+1984,-,Tamer Farid,EGY,373.71
+1984,-,Abdullah Abuqrais,KUW,312.24
+1984,-,Majed Al Taqi,KUW,299.16
+1980,1, Aleksandr Portnov,URS,905.025
+1980,2, Carlos Giron,MEX,892.140
+1980,3, Franco Cagnotto,ITA,871.500
+1980,4, Falk Hoffmann,GDR,858.510
+1980,5, Aleksandr Kosenkov,URS,855.120
+1980,6, Christopher Snode,GBR,844.470
+1980,7, Vyacheslav Troshin,URS,820.050
+1980,8, Ricardo Camacho,ESP,749.340
+1980,-,Frank Taubert,GDR,524.04
+1980,-,Dieter Waskow,GDR,522.87
+1980,-,Stephen Foley,AUS,521.82
+1980,-,Niki Stajkovic,AUT,521.04
+1980,-,Petar Georgiev,BUL,504.33
+1980,-,Francisco Rueda,MEX,495.63
+1980,-,Kenneth Grove,AUT,491.94
+1980,-,Rolando Ruiz,CUB,489.24
+1980,-,Karoly Nemedi,HUN,475.17
+1980,-,Reynaldo Castro,DOM,469.14
+1980,-,Roman Godzinski,POL,462.48
+1980,-,Jorge Mondragon,MEX,454.17
+1980,-,Michael Worisch,AUT,452.43
+1980,-,Milton Machado Braga,BRA,451.17
+1980,-,Alexandru Bagiu,ROU,427.35
+1980,-,David Parrington,ZIM,416.67
+1976,1, Philip Boggs,USA,619.05
+1976,2, Franco Cagnotto,ITA,570.48
+1976,3, Aleksandr Kosenkov,URS,567.24
+1976,4, Falk Hoffmann,GDR,553.53
+1976,5, Robert Cragg,USA,548.19
+1976,6, Greg Louganis,USA,528.96
+1976,7, Carlos Giron,MEX,523.59
+1976,8, Klaus Dibiasi,ITA,516.18
+1976,-,Donald Wagstaff,AUS,529.11
+1976,-,Norbert Huda,FRG,518.88
+1976,-,Boris Kozlov,URS,516.42
+1976,-,Vyacheslav Strakhov,URS,510.63
+1976,-,Frank Taubert,GDR,493.68
+1976,-,Dieter Waskow,GDR,491.90
+1976,-,Dieter Dörr,FRG,491.40
+1976,-,Scott Cranham,CAN,485.97
+1976,-,Porfirio Becerril,MEX,484.41
+1976,-,Christopher Snode,GBR,479.79
+1976,-,Lynn Phoenix,CAN,458.10
+1976,-,Trevor Simpson,GBR,450.81
+1976,-,Stephen Foley,AUS,447.15
+1976,-,Claudio De Miro,ITA,446.61
+1976,-,Kenneth Armstrong,CAN,442.47
+1976,-,Alain Goosen,FRA,441.36
+1976,-,Ricardo Camacho,ESP,408.84
+1976,-,Sangwan Foengdee,THA,317.61
+1976,-,Sulaiman Qabazard,KUW,216.93
+1976,-,Ahmet Kizil,TUR,205.68
+1972,1, Vladimir Vasin,URS,594.09
+1972,2, Franco Cagnotto,ITA,591.63
+1972,3, Craig Lincoln,USA,577.29
+1972,4, Klaus Dibiasi,ITA,559.05
+1972,5, Michael Finneran,USA,557.34
+1972,6, Vyacheslav Strakhov,URS,556.20
+1972,7, Falk Hoffmann,GDR,544.95
+1972,8, Norbert Huda,FRG,524.16
+1972,9, Carlos Giron,MEX,521.88
+1972,10, Roar Løken,NOR,514.92
+1972,11, Jose Robinson,MEX,514.02
+1972,12, Helge Ziethen,GDR,511.02
+1972,-,Donald Wagstaff,AUS,344.13
+1972,-,Scott Cranham,CAN,339.21
+1972,-,Pentti Koskinen,FIN,336.99
+1972,-,Kenneth Sully,CAN,336.12
+1972,-,Christopher Walls,GBR,332.07
+1972,-,Vladimir Kapirulin,URS,329.46
+1972,-,Gerhard Hölzl,FRG,327.42
+1972,-,David Bush,USA,327.06
+1972,-,Ion Ganea,ROU,325.17
+1972,-,Alain Goosen,FRA,322.41
+1972,-,John Baker,GBR,321.15
+1972,-,Junji Yuasa,JPN,316.95
+1972,-,Ron Friesen,CAN,313.11
+1972,-,Salim Barjum,COL,310.86
+1972,-,Porfirio Becerril,MEX,310.65
+1972,-,Brian Wetheridge,GBR,310.53
+1972,-,Kenneth Grove,AUT,302.91
+1972,-,Reinhard Bauer,FRG,299.79
+1972,-,Rudolf Kruspel,AUT,293.58
+1972,-,Josef Kien,AUT,285.30
+1968,1, Bernard Wrightson,USA,170.15
+1968,2, Klaus Dibiasi,ITA,159.74
+1968,3, James Henry,USA,158.09
+1968,4, Luis Nino de Rivera,MEX,155.71
+1968,5, Franco Cagnotto,ITA,155.70
+1968,6, Keith Russell,USA,151.75
+1968,7, Tord Anderson,SWE,151.50
+1968,8, Donald Wagstaff,AUS,150.18
+1968,9, Mikhail Safonov,URS,141.02
+1968,10, Ulrich Reff,FRG,140.08
+1968,11, Vladimir Vasin,URS,139.59
+1968,12, Pentti Koskinen,FIN,137.80
+1968,-,Jose Robunson,MEX,91.45
+1968,-,Jorge Telch,MEX,90.68
+1968,-,Jakub Puchow,POL,88.65
+1968,-,Norbert Huda,FRG,88.43
+1968,-,Italo Salice,ITA,87.86
+1968,-,Junji Yuasa,JPN,86.80
+1968,-,Frank Carter,GBR,85.90
+1968,-,Boris Polulyakh,URS,84.32
+1968,-,Jerzy Kowalewski,POL,79.97
+1968,-,Song Jae-woong,KOR,79.66
+1968,-,Alberto Moreno,CUB,76.80
+1968,-,Salim Barjum,COL,76.19
+1968,-,Kenneth Sully,CAN,74.62
+1968,-,Jose Luis Ponce,CUB,72.72
+1968,-,Jerome Anderson,PUR,68.83
+1968,-,Hector Bas,PUR,62.43
+1964,1, Kenneth Sitzberger,USA,159.90
+1964,2, Francis Gorman,USA,157.63
+1964,3, Larry Andreasen,USA,143.77
+1964,4, Hans-Dieter Pophal,GER,142.58
+1964,5, Göran Lundqvist,SWE,138.65
+1964,6, Boris Polulyakh,URS,138.64
+1964,7, Mikhail Safonov,URS,134.00
+1964,8, Vladimir Vasin,URS,133.48
+1964,-,John Candler,GBR,90.69
+1964,-,Franco Cagnotto,ITA,89.54
+1964,-,Tadao Tosa,JPN,89.10
+1964,-,Luis Nino de Rivera,MEX,87.87
+1964,-,Klaus Dibiasi,ITA,87.68
+1964,-,Rolf Sperling,GER,86.98
+1964,-,Alvaro Gaxiola,MEX,85.78
+1964,-,Kurt Mrkwicka,AUT,85.72
+1964,-,Horst Rosenfeldt,GER,85.66
+1964,-,Thomas Dinsley,CAN,83.02
+1964,-,Jose Robinson,MEX,82.42
+1964,-,Pentti Koskinen,FIN,82.00
+1964,-,Toshio Yamano,JPN,81.74
+1964,-,Jerome Anderson,PUR,81.07
+1964,-,Song Jae-woong,KOR,75.10
+1964,-,Shunsuke Kaneto,JPN,71.59
+1964,-,Ansuya Prasad,IND,69.04
+1964,-,Manucher Fasihi,IRI,67.20
+1964,-,Terence Rossiter,ZIM,61.06
+1960,1, Gary Tobian,USA,170.00
+1960,2, Sam Hall,USA,167.08
+1960,3, Juan Botella Medina,MEX,162.30
+1960,4, Alvaro Gaxiola,MEX,150.42
+1960,5, Ernest Meissner,CAN,144.07
+1960,6, Lamberto Mari,ITA,143.97
+1960,7, Toshio Yamano,JPN,140.46
+1960,8, Hans-Dieter Pophal,GER,133.95
+1960,-,Georges Senecot,FRA,92.47
+1960,-,Walter Messa,ITA,92.28
+1960,-,Rudolf Örtel,GER,91.90
+1960,-,Yury Melnikov,URS,91.86
+1960,-,Ernst Johnny Hellström,SWE,91.31
+1960,-,Göran Lundqvist,SWE,91.23
+1960,-,Kurt Mrkwicka,AUT,90.73
+1960,-,Graham Deuble,AUS,89.26
+1960,-,Vyacheslav Chernychev,URS,50.87
+1960,-,Christian Pire,FRA,50.49
+1960,-,Peter Huber,AUT,50.46
+1960,-,Peter Squires,GBR,50.23
+1960,-,Tomas Bauer,TCH,49.92
+1960,-,Fernando Telles Ribeiro,BRA,49.27
+1960,-,Shunsuke Kaneto,JPN,47.51
+1960,-,Janos Konkoly,HUN,46.94
+1960,-,Jerzy Kowalewski,POL,46.54
+1960,-,Keith Collin,GBR,46.10
+1960,-,Kenneth Crotty,AUS,43.40
+1960,-,Ahmed Moharran,EGY,42.98
+1960,-,Federico Andrade,COL,41.43
+1960,-,Jozsef Dora,HUN,41.21
+1960,-,Hans Klug,SUI,38.65
+1960,-,Ali Muheeb,EGY,35.79
+1956,1, Robert Clothworthy,USA,159.56
+1956,2, Donald Harper,USA,156.23
+1956,3, Joaquin Capilla Perez,MEX,150.69
+1956,4, Glen Whitten,USA,148.55
+1956,5, Gennady Udalov,URS,140.64
+1956,6, Roman Brener,URS,139.14
+1956,7, Günther Mund,CHI,137.53
+1956,8, Jozsef Gerlach,HUN,136.08
+1956,9, Yury Kasakov,URS,129.34
+1956,10, William Patrick,CAN,127.32
+1956,11, Juan Botella Medina,MEX,127.32
+1956,12, Yutaka Baba,JPN,126.87
+1956,-,Ferenc Siak,HUN,74.60
+1956,-,Christian Pire,FRA,74.33
+1956,-,Helge Vasenius,FIN,73.82
+1956,-,Peter Tarsey,GBR,72.65
+1956,-,Arthur Winther,AUS,71.04
+1956,-,Ryo Mabuchi,JPN,70.82
+1956,-,Joseph McCann,AUS,69.18
+1956,-,Ronald Faulds,AUS,68.84
+1956,-,Raymond Cann,GBR,67.96
+1956,-,Yoav Raanan,ISR,65.14
+1956,-,Fernando Telles Ribeiro,BRA,62.07
+1956,-,Roy Walsh,GBR,58.21
+1952,1, David Browning,USA,205.29
+1952,2, Miller Anderson,USA,199.84
+1952,3, Robert Clotworthy,USA,184.92
+1952,4, Joaquin Capilla Perez,MEX,178.33
+1952,5, Roman Brener,URS,165.63
+1952,6, Milton Busin,BRA,155.91
+1952,7, Anthony Turner,GBR,151.90
+1952,8, Aleksei Zigalov,URS,151.31
+1952,-,Yoav Raanan,ISR,67.70
+1952,-,Franz Worisch,AUT,67.18
+1952,-,Hanns Aderhold,GER,67.09
+1952,-,Werner Sobeck,GER,66.75
+1952,-,Gennady Udalov,URS,65.99
+1952,-,Helge Vasenius,FIN,65.41
+1952,-,Katsuichi Mori,JPN,65.23
+1952,-,Peter Heatly,GBR,63.37
+1952,-,Ahmed Kamel Aly,EGY,62.95
+1952,-,Kamal Ali Hassan,EGY,62.68
+1952,-,Rodolfo Perea,MEX,62.36
+1952,-,Alberto Capilla Perez,MEX,61.85
+1952,-,Peter John Elliott,GBR,61.85
+1952,-,Willie Welgemoed,RSA,61.64
+1952,-,Frank Landqvist,SWE,60.11
+1952,-,Ronald Faulds,AUS,59.90
+1952,-,Francis Gosling,BER,59.57
+1952,-,Raymond Mulinghausen,FRA,59.52
+1952,-,Gunnar Johansson,SWE,59.11
+1952,-,Charles Johnson,BER,58.70
+1952,-,Olavi Heinonen,FIN,58.06
+1952,-,Henri Goosen,FRA,57.79
+1952,-,Allan Smith,SRI,55.00
+1952,-,Lamberto Mari,ITA,54.42
+1952,-,Ahmed Fathi Hashad,EGY,50.04
+1952,-,Francis Murphy,AUS,48.42
+1952,-,Heinz Schaub,SUI,47.15
+1952,-,Eduardo Fereda,VEN,41.98
+1948,1, Bruce Harlan,USA,163.64
+1948,2, Miller Anderson,USA,145.52
+1948,3, Sammy Lee,USA,145.52
+1948,4, Joaquin Capilla Perez,MEX,141.79
+1948,5, Raymond Mulinghausen,FRA,126.55
+1948,6, Svante Johansson,SWE,120.20
+1948,7, Kamal Ali Hassan,EGY,119.90
+1948,8, Thomas Christiansen,DEN,114.59
+1948,9, George Athans,CAN,114.13
+1948,10, Francis Gosling,BER,113.98
+1948,11, Milton Busin,BRA,113.86
+1948,12, Franz Worisch,AUT,112.15
+1948,13, Peter Heatly,GBR,111.73
+1948,14, Roger Heinkele,FRA,110.78
+1948,15, Ismael Ahmed Ramzi,EGY,110.18
+1948,16, David Norris,AUS,109.67
+1948,17, Diego Mariscal,MEX,107.78
+1948,18, Charles Johnson,GBR,105.32
+1948,19, Wilhelm Lippa,AUT,103.18
+1948,20, Guy Hernandez,FRA,102.89
+1948,21, Gunnar Kemnitz,BRA,102.22
+1948,22, Mohamed Ibrahim,EGY,97.52
+1948,23, Peter John Elliott,GBR,91.23
+1948,24, Jose Castillo,CUB,84.81
+1948,25, Ernst Strupler,SUI,80.09
+1948,26, Günther Mund,CHI,68.08
+1948, , Edward Heron,IRL,dnf
+1936,1, Richard Degener,USA,163.57
+1936,2, Marshall Wayne,USA,159.56
+1936,3, Albert Greene,USA,146.29
+1936,4, Tsuneo Shibahara,JPN,144.92
+1936,5, Erhard Weiss,GER,141.24
+1936,6, Leo Esser,GER,137.99
+1936,7, Winfried Mahraun,GER,134.61
+1936,8, Tomio Koyanangi,JPN,133.07
+1936,9, Frantisek Leikert,TCH,131.98
+1936,10, Branko Ziherl,YUG,125.26
+1936,11, Ismael Ahmed Ramzi,EGY,121.67
+1936,12, Roger Heinkele,FRA,117.72
+1936,13, Heikki Ilmari Niemeläinen,FIN,116.80
+1936,14, Ronald Masters,AUS,115.72
+1936,15, Josef Nesvadba,TCH,111.44
+1936,15, Hans Haasmann,NED,111.44
+1936,17, Karl Steiner,AUT,109.54
+1936,18, Laszlo Hidvegi,HUN,107.49
+1936,19, Ahmed Ibrahim Kamel,EGY,105.02
+1936,20, Frederick Hodges,GBR,102.98
+1936,21, Frederic Böni,SUI,95.84
+1936,22, Laszlo Hodi,HUN,85.42
+1936,23, Max Happle,SUI,80.24
+1936, , Alfredo Alvarez Calderon,PER,dnf
+1932,1, Michael Galitzen,USA,161.38
+1932,2, Harold Smith,USA,158.54
+1932,3, Richard Degener,USA,151.82
+1932,4, Alfred Phillips,CAN,134.64
+1932,5, Leo Esser,GER,134.30
+1932,6, Kazuo Kobayashi,JPN,133.76
+1932,7, Emile Poussard,FRA,128.66
+1932,8, Tetsutaro Namae,JPN,125.18
+1932,9, Josef Staudinger,AUT,124.50
+1932,10, Federico Mariscal,MEX,111.98
+1932,11, Arthur Stott,CAN,110.22
+1932,12, Antonio Mariscal,MEX,97.28
+1932,13, Alonso Mariscal,MEX,88.32
+1928,1, Pete Desjardin,USA,185.04
+1928,2, Michael Galitzen,USA,174.06
+1928,3, Farid Simaika,EGY,172.46
+1928,4, Harold Smith,USA,168.96
+1928,5, Arthur Mund,GER,154.72
+1928,6, Ewald Riebschläger,GER,153.86
+1928,7, Heinz Plumanns,GER,150.18
+1928,8, Alfred Phillips,CAN,149.48
+1928,9, Fumio Takashina,JPN,139.78
+1928,-,Luciano Cozzi,ITA,129.14
+1928,-,Edmund Lindmark,SWE,123.70
+1928,-,Hendrik Lotgering,NED,112.98
+1928,-,Armand Billard,FRA,101.44
+1928,-,Josef Nesvadba,TCH,102.48
+1928,-,Julius Balazs,TCH,139.24
+1928,-,Curt Sjöberg,SWE,129.26
+1928,-,Josef Staudinger,AUT,128.54
+1928,-,Arthur Bischoff,SUI,100.14
+1928,-,Harry Morris,AUS,94.46
+1928,-,Maurice Lepage,FRA,132.52
+1928,-,Louis Gompers,NED,123.24
+1928,-,Federico Mariscal,MEX,88.84
+1928,-,S. Mercer,GBR,81.84
+1924,1, Albert White,USA,696.4
+1924,2, Pete Desjardin,USA,693.2
+1924,3, Clarence Pinkston,USA,653.0
+1924,4, Edmund Lindmark,SWE,599.1
+1924,5, Richmond Eve,AUS,564.3
+1924,6, Adolf Hellqvist,SWE,544.9
+1924,7, Curt Sjöberg,SWE,538.3
+1924,8, Hendrik Hemsing,NED,490.8
+1924,9, Julius Balaz,TCH,463.1
+1924,-,Karl Weil,FRA,497.9
+1924,-,Hendrik Lotgering,NED,459.2
+1924,-,Eric MacDonald,GBR,433.2
+1924,-,Gregory Matveleff,GBR,414.1
+1924,-,Antoine Jacob,FRA,425.4
+1924,-,Arthur Bischoff,SUI,385.0
+1924,-,Paul Raeth,FRA,455.5
+1924,-,Adolf Lindqvist,FIN,398.8
+1920,1, Louis Kuehn,USA,675.40
+1920,2, Clarence Pinkston,USA,655.30
+1920,3, Louis Balbach,USA,649.50
+1920,4, Gustaf Blomgren,SWE,587.05
+1920,5, Gunnar Ekstrand,SWE,559.25
+1920,6, Karl Johan Jansson,SWE,544.75
+1920,-,Oscar Dose,SWE,543.70
+1920,-,Richard Flint,CAN,480.70
+1920,-,Joseph Callens,BEL,476.40
+1920,-,Karl Weil,FRA,477.30
+1920,-,Adolpho Wellisch,BRA,522.85
+1920,-,Ernest Walmsley,GBR,453.05
+1920,-,Guglielmo De Sanctis,ITA,451.35
+1920,-,Paul Knuchel,SUI,431.35
+1912,1, Paul Günther,GER,79.23
+1912,2, Hans Luber,GER,76.78
+1912,3, Kurt Behrens,GER,73.73
+1912,4, Albert Zürner,GER,73.33
+1912,5, Robert Zimmerman,CAN,72.54
+1912,6, Herbert Pott,GBR,71.45
+1912,7, Carl Johan Jansson,SWE,69.64
+1912,8, George Gaidzick,USA,68.01
+1912,-,Arthur McAleenan,USA,68.02
+1912,-,Ernst Brandsten,SWE,65.01
+1912,-,Sven Nylund,SWE,62.60
+1912,-,Eskil Brodd,SWE,62.62
+1912,-,Oskar Wetzell,FIN,58.70
+1912,-,Ernst Eklund,SWE,53.02
+1912,-,Carlo Bonfanti,ITA,46.81
+1912,-,Ernst Appelqvist,SWE,62.61
+1912,-,Axel Runström,SWE,58.42
+1912,-,Erik Tjäder,SWE,53.56
+1908,1, Albert Zürner,GER,85.5
+1908,2, Kurt Behrens,GER,85.3
+1908,3, George Gaidzik,USA,80.8
+1908,4, Gottlob Walz,GER,80.8
+1908,-,Herbert Ernest Potts,GBR,79.6
+1908,-,Heinrich Freyschmidt,GER,79.3
+1908,-,Frank Errington,GBR,72.6
+1908,-,Oskar Wetzell,FIN,70.1
+1908,-,Friedrich Nicolai,GER,81.8
+1908,-,Harold Clarke,GBR,81.1
+1908,-,Harold Grote,USA,74.5
+1908,-,Robert Zimmerman,CAN,74.0
+1908,-,Harry Crank,GBR,70.3
+1908,-,Anthony Beckett,GBR,67.5
+1908,-,Anthony Taylor,GBR,58.8
+1908,-,Karl Malmström,SWE,70.3
+1908,-,William Hoare,GBR,67.8
+1908,-,William Bull,GBR,66.0
+1908,-,Carlo Bonfanti,ITA,65.8
+1908,-,Sigfrid Larsson,SWE,64.5
+1908,-,Reginald Baker,ANZ,61.3
+1908,-,Harold Smyrk,GBR,78.3
+1908,-,Thomas Cross,GBR,64.5

@@ -27,7 +27,14 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { AboutComponent } from './about/about.component';
 import { ScatterplotComponent } from './scatterplot/scatterplot.component'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { LegendComponent } from './legend/legend.component'
+import { LegendComponent } from './legend/legend.component';
+import { PerformanceComponent } from './performance/performance.component';
+import { PerfChartComponent } from './perf-chart/perf-chart.component';
+import { EconChartComponent } from './econ-chart/econ-chart.component';
+import { PredictChartComponent } from './predict-chart/predict-chart.component';
+import { AnalyticsConfComponent } from './analytics-conf/analytics-conf.component';
+import { AnalyticsMapComponent } from './analytics-map/analytics-map.component';
+import { AnalyticsLoaderService } from './analytics-loader.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +52,12 @@ import { LegendComponent } from './legend/legend.component'
     AboutComponent,
     ScatterplotComponent,
     LegendComponent,
+    PerformanceComponent,
+    PerfChartComponent,
+    EconChartComponent,
+    PredictChartComponent,
+    AnalyticsConfComponent,
+    AnalyticsMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +76,8 @@ import { LegendComponent } from './legend/legend.component'
   ],
   providers: [
     DataService,
-    LoaderService
+    LoaderService,
+    AnalyticsLoaderService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,675 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,2,Romain Cannone,FRA,15
+2020,3,Gergely Siklosi,HUN,10
+2020,4,Igor Reizlin,UKR,15
+2020,-,Andrea Santarelli,ITA,12
+2016,2,Park Sangyoung,KOR,15
+2016,3,Geza Imre,HUN,14
+2016,4,Gauthier Grumier,FRA,15
+2016,-,Benjamin Steffen,SUI,11
+2016,-,Kazuyasu Minobe,JPN,8
+2016,-,Nikolai Novosjolov,EST,9
+2016,-,Yannick Borel,FRA,10
+2016,-,Max Heinzer,SUI,4
+2016,-,Ayman Fayez,EGY,9
+2016,-,Anton Avdeev,RUS,12
+2016,-,Francisco Limardo,VEN,12
+2016,-,Gabor Boczko,HUN,8
+2016,-,Bogdan Nikishin,UKR,14
+2016,-,Fabian Kauter,SUI,14
+2016,-,Vadim Anokhin,RUS,7
+2016,-,Enrico Garozzo,ITA,12
+2016,-,Athos Schwantes,BRA,7
+2016,-,Ruben Limardo Gascon,VEN,5
+2016,-,Marco Fichera,ITA,8
+2016,-,Bas Verwijlen,NED,9
+2016,-,Daniel Jerent,FRA,14
+2016,-,Park Kyoungdoo,KOR,10
+2016,-,Alexandre Bouzaid,SEN,9
+2016,-,John Rodriguez,COL,8
+2016,-,Jiao Yunlong,CHN,11
+2016,-,Jason Pryor,USA,14
+2016,-,Anatolii Herey,UKR,9
+2016,-,Andras Redli,HUN,9
+2016,-,Maxime Brinck-Croteau,CAN,14
+2016,-,Paolo Pizzo,ITA,11
+2016,-,Pavel Sukhov,RUS,11
+2016,-,Jung Jinsun,KOR,11
+2016,-,Jiri Beran,CZE,6
+2016,-,Nicolas Ferreira,BRA,9
+2016,-,Dmytro Karyuchenko,UKR,7
+2016,-,Guilherme Melaragno,BRA,13
+2016,-,Abdulaziz Al Shatti,IOA,13
+2016,-,Silvio Fernandez,VEN,8
+2012,2,Ruben Limardo Gascon,VEN,15
+2012,3,Bartosz Piasecki,NOR,10
+2012,4,Jung Jinsun,KOR,12
+2012,-,Seth Kelsey,USA,11
+2012,-,Silvio Fernandez,VEN,9
+2012,-,Paolo Pizzo,ITA,12
+2012,-,Jörg Fiedler,GER,11
+2012,-,Yannick Borel,FRA,14
+2012,-,Nikolai Novosjolov,EST,3
+2012,-,Ruslan Kudayev,UZB,3
+2012,-,Max Heinzer,SUI,11
+2012,-,Alexandre Bouzaid,SEN,11
+2012,-,Elmir Alimzhanov,KAZ,8
+2012,-,Bas Verwijlen,NED,8
+2012,-,Geza Imre,HUN,7
+2012,-,Fabian Kauter,SUI,11
+2012,-,Li Guojie,CHN,7
+2012,-,Dmitriy Alexanin,KAZ,12
+2012,-,Park Kyoungdoo,KOR,9
+2012,-,Paris Inostroza,CHI,2
+2012,-,Ayman Fayez,EGY,13
+2012,-,Radoslaw Zawrotniak,POL,9
+2012,-,Ka Ming Leung,HKG,14
+2012,-,Tien Nhat Nguyen,VIE,9
+2012,-,Pavel Sukhov,RUS,11
+2012,-,Soren Thompson,USA,4
+2012,-,Athos Schwantes,BRA,10
+2012,-,Abdelkarim El Haouari,MAR,8
+2012,-,Gauthier Grumier,FRA,13
+2012,-,Dmitriy Karuchenko,UKR,10
+2008,2,Matteo Tagliariol,ITA,15
+2008,3,Fabrice Jeannet,FRA,9
+2008,4,Jose Luis Abajo,ESP,8
+2008,-,Gabor Boczko,HUN,7
+2008,-,Diego Confalonieri,ITA,13
+2008,-,Bas Verwijlen,NED,11
+2008,-,Jung Jinsun,KOR,11
+2008,-,Radoslaw Zawrotniak,POL,8
+2008,-,Jerome Jeannet,FRA,9
+2008,-,Geza Imre,HUN,9
+2008,-,Michael Kauter,SUI,13
+2008,-,Ulrich Robeiri,FRA,11
+2008,-,Dmytro Chumak,UKR,6
+2008,-,Igor Tikhomirov,CAN,7
+2008,-,Yin Lianchi,CHN,13
+2008,-,Silvio Fernandez Briceno,VEN,9
+2008,-,Nikolai Novosjolov,EST,14
+2008,-,Kim Won-jin,KOR,14
+2008,-,Tomasz Motyka,POL,10
+2008,-,Kim Seung-gu,KOR,14
+2008,-,Bogdan Nikishyn,UKR,12
+2008,-,Wang Lei,CHN,10
+2008,-,Anton Avdeev,RUS,11
+2008,-,Sturla Torkildsen,NOR,10
+2008,-,Li Guojie,CHN,6
+2008,-,Ruben Limardo Gascon,VEN,13
+2008,-,Maksym Khvorost,UKR,11
+2008,-,Weston Kelsey,USA,11
+2008,-,Joaquim Videira,POR,9
+2008,-,Krisztian Kulcsar,HUN,9
+2008,-,Alfredo Rota,ITA,10
+2008,-,Paris Inostroza,CHI,11
+2008,-,Ahmed Nabil Khader,EGY,8
+2008,-,Aissam Rami,MAR,11
+2008,-,Given Maduma,RSA,12
+2008,-,Mike Wood,RSA,7
+2008,-,Wolfang Mejias,VEN,11
+2008,-,Adam Wiercioch,POL,11
+2008,-,Serguei Katchiourine,KGZ,14
+2008,-,Dario Torrente,RSA,10
+2008,-,Shogo Nishida,JPN,11
+2004,2,Marcel Fischer,SUI,15
+2004,3,Wang Lei,CHN,9
+2004,4,Pavel Kolobkov,RUS,15
+2004,-,Eric Boisse,FRA,8
+2004,-,Silvio Fernandez,VEN,13
+2004,-,Fabrice Jeannet,FRA,14
+2004,-,Daniel Strigel,GER,14
+2004,-,Soren Thompson,USA,11
+2004,-,Ivan Kovacs,HUN,7
+2004,-,Zhao Gang,CHN,12
+2004,-,Andres Carillo,CUB,11
+2004,-,Lee Sang-yup,KOR,5
+2004,-,Dmytro Kariuchenko,UKR,12
+2004,-,Sven Schmid,GER,11
+2004,-,Igor Turchin,RUS,10
+2004,-,Alfredo Rota,ITA,13
+2004,-,Ahmed Nabil Khader,EGY,10
+2004,-,Cody Mattern,USA,6
+2004,-,Xie Yongjun,CHN,13
+2004,-,Yasser Mahmoud,EGY,9
+2004,-,Siriroj Rathprasert,THA,9
+2004,-,Hugues Obry,FRA,10
+2004,-,Maksym Khvorost,UKR,11
+2004,-,Sergey Kochetkov,RUS,11
+2004,-,Christoph Marik,AUT,7
+2004,-,Geza Imre,HUN,13
+2004,-,Jörg Fiedler,GER,12
+2004,-,Gabor Boczko,HUN,10
+2004,-,Seth Kelsey,USA,11
+2004,-,Seamus Robinson,AUS,5
+2004,-,Paris Inostroza,CHI,12
+2004,-,Alexandru Nyisztor,ROU,8
+2004,-,Giorgos Abalof,GRE,6
+2004,-,Muhannad Saif El-Din,EGY,13
+2004,-,Aissam Rami,MAR,6
+2004,-,Abderrahmane Daidj,ALG,6
+2004,-,Bohdan Nikishyn,UKR,6
+2000,2,Pavel Kolobkov,RUS,15
+2000,3,Hugues Obry,FRA,12
+2000,4,Lee Sang-ki,KOR,15
+2000,-,Marcel Fischer,SUI,14
+2000,-,Ivan Trevejo Perez,CUB,14
+2000,-,Eric Srecki,FRA,14
+2000,-,Peter Vanky,SWE,12
+2000,-,Zhao Gang,CHN,10
+2000,-,Lee Sang-yup,KOR,8
+2000,-,Oleksandr Gorbachuk,UKR,11
+2000,-,Paolo Milanoli,ITA,6
+2000,-,Attila Fekete,HUN,8
+2000,-,Alfredo Rota,ITA,12
+2000,-,Mauricio Rivas Nieto,COL,13
+2000,-,Gerard Adams,AUS,5
+2000,-,Arnd Schmitt,GER,10
+2000,-,Meelis Loit,EST,9
+2000,-,Jörg Fiedler,GER,8
+2000,-,Vladimir Pchenikin,BLR,9
+2000,-,Laurie Shong,CAN,13
+2000,-,Vitaly Zakharov,BLR,14
+2000,-,Christoph Marik,AUT,10
+2000,-,Angelo Mazzoni,ITA,13
+2000,-,Oliver Kayser,AUT,12
+2000,-,Aleksandr Poddubny,KGZ,10
+2000,-,Marc Steifensand,GER,8
+2000,-,Jean-Francois Di Martino,FRA,12
+2000,-,Yang Roy-Sung,KOR,12
+2000,-,Michael Switak,AUT,11
+2000,-,Kaido Kaaberma,EST,13
+2000,-,Ivan Kovacs,HUN,14
+2000,-,Tamir Bloom,USA,12
+2000,-,Wang Weixin,CHN,7
+2000,-,Nelson Loyola Torriente,CUB,14
+2000,-,Jonathan Pena Gonzalez,PUR,11
+2000,-,David Nathan,AUS,8
+2000,-,Andrus Kajak,EST,13
+2000,-,Mohanad Saif,EGY,12
+2000,-,Sergey Shabalin,KAZ,13
+2000,-,Nick Heffernan,AUS,10
+2000,-,Carlos Pedroso Curiel,CUB,13
+2000,-,Andrei Murashko,BLR,4
+1996,2,Aleksandr Beketov,RUS,15
+1996,3,Ivan Trevejo Perez,CUB,14
+1996,4,Geza Imre,HUN,15
+1996,-,Ivan Kovacs,HUN,9
+1996,-,Sandro Cuomo,ITA,14
+1996,-,Jean-Michel Henry,FRA,13
+1996,-,Kaido Kaaberma,EST,14
+1996,-,Mariusz Strzalka,GER,13
+1992,2,Eric Srecki,FRA,6  5
+1992,3,Pavel Kolobkov,EUN,5  2
+1992,4,Jean-Michel Henry,FRA,2  5  5
+1992,-,Kaido Kaaberma,EST,5  2  3
+1992,-,Elmar Bormann,GER,5  4  0
+1992,-,Angelo Mazzoni,ITA,5  5  2
+1992,-,Mauricio Rivas Nieto,COL,3  3
+1992,-,Ivan Kovacs,HUN,3  6  1
+1988,2,Arnd Schmitt,FRG,10
+1988,3,Philippe Riboud,FRA,9
+1988,4,Andrei Shuvalov,URS,10
+1988,-,Sandro Cuomo,ITA,8
+1988,-,Torsten Kühnemund,GDR,5
+1988,-,Jerri Bergström,SWE,7
+1988,-,Martin Brill,TCH,3
+1988,-,Vladimir Reznitsenko,URS,9
+1984,2,Philippe Boisse,FRA,10
+1984,3,Björne Väggö,SWE,5
+1984,4,Philippe Riboud,FRA,10
+1984,-,Stefano Bellone,ITA,7
+1984,-,Michel Poffet,SUI,4
+1984,-,Elmar Bormann,FRG,6
+1984,-,Alexander Pusch,FRG,11
+1984,-,Volker Fischer,FRG,6
+1980,1, Johan Harmenberg,SWE,4 - 1
+1980,2, Ernö Kolczonay,HUN,3 - 2
+1980,3, Philippe Riboud,FRA,3 - 2
+1980,4, Rolf Edling,SWE,3 - 2
+1980,5, Aleksandr Mozhayev,URS,1 - 4
+1980,6, Ioan Popa,ROU,1 - 4
+1976,1, Alexander Pusch,FRG,3 - 2
+1976,2, Jürgen Hehn,FRG,3 - 2
+1976,3, Gyözö Kulcsar,HUN,3 - 2
+1976,4, Istvan Osztrics,HUN,2 - 3
+1976,5, Jerzy Janikowski,POL,2 - 3
+1976,6, Rolf Edling,SWE,2 - 3
+1972,1, Csaba Fenyvesi,HUN,4 - 1
+1972,2, Jacques la Gaillerie,FRA,3 - 2
+1972,3, Gyözö Kulcsar,HUN,3 - 2
+1972,4, Anton Pongratz,ROU,3 - 2
+1972,5, Rolf Edling,SWE,1 - 4
+1972,6, Jacques Brodin,FRA,0 - 5
+1968,1, Gyözö Kulcsar,HUN,4 - 1
+1968,2, Grigory Kryss,URS,4 - 1
+1968,3, Gianluigi Saccaro,ITA,4 - 1
+1968,4, Viktor Modzalevsky,URS,2 - 3
+1968,5, Herbert Polzhuber,AUT,1 - 4
+1968,6, Jean-Pierre Allemand,FRA,0 - 5
+1964,1, Grigory Kryss,URS,2 - 1
+1964,2, Henry Hoskyns,GBR,2 - 1
+1964,3, Guram Kostava,URS,1 - 2
+1964,4, Gianluigi Saccaro,ITA,1 - 2
+1960,1, Giuseppe Delfino,ITA,5 - 2
+1960,2, Allan Jay,GBR,5 - 2
+1960,3, Bruno Habarovs,URS,4 - 3
+1960,4, Jozsef Sakovics,HUN,4 - 3
+1960,5, Roger Achten,BEL,3 - 4
+1960,6, Yves Dreyfus,FRA,3 - 4
+1960,7, Armand Mouyal,FRA,3 - 4
+1960,8, Giovanni Breda,ITA,1 - 6
+1956,1, Carlo Pavesi,ITA,5 - 2
+1956,2, Giuseppe Delfino,ITA,5 - 2
+1956,3, Edoardo Mangiarotti,ITA,5 - 2
+1956,4, Richard Pew,USA,4 - 3
+1956,5, Lajos Balthazar,HUN,4 - 3
+1956,6, Rene Queyroux,FRA,3 - 4
+1956,7, Per Carleson,SWE,2 - 5
+1956,8, Rolf Wiik,FIN,0 - 7
+1956,-,Ghislain Delaunois,BEL,4 - 3
+1956,-,Carl Forssell,SWE,2 - 5
+1956,-,Skip Shurtz,USA,2 - 5
+1956,-,Edouard Schmit,LUX,1 - 6
+1956,-,Emile Gretsch,LUX,4 - 3
+1956,-,Armand Mouyal,FRA,3 - 4
+1956,-,Berndt-Otto Rehbinder,SWE,2 - 5
+1956,-,Jozsef Sakovics,HUN,0 - 7
+1956,-,Bela Rerrich,HUN,3 - 3
+1956,-,Henry Hoskyns,GBR,2 - 4
+1956,-,Jacques Debeur,BEL,2 - 4
+1956,-,Arnold Chernushevich,URS,2 - 4
+1956,-,Kinmont Hoitsma,USA,2 - 4
+1956,-,Roger Achten,BEL,1 - 5
+1956,-,Günter Stratmann,GER,2 - 4
+1956,-,Allan Jay,GBR,1 - 5
+1956,-,Richard Stone,AUS,1 - 5
+1956,-,Daniel Dagallier,FRA,2 - 4
+1956,-,Ivan Lund,AUS,1 - 5
+1956,-,Michael Howard,GBR,1 - 5
+1956,-,Roland Asselin,CAN,2 - 4
+1956,-,Wäinö Korhonen,FIN,1 - 4
+1956,-,Alfredo Yanguas,COL,0 - 5
+1956,-,Revaz Tsirekidze,URS,4 - 3
+1956,-,Siha Sukarno,INA,2 - 5
+1956,-,Emiliano Camargo,COL,2 - 5
+1956,-,Masayuki Sano,JPN,0 - 7
+1956,-,Emilio Echeverry,COL,2 - 4
+1956,-,Fernand Leischen,LUX,1 - 4
+1956,-,Santiago Massini,ARG,0 - 5
+1956,-,Juozas Udras,URS,2 - 4
+1956,-,Laurence Harding-Snith,AUS,2 - 4
+1956,-,Luis Jimenez,MEX,0 - 6
+1952,1, Edoardo Mangiarotti,ITA,7 - 2
+1952,2, Dario Mangiarotti,ITA,6 - 3
+1952,3, Oswald Zappelli,SUI,6 - 3
+1952,4, Leon Buck,LUX,6 - 3
+1952,5, Jozsef Sakovics,HUN,5 - 4
+1952,6, Carlo Pavesi,ITA,4 - 5
+1952,7, Per Carleson,SWE,3 - 6
+1952,8, Carl Forsell,SWE,3 - 6
+1952,9, Erkki Kerttula,FIN,2 - 7
+1952,10, Mogens Lüchow,DEN,2 - 7
+1952,-,Sven Fahlman,SWE,4 - 5
+1952,-,Emile Gretsch,LUX,2 - 6
+1952,-,Rene Dybkær,DEN,2 - 6
+1952,-,Alvaro Mario Mourao,POR,2 - 7
+1952,-,Jean-Baptiste Maquet,BEL,1 - 8
+1952,-,Allan Jay,GBR,4 - 5
+1952,-,Mohamed Abdel Rahman,EGY,4 - 5
+1952,-,Rolf Wiik,FIN,4 - 5
+1952,-,Edward Vebell,USA,3 - 6
+1952,-,Rene Bougnol,FRA,0 - 9
+1952,-,Antonio Haro,MEX,4 - 4
+1952,-,César Pekelman,BRA,3 - 5
+1952,-,Nicolae Marinescu,ROU,3 - 5
+1952,-,Wojciech Rydz,POL,2 - 5
+1952,-,Alvaro Pinto,DEN,0 - 7
+1952,-,Emilio Meraz,MEX,3 - 4
+1952,-,Claude Nigon,FRA,3 - 4
+1952,-,Bela Rerrich,HUN,2 - 5
+1952,-,Paul Meister,SUI,1 - 6
+1952,-,Paul Barth,SUI,4 - 4
+1952,-,Johan Von Koss,NOR,2 - 5
+1952,-,Andrzej Przezdziecki,POL,2 - 5
+1952,-,Ivan Lund,AUS,1 - 6
+1952,-,Carlos Dias,POR,1 - 6
+1952,-,Ghislain Delaunois,BEL,4 - 4
+1952,-,Barnabas Berzsenyi,HUN,4 - 4
+1952,-,Ronald Parfitt,GBR,3 - 5
+1952,-,Adam Krajewski,POL,3 - 5
+1952,-,John Fethers,AUS,4 - 4
+1952,-,Raimondo Carnera,DEN,3 - 5
+1952,-,Egill Knutzen,NOR,2 - 5
+1952,-,Fernand Leischen,LUX,2 - 5
+1952,-,Tom Kearney,IRL,2 - 6
+1952,-,Gustavo Gutierrez,VEN,2 - 4
+1952,-,Alfred Eriksen,NOR,2 - 4
+1952,-,Robert Henrion,BEL,2 - 4
+1952,-,Eduardo Lopez,GUA,0 - 6
+1952,-,Darío Amaral,BRA,4 - 3
+1952,-,Vito Simonetti,ARG,2 - 5
+1952,-,That Hat Ton,VIE,2 - 5
+1952,-,George Carpenter,IRL,1 - 6
+1952,-,Yury Deksbakh,URS,3 - 4
+1952,-,Vasile Chelaru,ROU,3 - 4
+1952,-,Patrick Duffy,IRL,1 - 6
+1952,-,Giovanni Bertorelli,VEN,1 - 6
+1952,-,Edward Brooke,CAN,3 - 4
+1952,-,Santiago Massini,ARG,2 - 5
+1952,-,Zoltan Uray,ROU,1 - 6
+1952,-,Charles Stanmore,AUS,1 - 6
+1952,-,Armand Mouyal,FRA,3 - 4
+1952,-,Enrique Rettberg,ARG,2 - 4
+1952,-,Abelardo Menendez,CUB,1 - 6
+1952,-,Juozas Udras,URS,1 - 6
+1952,-,Rubén Soberon,GUA,3 - 4
+1952,-,Walter De Paula,BRA,3 - 4
+1952,-,Lev Saychuk,URS,2 - 5
+1952,-,Heikki Raitio,FIN,1 - 6
+1952,-,Juan Camous,VEN,3 - 4
+1952,-,Alfred Skrobisch,BRA,3 - 4
+1952,-,Erwin Kroggel,GER,3 - 4
+1952,-,Shinichi Maki,JPN,1 - 6
+1952,-,Paul Makler,USA,3 - 4
+1952,-,René Paul,GBR,2 - 5
+1952,-,Antonio Chocano,GUA,1 - 6
+1952,-,Roland Asselin,CAN,1 - 6
+1948,1, Luigi Cantone,ITA,7 - 2
+1948,2, Oswald Zapelli,SUI,5 - 4
+1948,3, Edoardo Mangiarotti,ITA,5 - 4
+1948,4, Henri Guerin,FRA,5 - 4
+1948,5, Jean Radoux,BEL,5 - 4
+1948,6, Henri Lepage,FRA,4 - 5
+1948,7, Carlo Agostoni,ITA,4 - 5
+1948,8, Emile Gretsch,LUX,3 - 6
+1936,1, Franco Riccardi,ITA,5 - 3 - 1
+1936,2, Saverino Ragno,ITA,6 - 0 - 3
+1936,3, Giancarlo Cornaggia-Medici,ITA,6 - 0 - 3
+1936,4, Hans Drakenberg,SWE,4 - 2 - 3
+1936,5, Charles Debeur,BEL,4 - 1 - 4
+1936,6, Henrique de Silveira,POR,4 - 0 - 5
+1936,7, Raymond Stasse,BEL,3 - 2 - 4
+1936,8, Ian Campbell-Gray,GBR,3 - 2 - 4
+1936,9, Bela Bay,HUN,3 - 1 - 5
+1936,10, Khristos Zalokostas,GRE,1 - 1 - 7
+1936,-,Michel Pecheux,FRA,5 - 0 - 4
+1936,-,Hans Granfelt,SWE,4 - 0 - 5
+1936,-,Antonio Haro,MEX,2 - 1 - 6
+1936,-,Paulo Leal,POR,2 - 1 - 6
+1936,-,Jean Hauert,SUI,1 - 0 - 8
+1936,-,Roman Kantor,POL,4 - 0 - 5
+1936,-,Siegfried Lerdon,GER,3 - 2 - 4
+1936,-,Frederic Fitting,SUI,4 - 0 - 5
+1936,-,Hervé Du Monceau,BEL,2 - 0 - 7
+1936,-,Henrique De Aguilar,BRA,2 - 0 - 7
+1936,-,Egill Knutzen,NOR,5 - 0 - 4
+1936,-,Frederick Weber,USA,4 - 1 - 4
+1936,-,George Tully,CAN,3 - 0 - 6
+1936,-,Pal Dunay,HUN,1 - 3 - 5
+1936,-,Aage Leidersdorff,DEN,1 - 1 - 6
+1936,-,Ioan Miclescu-Prajescu,ROU,3 - 2 - 4
+1936,-,Preben Christiansen,DEN,2 - 0 - 6
+1936,-,Cornelis Weber,NED,1 - 2 - 5
+1936,-,Francois Duret,SUI,1 - 2 - 6
+1936,-,Thorstein Guthe,NOR,1 - 1 - 5
+1936,-,Antonio Villamil,ARG,3 - 1 - 4
+1936,-,Willem Driebergen,NED,3 - 0 - 5
+1936,-,Marcel Boulad,EGY,3 - 0 - 5
+1936,-,Erik Hammer Sørensen,DEN,1 - 0 - 6
+1936,-,Tomas Barraza,CHI,0 - 0 - 7
+1936,-,Rezsö Bartha,HUN,3 - 0 - 5
+1936,-,Raul Saucedo,ARG,3 - 0 - 5
+1936,-,Gustavo Carinhas,POR,3 - 0 - 5
+1936,-,Nicolae Marinescu,ROU,3 - 0 - 5
+1936,-,Gustaf Dyrssen,SWE,2 - 0 - 6
+1936,-,Mahmoud Abdin,EGY,4 - 0 - 5
+1936,-,Nicolaas Van Hoorn,NED,3 - 0 - 5
+1936,-,Otto Schröder,GER,2 - 1 - 5
+1936,-,Charles De Beaumont,GBR,2 - 0 - 6
+1936,-,Bertrand Boissonnault,CAN,1 - 1 - 6
+1936,-,Antoni Franz,POL,2 - 1 - 4
+1936,-,Robert Bergmann,TCH,1 - 1 - 4
+1936,-,Karl Hanisch,AUT,0 - 0 - 8
+1936,-,Gustave Heiss,USA,3 - 0 - 5
+1936,-,Henri Dulieux,FRA,2 - 0 - 5
+1936,-,Frantisek Vohryzek,TCH,2 - 0 - 5
+1936,-,Douglas Dexter,GBR,1 - 0 - 6
+1936,-,Josef Kunt,TCH,3 - 0 - 4
+1936,-,Denis Dolecsko,ROU,2 - 0 - 5
+1936,-,Roman Fischer,AUT,1 - 1 - 6
+1936,-,Ernest Dalton,CAN,0 - 0 - 7
+1936,-,Ricardo Romero,CHI,2 - 0 - 5
+1936,-,Ivan Mazuranic,YUG,1 - 0 - 5
+1936,-,Moacyr Dunham,BRA,0 - 0 - 6
+1936,-,Frank Righeimer,USA,2 - 0 - 4
+1936,-,Dimitar Vasilev,BUL,1 - 0 - 5
+1936,-,Jose Martinez,MEX,5 - 0 - 3
+1936,-,Ennio De Oliveira,BRA,2 - 0 - 6
+1936,-,Mauris Shamil,EGY,1 - 0 - 7
+1936,-,Rudolf Weber,AUT,1 - 0 - 7
+1936,-,Ernst Röthig,GER,2 - 2 - 3
+1936,-,Konstantinos Bembis,GRE,1 - 0 - 6
+1936,-,Kreso Tretinjak,YUG,0 - 1 - 5
+1932,1, Giancarlo Cornaggia-Medici,ITA,8 - 2 - 1
+1932,2, Georges Buchard,FRA,8 - 0 - 3
+1932,3, Carlo Agostoni,ITA,7 - 1 - 3
+1932,4, Saverino Ragno,ITA,7 - 0 - 4
+1932,5, Bernard Schmetz,FRA,7 - 0 - 4
+1932,6, Philippe Cattiau,FRA,6 - 0 - 5
+1932,7, George Calnan,USA,6 - 0 - 5
+1932,8, Balthazar de Beuckelaer,BEL,4 - 0 - 7
+1928,1, Lucien Gaudin,FRA,8 - 1 - 0
+1928,2, Georges Buchard,FRA,7 - 0 - 2
+1928,3, George Calnan,USA,6 - 0 - 3
+1928,4, Leon Tom,BEL,6 - 1 - 2
+1928,5, Nils Hellsten,SWE,5 - 0 - 4
+1928,6, Charles Delporet,BEL,4 - 0 - 5
+1928,7, Charles Debeur,BEL,3 - 0 - 6
+1924,1, Charles Delporte,BEL,8 - 3
+1924,2, Roger Ducret,FRA,7 - 4
+1924,3, Nils Hellsten,SWE,7 - 4
+1924,4, Emile Cornereau,FRA,7 - 4
+1924,5, Armand Massard,FRA,7 - 4
+1924,6, Virgilio Mantegazza,ITA,6 - 5
+1924,7, Gustave Buchard,FRA,5 - 6
+1924,7, Leon Tom,BEL,5 - 6
+1924,9, Paul Anspach,BEL,4 - 7
+1924,9, Peter Ryefelt,DEN,4 - 7
+1924,11, Renzo Compagna,ITA,2 - 9
+1924,12, Ernest Gevers,BEL,1 - 10
+1924,-,Luis Lucchetti,ARG,5 - 6
+1924,-,Mario De Lopez,POR,5 - 6
+1924,-,Raoul Heide,NOR,5 - 6
+1924,-,Ivan Osiier,DEN,4 - 7
+1924,-,Henri Jacquet,SUI,4 - 7
+1924,-,Frederic Fitting,SUI,3 - 8
+1924,-,Eugene Empeyta,SUI,4 - 7
+1924,-,Charles Biscoe,GBR,4 - 7
+1924,-,Ramon Fonst,CUB,4 - 7
+1924,-,Domingo Garcia,ESP,4 - 7
+1924,-,Carl Gripenstedt,SWE,4 - 7
+1924,-,Allen Milner,USA,4 - 7
+1924,-,Gustaf Lindblom,SWE,4 - 6
+1924,-,George Calnan,USA,3 - 7
+1924,-,Frederico Paredes,POR,3 - 7
+1924,-,Krikor Agathon,EGY,3 - 7
+1924,-,Martin Holt,GBR,2 - 8
+1924,-,Ruimondo Ferro,POR,3 - 6
+1924,-,Wouter Brouwer,NED,2 - 7
+1924,-,Pedro Nazar,ARG,2 - 7
+1924,-,George Breed,USA,1 - 8
+1924,-,Willem Hubert,NED,4 - 6
+1924,-,Conrado Rolando,URU,4 - 6
+1924,-,Tryfon Triantafyllakos,GRE,3 - 7
+1924,-,Robert Frater,GBR,2 - 8
+1924,-,Bror Lagercrantz,SWE,2 - 8
+1924,-,Sigurd Akre,NOR,4 - 5
+1924,-,Joseph Misrahi,EGY,4 - 5
+1924,-,Pieter Von Boven,NED,1 - 8
+1924,-,Wenceslao Paunero,ARG,0 - 9
+1924,-,Johan Falkenberg,NOR,3 - 6
+1924,-,Konstantinos Nikolopoulos,GRE,4 - 5
+1924,-,Viggo Stilling-Andersen,DEN,4 - 5
+1924,-,Carlos Miguel,ESP,1 - 8
+1924,-,Hector Belo,URU,5 - 4
+1924,-,Felix De Pomes,ESP,3 - 6
+1924,-,Frithjof Lorentzen,NOR,1 - 8
+1924,-,Ahmed Hassanein,EGY,0 - 9
+1924,-,Domingo Mendy,URU,4 - 5
+1924,-,Constantin Antoniades,SUI,3 - 6
+1924,-,Josef Jungmann,TCH,2 - 7
+1924,-,Miguel Zabalza,ESP,2 - 7
+1924,-,Theodoros Foustanos,GRE,2 - 6
+1924,-,Eduardo Alonso,CUB,2 - 6
+1924,-,Josef Javurek,TCH,0 - 8
+1924,-,Ramíro Manalich,CUB,4 - 4
+1924,-,Salvador Quesada,CUB,1 - 7
+1924,-,Santos Ferreira,URU,0 - 8
+1924,-,Arthur Lyon,USA,3 - 5
+1924,-,Robert Montgomerie,GBR,2 - 6
+1924,-,Jan Tille,TCH,2 - 6
+1924,-,Jan de Beaufort,NED,4 - 5
+1924,-,Jens Ole Berthelsen,DEN,2 - 7
+1924,-,Francisco Bollini,ARG,2 - 7
+1924,-,Antonio De Castro,POR,2 - 7
+1920,1, Armand Massard,FRA,9 - 2
+1920,2, Alexandre Lippmann,FRA,7 - 4
+1920,3, Gustave Buchard,FRA,6 - 5
+1920,4, Ernest Gevers,BEL,6 - 5
+1920,5, Georges Casanova,FRA,5 - 6
+1920,6, Abelardo Olivier,ITA,5 - 6
+1920,6, Emile Moreau,FRA,5 - 6
+1920,6, Antonio Mascarenhas de Menezes,POR,5 - 6
+1920,9, Gustaf Lindblom,SWE,4 - 7
+1920,10, Charles Delporte,BEL,3 - 8
+1920,10, Felix Goblet d'Alviella,BEL,3 - 8
+1920,12, Jorge de Paiva,POR,2 - 9
+1912,1, Paul Anspach,BEL,6 - 1
+1912,2, Ivan Osiier,DEN,5 - 2
+1912,3, Philippe de Beaulieu,BEL,4 - 3
+1912,4, Victor Boin,BEL,4 - 3
+1912,5, Einar Sörensen,SWE,3 - 4
+1912,6, Edgar Seligman,GBR,2 - 6
+1912,7, Leon Tom,BEL,1 - 6
+1912,8, Martin Holt,GBR,0 - 7
+1912,-,Petros Manos,GRE,2 - 3
+1912,-,William Bowman,USA,2 - 3
+1908,1, Gaston Alibert,FRA,5 - 0 - 2
+1908,2, Alexandre Lippmann,FRA,4 - 2 - 1
+1908,3, Eugene Olivier,FRA,4 - 3 - 0
+1908,4, Robert Montgomerie,GBR,4 - 1 - 2
+1908,5, Cecil Haig,GBR,2 - 3 - 2
+1908,5, Paul Anspach,BEL,2 - 5 - 0
+1908,5, Alfred Labouchere,NED,2 - 5 - 0
+1908,8, Martin Holt,GBR,1 - 5 - 1
+1908,-,Francois Rom,BEL,2 - 2 - 3
+1908,-,Henri Berger,FRA,2 - 3 - 2
+1908,-,Gaston Renard,BEL,2 - 4 - 1
+1908,-,Fernand Bosmans,BEL,0 - 3 - 4
+1908,-,Jean Stern,FRA,3 - 4 - 0
+1908,-,Lauritz Østrup,DEN,2 - 2 - 3
+1908,-,Gustaf Lindblom,SWE,2 - 3 - 2
+1908,-,Pierre Le Blon,BEL,1 - 5 - 1
+1908,-,Jetze Doorman,NED,2 - 2 - 0
+1908,-,Francois Stuyck,BEL,1 - 3 - 0
+1908,-,Ejnar Levison,DEN,0 - 2 - 1
+1908,-,Ivan Osiier,DEN,2 - 2 - 0
+1908,-,Jacques Rodocanachi,FRA,2 - 2 - 0
+1908,-,Edgar Amphlett,GBR,1 - 3 - 0
+1908,-,Vilem von Lobsdorf,BOH,2 - 2 - 0
+1908,-,Pietro Speciale,ITA,1 - 3 - 0
+1908,-,Henry Davids,GBR,0 - 3 - 1
+1908,-,Bernard Gravier,FRA,2 - 2 - 0
+1908,-,Vilem Tvrzsky,BOH,2 - 2 - 0
+1908,-,Joseph Marais,FRA,1 - 3 - 0
+1908,-,Charles Leaf Daniell,GBR,2 - 1 - 1
+1908,-,Marcello Bertinetti,ITA,1 - 3 - 0
+1908,-,Vlastimil Lada-Sazavsky,BOH,0 - 4 - 0
+1908,-,Riccardo Nowak,ITA,1 - 2 - 1
+1908,-,Marcel van Langenhove,BEL,1 - 2 - 1
+1908,-,Charles Collignon,FRA,1 - 3 - 0
+1908,-,Jaroslav Sourek,BOH,1 - 3 - 0
+1908,-,Fernand de Montigny,BEL,2 - 2 - 0
+1908,-,Sydney Martineau,GBR,2 - 2 - 0
+1908,-,Giulio Cagiati,ITA,1 - 2 - 0
+1908,-,Rene Quenessen,FRA,1 - 2 - 0
+1908,-,Eric Carlberg,SWE,3 - 3 - 0
+1908,-,Pontus von Rosen,SWE,2 - 3 - 1
+1908,-,Georg Stöhr,GER,1 - 1 - 1
+1908,-,Frederic Fildes,GBR,0 - 4 - 2
+1908,-,Johan van Schreven,NED,2 - 2 - 0
+1908,-,Herbert Sander,DEN,2 - 4 - 0
+1908,-,Walter Gates,RSA,1 - 2 - 2
+1908,-,Friedrich Jack,GER,1 - 4 - 1
+1908,-,John Blake,GBR,1 - 3 - 1
+1908,-,Marcus Dwinger,NED,1 - 3 - 1
+1908,-,Johannes Adam,GER,1 - 4 - 0
+1908,-,Dino Diana,ITA,3 - 2 - 2
+1908,-,Otto Becker,DEN,3 - 3 - 1
+1908,-,Hans Bergsland,NOR,3 - 3 - 1
+1908,-,Andre Sarens,BEL,1 - 4 - 2
+1908,-,George van Rossem,NED,1 - 5 - 1
+1908,-,Sante Ceccherini,ITA,3 - 3 - 1
+1908,-,Percival Davson,GBR,3 - 4 - 0
+1908,-,Otakar Lada,BOH,2 - 4 - 1
+1908,-,Maurits Jacob van Sels,NED,1 - 4 - 2
+1908,-,Robert Krünert,GER,1 - 5 - 1
+1908,-,Henry Peyron,SWE,2 - 2 - 1
+1908,-,Bedrich Schejbal,BOH,1 - 4 - 0
+1908,-,Albert Naumann,GER,1 - 4 - 0
+1908,-,Emil Schön,GER,3 - 2 - 1
+1908,-,Frederic Dubourdieu,FRA,3 - 2 - 1
+1908,-,Dezsö Földes,HUN,1 - 5 - 0
+1908,-,Willem van Blijenburgh,NED,0 - 5 - 1
+1908,-,Ralph Chalmers,GBR,3 - 3 - 0
+1908,-,Jacob Erckrath de Bary,GER,2 - 2 - 2
+1908,-,Alessandro Pirzi Biroli,ITA,2 - 3 - 1
+1908,-,Giuseppe Mangiarotti,ITA,3 - 1 - 2
+1908,-,Frantz Oscar Jørgensen,DEN,2 - 3 - 1
+1908,-,August Petri,GER,0 - 4 - 2
+1908,-,Percy Nobbs,CAN,0 - 4 - 2
+1908,-,Pietro Sarzano,ITA,1 - 3 - 1
+1908,-,Bela Zulawszky,HUN,1 - 3 - 1
+1908,-,Ernst Moldenhauer,GER,1 - 4 - 0
+1908,-,Simon Okker,NED,2 - 1 - 1
+1908,-,Georg Branting,SWE,0 - 4 - 0
+1908,-,Edgar Seligman,GBR,1 - 2 - 2
+1908,-,Birger Cnattingius,SWE,1 - 4 - 0
+1908,-,Gustaf Olson,SWE,0 - 4 - 1
+1908,-,Julius Lichtenfels,GER,1 - 2 - 1
+1908,-,Peter Toth,HUN,1 - 3 - 0
+1900,1, Ramon Fonst Segundo,CUB,4 - 2
+1900,2, Louis Perree,FRA,4 - 1
+1900,3, Leon See,FRA,3 - 2
+1900,4, Georges de la Falaise,FRA,3 - 3
+1900,5, Eduardo Camet,ARG,2 - 3  *
+1900,6, Edmond Wallace,FRA,2 - 4
+1900,7, Gaston Alibert,FRA,2 - 3
+1900,8, Leon Thiebaut,FRA,2 - 4
+1900,9, Henri Plommet,FRA,0 - 6
+1900,-,Jean Dreyfus,FRA,Q
+1900,-,Marcel Levy,FRA,Q
+1900,-,Richard Wallace,FRA,Q
+1900,-,Elie de Lastours,FRA,Q
+1900,-,Jules de Pradel,FRA,Q
+1900,-,Maurice Boisdon,FRA,Q
+1900,-,Joseph-Marie Rose,FRA,Q
+1900,-,Jacques Holzschuh,FRA,Q
+1900,-,Alexandre Guillemand,FRA,Q
+1900,-,Jules Roffe,FRA,Q
+1900,-,Edouard Fouchier,FRA,Q
+1900,-,Jean Renaud,FRA,Q
+1900,-,Andre Rabel,FRA,Q
+1900,-,Josiah Bowden,GBR,Q
+1900,-,Firidun Malkom,IRI,Q
+1900,-,Maurice Jay,FRA,Q
+1900,-,Giuseppe Giurato,ITA,Q
+1900,-,Raoul Bideau,FRA,Q
+1900,-,Henri de Villeneuve,FRA,Q
+1900,-,Alphonse Moquet,FRA,Q
+1900,-,Herman Berger,FRA,Q
+1900,-,Antoine Smet,BEL,Q
+1900,-,Henri Debut,FRA,Q
+1900,-,Adrien Guyon,FRA,Q
+1900,-,Jean Andre Hilleret,FRA,Q

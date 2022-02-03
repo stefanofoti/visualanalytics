@@ -1,0 +1,958 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1, Emma McKeon,AUS,51.96,OR
+2020,2, Siobhan Haughey,HKG,52.27
+2020,3, Cate Campbell,AUS,52.52
+2020,4, Penny Oleksiak,CAN,52.59
+2020,5, Sarah Sjöström,SWE,52.68
+2020,6, Femke Heemskerk,NED,52.79
+2020,7, Anna Hopkin,GBR,52.83
+2020,8, Abbey Weitzeil,USA,53.23
+2020,-,Marie Wattel,FRA,53.12
+2020,-,Freya Anderson,GBR,53.53
+2020,-,Michelle Coleman,SWE,53.76
+2020,-,Wu Qingfeng,CHN,54.86
+2020,-,Pernille Blume,DEN,53.26
+2020,-,Signe Bro,DEN,53.55
+2020,-,Erika Brown,USA,53.58
+2020,-,Charlotte Bonnet,FRA,54.10
+2020,-,Abiola Ogunbanwo,NGR,59.74
+2020,-,Andela Antunovic,MNE,1:00.01
+2020,-,Gaurika Singh,NEP,1:00.11
+2020,-,Mineri Gomez,GUM,1:04.00
+2020,-,Mia Blazhevska Eminova,MKD,57.19
+2020,-,Jillian Crooks,CAY,57.32
+2020,-,Jenjira Srisaard,THA,57.42
+2020,-,Maria Schutzmeier,NCA,57.94
+2020,-,Colleen Furgeson,MHL,58.71
+2020,-,Varsenik Manucharyan,ARM,59.11
+2020,-,Jeanne Boutbien,SEN,59.27
+2020,-,Catarina Sousa,ANG,59.35
+2020,-,Kalia Antoniou,CYP,55.38
+2020,-,Anicka Delgado,ECU,55.56
+2020,-,Farida Osman,EGY,55.74
+2020,-,Snaefridur Jorunnardottir,ISL,56.15
+2020,-,Bianca-Andreea Costea,ROU,56.35
+2020,-,Ieva Maluka,LAT,56.39
+2020,-,Miriam Sheehan,PUR,56.64
+2020,-,Amel Melih,ALG,56.65
+2020,-,Fanny Teijonsalo,FIN,54.69
+2020,-,Erin Gallagher,RSA,54.75
+2020,-,Maria Ugolkova,SUI,54.86
+2020,-,Lidon Munoz Del Campo,ESP,54.97
+2020,-,Anastasiya Shkurdai,BLR,55.17
+2020,-,Larissa Oliveira,BRA,55.53
+2020,-,Julie Meynen,LUX,55.69
+2020,-,Ting Wen Quah,SIN,56.36
+2020,-,Mariia Kameneva,ROC,53.92
+2020,-,Janja Segel,SLO,54.73
+2020,-,Barbora Seemanova,CZE,53.98
+2020,-,Andrea Murez,ISR,54.06
+2020, ,Federica Pellegrini,ITA,dns
+2016,1, Simone Manuel,USA,52.70,"OR,AM"
+2016,2, Penny Oleksiak,CAN,52.70,"OR,AM,WJ"
+2016,3, Sarah Sjöström,SWE,52.99
+2016,4, Bronte Campbell,AUS,53.04
+2016,5, Ranomi Kromowidjojo,NED,53.08
+2016,6, Cate Campbell,AUS,53.24
+2016,7, Abbey Weitzeil,USA,53.30
+2016,8, Jeanette Ottesen,DEN,53.36
+2016,-,Zhu Menghui,CHN,53.98
+2016,-,Miki Uchida,JPN,54.39
+2016,-,Charlotte Bonnet,FRA,54.54
+2016,-,Etiene Medeiros,BRA,54.59
+2016,-,Chantal van Landeghem,CAN,54.00
+2016,-,Pernille Blume,DEN,54.19
+2016,-,Rikako Ikee,JPN,54.31
+2016,-,Aliaksandra Herasimenia,BLR,54.34
+2016,-,Estellah Fils Rabetsara,MAD,1.01.11
+2016,-,Yusra Mardini,ROT,1.04.66
+2016,-,Aminath Shajan,MDV,1.05.71
+2016,-,Ines Remersaro,URU,57.85
+2016,-,Ana Sofia Nobrega,ANG,59.23
+2016,-,Fatima Alkaramova,AZE,59.43
+2016,-,Jovana Terzic,MNE,59.59
+2016,-,Nikol Merizaj,ALB,59.99
+2016,-,Susann Bjørnsen,NOR,55.35
+2016,-,Natthanan Junkrajang,THA,56.24
+2016,-,Jasmine Al-Khaldi,PHI,56.30
+2016,-,Jade Howard,ZAM,58.47
+2016,-,Ana Iulia Dascal,ROU,58.72
+2016,-,Arseth Heather,MRI,58.89
+2016,-,Tracy Keith-matchitt,COK,58.99
+2016,-,Karen Riveros,PAR,59.00
+2016,-,Veronika Popova,RUS,54.60
+2016,-,Maria Ugolkova,SUI,54.85
+2016,-,Camille Cheng,HKG,54.92
+2016,-,Julie Meynen,LUX,55.09
+2016,-,Erika Ferraioli,ITA,55.20
+2016,-,Katarzyna Wilk,POL,55.44
+2016,-,Andrea Murez,ISR,55.47
+2016,-,Nina Rangelova,BUL,55.71
+2016,-,Shen Duo,CHN,54.41
+2016,-,Femke Heemskerk,NED,54.63
+2016,-,Beryl Gastaldello,FRA,54.80
+2016,-,Natalia Lovtcova,RUS,55.37
+2016, ,Federica Pellegrini,ITA,dns
+2016,-,Arianna Vanderpool-Wallace,BAH,54.56
+2016,-,Larissa Oliveira,BRA,54.72
+2016, ,Michelle Coleman,SWE,dns
+2012,1, Ranomi Kromowidjojo,NED,53.00,OR
+2012,2, Aliaksandra Herasimenia,BLR,53.38
+2012,3, Tang Yi,CHN,53.44
+2012,4, Melanie Schlanger,AUS,53.47
+2012,5, Missy Franklin,USA,53.64
+2012,6, Francesca Halsall,GBR,53.66
+2012,7, Jeanette Ottesen Gray,DEN,53.75
+2012,8, Jessica Hardy,USA,54.02
+2012,-,Sarah Sjöström,SWE,53.93
+2012,-,Arianna Vanderpool-Wallace,BAH,54.12
+2012,-,Britta Steffen,GER,54.18
+2012,-,Daniela Schreiber,GER,54.39
+2012,-,Haruka Ueda,JPN,54.59
+2012,-,Femke Heemskerk,NED,54.13
+2012,-,Julia Wilkinson,CAN,54.25
+2012,-,Amy Smith,GBR,54.28
+2012,-,Mareme Faye,SEN,1:06.42
+2012,-,Shreya Dhital,NEP,1:10.80
+2012,-,Ayouba Ali Sihame,COM,1:14.40
+2012,-,Jade Howard,ZAM,59.35
+2012,-,Bayan Jumah,SYR,59.78
+2012,-,Karen Riveros,PAR,59.86
+2012,-,Britany van Lange,GUY,1:01.62
+2012,-,Aina Fils Rabetsara,MAD,1:02.39
+2012,-,Reshika Udugampola,SRI,1:04.93
+2012,-,Magdalena Ruth Alex Moshi,TAN,1:05.80
+2012,-,Eszter Dara,HUN,55.37
+2012,-,Liliana Ibanez Lopez,MEX,55.71
+2012,-,Nastja Govejsek,SLO,56.21
+2012,-,Mylene Ong,SIN,56.33
+2012,-,Jasmine Al-Khaldi,PHI,57.13
+2012,-,Megan Fonteno,ASA,57.45
+2012,-,Karen Torrez,BOL,57.78
+2012,-,Clelia Tini,SMR,58.29
+2012,-,Burcu Dolunay,TUR,55.35
+2012,-,Nina Rangelova,BUL,55.52
+2012,-,Daynara de Paula,BRA,55.94
+2012,-,Katarzyna Wilk,POL,56.13
+2012,-,Ruta Meilutyte,LTU,56.33
+2012,-,Katarina Filova,SVK,56.58
+2012,-,Arlene Semeco Arismendi,VEN,56.90
+2012,-,Miroslava Najdanovski,SRB,57.45
+2012,-,Pernille Blume,DEN,55.04
+2012,-,Hannah Jane Wilson,HKG,55.33
+2012,-,Nery Niangkouara,GRE,56.63
+2012,-,Hanna-Maria Seppälä,FIN,54.93
+2012, ,Cate Campbell,AUS,dns
+2012,-,Veronika Popova,RUS,54.66
+2012,-,Charlotte Bonnet,FRA,55.12
+2012, ,Therese Alshammar,SWE,dns
+2008,1, Britta Steffen,GER,53.12,OR
+2008,2, Lisbeth Trickett,AUS,53.16
+2008,3, Natalie Coughlin,USA,53.39
+2008,4, Hanna-Maria Seppälä,FIN,53.97
+2008,5, Jeanette Ottesen,DEN,54.06
+2008,6, Marleen Veldhuis,NED,54.21
+2008,6, Zhu Yingwen,CHN,54.21
+2008,8, Francesca Halsall,GBR,54.29
+2008,-,Josefin Lillhage,SWE,54.59
+2008,-,Lacey Nymeyer,USA,54.74
+2008,-,Petra Dallmann,GER,55.05
+2008,-,Aleksandra Gerasimenya,BLR,55.31
+2008,-,Malia Metella,FRA,54.20
+2008,-,Cate Campbell,AUS,54.54
+2008,-,Erica Morningstar,CAN,55.38
+2008,-,Pang Jiaying,CHN,dq
+2008,-,Madeleine Scerri,MLT,57.97
+2008,-,Elena Popovska,MKD,59.93
+2008,-,Olga Hachatryan,TKM,1:14.77
+2008,-,Ting Wen Quah,SIN,56.14
+2008,-,Natthanan Junkrajang,THA,56.56
+2008,-,Orsolya Tompa,HUN,56.57
+2008,-,Christel Simms,PHI,56.67
+2008,-,Nieh Pin-Chieh,TPE,57.28
+2008,-,Irina Shlemova,UZB,58.77
+2008,-,Hannah Jane Wilson,HKG,55.32
+2008,-,Arianna Vanderpool-Wallace,BAH,55.61
+2008,-,Birgit Koschischek,AUT,55.62
+2008,-,Jang Hee-jin,KOR,55.96
+2008,-,Ragnheidur Ragnarsdottir,ISL,56.35
+2008,-,Anna Stylianou,CYP,56.38
+2008,-,Eleni Kosti,GRE,56.44
+2008,-,Nina Sovinek,SLO,57.30
+2008,-,Anna Gostomelsky,ISR,55.18
+2008,-,Anastasia Aksenova,RUS,55.29
+2008,-,Darya Stepanyuk,UKR,55.51
+2008,-,Arlene Semeco Arismendi,VEN,55.70
+2008,-,Triin Aljand,EST,56.10
+2008,-,Miroslava Najdanovski,SRB,56.50
+2008,-,Maria Laura Simonetto,ITA,56.72
+2008,-,Alena Popchanka,FRA,54.86
+2008,-,Martina Moravcova,SVK,55.20
+2008,-,Inge Dekker,NED,55.23
+2008,-,Jana Klusackova,CZE,55.92
+2008,-,Agata Ewa Korc,POL,55.14
+2008,-,Lize-Mari Retief,RSA,55.17
+2008,-,Julia Wilkinson,CAN,54.70
+2008,-,Tatiana Lemos Barbosa,BRA,55.01
+2004,1, Jodie Henry,AUS,53.84
+2004,2, Inge de Bruijn,NED,54.16
+2004,3, Natalie Coughlin,USA,54.40
+2004,4, Malia Metella,FRA,54.50
+2004,5, Kara Lynn Joyce,USA,54.54
+2004,6, Nery-Mantey Niangkouara,GRE,54.81
+2004,7, Martina Moravcova,SVK,55.12
+2004,8, Yelena Popchenko,BLR,55.24
+2004,-,Lisbeth Lenton,AUS,55.17
+2004,-,Marleen Veldhuis,NED,55.32
+2004,-,Hanna Shcherba,BLR,55.67
+2004,-,Ryu Yoon-ji,KOR,55.85
+2004,-,Federica Pellegrini,ITA,55.30
+2004,-,Hanna-Maria Seppälä,FIN,55.59
+2004,-,Josefin Lillhage,SWE,55.76
+2004,-,Tomoko Nagai,JPN,56.03
+2004,-,Carolina Cerqueda,AND,1:00.38
+2004,-,Larissa Inangarore,BDI,1:23.90
+2004,-,Gloria Koussihouede,BEN,1:30.90
+2004,-,Vanessa Garcia Vega,PUR,57.38
+2004,-,Yelena Skalinskaya,KAZ,58.56
+2004,-,Linda McEachrane,TTO,58.92
+2004,-,Agnese Ozolina,LAT,59.03
+2004,-,Sung Yi-chieh,TPE,59.18
+2004,-,Irina Shlemova,UZB,59.21
+2004,-,Shikha Tandon,IND,59.70
+2004,-,Nicoleta Coica,MDA,59.85
+2004,-,Dominique Diezi,SUI,56.67
+2004,-,Arlene Semeco Arismendi,VEN,57.04
+2004,-,Judith Draxler,AUT,57.29
+2004,-,Hannah Jane Wilson,HKG,57.33
+2004,-,Lara Heinz,LUX,57.40
+2004,-,Agnes Mutina,HUN,58.10
+2004,-,Angela Chuck,JAM,58.33
+2004,-,Ragnheidur Ragnarsdottir,ISL,58.47
+2004,-,Jeanette Ottesen,DEN,56.17
+2004,-,Alison Fitch,NZL,56.29
+2004,-,Sara Isakovic,SLO,56.67
+2004,-,Eileen Coparropa Aleman,PAN,57.09
+2004,-,Olga Mukomol,UKR,57.12
+2004,-,Anna Gostomelsky,ISR,57.15
+2004,-,Jana Kolukanova,EST,57.45
+2004,-,Johanna Sjöberg,SWE,56.66
+2004,-,Florencia Szigeti,ARG,56.71
+2004, ,Melanie Marshall,GBR,dq
+2004,-,Rebeca Braga Gusmao,BRA,56.26
+2004,-,Cheng Jiaru,CHN,56.39
+2004,-,Paulina Barzycka,POL,56.20
+2004,-,Jana Myskova,CZE,56.59
+2004,-,Xu Yanwei,CHN,56.66
+2000,1, Inge de Bruijn,NED,53.83
+2000,2, Therese Alshammar,SWE,54.33
+2000,3, Dara Torres,USA,54.43
+2000,4, Jennifer Thompson,USA,54.43
+2000,5, Martina Moravcova,SVK,54.72
+2000,6, Helene Muller,RSA,55.19
+2000,7, Sumika Minamoto,JPN,55.53
+2000,8, Willemina van Rijn,NED,55.58
+2000,-,Susan Rolph,GBR,55.69
+2000,-,Sarah Ryan,AUS,55.93
+2000,-,Laura Nicholls,CAN,55.94
+2000,-,Yelena Popchenko,BLR,56.40
+2000,-,Karen Pickering,GBR,55.71
+2000,-,Rania Elwani,EGY,55.85
+2000,-,Louise Jöhncke,SWE,55.94
+2000,-,Sandra Völker,GER,55.97
+2000,-,Nicole Hayes,PLW,1:00.89
+2000,-,Rola El Haress,LIB,1:03.26
+2000,-,Maria Awori,KEN,1:06.23
+2000,-,Nathalie Lee Baw,MRI,1:06.67
+2000,-,Zena Sahely,SEN,1:07.37
+2000,-,Supra Singhal,UGA,1:08.15
+2000,-,Sanjaajamts Altantuya,MGL,1:10.22
+2000,-,Katerina Izmailova,TJK,1:19.12
+2000,-,Leah Martindale,BAR,57.21
+2000,-,Elina Partoka,EST,57.71
+2000,-,Siobhan Cropper,TTO,57.91
+2000,-,Lara Hrund Bjargardottir,ISL,58.44
+2000,-,Caroline Pickering,FIJ,58.62
+2000,-,Yekaterina Tochenaya,KGZ,58.80
+2000,-,Anna Stylianou,CYP,59.08
+2000,-,Agnese Ozolina,LAT,59.28
+2000,-,Olga Mukomol,UKR,56.59
+2000,-,Kirsty Coventry,ZIM,57.47
+2000,-,Gyöngyver Lakos,HUN,57.71
+2000,-,Lara Heinz,LUX,58.55
+2000,-,Pilin Tachakittiraran,THA,58.69
+2000,-,Jurate Ladaviciute,LTU,58.78
+2000,-,Chantal Gibney,IRL,58.79
+2000,-,Tsai Shu-min,TPE,59.39
+2000,-,Hanna-Maria Seppälä,FIN,56.68
+2000,-,Cristina Chiuso,ITA,57.09
+2000,-,Florencia Szigeti,ARG,57.20
+2000,-,Eileen Coparropa Aleman,PAN,57.82
+2000,-,Monique Robins,NZL,57.85
+2000,-,Tine Bossuyt,BEL,58.02
+2000,-,Jang Hee-jin,KOR,58.77
+2000,-,Antonia Machaira,GRE,57.24
+2000,-,Judith Draxler,AUT,57.40
+2000, ,Antje Buschschulte,GER,dns
+2000,-,Ekaterina Kibalo,RUS,56.97
+2000,-,Joscelin Yeo,SIN,57.15
+2000,-,Ilona Hlavackova,CZE,57.37
+2000,-,Xue Han,CHN,56.72
+2000,-,Susan O'Neill,AUS,57.78
+2000, ,Marianne Limpert,CAN,dns
+1996,1, Le Jingyi,CHN,54.50,OR
+1996,2, Sandra Völker,GER,54.88
+1996,3, Angel Martino,USA,54.93
+1996,4, Amy Van Dyken,USA,55.11
+1996,5, Franziska van Almsick,GER,55.59
+1996,6, Sarah Ryan,AUS,55.85
+1996,7, Mette Jacobsen,DEN,56.01
+1996,8, Karin Brienesse,NED,56.12
+1996,9, Shan Ying,CHN,55.74
+1996,10, Linda Olofsson,SWE,55.83
+1996,11, Liliana Dobrescu,ROU,55.98
+1996,12, Leah Martindale,BAR,56.03
+1996,13, Natalya Meshcheryakova,RUS,56.17
+1996,14, Karen Pickering,GBR,56.32
+1996,15, Martina Moravcova,SVK,56.47
+1996,16, Susan Rolph,GBR,56.58
+1996,-,Anna Nyiry,HUN,57.82
+1996,-,Teresa Moodie,ZIM,58.59
+1996,-,Valeria Alvarez,ARG,59.26
+1996,-,Viktoria Poleyaeva,KGZ,59.40
+1996,-,Gabrijela Ujcic,CRO,59.92
+1996,-,Duska Radan,YUG,1:00.34
+1996,-,Caroline Pickering,FIJ,1:00.51
+1996,-,Gail Rizzo,MLT,1:02.19
+1996,-,Siobhan Cropper,TTO,57.30
+1996,-,Judith Draxler,AUT,57.34
+1996,-,Antonia Makhaira,GRE,57.92
+1996,-,Kristyna Kynerova,CZE,58.03
+1996,-,Sandrine Paquier,SUI,58.38
+1996,-,Svetlana Zhidko,BLR,58.64
+1996,-,Tsai Shu-min,TPE,58.65
+1996,-,Yevgeniya Yermakova,KAZ,59.12
+1996,-,Minna Salmela,FIN,57.15
+1996,-,Gabrielle Rose,BRA,57.16
+1996,-,Cecilia Vianini,ITA,57.17
+1996,-,Metka Sparavec,SLO,57.66
+1996,-,Monica Dahl,NAM,57.95
+1996,-,Helene Muller,RSA,57.98
+1996,-,Lee Bo-eun,KOR,58.27
+1996,-,Joscelin Yeo,SIN,58.87
+1996,-,Shannon Shakespeare,CAN,56.63
+1996,-,Solenne Figues,FRA,56.90
+1996,-,Sumika Minamoto,JPN,57.25
+1996,-,Dita Zelviene,LTU,58.57
+1996,-,Rania Elwani,EGY,56.89
+1996,-,Claudia Franco Solana,ESP,57.00
+1996,-,Alison Fitch,NZL,57.71
+1996,-,Vibeke Johansen,NOR,56.88
+1992,1, Zhuang Yong,CHN,54.64,OR
+1992,2, Jennifer Thompson,USA,54.84
+1992,3, Franziska van Almsick,GER,54.94
+1992,4, Nicole Haislett,USA,55.19
+1992,5, Catherine Plewenski,FRA,55.72
+1992,6, Le Jingyi,CHN,55.89
+1992,7, Simone Osygus,GER,55.93
+1992,8, Karin Brienesse,NED,56.59
+1992,9, Suzu Chiba,JPN,55.97
+1992,10, Liliana Dobrescu,ROU,56.17
+1992,11, Yelena Choubina,EUN,56.19
+1992,12, Gitta Jensen,DEN,56.59
+1992,13, Mildred Muis,NED,56.64
+1992,14, Yevgeniya Ermakova,EUN,56.66
+1992,15, Susan O'Neill,AUS,56.68
+1992,16, Andrea Nugent,CAN,56.91
+1992,-,Wei Ling Yeo,SIN,58.93
+1992,-,Robyn Lamsam,HKG,59.26
+1992,-,Joshua Ikhaghomi,NGR,1:00.62
+1992,-,Corinne Leclair,MRI,1:00.95
+1992,-,Sharon Pickering,FIJ,1:01.42
+1992,-,Ana Fortin Pineda,HON,1:01.50
+1992,-,Paola Penarrieta Cabrera,BOL,1:04.08
+1992,-,Elsa Vicente Freire,ANG,1:05.45
+1992,-,Rania Elwani,EGY,58.82
+1992,-,Gillian Akiko Thomson,PHI,59.02
+1992,-,Monica Dahl,NAM,59.05
+1992,-,Marja Päivinen,FIN,59.46
+1992,-,Shelley Cramer,ISV,1:00.29
+1992,-,Helga Sigurdardottir,ISL,1:00.29
+1992,-,Ana Alegria,POR,1:00.35
+1992,-,Ratiporn Wong,THA,1:00.85
+1992,-,Marianne Kriel,RSA,57.50
+1992,-,Claudia Franco Solana,ESP,57.50
+1992,-,Minna Salmela,FIN,58.04
+1992,-,Natalia Pulido,ESP,58.54
+1992,-,Mette Nørskov Nielsen,DEN,58.67
+1992,-,Alison Sheppard,GBR,58.83
+1992,-,Diana Ureche,ROU,58.83
+1992,-,Ilaria Sciorelli,ITA,59.11
+1992,-,Karen Pickering,GBR,57.17
+1992,-,Eva Nyberg,SWE,57.36
+1992,-,Ayako Nakano,JPN,57.71
+1992,-,Allison Higson,CAN,58.47
+1992,-,Karen van Wirdum,AUS,58.75
+1992,-,Toni Jeffs,NZL,58.80
+1992,-,Martina Moravcova,TCH,57.19
+1992,-,Ellenor Svensson,SWE,58.03
+1988,1, Kristin Otto,GDR,54.93
+1988,2, Zhuang Yong,CHN,55.47
+1988,3, Catherine Plewenski,FRA,55.49
+1988,4, Manuela Stellmach,GDR,55.52
+1988,5, Silvia Poll,CRC,55.90
+1988,6, Karin Brienesse,NED,56.15
+1988,7, Dara Torres,USA,56.25
+1988,8, Cornelia van Bentum,NED,56.54
+1988,9, Nataliya Trefilova,URS,56.48
+1988,10, Ayako Nakano,JPN,56.72
+1988,11, Luminita Dobrescu,ROU,56.79
+1988,12, Mitzi Kremer,USA,56.83
+1988,13, Gitta Jensen,DEN,57.02
+1988,14, Karen van Wirdum,AUS,57.04
+1988,15, Svetlana Issakova,URS,57.07
+1988,16, Tamara Costache,ROU,57.11
+1988,-,Carolina Araujo,MOZ,1:05.11
+1988,-,Katerine Moreno,BOL,1:05.39
+1988,-,Lum Sabrina,TPE,1:02.11
+1988,-,Catherine Helen Fogarty,ZIM,1:02.47
+1988,-,Veronica Cummings,GUM,1:02.63
+1988,-,Angela Birch,FIJ,1:02.91
+1988,-,Cina Munch,FIJ,1:03.06
+1988,-,Nancy Khalaf,LIB,1:06.73
+1988,-,Carla Fernandes,ANG,1:08.15
+1988,-,Gillian Akiko Thomson,PHI,59.41
+1988,-,Carolina Mauri,CRC,1:00.14
+1988,-,Kim Eun-jung,KOR,1:00.39
+1988,-,Ana Fortin Pineda,HON,1:01.11
+1988,-,Fenella Ng,HKG,1:01.27
+1988,-,Han Young-hee,KOR,1:01.55
+1988,-,Wang Chi,TPE,1:01.72
+1988,-,Elsa Vicente Freire,ANG,1:05.47
+1988,-,Suzanne Baumer,AUS,57.76
+1988,-,Adriana Pereira,BRA,58.53
+1988,-,Karen Diffenthaler,TTO,58.64
+1988,-,Patricia Kohlmann,MEX,59.05
+1988,-,Isabelle Vieira,BRA,59.15
+1988,-,Maria Rivera,MEX,59.56
+1988,-,Bryndis Ollafsdottir,ISL,59.56
+1988,-,Cee Kay Hung,HKG,1:00.18
+1988,-,Eva Nyberg,SWE,57.57
+1988,-,Annabelle Cripps,GBR,57.81
+1988,-,Karin Furuhed,SWE,57.97
+1988,-,June Croft,GBR,58.19
+1988,-,Jacqueline Delord,FRA,58.22
+1988,-,Kaori Sasaki,JPN,58.40
+1988,-,Senda Al Gharbi,TUN,58.51
+1988,-,Jane Kerr,CAN,57.55
+1988,-,Lou Yaping,CHN,57.79
+1988,-,Pia Sørensen,DEN,57.82
+1988,-,Silvia Persi,ITA,58.22
+1988,-,Natasha Khristova,BUL,57.80
+1988,-,Katja Ziliox,FRG,58.39
+1988,-,Andrea Nugent,CAN,57.33
+1988,-,Marie-Therese Armentero,SUI,57.35
+1988,-,Christiane Pielke,FRG,57.47
+1980,1, Barbara Krause,GDR,54.79,WR
+1980,2, Caren Metschuck,GDR,55.16
+1980,3, Ines Diers,GDR,55.65
+1980,4, Olga Klevakina,URS,57.40
+1980,5, Cornelia van Bentum,NED,57.63
+1980,6, Natalya Strunnikova,URS,57.83
+1980,7, Guylaine Berger,FRA,57.88
+1980,8, Agneta Eriksson,SWE,57.90
+1980,-,Jacquelene Willmott,GBR,58.78
+1980,-,Carine Verbauwen,BEL,59.08
+1980,-,Celeste Garcia,PER,1:02.44
+1980,-,Michele Pessoa,ANG,1:09.10
+1980,-,Isabel Reuss,MEX,58.36
+1980,-,Larisa Tsaryova,URS,59.12
+1980,-,Rosemary Brown,AUS,59.35
+1980,-,Maria Paris,CRC,1:01.08
+1980,-,Lynne Tasker,ZIM,1:03.36
+1980,-,Nadia Fezzani,LBA,1:09.28
+1980,-,June Croft,GBR,57.88
+1980,-,Carina Ljungdahl,SWE,58.05
+1980,-,Michelle Pearson,AUS,58.90
+1980,-,Heidi Koch,AUT,59.73
+1980,-,Helen Plaschinski,MEX,59.75
+1980,-,Olga Loizou,CYP,1:06.50
+1980,-,Garnet Charwat,NCA,1:08.98
+1980,-,Monica Vallarin,ITA,59.43
+1980,-,Natalia Mas,ESP,59.53
+1980,-,Bako Ratsifa,MAD,1:07.21
+1980,-,Thi Thanh Lan Chung,VIE,1:12.27
+1980,-,Monique Drost,NED,dq
+1976,1, Kornelia Ender,GDR,55.65,WR
+1976,2, Petra Priemer,GDR,56.49
+1976,3, Enith Brigitha,NED,56.65
+1976,4, Kim Peyton,USA,56.81
+1976,5, Shirley Babashoff,USA,56.95
+1976,6, Claudia Hempel,GDR,56.99
+1976,7, Jill Sterkel,USA,57.06
+1976,8, Jutta Weber,FRG,57.26
+1976,-,Barbara Clark,CAN,57.72
+1976,-,Gail Amundrud,CAN,58.10
+1976,-,Rebecca Perrott,NZL,58.13
+1976,-,Ineke Ran,NED,58.50
+1976,-,Guylaine Berger,FRA,58.62
+1976,-,Anne Jardin,CAN,57.78
+1976,-,Lene Jenssen,NOR,58.10
+1976,-,Jenny Tate,AUS,58.88
+1976,-,Pia Mårtensson,SWE,59.15
+1976,-,Ida Hansson,SWE,1:00.22
+1976,-,Shelley Cramer,ISV,1:00.67
+1976,-,Myriam Mizouni,TUN,1:02.42
+1976, ,Elisabetta Dessy,ITA,dns
+1976,-,Sachiko Yamazaki,JPN,1:00.43
+1976,-,Regina Nissen,FRG,1:00.60
+1976,-,Lesleigh Harvey,AUS,1:01.59
+1976,-,Dierdre Sheehan,IRL,1:02.11
+1976,-,Vilborg Sverrisdottir,ISL,1:03.26
+1976,-,Irina Vlasova,URS,58.99
+1976,-,Elaine Gray,GBR,1:00.31
+1976,-,Ivis Poleo,VEN,1:03.07
+1976,-,Karen Robertson,HKG,1:04.29
+1976, ,Judit Pelle,HUN,dns
+1976,-,Susan Edmondson,GBR,1:00.64
+1976,-,Berber Kamstra,NED,1:00.68
+1976,-,Geert Boekhout,BEL,1:00.76
+1976,-,Marianela Huen,VEN,1:02.51
+1976,-,Georgina Osorio,PAN,1:03.88
+1976,-,Marina Kliuchnikova,URS,59.30
+1976,-,Rachaneewan Bulakul,THA,1:01.33
+1976,-,Rossana Juncos,ARG,1:01.89
+1976,-,Drue Le Guier,AUS,59.40
+1976,-,Beate Jasch,FRG,1:00.80
+1976,-,Maria Paris,CRC,1:01.53
+1976, ,Maria Ramon,CUB,dns
+1976,-,Liubov Kobzova,URS,58.93
+1976,-,Anne Richard,BEL,59.11
+1976,-,Diana Olsson,SWE,1:00.46
+1976,-,Susana Coppo,ARG,1:02.46
+1976,-,Jane Fayer,PUR,1:02.89
+1972,1, Sandra Neilson,USA,58.59,OR
+1972,2, Shirley Babashoff,USA,59.02
+1972,3, Shane Gould,AUS,59.06
+1972,4, Gabriele Wetzko,GDR,59.21
+1972,5, Heidemarie Reineck,FRG,59.73
+1972,6, Andrea Eife,GDR,59.91
+1972,7, Magdolna Patoh,HUN,1:00.02
+1972,8, Enith Brigitha,NED,1:00.09
+1972,-,Jennifer Kemp,USA,59.93
+1972,-,Antje Rijnders,NED,1:00.84
+1972,-,Wendy Cook,CAN,1:01.26
+1972,-,Claude Mandonnaud,FRA,1:01.88
+1972,-,Jutta Weber,FRG,59.90
+1972,-,Sylvia Eichner,GDR,1:00.73
+1972,-,Hansje Bunschoten,NED,1:00.79
+1972,-,Tatyana Zolotnitskaya,URS,1:01.12
+1972,-,Guylaine Berger,FRA,1:01.54
+1972,-,Judit Turoczy,HUN,1:01.57
+1972,-,Sharon Booth,AUS,1:02.07
+1972,-,Kirsten Strange,DEN,1:03.83
+1972,-,Susana Saxlund,URU,1:04.91
+1972,-,Judith Wright,CAN,1:01.97
+1972,-,Chantal Schertz,FRA,1:02.82
+1972,-,Edit Kovacs,HUN,1:03.00
+1972,-,Lucy Maurity Burle,BRA,1:03.12
+1972,-,Marcia Arriaga,MEX,1:03.66
+1972,-,Ileana Morales,VEN,1:04.13
+1972,-,Eva Andersson,SWE,1:01.88
+1972,-,Susan Edmondson,GBR,1:02.29
+1972,-,Francoise Monod,SUI,1:02.43
+1972,-,Heather Coombridge,NZL,1:02.95
+1972,-,Hsu Yue-yun,TPE,1:04.77
+1972,-,Mary Beth Rondeau,CAN,1:01.46
+1972,-,Leanne Francis,AUS,1:01.90
+1972,-,Lesley Allardice,GBR,1:02.07
+1972,-,Inger Andersson,SWE,1:03.40
+1972,-,Diane Walker,GBR,1:04.44
+1972,-,Angela Steinbach,FRG,1:01.66
+1972,-,Nadezhda Matyukhina,URS,1:02.14
+1972,-,Margrit Thomet,SUI,1:02.33
+1972,-,Laura Podesta,ITA,1:02.88
+1972,-,Grethe Mathiesen,NOR,1:01.47
+1972,-,Yelena Timoshenko,URS,1:01.68
+1972,-,Shigeko Kawanishi,JPN,1:02.13
+1972,-,Khriska Peycheva,BUL,1:03.43
+1972,-,Virginia Anchestegui,MEX,1:04.99
+1968,1, Jan Henne,USA,1:00.0
+1968,2, Susan Pedersen,USA,1:00.3
+1968,3, Linda Gustavson,USA,1:00.3
+1968,4, Marion Lay,CAN,1:00.5
+1968,5, Martina Grunert,GDR,1:01.0
+1968,6, Alexandra Jackson,GBR,1:01.0
+1968,7, Mirjana Segrt,YUG,1:01.5
+1968,8, Judit Turoczy,HUN,1:01.6
+1968,-,Lynette Bell,AUS,1:02.4
+1968,-,Janette Steinbeck,AUS,1:02.6
+1968,-,Oei Liana,TPE,1:02.8
+1968,-,Lynette Watson,AUS,1:02.9
+1968,-,Magdolna Patoh,HUN,1:03.8
+1968,-,Roswitha Krause,GDR,1:02.4
+1968,-,Uta Schmuck,GDR,1:02.8
+1968,-,Shigeko Kawanishi,JPN,1:03.0
+1968,-,Lidiya Hrebets,URS,1:03.3
+1968,-,Edit Kovacs,HUN,1:03.5
+1968,-,Nataliya Ustinova,URS,1:05.0
+1968,-,Olga Kozicova,TCH,1:02.6
+1968,-,Petronella Bos,NED,1:02.8
+1968,-,Claude Mandonnaud,FRA,1:02.8
+1968,-,Gudrun Berglund,SWE,1:03.5
+1968,-,Simone Hanner,FRA,1:04.8
+1968,-,Helen Elliott,PHI,1:05.1
+1968,-,Patricia Olano,COL,1:05.3
+1968,-,Miwako Kobayashi,JPN,1:04.2
+1968,-,Maria Nikolova,BUL,1:05.1
+1968,-,Shen Bao-ni,TPE,1:06.7
+1968,-,Ruth Apt Leheimer,URU,1:07.0
+1968,-,Catherine Grosjean,FRA,1:04.9
+1968,-,Fiona Kellock,GBR,1:05.8
+1968,-,Gillian Treers,GBR,1:06.3
+1968,-,Silvana Asturias,GUA,1:10.3
+1968,-,Lotten Andersson,SWE,1:04.5
+1968,-,Maria de Vivanco,PER,1:04.7
+1968,-,Ingeborg Renner,FRG,1:05.9
+1968,-,Hedy García,PHI,1:06.1
+1968,-,Lorna Blake,PUR,1:13.2
+1968,-,Maria Strumolo,ITA,1:04.1
+1968,-,Helmi Boxberger,FRG,1:05.1
+1968,-,Vera Kock,SWE,1:05.1
+1968,-,Vivian Ortiz,MEX,1:06.9
+1968,-,Emilia Figueroa,URU,1:07.2
+1968,-,Ana Marcial,PUR,1:10.1
+1968,-,Ana Boban,YUG,1:05.4
+1968,-,Catharina Beumer,NED,1:06.1
+1968,-,Lylian Castillo,URU,1:08.3
+1968,-,Rosa Hasbun,ESA,1:10.0
+1968,-,Zoya Dus,URS,1:04.2
+1968,-,Carmen Ferracuti,ESA,1:08.5
+1968,-,Tam Nguyen Minh,VIE,1:09.5
+1968,-,Heidemarie Reineck,FRG,1:04.2
+1968,-,Marcia Arriaga,MEX,1:05.4
+1968,-,Mirjam Van Hemert,NED,1:06.1
+1968,-,Hrafnhildur Gudmundsdottir,ISL,1:06.3
+1968,-,Kristine Moir,PUR,1:07.9
+1964,1, Dawn Fraser,AUS,59.5,OR
+1964,2, Sharon Stouder,USA,59.9
+1964,3, Kathleen Ellis,USA,1:00.8
+1964,4, Erica Terpstra,NED,1:01.8
+1964,5, Marion Lay,CAN,1:02.2
+1964,6, Csilla Dobai-Madarasz,HUN,1:02.4
+1964,7, Ann-Christine Hagberg,SWE,1:02.5
+1964,8, Lynette Bell,AUS,1:02.7
+1964,-,Jeanne Hallock,USA,1:02.9
+1964,-,Daniela Beneck,ITA,1:02.9
+1964,-,Judit Turoczy,HUN,1:03.0
+1964,-,Robyn Thorn,AUS,1:03.9
+1964,-,Martina Grunert,GER,1:03.1
+1964,-,Katalin Takacs,HUN,1:03.3
+1964,-,Ann-Charlott Lilja,SWE,1:03.9
+1964,-,Ulla Jäfvert,SWE,1:04.6
+1964,-,Wilhelmina van Weerdenburg,NED,1:08.3
+1964,-,Ryoko Urakami,JPN,1:04.5
+1964,-,Mary Stewart,CAN,1:05.1
+1964,-,Lim Kum-ja,KOR,1:16.1
+1964,-,Anneliese Rockenbach,VEN,1:04.3
+1964,-,Paola Saini,ITA,1:04.4
+1964,-,Sandra Keen,GBR,1:04.7
+1964,-,Catharina Beumer,NED,1:05.2
+1964,-,Ann Lallande,PUR,1:06.8
+1964,-,Nataliya Ustinova,URS,1:04.2
+1964,-,Kirsten Strange,DEN,1:05.3
+1964,-,Traudi Beierlein,GER,1:05.4
+1964,-,Monique Pietri,FRA,1:05.8
+1964,-,Christine Paukerl,AUT,1:07.3
+1964,-,Nataliya Bystrova,URS,1:04.0
+1964,-,Diana Wilkinson,GBR,1:05.0
+1964,-,Mara Sacchi,ITA,1:05.9
+1964,-,Hrafnhildur Gudmundsdottir,ISL,1:06.4
+1964,-,Maria de Vivanco,PER,1:09.0
+1964,-,Toyoko Kimura,JPN,1:04.8
+1964,-,Marilyn Sidelsky,ZIM,1:05.5
+1964,-,Linda Amos,GBR,1:06.1
+1964,-,Rita Pulido Castro,ESP,1:06.7
+1964,-,Margaret Harding,PUR,1:11.7
+1964,-,Helen Kennedy,CAN,1:04.2
+1964,-,Miyoko Azuma,JPN,1:06.4
+1964,-,Jovina Tseng,MAS,1:13.9
+1960,1, Dawn Fraser,AUS,1:01.2,OR
+1960,2, Chris Von Saltza,USA,1:02.8
+1960,3, Natalie Steward,GBR,1:03.1
+1960,4, Carolyn Wood,USA,1:03.4
+1960,5, Csilla Dobai-Madarasz,HUN,1:03.6
+1960,6, Erica Terpstra,NED,1:04.3
+1960,7, Cockie Gastelaars,NED,1:04.7
+1960,8, Marie Stewart,CAN,1:05.5
+1960,-,Ilse Konrads,AUS,1:04.7
+1960,-,Heda Frost,FRA,1:05.4
+1960,-,Paola Saini,ITA,1:05.4
+1960,-,Inger Thorngren,SWE,1:05.6
+1960,-,Heidi Pechstein,GER,1:05.6
+1960,-,Ursula Brunner,GER,1:04.8
+1960,-,Katalin Boros,HUN,1:06.2
+1960,-,Karin Larsson,SWE,1:06.5
+1960,-,Maria Pacifici,ITA,1:07.1
+1960,-,Blanca Barron Serrano,MEX,1:07.9
+1960,-,Yoshiko Sato,JPN,1:06.4
+1960,-,Nora Novotny,AUT,1:07.4
+1960,-,Agusta Thorsteinsdottir,ISL,1:07.5
+1960,-,Diana Wilkinson,GBR,1:07.5
+1960,-,Margaret Iwasaki,CAN,1:07.6
+1960,-,Anneliese Rockenbach,VEN,1:08.5
+1960,-,Hitomi Jinno,JPN,1:09.8
+1960,-,Rita Pulido Castro,ESP,1:10.0
+1960,-,Ulvi Voog,URS,1:06.7
+1960,-,Haydee Coloso Espino,PHI,1:07.8
+1960,-,Dorothy Sutcliffe,ZIM,1:09.0
+1960,-,Marina Sharmal,URS,1:06.4
+1960,-,Marie-Laure Gaillot,FRA,1:08.0
+1960,-,Maria Luisa Souza,MEX,1:08.4
+1956,1, Dawn Fraser,AUS,1:02.0,WR
+1956,2, Lorraine Crapp,AUS,1:02.3
+1956,3, Faith Leech,AUS,1:05.1
+1956,4, Joan Rosazza,USA,1:05.2
+1956,5, Virginia Grant,CAN,1:05.4
+1956,6, Shelley Mann,USA,1:05.6
+1956,7, Marrion Roe,NZL,1:05.6
+1956,8, Natalie Myburgh,RSA,1:05.8
+1956,-,Valeria Gyenge,HUN,1:06.4
+1956,-,Zsussa Ördög,HUN,1:06.9
+1956,-,Helen Stewart,CAN,1:06.9
+1956,-,Birgit Klomp,GER,1:07.9
+1956,-,Nancy Simons,USA,1:06.1
+1956,-,Kate Jobson,SWE,1:06.1
+1956,-,Susan Roberts,RSA,1:06.6
+1956,-,Jeanette Myburgh,RSA,1:06.7
+1956,-,Anita Hellström,SWE,1:08.5
+1956,-,Irene Sweyd,BEL,1:08.9
+1956,-,Winifred Griffin,NZL,1:10.4
+1956,-,Margaret Northrop,KEN,1:12.8
+1956,-,Katalin Szöke,HUN,1:08.0
+1956,-,Katharine Jansen,GER,1:08.3
+1956,-,Odile Couaux,FRA,1:08.6
+1956,-,Fearne Ewart,GBR,1:08.8
+1956,-,Setsuko Shimada,JPN,1:11.8
+1956,-,Heda Frost,FRA,1:08.8
+1956,-,Blanca Barron Serrano,MEX,1:09.5
+1956,-,Yoshiko Sato,JPN,1:10.3
+1956,-,Gertrudez Lozada,PHI,1:13.7
+1956,-,Christel Steffin,GER,1:08.1
+1956,-,Hitomi Jinno,JPN,1:08.8
+1956,-,Gladys Priestley,CAN,1:09.2
+1956,-,Frances Hogben,GBR,1:08.5
+1956,-,Ginette Sendral,FRA,1:09.9
+1956,-,Shoshana Rivner,ISR,1:10.3
+1952,1, Katalin Szöke,HUN,1:06.8
+1952,2, Johanna Termeulen,NED,1:07.0
+1952,3, Judit Temes,HUN,1:07.1
+1952,4, Joan Harrison,RSA,1:07.1
+1952,5, Joan Alderson,USA,1:07.1
+1952,6, Irma Heyting-Schuhmacher,NED,1:07.3
+1952,7, Marilee Stepan,USA,1:08.0
+1952,8, Angela Barnwell,GBR,1:08.6
+1952,-,Ragnhild Hveger,DEN,1:07.7
+1952,-,Marjory McQuade,AUS,1:08.2
+1952,-,Ingegärd Fredin,SWE,1:08.7
+1952,-,Ilona Nowak,HUN,1:07.8
+1952,-,Koosje van Voorn,NED,1:08.1
+1952,-,Greta Andersen,DEN,1:08.2
+1952,-,Judith Roberts,USA,1:08.2
+1952,-,Elisabeth Rechlin,GER,1:08.5
+1952,-,Mette Ove-Petersen,DEN,1:09.6
+1952,-,Maria Nardi,ITA,1:13.2
+1952,-,Sadako Yamashita,JPN,1:13.2
+1952,-,Cynthia Eager,HKG,1:16.8
+1952,-,Marianne Lundqvist,SWE,1:10.8
+1952,-,Wera Schäferkord,GER,1:10.9
+1952,-,Romana Calligaris,ITA,1:11.0
+1952,-,Dolly Nazir,IND,1:24.6
+1952,-,Josette Arene,FRA,1:09.1
+1952,-,Jean Botham,GBR,1:10.5
+1952,-,Fumiko Sakaguchi,JPN,1:14.6
+1952,-,Irene Strong,CAN,1:15.1
+1952,-,Denise Norton,AUS,1:11.8
+1952,-,Gladys Priestley,CAN,1:13.4
+1952,-,Raili Riuttala,FIN,1:13.5
+1952,-,Maud Berglund,SWE,1:09.8
+1952,-,Lillian Preece,GBR,1:10.0
+1952,-,Ritva Järvinen,FIN,1:11.5
+1952,-,Sybille Verckist,BEL,1:13.7
+1952,-,Shizue Miyabe,JPN,1:16.6
+1952,-,Ana Maria Schultz,ARG,1:10.6
+1952,-,Gaby Tanguy,FRA,1:10.6
+1952,-,Kathleen McNamee,CAN,1:12.9
+1952,-,Susy Vaterlaus,SUI,1:16.8
+1952,-,Ritva Koivula,FIN,1:17.3
+1948,1, Greta Andersen,DEN,1:06.3
+1948,2, Ann Curtis,USA,1:06.5
+1948,3, Marie-Louise Vaessen,NED,1:07.6
+1948,4, Karen-Margrete Harup,DEN,1:08.1
+1948,5, Ingegärd Fredin,SWE,1:08.4
+1948,6, Irma Schuhmacher,NED,1:08.4
+1948,7, Elisabeth Ahlgren,SWE,1:08.8
+1948,8, Fritze Nathansen,DEN,1:09.1
+1948,-,Marie Corridon,USA,1:08.9
+1948,-,Marianne Lundquist,SWE,1:09.5
+1948,-,Marjory McQuade,AUS,1:09.5
+1948,-,Patricia Nielsen,GBR,1:09.6
+1948,-,Judit Temes,HUN,1:09.7
+1948,-,Lillian Preece,GBR,1:09.3
+1948,-,Piedade Coutinho Tavares da Silva,BRA,1:09.5
+1948,-,Brenda Helser,USA,1:10.0
+1948,-,Josette Arene,FRA,1:09.7
+1948,-,Eileen Holt,ARG,1:12.0
+1948,-,Magda Bruggemann Schmith,MEX,1:12.5
+1948,-,Maria-Anna Erismann,SUI,1:19.9
+1948,-,Denise Spencer,AUS,1:10.0
+1948,-,Eleonora Schmidt,BRA,1:10.8
+1948,-,Maria Littomeritzky,HUN,1:13.0
+1948,-,Adriana Camelli,ARG,1:16.5
+1948,-,Ginette Jany,FRA,1:12.1
+1948,-,Enriqueta Duarte Garcia,ARG,1:14.9
+1948,-,Margaret Wellington,GBR,1:09.8
+1948,-,Kathleen McNamee,CAN,1:13.3
+1948,-,Zsuzsa Nador,HUN,1:15.8
+1948,-,Maria Leao da Costa,BRA,1:16.0
+1948,-,Johanna Termeulen,NED,1:09.8
+1948,-,Fernande Caroen,BEL,1:12.1
+1948,-,Irene Strong,CAN,1:13.5
+1948,-,Gisele Vallerey,FRA,1:14.0
+1936,1, Hendrika Mastenbroek,NED,1:05.9,OR
+1936,2, Jeannette Campbell,ARG,1:06.4
+1936,3, Gisela Arendt,GER,1:06.6
+1936,4, Willemijntje den Ouden,NED,1:07.6
+1936,5, Catherina Wagner,NED,1:08.1
+1936,6, Olive McKean,USA,1:08.4
+1936,7, Katherine Rawls,USA,1:08.7
+1936,-,Piedade Coutinho Azevedo,BRA,1:09.6
+1936,-,Phyllis Dewar,CAN,1:09.6
+1936,-,Kazue Kojima,JPN,1:11.1
+1936,-,Magdolna Lenkei,HUN,1:12.1
+1936,-,Bernice Ruth Lapp,USA,1:09.6
+1936,-,Evelyn de Lacy,AUS,1:10.0
+1936,-,Olive Wadham,GBR,1:12.0
+1936,-,Margaret Stone,CAN,1:12.8
+1936,-,Ragnhild Hveger,DEN,1:14.0
+1936,-,Eva Arndt,DEN,1:10.1
+1936,-,Margery Hinton,GBR,1:13.0
+1936,-,Rei Takemura,JPN,1:14.6
+1936,-,Scylla Venancio,BRA,1:15.1
+1936,-,Ilona Acs,HUN,1:12.7
+1936,-,Irene Pirie-Milton,CAN,1:12.8
+1936,-,Tsuneko Furuta,JPN,1:14.6
+1936,-,Elvi Svendsen,DEN,1:10.3
+1936,-,Ingeborg Schmitz,GER,1:10.9
+1936,-,Vera Harsanyi,HUN,1:11.5
+1936,-,Zilpha Grant,GBR,1:12.1
+1936,-,Irma Schramkova,TCH,1:11.8
+1936,-,Ethel McKay,AUS,1:13.8
+1936,-,Helena Moraes Salles,BRA,1:16.2
+1936,-,Yeung Sauking,CHN,1:22.2
+1936,-,Magdalena Lohmar,GER,1:10.3
+1936,-,Renee Blondeau,FRA,1:10.9
+1932,1, Helene Madison,USA,1:06.8,OR
+1932,2, Willemijntje den Ouden,NED,1:07.8
+1932,3, Eleanor Saville,USA,1:09.3
+1932,4, Josephine McKim,USA,1:09.3
+1932,5, Neville Frances Bult,AUS,1:09.9
+1932,6, Jennie Maakal,RSA,1:10.8
+1932,-,Margaret Cooper,GBR,1:09.2
+1932,-,Yvonne Godard,FRA,1:14.1
+1932,-,Cornelia Ladde,NED,1:11.8
+1932,-,Elizabeth Valerie Davies,GBR,1:12.7
+1932,-,Hatsuho Matsuzawa,JPN,1:17.1
+1932,-,Marjorie Linton,CAN,1:19.9
+1932,-,Maria Vierdag,NED,1:13.3
+1932,-,Irene Mullen,CAN,1:15.2
+1932,-,Lilli Andersen,DEN,1:11.6
+1932,-,Edna Hughes,GBR,1:15.1
+1932,-,Kazue Kojima,JPN,1:16.2
+1932,-,Yukie Arata,JPN,1:16.1
+1932,-,Irene Pirie-Milton,CAN,1:16.3
+1932,-,Maria Lenk Zigler,BRA,1:25.8
+1928,1, Albina Osipowich,USA,1:11.0,OR
+1928,2, Eleanor Garatti,USA,1:11.4
+1928,3, Margaret Joyce Cooper,GBR,1:13.6
+1928,4, Jean McDowell,GBR,1:13.6
+1928,5, Susan Laird,USA,1:14.6
+1928,6, Charlotte Lehmann,GER,1:15.2
+1928,-,Iris Vera Tanner,GBR,1:14.4
+1928,-,Ena Stockley,NZL,--
+1928,-,Agnete Olsen,DEN,--
+1928,-,Sarolta Stieber,HUN,dnf
+1928,-,Kathleen Russell,RSA,1:16.0
+1928,-,Maria Vierdag,NED,--
+1928,-,Nora Kathleen Miller,NZL,--
+1928,-,Irene Erkens,GER,--
+1928,-,Claire Horrent,FRA,--
+1928,-,Maria Engelenberg,RSA,1:22.6
+1928,-,Edna Davey,AUS,--
+1928,-,Marquerite Ledpux,FRA,--
+1928,-,Margit Sipos,HUN,1:18.8
+1928,-,Marguerite Dockrell,IRL,1:31.6
+1928,-,Philomena Mealing,AUS,1:20.6
+1928,-,Gerda Bredgaard,DEN,--
+1928,-,Anne Dupire,FRA,--
+1924,1, Ethel Lackie,USA,1:12.4
+1924,2, Mariechen Wehselau,USA,1:12.8
+1924,3, Gertrude Ederle,USA,1:14.2
+1924,4, Constance Jeans,GBR,1:15.4
+1924,5, Iris Vera Tanner,GBR,1:20.8
+1924,-,Maria Vierdag,NED,1:21.2
+1924,-,Florence Barker,GBR,1:21.8
+1924,-,Gwitha Shand,NZL,1:22.4
+1924,-,Mariette Protin,FRA,1:22.8
+1924,-,Agnete Olsen,DEN,1:23.0
+1924,-,Ernestine Lebrun,FRA,"1:23.4"
+1924,-,Vivian Pettersson,SWE,"1:27.4"
+1924,-,Karen Rasmussen,DEN,1:29.0
+1924,-,Hedevig Rasmussen,DEN,1:22.4
+1924,-,Hulda Gunhild Everlund,SWE,1:23.2
+1924, ,Mietje Baron,NED,dns
+1924,-,Hjördis Töpel,SWE,"1:25.8"
+1920,1, Ethelda Bleibtrey,USA,1:13.6,WR
+1920,2, Irene Guest,USA,1:17.0
+1920,3, Frances Schroth,USA,1:17.2
+1920,4, Constance Jeans,GBR,1:22.8
+1920,5, Violet Walrond,NZL,--
+1920,6, Jane Gylling,SWE,--
+1920, , Charlotte Boyle,USA,dnf
+1920,-,Rie Beisenherz,NED,1:22.6
+1920,-,Yvonne Degraine,FRA,--
+1920,-,Aina Berg,SWE,--
+1920,-,Lillian Birkenhead,GBR,--
+1920,-,Germaine van Dievoet,BEL,--
+1920,-,Suzanne Wurtz,FRA,--
+1920,-,Carin Nilsson,SWE,--
+1920,-,Charlotte Radcliffe,GBR,--
+1920,-,Grace McKenzie,GBR,1:27.4
+1920,-,Ernestine Lebrun,FRA,--
+1920,-,Barbara Nash,RSA,--
+1920,-,Lillian Beaurepaire,AUS,--
+1912,1, Fanny Durack,ANZ,1:22.2
+1912,2, Wilhelmina Wylie,ANZ,1:25.4
+1912,3, Jennie Fletcher,GBR,1:27.0
+1912,4, Margarete Rosenberg,GER,1:27.4
+1912,5, Annie Speirs,GBR,1:27.4
+1912, , Daisy Curwen,GBR,dns
+1912,-,Isabelle Moore,GBR,1:27.4
+1912,-,Mary Langford,GBR,1:29.2
+1912,-,Louise Otto,GER,1:32.0
+1912,-,Wally Dressel,GER,1:33.4
+1912,-,Irene Steer,GBR,(1:29.0),dq
+1912,-,Klara Milch,AUT,1:37.2
+1912,-,Greta Johanson,SWE,1:41.4
+1912,-,Tyyne Järvi,FIN,1:42.4
+1912,-,Bertha Zahourek,AUT,1:38.6
+1912,-,Josefa Kellner,AUT,1:41.2
+1912,-,Karin Lundgren,SWE,1:44.8
+1912,-,Hermine Stindt,GER,1:29.2
+1912,-,Josefine Sticker,AUT,1:31.8
+1912,-,Claire Guttenstein- Frick,BEL,--
+1912,-,Elsa Björklund,SWE,--
+1912,-,Margarete Adler,AUT,1:34.4
+1912,-,Greta Carlsson,SWE,--
+1912,-,Regina Kari,FIN,--
+1912,-,Vera Thulin,SWE,1:44.0

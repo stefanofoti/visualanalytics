@@ -1,0 +1,290 @@
+Year,Position,Name,NOC,Time/Distance/Points,Record
+2020,1,Denis Ablyazin,ROC,262.500
+2020,2,Daiki Hashimoto,JPN,262.397
+2020,3,Chaopan Lin,CHN,261.894
+2016,1,Ryohei Kato,JPN,274.094
+2016,2,Denis Abliazin,RUS,271.453
+2016,3,Deng Shudi,CHN,271.122
+2016,4,Brinn Bevan,GBR,269.752
+2016,5,Christopher Brooks,USA,268.56
+2016,6,Francisco Barretto Junior,BRA,263.728
+2016,7,Andreas Bretschneider,GER,261.275
+2016,8,Vladyslav Hryko,UKR,202.078
+2016,-,Christian Baumann,SUI,260.262
+2016,-,Bart Deurloo,NED,257.686
+2016,-,Kim Hansol,KOR,257.645
+2016,-,Samir Ait Said,FRA,257.211
+2012,1,Chen Yibing,CHN,275.997
+2012,2,Ryohei Kato,JPN,271.952
+2012,3,Sam Oldham,GBR,271.711
+2012,4,Mykola Kuksenkov,UKR,271.526
+2012,5,Jacob Dalton,USA,269.952
+2012,6,Denis Ablyazin,RUS,269.603
+2012,7,Philipp Boy,GER,268.019
+2012,8,Pierre-Yves Beny,FRA,265.441
+2012,-,Isaac Botella Perez,ESP,265.587
+2012,-,Vlad Cotuna,ROU,262.567
+2012,-,Matteo Angioletti,ITA,262.085
+2012,-,Kim Hee-hoon,KOR,255.327
+2008,1,Huang Xu,CHN,286.125
+2008,2,Hiroyuki Tomita,JPN,278.875
+2008,3,Raj Bhavsar,USA,275.850
+2008,4,Philipp Boy,GER,274.600
+2008,5,Kim Ji-hoon,KOR,274.375
+2008,6,Konstantin Pluzhnikov,RUS,274.300
+2008,7,Marian Dragulescu,ROU,274.175
+2008,8,Thomas Bouhail,FRA,272.875
+2008,-,Grant Golding,CAN,358.975
+2008,-,Dmitry Savitsky,BLR,357.950
+2008,-,Sergio Munoz,ESP,357.925
+2008,-,Matteo Angioletti,ITA,355.500
+2004,1,Takehiro Kashima,JPN,173.821
+2004,2,Jason Gatson,USA,172.933
+2004,3,Marian Dragulescu,ROU,172.384
+2004,4,Kim Dae-eun,KOR,171.847
+2004,5,Huang Xu,CHN,171.257
+2004,6,Alexey Bondarenko,RUS,169.808
+2004,7,Roman Zuzulia,UKR,168.244
+2004,8,Thomas Andergassen,GER,167.372
+2004,-,Pierre-Yves Beny,FRA,226.231
+2004,-,Alejandro Barrenechea,ESP,223.295
+2004,-,Grant Golding,CAN,221.905
+2004,-,Matteo Angioletti,ITA,221.431
+2000,1,Xing Aowei,CHN,231.919
+2000,2,Oleksandr Beresh,UKR,230.306
+2000,3,Alexei Nemov,RUS,230.019
+2000,4,Akihiro Kasamatsu,JPN,229.857
+2000,5,Blaine Wilson,USA,228.983
+2000,6,Dorin Petcu,ROU,227.543
+2000,-,Cho Seong-min,KOR,227.346
+2000,-,Ivan Ivankov,BLR,227.255
+2000,-,Eric Poujade,FRA,225.469
+2000,-,Dimitrij Nonin,GER,225.282
+2000,-,Victor Cano,ESP,224.894
+2000,-,Yordan Iovtchev,BUL,221.730
+1996,4,BLR,"571,381",    
+1996,5,USA,"570,618",    
+1996,6,BUL,"567,567",    
+1996,7,GER,"567,405",    
+1996,8,KOR,"567,054",    
+1996,9,ROU,"566,257",    
+1996,10,JPN,"566,019",    
+1996,11,FRA,"565,781",    
+1996,12,ITA,"564,142",    
+1992,1,Vitaly Scherbo,EUN,585.45
+1992,2,Li Xiaoshuang,CHN,580.375
+1992,3,Yukio Iketani,JPN,578.25
+1992,4,Andreas Wecker,GER,575.575
+1992,5,Boris Preti,ITA,571.75
+1992,6,Christof Schwaller,SUI,571.725
+1992,7,Marius Gherman,ROU,571.15
+1992,8,Yoo Ok-ryul,KOR,570.85
+1992,9,Zoltan Supola,HUN,570.525
+1992,10,Kalofer Hristozov,BUL,566.8
+1992,11,Michael Engeler,SUI,563.225
+1992,12,Neil Thomas,GBR,558.1
+1988,1,Vladimir Artemov,URS,593.35
+1988,2,Sylvio Kroll,GDR,588.45
+1988,3,Koichi Mizushima,JPN,585.60
+1988,4,Wang Chongsheng,CHN,585.25
+1988,5,Petar Gueorguiev,BUL,585.10
+1988,6,Jenö Paprika,HUN,582.30
+1988,7,Marian Rizan,ROU,581.70
+1988,8,Gabriele Sala,ITA,579.00
+1988,9,Alan Nolet,CAN,578.80
+1988,10,Frederic Longuepee,FRA,577.45
+1988,11,Dominick Minicucci,USA,576.85
+1988,12,Bernhard Simmelbauer,FRG,574.10
+1984,1,Peter Vidmar,USA,591.40
+1984,2,Li Ning,CHN,590.80
+1984,3,Koji Gushiken,JPN,586.70
+1984,4,Andreas Japtok,FRG,582.10
+1984,5,Josef Zellweger,SUI,579.95
+1984,6,Jean-Luc Cairon,FRA,578.25
+1984,7,Philippe Chartrand,CAN,577.15
+1984,8,Chang Tae-eun,KOR,574.95
+1984,9,Terence Bartlett,GBR,571.00
+1980,1,Aleksandr Dityatin,URS,598.60
+1980,2,Roland Brückner,GDR,581.15
+1980,3,Ferenc Donath,HUN,575.00
+1980,4,Danut Grecu,ROU,572.30
+1980,5,Ognian Bangiev,BUL,571.55
+1980,6,Rudolf Babiak,TCH,569.80
+1980,7,Miguel Arroyo,CUB,563.20
+1980,8,Henry Boerio,FRA,559.20
+1980,9,Cho Hun,PRK,551.35
+1976,1,Sawao Kato,JPN,576.85
+1976,2,Nikolai Andrianov,URS,576.45
+1976,3,Lutz Mack,GDR,564.65
+1976,4,Zoltan Magyar,HUN,564.45
+1976,5,Reinhard Dietze,FRG,557.40
+1976,6,Estefan Gal,ROU,557.30
+1976,7,Bart Conner,USA,556.10
+1976,8,Philippe Gaille,SUI,550.60
+1976,9,Jan Zoulik,TCH,550.15
+1976,10,Bernard Decoux,FRA,546.45
+1976,11,Mariusz Zasada,POL,544.85
+1976,12,Dimiter Koitchev,BUL,532.60
+1972,1,Sawao Kato,JPN,571.25
+1972,2,Nikolai Andrianov,URS,564.05
+1972,3,Klaus Köste,GDR,559.70
+1972,4,Mikolay Kubica,POL,551.70
+1972,5,Eberhard Gienger,FRG,546.40
+1972,6,Li Song-sob,PRK,545.05
+1972,7,Petre Mihaiuc,ROU,538.90
+1972,8,Imre Molnar,HUN,538.60
+1972,9,Jifi Fejtek,TCH,538.55
+1972,10,Steven Hug,USA,533.85
+1972,11,Peter Rohner,SUI,533.00
+1972,12,Janez Brodnik,YUG,530.10
+1972,13,Jean-Pierre Miens,FRA,522.65
+1972,14,Jorge Cuervo,CUB,519.90
+1972,15,Stephane Zoev,BUL,516.35
+1972,16,Franco Donega,ITA,510.10
+1968,1,Sawao Kato,JPN,575.90
+1968,2,Mikhail Voronin,URS,571.10
+1968,3,Matthias Brehme,GDR,557.15
+1968,4,Frantisek Bocko,TCH,557.10
+1968,5,Wilhelm Kubica,POL,555.40
+1968,6,Miroslav Cerar,YUG,550.75
+1968,7,Kanati Allen,USA,548.90
+1968,8,Heinz Haussler,FRG,548.35
+1968,9,Meinrad Berchtold,SUI,548.20
+1968,10,Mauno Nissinen,FIN,547.05
+1968,11,Guerogui Adamov,BUL,538.15
+1968,12,Giovanni Carminucci,ITA,537.05
+1968,13,Istvan Aranyos,HUN,535.25
+1968,14,Armando Valles,MEX,518.25
+1968,15,Octavio Suarez,CUB,516.85
+1968,16,Gilbert Larose,CAN,510.40
+1964,1,Yukio Endo,JPN,577.95
+1964,2,Boris Shakhlin,URS,575.45
+1964,3,Siegfried Fülle,GER,565.1
+1964,4,Franco Menichelli,ITA,560.9
+1964,5,Jan Jankowicz,POL,559.5
+1964,6,Karel Klecka,TCH,558.15
+1964,7,Larry Banner,USA,556.95
+1964,8,Olli Eino Laiho,FIN,556.2
+1964,9,Rajmund Csanyi,HUN,555.7
+1964,10,Velik Kapsazov,BUL,555.65
+1964,11,Ivan Caklec,YUG,554.8
+1964,12,Frederic Orendi,ROU,550.65
+1964,13,Suh Jae-kyu,KOR,549.5
+1964,14,Fritz Feuz,SUI,546.15
+1964,15,Octavio Suarez,CUB,522.95
+1964,16,Graham Bond,AUS,512
+1964,17,Jan Thai-ran,TPE,493.05
+1964,18,Darshan Mondal,IND,428.35
+1960,1,Takashi Ono,JPN,575.2
+1960,2,Albert Azaryan,URS,572.7
+1960,3,Orlando Polmonari,ITA,559.05
+1960,5,Lawrence Banner,USA,555.2
+1960,5,Olavi Leimuvirta,FIN,554.45
+1960,5,Karlheinz Friedrich,GER,553.35
+1960,9,Miroslav Cerar,YUG,550.8
+1960,9,Ernest Hawelek,POL,546.6
+1960,9,Todor Bachvarov,BUL,546.6
+1960,13,Bernard Fauqueux,FRA,536.9
+1960,13,Bo Wirhed,SWE,532.95
+1960,13,Selim El-sayed,UAR,518.65
+1960,17,Josy Stoffel,LUX,516.9
+1960,17,Ramon Garcia,ESP,512.65
+1960,17,Ken Buffin,GBR,510.8
+1956,1,Viktor Chukarin,URS,568.25
+1956,2,Takashi Ono,JPN,566.40
+1956,3,Kalevi Suoniemi,FIN,555.95
+1956,4,Ferdinand Danis,TCH,554.10
+1956,5,Helmut Bantz,GER,552.45
+1956,6,John Beckner,USA,547.50
+1956,7,Graham Bond,AUS,477.15
+1952,4,GER,"561,20",    
+1952,5,JPN,"556,90",    
+1952,6,HUN,"555,80",    
+1952,7,TCH,"555,55",    
+1952,8,USA,"543,15",    
+1952,9,BUL,"540,90",    
+1952,10,ITA,"537,55",    
+1952,11,AUT,"535,40",    
+1952,12,FRA,"534,90",    
+1952,13,POL,"529,10",    
+1952,14,NOR,"525,30",    
+1952,15,DEN,"524,70",    
+1952,16,EGY,"514,90",    
+1952,17,SWE,"514,20",    
+1952,18,LUX,"503,25",    
+1952,19,YUG,"503,00",    
+1952,20,ROU,"499,85",    
+1952,21,GBR,"490,50",    
+1952,22,SAA,"481,80",    
+1952,23,POR,"428,65",    
+1948,4,FRA,"1313,85",    
+1948,5,ITA,"1300,30",    
+1948,6,TCH,"1292,10",    
+1948,7,USA,"1252,50",    
+1948,8,DEN,"1245,40",    
+1948,9,AUT,"1212,15",    
+1948,10,YUG,"1194,80",    
+1948,11,LUX,"1150,45",    
+1948,12,GBR,"1114,40",    
+1948,13,EGY,"1057,95",    
+1948,14,CUB,"950,70",    
+1948,15,ARG,"863,85",    
+1948,16,MEX,"343,85",    
+1936,4,TCH,"625,763",    
+1936,5,ITA,"615,133",    
+1936,6,YUG,"598,366",    
+1936,7,HUN,"591,930",    
+1936,8,FRA,"580,266",    
+1936,9,JPN,"570,827",    
+1936,10,USA,"555,300",    
+1936,11,AUT,"545,533",    
+1936,12,LUX,"516,900",    
+1936,13,BUL,"452,333",    
+1936,14,ROU,"360,765",    
+1932,1,Romeo Neri,ITA,541.850
+1932,2,Frank Haubold,USA,522.275
+1932,3,Heikki Savolainen,FIN,509.995
+1932,4,Istvan Pelle,HUN,465.650
+1932,5,Toshihiko Sasano,JPN,402.000
+1928,1,Georges Miez,SUI,1718.625
+1928,2,Ladislav Vacha,TCH,1712.250
+1928,3,Leon Stukelj,YUG,1648.750
+1928,4,Armand Solbach,FRA,1620.750
+1928,5,Heikki Savolainen,FIN,1609.250
+1928,6,Romeo Neri,ITA,1599.125
+1928,7,Alfred Jochim,USA,1519.125
+1928,8,Elias Melkman,NED,1364.875
+1928,9,Mathias Logelin,LUX,1361.000
+1928,10,Istvan Pelle,HUN,1344.750
+1928,11,Arthur Whitford,GBR,1205.000
+1924,1,Fernando Mandrini,ITA,839.058
+1924,2,Jean Gounot,FRA,820.528
+1924,3,August Güttinger,SUI,816.661
+1924,4,Leon Stukelj,YUG,762.101
+1924,5,Frank Kriz,USA,715.117
+1924,6,Samuel Humphreys,GBR,637.790
+1924,7,Jaakko Kunnas,FIN,554.948
+1924,8,Charles Quaino,LUX,548.139
+1924, ,Robert Prazak,TCH,dnf
+1920,4,TCH,"305,255",    
+1920,5,GBR,"299,115",    
+1912,4,LUX,"179,75",    
+1912,5,GER,"162,00",    
+1908,4,DEN,378,    
+1908,5,FRA,319,    
+1908,6,ITA,316,    
+1908,7,NED,297,    
+1908,8,GBR,196,    
+1904,1,Julius Lenhart,USA/AUT,370.13
+1904,2,Otto Steffen,USA,356.37
+1904,3,George Mayer,USA,352.79
+1904,4,William Merz,USA,344.01
+1904,5,Charles Umbs,GER/USA,338.00
+1904,6,Ragnar Berg,USA,338.00
+1904,7,Jacob Hergenhahn,USA,329.68
+1904,8,Bernard Berg,USA,325.52
+1904,9,George Aschenbrener,USA,318.13
+1904,10,M. Bascher,USA,301.39
+1904,11,Robert Herrmann,USA,286.97
+1904,12,William Friedrich,USA,273.65
+1904,13,William Berwald,USA,271.84
