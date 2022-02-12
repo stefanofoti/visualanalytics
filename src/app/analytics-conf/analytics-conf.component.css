@@ -1,6 +1,7 @@
 .center {
     display: flex;
     justify-content: center;
-    height: 24vh;
+    height: 19vh;
+    margin-bottom: 1vh;
   }
   

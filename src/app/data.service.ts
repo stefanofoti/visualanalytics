@@ -18,7 +18,6 @@ export class DataService {
   private eventsPerSportDataSource = new BehaviorSubject(isEventsPerSportDataReady);
   eventsPerSportDataMessage = this.eventsPerSportDataSource
 
-
   private sportsReadinessSource = new BehaviorSubject(Sports);
   sportsReadinessMessage = this.sportsReadinessSource.asObservable();
 
@@ -39,6 +38,9 @@ export class DataService {
 
   private updateReadinessSource = new BehaviorSubject([]);
   updateReadinessMessage = this.updateReadinessSource.asObservable();
+
+  private analyticsReadinessSource = new BehaviorSubject([]);
+  analyticsReadinessMessage = this.analyticsReadinessSource.asObservable();
 
   private mouseSelectionSource = new BehaviorSubject(MouseSel)
   updateMouseSelectionMessage = this.mouseSelectionSource.asObservable()
@@ -103,6 +105,10 @@ export class DataService {
 
   updateNewData(message: any) {
     this.updateReadinessSource.next(message)
+  }
+
+  updateAnalyticsData(message: any) {
+    this.analyticsReadinessSource.next(message)
   }
 
   updateMouseSelection(message: MouseSelection) {

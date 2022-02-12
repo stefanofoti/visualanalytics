@@ -35,6 +35,7 @@ import { PredictChartComponent } from './predict-chart/predict-chart.component';
 import { AnalyticsConfComponent } from './analytics-conf/analytics-conf.component';
 import { AnalyticsMapComponent } from './analytics-map/analytics-map.component';
 import { AnalyticsLoaderService } from './analytics-loader.service';
+import { OtherChartComponent } from './other-chart/other-chart.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AnalyticsLoaderService } from './analytics-loader.service';
     PredictChartComponent,
     AnalyticsConfComponent,
     AnalyticsMapComponent,
+    OtherChartComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ import { bronzes, golds, Medal, MouseSelection, PreCheckedSports, silvers, Sport
 })
 export class AnalyticsMapComponent implements OnInit {
 
-  COMPONENT_HEIGHT = "30vh"
+  COMPONENT_HEIGHT = "26vh"
   COMPONENT_HEIGHT_TRAD = "20vh"
 
   componentHeight = this.COMPONENT_HEIGHT
