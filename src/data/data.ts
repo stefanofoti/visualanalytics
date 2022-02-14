@@ -152,6 +152,8 @@ export const isOlympicsDataReady: Boolean = false
 
 export const requiredYearRange: number[] = [1896, 2016]
 
+export const requiredAnalyticsYearRange: number[] = [1896, 2021]
+
 export const Teams: Team[] = [
     { id: 0, isChecked: true, name: 'Italy' },
     { id: 1, isChecked: true, name: 'Germany' },
@@ -180,8 +182,8 @@ export var ScatterConf = {
 }
 
 export var PerformanceConf = {
-    width: 700,
-    height: 450
+    width: 1100,
+    height: 350
 }
 
 export const Countries: Country[] = [
@@ -240,7 +242,6 @@ export const WinterSports = [
     "Military Ski Patrol",
     "Alpinism"
 ]
-
 
 
 

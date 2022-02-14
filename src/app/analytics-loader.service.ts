@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ObjectUnsubscribedError, of, Subscription } from 'rxjs';
 import * as ld from "lodash";
 import * as d3 from 'd3';
-import { forEach } from 'mathjs';
+import { forEach, number } from 'mathjs';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -11,11 +11,13 @@ import { DataService } from './data.service';
 export class AnalyticsLoaderService {
 
   public performanceDict: any = {}
+  public medalsDict: any = {}
   public boxPlotDict: any = {}
   public boxPlotOutliers: any = {}
+  public q: any = {}
 
   constructor(private dataService: DataService) {
-    this.mainLoad()
+    this.mainLoad(this.q)
    }
 
   formatTime(time){
@@ -89,10 +91,13 @@ export class AnalyticsLoaderService {
     return yearDict
   }
 
-  mainLoad(){
+  mainLoad(q){
+    this.q = q
     this.loadPerformanceCsv().then(d => {
       console.log(d)
       this.calculateBoxPlots()
+      this.calculateMedals()
+      this.dataService.updateAnalyticsData("updated")
     })
 
   }
@@ -155,7 +160,27 @@ export class AnalyticsLoaderService {
     })
     this.boxPlotDict = boxPlotsDict
     this.boxPlotOutliers = boxPlotsOutliers
-    this.dataService.updateAnalyticsData("updated")
+  }
+
+  calculateMedals(){
+    let medalsDict = {}
+    Object.keys(this.performanceDict).forEach(year => {
+      let tempYearArray = Array()
+      medalsDict[year] = Array()
+      Object.keys(this.performanceDict[year]).forEach(country => {
+        if (!isNaN(this.performanceDict[year][country])){
+          tempYearArray.push(this.performanceDict[year][country])
+        }
+      })
+      if (tempYearArray.length ==1){
+        medalsDict[year]=[tempYearArray[0],tempYearArray[0],tempYearArray[0]]
+      }
+      else{
+        let sortedArray: number[] = tempYearArray.sort((n1,n2) => n1 - n2)
+        medalsDict[year] = [sortedArray[0], sortedArray[1], sortedArray[2]]
+      }
+    })
+    this.medalsDict = medalsDict
   }
 
 }

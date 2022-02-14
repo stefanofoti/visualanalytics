@@ -23,6 +23,14 @@ body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
 
 }
 
+#yAxis > g > line{
+    stroke:white
+}
+
+#Xaxis > g > line{
+    stroke: white
+}
+
 .main-svg {
     background: transparent!important;
 

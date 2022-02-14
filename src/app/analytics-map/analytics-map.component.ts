@@ -394,7 +394,7 @@ export class AnalyticsMapComponent implements OnInit {
       .attr("d", this.path)
       .attr("id", d => "map-" + d.properties.NOC)
       .attr("class", d => "map-item")
-      .style("stroke", "#ffffff")
+      .style("stroke", "#000000")
       .style("stroke-width", "0.2px")
       //.style("stroke-dasharray", "2,2")
       .style("stroke-linejoin", "round")
