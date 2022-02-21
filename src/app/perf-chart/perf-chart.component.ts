@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import * as d3Sel from 'd3-selection';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { BothYears, bronzes, ColorScale, golds, Medal, MouseSelection, PreCheckedSports, PreCheckedSports2, ScatterConf, silvers, Sport, SummerYears, WinterYears } from 'src/data/data';
 import { PerformanceConf } from 'src/data/data';
 import { DataService } from '../data.service';
 import * as ld from "lodash";
@@ -13,6 +14,7 @@ import * as d3Array from 'd3';
 import * as d3Axis from 'd3';
 import { AnalyticsLoaderService } from '../analytics-loader.service';
 import * as math from 'mathjs';
+import { color } from 'd3';
 
 @Component({
   selector: 'app-perf-chart',
@@ -65,8 +67,15 @@ export class PerfChartComponent implements OnInit {
 
     // this.subDataUpdated = dataService.updateReadinessMessage.subscribe(message => this.dataReady(message))
     dataService.analyticsReadinessMessage.subscribe(message => this.analyticsDataReady(message))
+    dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
 
   } 
+
+  onMouseSelection(message: MouseSelection) {
+    if (message.source && message.source !== this.PERFCHART_COMPONENT_TAG) {
+      message.currentlySelected ? this.highlight(message.noc, this, message.source) : this.doNotHighlight(message.noc, this, message.source)
+    }
+  }
 
   analyticsDataReady(message: any){
     if (message == "updated"){
@@ -107,29 +116,34 @@ export class PerfChartComponent implements OnInit {
     this.areaObjToDraw["secondPercentile-area"] = []
     this.areaObjToDraw["bottom-area"] = []
 
-    let selectedCountries = ["GBR"]
+    let selectedCountries = []
+    if (this.q.countries){
+      selectedCountries = this.q.countries
+    }
     for( let country of selectedCountries){
       this.lineObjToDraw[country] = []
     }
 
     Object.keys(this.performanceDict).forEach(year => {
+
+      if(!this.q || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
     
-      for( let country of selectedCountries){
-        if (this.performanceDict[year][country]){
-          this.lineObjToDraw[country].push({
-            "date": Number(year),
-            "time": this.performanceDict[year][country]
-          })
-        }else{
-          this.lineObjToDraw[country].push({
-            "date": Number(year),
-            "time": null
-          })
+        for( let country of selectedCountries){
+          if (this.performanceDict[year][country]){
+            this.lineObjToDraw[country].push({
+              "date": Number(year),
+              "time": this.performanceDict[year][country]
+            })
+          }else{
+            this.lineObjToDraw[country].push({
+              "date": Number(year),
+              "time": null
+            })
+          }
         }
       }
     })
 
-    console.log("test", this.lineObjToDraw)
 
 
 
@@ -206,8 +220,6 @@ export class PerfChartComponent implements OnInit {
       })
     });
 
-    console.log(this.medalsDict)
-
     Object.keys(this.medalsDict).forEach(year => {
       
       this.medalsArrayFormData.push({
@@ -226,7 +238,6 @@ export class PerfChartComponent implements OnInit {
         "time": this.medalsDict[year][2]
       })
     })
-    console.log(this.medalsArrayFormData)
   }
 
   private buildSvg() {
@@ -252,7 +263,7 @@ export class PerfChartComponent implements OnInit {
     // range of data configuring
 
     let domain = d3Array.extent(this.arrayFormData, (d) => d.percentiles)
-    if (this.q == true){
+    if (this.q.showOutliers == true){
       let outliersDomainMax = 0
       Object.keys(this.boxPlotOutliers).forEach(year => {
         if (this.boxPlotOutliers[year].length>0){
@@ -364,6 +375,7 @@ export class PerfChartComponent implements OnInit {
     let areaColors = ["#004c6d", "#346888", "#5886a5", "#7aa6c2"]
     let counter = 0
 
+    
     //// DRAW AREAS
     Object.keys(this.areaObjToDraw).forEach(k => {
       this.svg.append('path')
@@ -385,7 +397,7 @@ export class PerfChartComponent implements OnInit {
         .style("fill", "none")
         .attr("stroke", _=>{
           if(k == "median"){
-            return "none"
+            return "red"
           }
           return "none"
         })
@@ -412,7 +424,7 @@ export class PerfChartComponent implements OnInit {
         .attr("stroke", _=>{
           return medalColors[counter2]
         })
-        .attr("stroke-width", 1.5)
+        .attr("stroke-width", 2)
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
@@ -422,7 +434,7 @@ export class PerfChartComponent implements OnInit {
     })
 
     //// DRAW OUTLIERS
-    if (this.q == true){
+    if (this.q.showOutliers == true){
       Object.keys(this.boxPlotOutliers).forEach(year => {
         if (this.boxPlotOutliers[year].length != 0){
           for (let val of this.boxPlotOutliers[year]){
@@ -438,63 +450,170 @@ export class PerfChartComponent implements OnInit {
         }      
       });
     }
+    let colors: string[] = ["#ff7f0e", "#2ca02c", "#9467bd", "#e377c2", "#7f7f7f", "#bcbd22"]
+    let colorScaleD3 = d3.scaleOrdinal(colors)
+
+    ///// BRUSHING
+
+    let brush = d3.brushX()      
+    .extent( [ [0,0], [this.width,this.height] ] )
+    .on("end", _ => this.selectionToRange(this))   
+
+    this.svg.append("g")
+      .attr("class", "brush")
+      .attr('id', "brush")
+      .call(brush)
 
     ////// DRAW COUNTRIES LINES
+
+    Object.keys(this.lineObjToDraw).forEach(k => {
+      this.svg.append('path')
+        .datum(this.lineObjToDraw[k])
+        .style("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", 5)
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr('class', 'line')
+        .attr('class', 'country-line')
+        .attr('id', 'country-' + k + "-border")
+        .attr('d', this.countryLine)
+    })
+
+    let index = 0
+    let rectsize = 7
 
      Object.keys(this.lineObjToDraw).forEach(k => {
       this.svg.append('path')
         .datum(this.lineObjToDraw[k])
         .style("fill", "none")
-        .attr("stroke", _ =>{
-          if(k == "GBR"){
-            return "darkred"
-          }else{
-            return "darkblue"
-          }
+        .attr("stroke", d =>{
+          return (colorScaleD3(d))
         })
-        .attr("stroke-width", 1)
+        .attr("stroke-width", 3)
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
-        .attr('class', 'progression-line')
-        .attr('id', 'progression-' + k)
+        .attr('class', 'country-line')
+        .attr('id', 'country-' + k)
         .attr('d', this.countryLine)
+        .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+        .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+        .append("svg:title")
+        .text(k);
+      
+      /// DRAW LEGEND
+      this.svg.append("rect")
+        .datum(this.lineObjToDraw[k])
+        .attr("x", 1050)
+        .attr("y", index*(rectsize+7))
+        .attr("width", rectsize)
+        .attr("height", rectsize)
+        .style("fill", function(d){ return colorScaleD3(d)})
+        .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+        .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+      
+      this.svg.append("text")
+        .datum(this.lineObjToDraw[k])
+        .attr("x", 1050 + rectsize*1.5)
+        .attr("y", function(d,i){ return index*(rectsize+7) + (rectsize/2)})
+        .style("fill", function(d){ return colorScaleD3(d)})
+        .text(function(d){ return k})
+        .style("font-size", "smaller")
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+        .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+        .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+      
+      index += 1
 
       for (let year in this.lineObjToDraw[k]){
         if(this.lineObjToDraw[k][year].time!=null){
           this.svg.append('circle')
             .datum(this.lineObjToDraw[k])
-            .attr("stroke", _ =>{
-              if(k == "GBR"){
-                return "red"
-              }else{
-                return "blue"
-              }
+            .attr("stroke", "black")
+            .attr("fill", d =>{
+              return (colorScaleD3(d))
             })
-            .attr("fill",  _ =>{
-              if(k == "GBR"){
-                return "red"
-              }else{
-                return "blue"
-              }
-            })  
             .attr("r", 2)
             .attr("cx", this.x(this.lineObjToDraw[k][year].date))
             .attr("cy", this.y(this.lineObjToDraw[k][year].time))
+            .attr('class', 'country-circle')
+            .attr('id', 'country-circle-' + k)
+            .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+            .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+            .append("svg:title")
+            .text("Time: "+ this.lineObjToDraw[k][year].time + "s");
 
         }
       }
     })
+  }
 
+  highlight(noc, c, source) {
 
+    c.currentCountryNoc = noc
+    c.currentSelected = noc
 
-    
+    if (source === this.PERFCHART_COMPONENT_TAG) {
+      this.dataService.updateMouseSelection({
+        currentlySelected: true,
+        noc: noc,
+        source: this.PERFCHART_COMPONENT_TAG
+      })
+    }
+    d3.selectAll(".country-line")
+      .style("opacity", 0.5)
+    d3.selectAll(".country-circle")
+    .style("opacity", 0.5)
 
+    d3.selectAll("#country-circle-" + noc)
+    .style("opacity", 1)
+    d3.select("#country-" + noc)
+      .style("stroke-width", 5)
+      .style("opacity", 1)
+    d3.select("#country-" + noc + "-border")
+    .style("stroke-width", 7)
+    .style("opacity", 1)
+  }
+
+  // Unhighlight
+  doNotHighlight(noc, c, source) {
+    if (source === this.PERFCHART_COMPONENT_TAG) {
+      this.dataService.updateMouseSelection({
+        currentlySelected: false,
+        noc: noc,
+        source: this.PERFCHART_COMPONENT_TAG
+      })
+    }
+    d3.selectAll(".country-line")
+      .style("opacity", 1)
+    d3.selectAll(".country-circle")
+      .style("opacity", 1)
+    d3.select("#country-"+ noc)
+      .style("stroke-width", 3)
+    d3.select("#country-"+ noc + "-border")
+    .style("stroke-width", 5)
+  }
+
+  
+
+  selectionToRange(c){
+
+    let start = +d3.select("#brush").select(".selection").attr("x")
+    let end = start + +d3.select("#brush").select(".selection").attr("width")
+    let yearStart = Math.floor(c.x.invert(start))
+    let yearEnd = Math.floor(c.x.invert(end))
+    if (yearStart == yearEnd){
+      yearStart = 1896
+      yearEnd = 2021
+    }
+    c.dataService.changeYearRange([yearStart, yearEnd])
   }
 
   update() {
     if (this.initialized) {
-      console.log("test", this.q)
+
       this.width = this.doc.getElementById("div_performanceChart").clientWidth;
       this.height = this.doc.getElementById("div_performanceChart").clientHeight;
       this.pushData();

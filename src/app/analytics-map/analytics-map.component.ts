@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as tjson from 'topojson';
 import * as d3geo from 'd3-geo'
 import * as d3tip from 'd3-tip'
 import { color, max, select } from 'd3';
 import { LoaderService } from '../loader.service';
+import { AnalyticsConfComponent } from '../analytics-conf/analytics-conf.component';
 import { AnalyticsLoaderService } from '../analytics-loader.service';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
@@ -36,12 +37,14 @@ export class AnalyticsMapComponent implements OnInit {
   private isDataReady: Boolean = false
   private selectedSports: string[] = PreCheckedSports
   private yearsRange: number[]
+  private selectedCountries = []
   selectedMedals: string[]
   selectedStats: Stat
   selectedColor: string
   stats: {}
 
   countries: any
+  countryList: any
 
   highlightToggle: boolean = true
   lastSelected: string
@@ -53,6 +56,7 @@ export class AnalyticsMapComponent implements OnInit {
     dataService.updateMouseSelectionMessage.subscribe(message => this.onMouseSelection(message))
     dataService.pcaDataReadyMessage.subscribe(message => message && (this.actionsEnabled = true))
     dataService.updateReadinessMessage.subscribe(message => message && message.length > 0 && (this.actionsEnabled = false))
+    dataService.countryReadinessMessage.subscribe(message => this.countryList = message)
 
   }
 
@@ -350,38 +354,60 @@ export class AnalyticsMapComponent implements OnInit {
   }
 
   onClick(e, d, context){
-  
-    if(this.actionsEnabled) {
-      if (!this.stats[d.properties.NOC] || this.stats[d.properties.NOC].noPop || this.stats[d.properties.NOC].noGdp) {
-        return
-      }
-      console.log("onClick called")
-      let selectedCountry = d.properties.NOC 
-      console.log(selectedCountry)
-      if(selectedCountry!==this.lastSelected){
-        this.highlightToggle = true
-        this.lastSelected = selectedCountry
-        this.doNotHighlight(e, d, context)
-        this.highlight(e,d,context)
-        this.highlightToggle = false
-        context.dataService.updateTraditionSelection({
-          noc: selectedCountry,
-          currentlySelected: true,
-          source: this.MAP_COMPONENT_TAG
-        })
-        this.componentHeight = this.COMPONENT_HEIGHT_TRAD
-      }else{
-        this.highlightToggle = true
-        this.doNotHighlight(e, d, context)
-        this.lastSelected = undefined
-        context.dataService.updateTraditionSelection({
-          noc: selectedCountry,
-          currentlySelected: false,
-          source: this.MAP_COMPONENT_TAG
-        })
-        this.componentHeight = this.COMPONENT_HEIGHT
-      }
+
+    let selectedNoc = d.properties.NOC
+    if(!this.selectedCountries.includes(selectedNoc)){
+      this.selectedCountries.push(selectedNoc)
+    }else{
+      let indexOfNoc = this.selectedCountries.indexOf(selectedNoc)
+      this.selectedCountries.splice(indexOfNoc, 1)
     }
+
+    let message = []
+    
+    for (let countryNoc of this.selectedCountries){
+      let countryIndex = this.countryList.findIndex(x => x.id == countryNoc)
+      this.countryList[countryIndex].isChecked=true
+      message.push(this.countryList[countryIndex])
+    }
+
+    //console.log("test", "message" =)
+
+    this.dataService.CountryFromMapReady(message)
+    //this.analyticsConfComponent.updateDataDynamic(this.analyticsConfComponent.countryList[countryIndex])
+
+  
+    // if(this.actionsEnabled) {
+    //   if (!this.stats[d.properties.NOC] || this.stats[d.properties.NOC].noPop || this.stats[d.properties.NOC].noGdp) {
+    //     return
+    //   }
+    //   console.log("onClick called")
+    //   let selectedCountry = d.properties.NOC 
+    //   console.log(selectedCountry)
+    //   if(selectedCountry!==this.lastSelected){
+    //     this.highlightToggle = true
+    //     this.lastSelected = selectedCountry
+    //     this.doNotHighlight(e, d, context)
+    //     this.highlight(e,d,context)
+    //     this.highlightToggle = false
+    //     context.dataService.updateTraditionSelection({
+    //       noc: selectedCountry,
+    //       currentlySelected: true,
+    //       source: this.MAP_COMPONENT_TAG
+    //     })
+    //     this.componentHeight = this.COMPONENT_HEIGHT_TRAD
+    //   }else{
+    //     this.highlightToggle = true
+    //     this.doNotHighlight(e, d, context)
+    //     this.lastSelected = undefined
+    //     context.dataService.updateTraditionSelection({
+    //       noc: selectedCountry,
+    //       currentlySelected: false,
+    //       source: this.MAP_COMPONENT_TAG
+    //     })
+    //     this.componentHeight = this.COMPONENT_HEIGHT
+    //   }
+    // }
   }
 
 

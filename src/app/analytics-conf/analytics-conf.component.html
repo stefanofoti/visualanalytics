@@ -60,7 +60,7 @@
 
             <div class="row pt-2">
                 <div class="custom-ngx-slider2">
-                    <ngx-slider [(value)]="yearRange[0]" [(highValue)]="yearRange[1]" [options]="sliderOptions2"
+                    <ngx-slider [(value)]="this.yearRange[0]" [(highValue)]="this.yearRange[1]" [options]="sliderOptions2"
                         ></ngx-slider>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             </div>
 
 
-            <button *ngIf="!isTradition" type="button" [disabled]="!actionsEnabled" class="btn btn-primary"
+            <button *ngIf="!isTradition" type="button" id="updateButton" [disabled]="!actionsEnabled" class="btn btn-primary"
                 (click)="submit()" style="background-color:#ff4081; border-color:#ff4081">Update</button>
         </div>
     </div>

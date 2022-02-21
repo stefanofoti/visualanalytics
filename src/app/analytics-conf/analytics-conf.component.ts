@@ -55,14 +55,14 @@ export class AnalyticsConfComponent implements OnInit {
   //@Input() @BooleanInput()
   isNormalize: boolean = false //any
 
-  isMaleChecked: boolean = false
+  isMaleChecked: boolean = true
   isFemaleChecked: boolean = true
 
-
+  analyticsConf: any = {}
   isTradition: boolean = false
   isWinter: boolean = true
   isSummer: boolean = true
-  showoutliers: boolean = false
+  showoutliers: boolean = true
 
   is3D: boolean = true
 
@@ -76,12 +76,13 @@ export class AnalyticsConfComponent implements OnInit {
   countryControl = new FormControl();
 
   selectedSports: Sport[] = new Array<Sport>();
-  selectedCountry: Country[] = new Array<Country>();
+  selectedCountry: Country[] = Array<Country>();
   filteredSports: Observable<Sport[]>;
 
   filteredCountries: Observable<Country[]>;
   lastFilter: string = '';
   lastCountryFilter: string = '';
+
   //----
 
 
@@ -139,8 +140,35 @@ export class AnalyticsConfComponent implements OnInit {
 
     })
 
+    data.changedYearRangeMessage.subscribe(message => {
+      this.onYearSliderChange(message)
+    })
+    
+    data.countryFromMapMessage.subscribe(message => {
+      console.log("test", "subscribe triggered", message)
+      this.onCountryFromMapMessage(message)
+    })
+
 
   }
+
+  onCountryFromMapMessage(message){
+    if(this.actionsEnabled == true){
+      this.selectedCountry = message
+      document.getElementById("updateButton").click()
+    }
+  }
+
+  onYearSliderChange(message) {
+    if(this.actionsEnabled == true){
+      this.yearRange = message
+      console.log("test", this.yearRange)
+      //document.getElementById("updateButton").click()
+      this.updateData()
+    }
+  }
+
+
 
 
   updateSeason(event) {
@@ -283,7 +311,9 @@ export class AnalyticsConfComponent implements OnInit {
     // this.updateData()
   }
 
+
   updateData() {
+    console.log("test","countries in update",this.selectedCountry)
     this.actionsEnabled = false
     console.log("conf: Invoke updateData()")
     let selMedals: string[] = []
@@ -294,7 +324,10 @@ export class AnalyticsConfComponent implements OnInit {
     if (selSports.length === 0) {
       selSports = this.sportsList.map(s => s.name)
     }
-    let selCountries: string[] = this.selectedCountry.length > 0 ? this.selectedCountry.map(s => s.id) : []
+    let selCountries: string[]
+    selCountries = this.selectedCountry.length > 0 ? this.selectedCountry.map(s => s.id) : []
+
+
     console.log("conf. is tradition: ", this.isTradition)
     console.log("conf. medalsList:", medalsList)
     let q: PcaQuery = {
@@ -330,21 +363,20 @@ export class AnalyticsConfComponent implements OnInit {
       if (this.isTradition) {
         q.selectedNocs = ld.cloneDeep(Object.keys(stats))
       }
-      this.pcaService.computePca(q, this.loaderService.csvLines)
+      //this.pcaService.computePca(q, this.loaderService.csvLines)
 
-      this.analyticsLoaderService.mainLoad(this.showoutliers)
+      ///////////////request analytics loader service update
+      this.analyticsConf = {
+        "showOutliers": this.showoutliers,
+        "yearStart": this.yearRange[0],
+        "yearEnd": this.yearRange[1],
+        "countries": selCountries
+      }
+      this.analyticsLoaderService.mainLoad(this.analyticsConf)
+      this.actionsEnabled = true
 
 
     })
-
-    // if (!this.isTradition) {
-    //   this.pcaService.computePca(q, this.loaderService.csvLines).then(res => {
-    //     let x: PCAEntry[] = res
-    //     console.log("plotting pca: sending readiness...", x)
-    //     this.data.pcaDataReady(x)
-    //   })
-    // }
-
   }
 
   toggleSelectionCountry(country: Country) {
@@ -355,10 +387,9 @@ export class AnalyticsConfComponent implements OnInit {
       const i = this.selectedCountry.findIndex(value => value.name === country.name);
       this.selectedCountry.splice(i, 1);
     }
-    console.log(this.selectedCountry)
-    this.countryControl.setValue(this.selectedCountry);
+    //this.countryControl.setValue(this.selectedCountry);
     //this.data.changeSelectedCountries(this.selectedCountry)
-    // this.updateData()
+    //this.updateData()
   }
 
   ngOnDestroy() {
@@ -367,20 +398,20 @@ export class AnalyticsConfComponent implements OnInit {
     this.selectedMedalsSubscription.unsubscribe()
   }
 
-  onCheckboxChange(e) {
-    const teams: FormArray = this.formConf.get('teams') as FormArray;
-    let item = this.teamsList.find(({ id }) => id == e.target.value)
-    if (e.target.checked) {
-      teams.push(new FormControl(e.target.value));
-      item && (item.isChecked = true)
-    } else {
-      const index = teams.controls.findIndex(x => x.value === e.target.value);
-      item && (item.isChecked = false)
-      teams.removeAt(index);
-    }
-    // this.data.changeMessage(this.teamsList)
-    // this.updateData()
-  }
+  // onCheckboxChange(e) {
+  //   const teams: FormArray = this.formConf.get('teams') as FormArray;
+  //   let item = this.teamsList.find(({ id }) => id == e.target.value)
+  //   if (e.target.checked) {
+  //     teams.push(new FormControl(e.target.value));
+  //     item && (item.isChecked = true)
+  //   } else {
+  //     const index = teams.controls.findIndex(x => x.value === e.target.value);
+  //     item && (item.isChecked = false)
+  //     teams.removeAt(index);
+  //   }
+  //   // this.data.changeMessage(this.teamsList)
+  //   // this.updateData()
+  // }
 
   onMedalsCheckboxChange(medal) {
     /*const medals: FormArray = this.formConf.get('medals') as FormArray;
@@ -398,13 +429,8 @@ export class AnalyticsConfComponent implements OnInit {
   }
 
 
-  onYearSliderChange(e) {
-    // this.updateData()
-    // this.data.changeYearRange(this.yearRange)
-    // console.log(e)
-  }
-
   submit() {
+    console.log("test", "update clicked")
     this.updateData()
   }
 

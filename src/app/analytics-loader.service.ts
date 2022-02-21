@@ -16,8 +16,12 @@ export class AnalyticsLoaderService {
   public boxPlotOutliers: any = {}
   public q: any = {}
 
+  dummyVar: boolean = false
+
+  private unloaded = true
+
   constructor(private dataService: DataService) {
-    this.mainLoad(this.q)
+    this.firstLoad()
    }
 
   formatTime(time){
@@ -91,14 +95,20 @@ export class AnalyticsLoaderService {
     return yearDict
   }
 
-  mainLoad(q){
-    this.q = q
+  firstLoad(){
     this.loadPerformanceCsv().then(d => {
-      console.log(d)
       this.calculateBoxPlots()
       this.calculateMedals()
       this.dataService.updateAnalyticsData("updated")
+      this.unloaded = false
     })
+  }
+
+  mainLoad(q){
+    this.q = q
+      this.calculateBoxPlots()
+      this.calculateMedals()
+      this.dataService.updateAnalyticsData("updated")
 
   }
 
@@ -128,35 +138,37 @@ export class AnalyticsLoaderService {
     let boxPlotsDict = {}
     let boxPlotsOutliers = {}
     Object.keys(this.performanceDict).forEach(year => {
-      let tempYearArray = []
-      Object.keys(this.performanceDict[year]).forEach(country => {
-        if (!isNaN(this.performanceDict[year][country])){
-          tempYearArray.push(this.performanceDict[year][country])
+      if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        let tempYearArray = []
+        Object.keys(this.performanceDict[year]).forEach(country => {
+          if (!isNaN(this.performanceDict[year][country])){
+            tempYearArray.push(this.performanceDict[year][country])
+          }
+        })
+        let min = Math.min.apply(Math,tempYearArray) 
+        let firstQuartile = this.getPercentiles(tempYearArray, 25)
+        let median = this.getPercentiles(tempYearArray, 50)
+        let secondQuartile = this.getPercentiles(tempYearArray, 75)
+        let max = Math.max.apply(Math,tempYearArray)
+        let iqr = secondQuartile-firstQuartile
+        let outliers =[]
+        while (max > secondQuartile + 1.5*iqr){
+          outliers.push(max)
+          let index = tempYearArray.indexOf(max);
+          if (index > -1) {
+            tempYearArray.splice(index, 1)
+          }
+          min = Math.min.apply(Math,tempYearArray) 
+          firstQuartile = this.getPercentiles(tempYearArray, 25)
+          median = this.getPercentiles(tempYearArray, 50)
+          secondQuartile = this.getPercentiles(tempYearArray, 75)
+          max = Math.max.apply(Math,tempYearArray)
+          iqr = secondQuartile-firstQuartile
         }
-      })
-      let min = Math.min.apply(Math,tempYearArray) 
-      let firstQuartile = this.getPercentiles(tempYearArray, 25)
-      let median = this.getPercentiles(tempYearArray, 50)
-      let secondQuartile = this.getPercentiles(tempYearArray, 75)
-      let max = Math.max.apply(Math,tempYearArray)
-      let iqr = secondQuartile-firstQuartile
-      let outliers =[]
-      while (max > secondQuartile + 1.5*iqr){
-        outliers.push(max)
-        let index = tempYearArray.indexOf(max);
-        if (index > -1) {
-          tempYearArray.splice(index, 1)
-        }
-        min = Math.min.apply(Math,tempYearArray) 
-        firstQuartile = this.getPercentiles(tempYearArray, 25)
-        median = this.getPercentiles(tempYearArray, 50)
-        secondQuartile = this.getPercentiles(tempYearArray, 75)
-        max = Math.max.apply(Math,tempYearArray)
-        iqr = secondQuartile-firstQuartile
-      }
 
-      boxPlotsDict[year]=[min ,firstQuartile, median, secondQuartile, max]
-      boxPlotsOutliers[year]=outliers
+        boxPlotsDict[year]=[min ,firstQuartile, median, secondQuartile, max]
+        boxPlotsOutliers[year]=outliers
+      }
     })
     this.boxPlotDict = boxPlotsDict
     this.boxPlotOutliers = boxPlotsOutliers
@@ -165,19 +177,21 @@ export class AnalyticsLoaderService {
   calculateMedals(){
     let medalsDict = {}
     Object.keys(this.performanceDict).forEach(year => {
-      let tempYearArray = Array()
-      medalsDict[year] = Array()
-      Object.keys(this.performanceDict[year]).forEach(country => {
-        if (!isNaN(this.performanceDict[year][country])){
-          tempYearArray.push(this.performanceDict[year][country])
+      if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        let tempYearArray = Array()
+        medalsDict[year] = Array()
+        Object.keys(this.performanceDict[year]).forEach(country => {
+          if (!isNaN(this.performanceDict[year][country])){
+            tempYearArray.push(this.performanceDict[year][country])
+          }
+        })
+        if (tempYearArray.length ==1){
+          medalsDict[year]=[tempYearArray[0],tempYearArray[0],tempYearArray[0]]
         }
-      })
-      if (tempYearArray.length ==1){
-        medalsDict[year]=[tempYearArray[0],tempYearArray[0],tempYearArray[0]]
-      }
-      else{
-        let sortedArray: number[] = tempYearArray.sort((n1,n2) => n1 - n2)
-        medalsDict[year] = [sortedArray[0], sortedArray[1], sortedArray[2]]
+        else{
+          let sortedArray: number[] = tempYearArray.sort((n1,n2) => n1 - n2)
+          medalsDict[year] = [sortedArray[0], sortedArray[1], sortedArray[2]]
+        }
       }
     })
     this.medalsDict = medalsDict

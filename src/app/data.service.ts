@@ -60,6 +60,9 @@ export class DataService {
   private scatter3DSource = new BehaviorSubject(true)
   scatter3DMessage = this.scatter3DSource.asObservable()
 
+  private countryFromMapSource = new BehaviorSubject({})
+  countryFromMapMessage = this.countryFromMapSource.asObservable()
+
 
   constructor() { }
 
@@ -133,6 +136,10 @@ export class DataService {
 
   onChangeScatterType(message: boolean){
     this.scatter3DSource.next(message)
+  }
+
+  CountryFromMapReady(message: any){
+    this.countryFromMapSource.next(message)
   }
 
 }
