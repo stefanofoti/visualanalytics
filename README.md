@@ -1,27 +1,26 @@
-# OlympicsVa
+# A visual analysis of the Olympic games
+The first Olympic Game took place in 1986. At that time, and for many years, few countries take part to games and USA used to be the undisputed leader of the competition. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.1.
+In this work we focus on the amount of medal won by every country, looking for relationship with population and economy by starting from the conclusion of most relevant previous works in the field. We also focus on gender differences in olympic games.
 
-## Development server
+## How to run
+npm install && npm run start
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Documentation
 
-## Code scaffolding
+[Complete report here](hhttps://github.com/stefanofoti/visualanalytics/blob/main/docs/report.pdf)
+[Presentation](hhttps://github.com/stefanofoti/visualanalytics/blob/main/docs/presentation.pdf)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## About us
+We are two students currently enrolled in the Master's Degree course "Engineering in Computer Science".    
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[Marco Ferraro](https://www.linkedin.com/in/?)
 
-## Running unit tests
+[Stefano Foti](https://www.linkedin.com/in/stefano-foti/)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## License
+Software is made available under MIT license. See the license file for license rights and limitations.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[License](https://github.com/MarcoFerraro94/MasterMind/blob/main/docs/license.md)
