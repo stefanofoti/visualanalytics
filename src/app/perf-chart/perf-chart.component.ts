@@ -57,9 +57,23 @@ export class PerfChartComponent implements OnInit {
   private boxPlotOutliers: any
   private q: any
 
+  private selectedAreas = []
+
+  private sizes = {
+    "circle": 2,
+    "circle-width": 1,
+    "country-line": 3,
+    "country-border": 4,
+    "medal-line": 2,
+    "circle-outlier": 1
+  }
+
+  private zoomScale: number = 1
+
   arrayFormData = []
   areaObjToDraw = {}
   lineObjToDraw = {}
+  areaLinesObjToDraw = {}
   medalsArrayFormData = []
 
 
@@ -84,9 +98,11 @@ export class PerfChartComponent implements OnInit {
       this.medalsDict = this.analyticsLoaderService.medalsDict
       this.boxPlotOutliers = this.analyticsLoaderService.boxPlotOutliers
       this.q = this.analyticsLoaderService.q
+      console.log("test", this.q)
       this.arrayFormData = []
       this.areaObjToDraw = {}
       this.lineObjToDraw = {}
+      this.areaLinesObjToDraw = {}
       this.medalsArrayFormData = []
       this.update()
     }
@@ -117,12 +133,21 @@ export class PerfChartComponent implements OnInit {
     this.areaObjToDraw["bottom-area"] = []
 
     let selectedCountries = []
+    let selectedAreaCountries = []
     if (this.q.countries){
       selectedCountries = this.q.countries
     }
     for( let country of selectedCountries){
       this.lineObjToDraw[country] = []
     }
+
+    if (this.q.areaCountries){
+      selectedAreaCountries = this.q.areaCountries
+    }
+    for( let country of selectedAreaCountries){
+      this.areaLinesObjToDraw[country] = []
+    }
+
 
     Object.keys(this.performanceDict).forEach(year => {
 
@@ -136,6 +161,20 @@ export class PerfChartComponent implements OnInit {
             })
           }else{
             this.lineObjToDraw[country].push({
+              "date": Number(year),
+              "time": null
+            })
+          }
+        }
+
+        for( let country of selectedAreaCountries){
+          if (this.performanceDict[year][country]){
+            this.areaLinesObjToDraw[country].push({
+              "date": Number(year),
+              "time": this.performanceDict[year][country]
+            })
+          }else{
+            this.areaLinesObjToDraw[country].push({
               "date": Number(year),
               "time": null
             })
@@ -324,7 +363,7 @@ export class PerfChartComponent implements OnInit {
       .attr('class', 'axis axis--y')
       .call(d3Axis.axisLeft(this.y));
   }
-  private drawLineAndPath() {
+  private drawLineAndPath(c) {
 
     this.line = d3.line()
       .x((d: any) => this.x(d.date))
@@ -375,6 +414,17 @@ export class PerfChartComponent implements OnInit {
     let areaColors = ["#004c6d", "#346888", "#5886a5", "#7aa6c2"]
     let counter = 0
 
+    ///// BRUSHING
+
+    let brush = d3.brushX()      
+    .extent( [ [0,0], [this.width,this.height] ] )
+    .on("end", _ => this.selectionToRange(this))   
+
+    this.svg.append("g")
+      .attr("class", "brush")
+      .attr('id', "brush")
+      .call(brush)
+
     
     //// DRAW AREAS
     Object.keys(this.areaObjToDraw).forEach(k => {
@@ -384,7 +434,8 @@ export class PerfChartComponent implements OnInit {
           return areaColors[counter]
         })
         .attr('id', "area")
-        .attr('d', this.area);
+        .attr('d', this.area)
+        .on('click',_ => this.onClick(k, this, this.PERFCHART_COMPONENT_TAG))
       counter+=1
 
     })
@@ -401,7 +452,7 @@ export class PerfChartComponent implements OnInit {
           }
           return "none"
         })
-        .attr("stroke-width", 2)
+        .style("stroke-width", 2)
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
@@ -424,7 +475,7 @@ export class PerfChartComponent implements OnInit {
         .attr("stroke", _=>{
           return medalColors[counter2]
         })
-        .attr("stroke-width", 2)
+        .style("stroke-width", this.sizes["medal-line"])
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
@@ -442,7 +493,7 @@ export class PerfChartComponent implements OnInit {
             .datum(this.boxPlotOutliers[year])
             .attr("stroke", "lightblue")
             .attr("fill", "lightblue")  
-            .attr("r", 1)
+            .attr("r", this.sizes["circle-outlier"])
             .attr("cx", this.x(year))
             .attr("cy", this.y(val))
             .attr('id', 'outlier')
@@ -450,19 +501,63 @@ export class PerfChartComponent implements OnInit {
         }      
       });
     }
-    let colors: string[] = ["#ff7f0e", "#2ca02c", "#9467bd", "#e377c2", "#7f7f7f", "#bcbd22"]
+    let colors: string[] = ["#ff7f0e", "#2ca02c", "#9467bd", "#e377c2", "#bcbd22"]
     let colorScaleD3 = d3.scaleOrdinal(colors)
 
-    ///// BRUSHING
+    ////// DRAW AREA-SELECTION LINES
 
-    let brush = d3.brushX()      
-    .extent( [ [0,0], [this.width,this.height] ] )
-    .on("end", _ => this.selectionToRange(this))   
+    Object.keys(this.areaLinesObjToDraw).forEach(k => {
+      this.svg.append('path')
+        .datum(this.areaLinesObjToDraw[k])
+        .style("fill", "none")
+        .attr("stroke", "black")
+        .style("stroke-width", this.sizes["country-border"]/c.zoomScale)
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr('class', 'line')
+        .attr('class', 'country-line-border')
+        .attr('id', 'country-' + k + "-border")
+        .attr('d', this.countryLine)
+    })
 
-    this.svg.append("g")
-      .attr("class", "brush")
-      .attr('id', "brush")
-      .call(brush)
+    Object.keys(this.areaLinesObjToDraw).forEach(k => {
+      this.svg.append('path')
+        .datum(this.areaLinesObjToDraw[k])
+        .style("fill", "none")
+        .attr("stroke", "grey")
+        .style("stroke-width", this.sizes["country-line"]/c.zoomScale)
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr('class', 'line')
+        .attr('class', 'country-line')
+        .attr('id', 'country-' + k)
+        .attr('d', this.countryLine)
+        .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+        .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+        .append("svg:title")
+        .text(k);
+
+      for (let year in this.areaLinesObjToDraw[k]){
+        if(this.areaLinesObjToDraw[k][year].time!=null){
+          this.svg.append('circle')
+            .datum(this.areaLinesObjToDraw[k])
+            .attr("stroke", "black")
+            .attr("fill", "grey")
+            .attr("r", this.sizes["circle"]/c.zoomScale)
+            .style("stroke-width", this.sizes["circle-width"]/c.zoomScale)
+            .attr("cx", this.x(this.areaLinesObjToDraw[k][year].date))
+            .attr("cy", this.y(this.areaLinesObjToDraw[k][year].time))
+            .attr('class', 'country-circle')
+            .attr('id', 'country-circle-' + k)
+            .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+            .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+            .append("svg:title")
+            .text("Time: "+ this.areaLinesObjToDraw[k][year].time + "s" + ", " + k);
+
+        }
+      }
+    })
+
 
     ////// DRAW COUNTRIES LINES
 
@@ -471,11 +566,11 @@ export class PerfChartComponent implements OnInit {
         .datum(this.lineObjToDraw[k])
         .style("fill", "none")
         .attr("stroke", "black")
-        .attr("stroke-width", 5)
+        .style("stroke-width", this.sizes["country-border"]/c.zoomScale)
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
-        .attr('class', 'country-line')
+        .attr('class', 'country-line-border')
         .attr('id', 'country-' + k + "-border")
         .attr('d', this.countryLine)
     })
@@ -490,7 +585,7 @@ export class PerfChartComponent implements OnInit {
         .attr("stroke", d =>{
           return (colorScaleD3(d))
         })
-        .attr("stroke-width", 3)
+        .style("stroke-width", this.sizes["country-line"]/c.zoomScale)
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr('class', 'line')
@@ -501,6 +596,28 @@ export class PerfChartComponent implements OnInit {
         .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
         .append("svg:title")
         .text(k);
+
+      for (let year in this.lineObjToDraw[k]){
+        if(this.lineObjToDraw[k][year].time!=null){
+          this.svg.append('circle')
+            .datum(this.lineObjToDraw[k])
+            .attr("stroke", "black")
+            .attr("fill", d =>{
+              return (colorScaleD3(d))
+            })
+            .attr("r", this.sizes["circle"]/c.zoomScale)
+            .style("stroke-width", this.sizes["circle-width"]/c.zoomScale)
+            .attr("cx", this.x(this.lineObjToDraw[k][year].date))
+            .attr("cy", this.y(this.lineObjToDraw[k][year].time))
+            .attr('class', 'country-circle')
+            .attr('id', 'country-circle-' + k)
+            .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
+            .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
+            .append("svg:title")
+            .text("Time: "+ this.lineObjToDraw[k][year].time + "s"+ ", " + k);
+
+        }
+      }
       
       /// DRAW LEGEND
       this.svg.append("rect")
@@ -526,28 +643,56 @@ export class PerfChartComponent implements OnInit {
         .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
       
       index += 1
-
-      for (let year in this.lineObjToDraw[k]){
-        if(this.lineObjToDraw[k][year].time!=null){
-          this.svg.append('circle')
-            .datum(this.lineObjToDraw[k])
-            .attr("stroke", "black")
-            .attr("fill", d =>{
-              return (colorScaleD3(d))
-            })
-            .attr("r", 2)
-            .attr("cx", this.x(this.lineObjToDraw[k][year].date))
-            .attr("cy", this.y(this.lineObjToDraw[k][year].time))
-            .attr('class', 'country-circle')
-            .attr('id', 'country-circle-' + k)
-            .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
-            .on("mouseleave", _ => this.doNotHighlight(k, this, this.PERFCHART_COMPONENT_TAG))
-            .append("svg:title")
-            .text("Time: "+ this.lineObjToDraw[k][year].time + "s");
-
-        }
-      }
     })
+
+    ////// ZOOM
+    let g = this.svg
+    let lineSelection = d3.selectAll(".country-line").nodes()
+    let circleSelection = d3.selectAll(".country-circle").nodes()
+    let borderSelection = d3.selectAll(".country-line-border").nodes()
+    let zoom: any = d3.zoom()
+      .extent([[0, 0], [this.width, this.height]])
+      .translateExtent([[0, 0], [this.width, this.height]])
+      .scaleExtent([1, 10])
+      .on('zoom', function (event) {
+        c.zoomScale = event.transform.k
+        if(event.transform.k == 1){
+          //g.call(zoom.transform, d3.zoomIdentity)
+          g.attr('transform', 'translate(' + 60 + ', ' + 10 + ')          scale(' + event.transform.k + ')')
+        }
+        else{
+          g.attr('transform', 'translate(' + event.transform.x + 60 + ', ' + event.transform.y + 10 + ')          scale(' + event.transform.k + ')')
+        }
+        lineSelection.forEach(path =>{
+          d3.select(path).style("stroke-width", c.sizes["country-line"]/c.zoomScale)
+        })
+        circleSelection.forEach(circle =>{
+          d3.select(circle).style("r", c.sizes["circle"]/c.zoomScale)
+          d3.select(circle).style("stroke-width", c.sizes["circle-width"]/c.zoomScale)
+        })
+        borderSelection.forEach(path =>{
+          d3.select(path).style("stroke-width", c.sizes["country-border"]/c.zoomScale)
+        })
+      });
+
+    this.svg.call(zoom)
+      .on("dblclick.zoom", null)
+      .on("mousedown.zoom", null)
+      .on("touchstart.zoom", null)
+      .on("touchmove.zoom", null)
+      .on("touchend.zoom", null);
+  }
+
+  onClick(area, c, source){
+    if (source === this.PERFCHART_COMPONENT_TAG){
+      if(!this.selectedAreas.includes(area)){
+        this.selectedAreas.push(area)
+      }
+      else {
+        this.selectedAreas.splice(this.selectedAreas.indexOf(area),1)
+      }
+      this.dataService.AreaClickReady(this.selectedAreas)
+    }
   }
 
   highlight(noc, c, source) {
@@ -563,17 +708,16 @@ export class PerfChartComponent implements OnInit {
       })
     }
     d3.selectAll(".country-line")
-      .style("opacity", 0.5)
+      .style("opacity", 0.3)
     d3.selectAll(".country-circle")
-    .style("opacity", 0.5)
-
+    .style("opacity", 0.3)
     d3.selectAll("#country-circle-" + noc)
     .style("opacity", 1)
     d3.select("#country-" + noc)
-      .style("stroke-width", 5)
+      .style("stroke-width", (this.sizes["country-line"]+1)/this.zoomScale)
       .style("opacity", 1)
     d3.select("#country-" + noc + "-border")
-    .style("stroke-width", 7)
+    .style("stroke-width", (this.sizes["country-border"]+1)/this.zoomScale)
     .style("opacity", 1)
   }
 
@@ -591,9 +735,9 @@ export class PerfChartComponent implements OnInit {
     d3.selectAll(".country-circle")
       .style("opacity", 1)
     d3.select("#country-"+ noc)
-      .style("stroke-width", 3)
+      .style("stroke-width", (this.sizes["country-line"])/this.zoomScale)
     d3.select("#country-"+ noc + "-border")
-    .style("stroke-width", 5)
+      .style("stroke-width", (this.sizes["country-border"])/this.zoomScale)
   }
 
   
@@ -619,7 +763,7 @@ export class PerfChartComponent implements OnInit {
       this.pushData();
       this.buildSvg();
       this.addXandYAxis();
-      this.drawLineAndPath();
+      this.drawLineAndPath(this);
     }
   }
 

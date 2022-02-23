@@ -4,6 +4,7 @@ import * as ld from "lodash";
 import * as d3 from 'd3';
 import { forEach, number } from 'mathjs';
 import { DataService } from './data.service';
+import { NocsList } from 'src/data/data';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AnalyticsLoaderService {
   public boxPlotDict: any = {}
   public boxPlotOutliers: any = {}
   public q: any = {}
+  public NocsList = NocsList
 
   dummyVar: boolean = false
 
@@ -67,7 +69,7 @@ export class AnalyticsLoaderService {
   async loadPerformanceCsv(){
     let lines = await d3.csv("/assets/data/Backup/Swimming/100mfreestyleM.csv")
     let yearDict = this.processData(lines)
-    console.log(lines)
+    console.log("test", yearDict)
     this.performanceDict = yearDict
 
     return yearDict
@@ -106,10 +108,15 @@ export class AnalyticsLoaderService {
 
   mainLoad(q){
     this.q = q
-      this.calculateBoxPlots()
-      this.calculateMedals()
-      this.dataService.updateAnalyticsData("updated")
-
+    this.calculateBoxPlots()
+    this.calculateMedals()
+    if(this.q.selectedCountry){
+      this.calculateMostSimilar5(this.q.selectedCountry)
+    }
+    if(this.q.areasSelected){
+      this.calculateAreacountries(this.q.areasSelected)
+    }
+    this.dataService.updateAnalyticsData("updated")
   }
 
   numSort(a,b) { 
@@ -148,11 +155,11 @@ export class AnalyticsLoaderService {
         let min = Math.min.apply(Math,tempYearArray) 
         let firstQuartile = this.getPercentiles(tempYearArray, 25)
         let median = this.getPercentiles(tempYearArray, 50)
-        let secondQuartile = this.getPercentiles(tempYearArray, 75)
+        let thirdQuartile = this.getPercentiles(tempYearArray, 75)
         let max = Math.max.apply(Math,tempYearArray)
-        let iqr = secondQuartile-firstQuartile
+        let iqr = thirdQuartile-firstQuartile
         let outliers =[]
-        while (max > secondQuartile + 1.5*iqr){
+        while (max > thirdQuartile + 1.5*iqr){
           outliers.push(max)
           let index = tempYearArray.indexOf(max);
           if (index > -1) {
@@ -161,12 +168,12 @@ export class AnalyticsLoaderService {
           min = Math.min.apply(Math,tempYearArray) 
           firstQuartile = this.getPercentiles(tempYearArray, 25)
           median = this.getPercentiles(tempYearArray, 50)
-          secondQuartile = this.getPercentiles(tempYearArray, 75)
+          thirdQuartile = this.getPercentiles(tempYearArray, 75)
           max = Math.max.apply(Math,tempYearArray)
-          iqr = secondQuartile-firstQuartile
+          iqr = thirdQuartile-firstQuartile
         }
 
-        boxPlotsDict[year]=[min ,firstQuartile, median, secondQuartile, max]
+        boxPlotsDict[year]=[min ,firstQuartile, median, thirdQuartile, max]
         boxPlotsOutliers[year]=outliers
       }
     })
@@ -195,6 +202,124 @@ export class AnalyticsLoaderService {
       }
     })
     this.medalsDict = medalsDict
+  }
+
+  calculateAreacountries(areasSelected){
+    this.q.areaCountries = []
+
+    for(let area of areasSelected){
+
+      let index
+      let countryHitsAndMiss = {}
+
+      if(area == "bottom-area"){
+        index = 3
+      }
+      else if (area == "secondPercentile-area"){
+        index = 2
+      }
+      else if (area == "firstPercentile-area"){
+        index = 1
+      }
+      else if (area == "top-area"){
+        index = 0
+      }
+
+      Object.keys(this.performanceDict).forEach(year =>{
+        if (this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+          Object.keys(this.performanceDict[year]).forEach(country =>{
+            if(!countryHitsAndMiss[country]){
+              countryHitsAndMiss[country]={}
+              countryHitsAndMiss[country].hits = 0
+              countryHitsAndMiss[country].miss = 0
+            }
+            if(this.boxPlotDict[year][index]<=this.performanceDict[year][country] && this.performanceDict[year][country]<=this.boxPlotDict[year][index+1]){
+              countryHitsAndMiss[country].hits +=1
+              //this.q.areaCountries.push(country)
+            }
+            else{
+              countryHitsAndMiss[country].miss +=1
+            }
+          })
+        }
+      })
+      let max = {}
+      Object.keys(countryHitsAndMiss).forEach(c =>{
+        if(countryHitsAndMiss[c].hits>countryHitsAndMiss[c].miss){
+          if(Object.keys(max).length<3){
+            max[c]=countryHitsAndMiss[c].hits
+          }
+          else{
+            if (countryHitsAndMiss[c].hits> Math.min.apply(Object.values(max))){
+              let mymin = Object.keys(max).reduce((a, b) => max[a] < max[b] ? a : b)
+              delete max[mymin]
+              max[c]=countryHitsAndMiss[c].hits
+            }
+          }
+        }
+        console.log("test", max)
+      })
+      Object.keys(max).forEach(country =>{
+        this.q.areaCountries.push(country)
+      })
+    }
+  }
+
+  calculateMostSimilar5(selectedCountry){
+    let selectedCountries5 = []
+    let closestDict = {}
+    let countryDifferences = {}
+    let selCountrypoints = 0
+    for (let noc of this.NocsList){
+      countryDifferences[noc]
+    }
+    Object.keys(this.performanceDict).forEach(year =>{
+      if (this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        if (Object.keys(this.performanceDict[year]).includes(selectedCountry)){
+          if (!isNaN(this.performanceDict[year][selectedCountry])){
+            Object.keys(this.performanceDict[year]).forEach(country =>{
+              if(country != selectedCountry && this.NocsList.includes(country)){
+                if (!isNaN(this.performanceDict[year][country])){
+                  if (!countryDifferences[country]){
+                    countryDifferences[country] = {}
+                    countryDifferences[country].distance = 0
+                    countryDifferences[country].pairs = 0
+                  }
+                  countryDifferences[country].distance += this.performanceDict[year][selectedCountry]-this.performanceDict[year][country]
+                  countryDifferences[country].pairs += 1
+                }
+              }
+              if(country == selectedCountry){
+                selCountrypoints +=1
+              }         
+            })
+          }
+        }
+      }
+    })
+
+    console.log("test", countryDifferences, selCountrypoints)
+
+    Object.keys(countryDifferences).forEach(country =>{
+      if (Object.keys(closestDict).length<4){
+        if (countryDifferences[country].pairs>=Math.floor(selCountrypoints*30/100)){
+          closestDict[country] = Math.abs(countryDifferences[country].distance)
+        }
+      }
+      else{
+        if (countryDifferences[country].pairs>=Math.floor(selCountrypoints*60/100)){
+          if (Math.abs(countryDifferences[country].distance )<Math.max.apply(Math, Object.values(closestDict))){
+            let mymax = Object.keys(closestDict).reduce((a, b) => closestDict[a] > closestDict[b] ? a : b)
+            delete closestDict[mymax]
+            closestDict[country]  = Math.abs(countryDifferences[country].distance)
+          }
+        }
+      }      
+    })
+    selectedCountries5 = Object.keys(closestDict)
+    console.log("test", selectedCountries5)
+    this.q.countries = selectedCountries5
+    this.q.countries.push(selectedCountry)
   }
 
 }

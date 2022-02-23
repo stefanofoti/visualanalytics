@@ -1244,7 +1244,6 @@ export const NocsList: string[] = [
     "SLE",
     "PNG",
     "YEM",
-    "IOA",
     "OMA",
     "FIJ",
     "VAN",

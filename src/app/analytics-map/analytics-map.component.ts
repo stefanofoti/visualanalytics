@@ -32,12 +32,15 @@ export class AnalyticsMapComponent implements OnInit {
   private div: any
   private max: number
 
+  private dblClickFlag: boolean = false
+
   private MAP_COMPONENT_TAG = "MapComponent"
 
   private isDataReady: Boolean = false
   private selectedSports: string[] = PreCheckedSports
   private yearsRange: number[]
   private selectedCountries = []
+  private mostSimilarSelected: string
   selectedMedals: string[]
   selectedStats: Stat
   selectedColor: string
@@ -229,6 +232,7 @@ export class AnalyticsMapComponent implements OnInit {
       .attr("width", "100%")
       //.attr("height", this.height);
       .attr("height", "100%");
+    
 
 
     this.width = document.getElementById("svg_map").clientWidth || 800
@@ -268,7 +272,8 @@ export class AnalyticsMapComponent implements OnInit {
           .attr('transform', event.transform);
       });
 
-    this.svg.call(zoom);
+    this.svg.call(zoom)
+      .on("dblclick.zoom", null);
   }
 
   highlight(e, d, context) {
@@ -354,60 +359,34 @@ export class AnalyticsMapComponent implements OnInit {
   }
 
   onClick(e, d, context){
+    this.dblClickFlag = true
+    setTimeout(()=>{
+      if(this.dblClickFlag == true){
+        this.mostSimilarSelected = undefined
+        let selectedNoc = d.properties.NOC
+        if(!this.selectedCountries.includes(selectedNoc)){
+          this.selectedCountries.push(selectedNoc)
+        }else{
+          let indexOfNoc = this.selectedCountries.indexOf(selectedNoc)
+          this.selectedCountries.splice(indexOfNoc, 1)
+        }
+        this.dataService.CountryFromMapReady(this.selectedCountries)
+      }
+   },250)
+  }
 
-    let selectedNoc = d.properties.NOC
-    if(!this.selectedCountries.includes(selectedNoc)){
-      this.selectedCountries.push(selectedNoc)
-    }else{
-      let indexOfNoc = this.selectedCountries.indexOf(selectedNoc)
-      this.selectedCountries.splice(indexOfNoc, 1)
+  onDblClick(e, d, context){
+    this.dblClickFlag = false
+    this.selectedCountries = []
+
+    if(this.mostSimilarSelected != d.properties.NOC){
+      this.mostSimilarSelected = d.properties.NOC
+      this.dataService.MostSimilarCountryReady(this.mostSimilarSelected)
     }
-
-    let message = []
-    
-    for (let countryNoc of this.selectedCountries){
-      let countryIndex = this.countryList.findIndex(x => x.id == countryNoc)
-      this.countryList[countryIndex].isChecked=true
-      message.push(this.countryList[countryIndex])
-    }
-
-    //console.log("test", "message" =)
-
-    this.dataService.CountryFromMapReady(message)
-    //this.analyticsConfComponent.updateDataDynamic(this.analyticsConfComponent.countryList[countryIndex])
-
-  
-    // if(this.actionsEnabled) {
-    //   if (!this.stats[d.properties.NOC] || this.stats[d.properties.NOC].noPop || this.stats[d.properties.NOC].noGdp) {
-    //     return
-    //   }
-    //   console.log("onClick called")
-    //   let selectedCountry = d.properties.NOC 
-    //   console.log(selectedCountry)
-    //   if(selectedCountry!==this.lastSelected){
-    //     this.highlightToggle = true
-    //     this.lastSelected = selectedCountry
-    //     this.doNotHighlight(e, d, context)
-    //     this.highlight(e,d,context)
-    //     this.highlightToggle = false
-    //     context.dataService.updateTraditionSelection({
-    //       noc: selectedCountry,
-    //       currentlySelected: true,
-    //       source: this.MAP_COMPONENT_TAG
-    //     })
-    //     this.componentHeight = this.COMPONENT_HEIGHT_TRAD
-    //   }else{
-    //     this.highlightToggle = true
-    //     this.doNotHighlight(e, d, context)
-    //     this.lastSelected = undefined
-    //     context.dataService.updateTraditionSelection({
-    //       noc: selectedCountry,
-    //       currentlySelected: false,
-    //       source: this.MAP_COMPONENT_TAG
-    //     })
-    //     this.componentHeight = this.COMPONENT_HEIGHT
-    //   }
-    // }
+    else{
+      this.mostSimilarSelected = undefined
+      this.dataService.CountryFromMapReady(this.selectedCountries)
+    } 
   }
 
 
@@ -429,6 +408,7 @@ export class AnalyticsMapComponent implements OnInit {
       .on("mouseover", (event, d) => this.highlight(event, d, context))
       .on("mouseout", (event, d) => this.doNotHighlight(event, d, context))
       .on("click", (event, d) => this.onClick(event, d, context))
+      .on("dblclick", (event, d) => this.onDblClick(event, d, context))
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { boolean } from 'mathjs';
+import { boolean, string } from 'mathjs';
 import { BehaviorSubject } from 'rxjs';
 import { Countries, Populations, Country,isEventsPerSportDataReady, CountryPopulation, isOlympicsDataReady, Medal, Medals, requiredYearRange, Sport, Sports, Team, Teams, MouseSelection, MouseSel, TraditionSel, TraditionSelection, PCAEntry, PCAData } from '../data/data'
 
@@ -60,8 +60,14 @@ export class DataService {
   private scatter3DSource = new BehaviorSubject(true)
   scatter3DMessage = this.scatter3DSource.asObservable()
 
-  private countryFromMapSource = new BehaviorSubject({})
+  private countryFromMapSource = new BehaviorSubject([])
   countryFromMapMessage = this.countryFromMapSource.asObservable()
+
+  private mostSimilarCountrySource = new BehaviorSubject(string)
+  mostSimilarCountryMessage = this.mostSimilarCountrySource.asObservable()
+
+  private areaClickSource = new BehaviorSubject([])
+  areaClickMessage = this.areaClickSource.asObservable()
 
 
   constructor() { }
@@ -140,6 +146,14 @@ export class DataService {
 
   CountryFromMapReady(message: any){
     this.countryFromMapSource.next(message)
+  }
+
+  MostSimilarCountryReady(message: any){
+    this.mostSimilarCountrySource.next(message)
+  }
+
+  AreaClickReady(message: any){
+    this.areaClickSource.next(message)
   }
 
 }

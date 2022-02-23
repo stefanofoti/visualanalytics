@@ -64,6 +64,9 @@ export class AnalyticsConfComponent implements OnInit {
   isSummer: boolean = true
   showoutliers: boolean = true
 
+  similarNoc: string
+  areasSelected: string[]
+
   is3D: boolean = true
 
   @Input() @BooleanInput()
@@ -143,26 +146,53 @@ export class AnalyticsConfComponent implements OnInit {
     data.changedYearRangeMessage.subscribe(message => {
       this.onYearSliderChange(message)
     })
+
+    data.mostSimilarCountryMessage.subscribe(message => {
+      this.onMostSimilarCountry(message)
+    })
     
     data.countryFromMapMessage.subscribe(message => {
-      console.log("test", "subscribe triggered", message)
-      this.onCountryFromMapMessage(message)
+      let SelectedCountryList = []
+      for (let countryNoc of message){
+        let countryIndex = this.countryList.findIndex(x => x.id == countryNoc)
+        this.countryList[countryIndex].isChecked=true
+        SelectedCountryList.push(this.countryList[countryIndex])
+      }
+      this.onCountryFromMapMessage(SelectedCountryList)
+    })
+
+    data.areaClickMessage.subscribe(message => {
+      this.onAreaClickMessage(message)
     })
 
 
   }
 
+  onAreaClickMessage(message){
+    if(this.actionsEnabled == true){
+      this.areasSelected = message
+      this.updateData()
+    }
+  }
+
+  onMostSimilarCountry(message){
+    if(this.actionsEnabled == true){
+      this.similarNoc = message
+      this.updateData()
+    }
+  }
+
   onCountryFromMapMessage(message){
     if(this.actionsEnabled == true){
+      this.similarNoc = undefined
       this.selectedCountry = message
-      document.getElementById("updateButton").click()
+      this.updateData()
     }
   }
 
   onYearSliderChange(message) {
     if(this.actionsEnabled == true){
       this.yearRange = message
-      console.log("test", this.yearRange)
       //document.getElementById("updateButton").click()
       this.updateData()
     }
@@ -313,7 +343,6 @@ export class AnalyticsConfComponent implements OnInit {
 
 
   updateData() {
-    console.log("test","countries in update",this.selectedCountry)
     this.actionsEnabled = false
     console.log("conf: Invoke updateData()")
     let selMedals: string[] = []
@@ -370,12 +399,12 @@ export class AnalyticsConfComponent implements OnInit {
         "showOutliers": this.showoutliers,
         "yearStart": this.yearRange[0],
         "yearEnd": this.yearRange[1],
-        "countries": selCountries
+        "countries": selCountries,
+        "selectedCountry": this.similarNoc,
+        "areasSelected": this.areasSelected
       }
       this.analyticsLoaderService.mainLoad(this.analyticsConf)
       this.actionsEnabled = true
-
-
     })
   }
 
@@ -430,7 +459,6 @@ export class AnalyticsConfComponent implements OnInit {
 
 
   submit() {
-    console.log("test", "update clicked")
     this.updateData()
   }
 
