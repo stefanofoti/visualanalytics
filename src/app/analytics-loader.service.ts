@@ -12,13 +12,14 @@ import { NocsList } from 'src/data/data';
 export class AnalyticsLoaderService {
 
   public performanceDict: any = {}
+  public economicDict: any = {}
   public medalsDict: any = {}
   public boxPlotDict: any = {}
   public boxPlotOutliers: any = {}
+  public economicBoxPlotDict: any = {}
+  public economicBoxPlotOutliers: any = {}
   public q: any = {}
   public NocsList = NocsList
-
-  dummyVar: boolean = false
 
   private unloaded = true
 
@@ -65,15 +66,36 @@ export class AnalyticsLoaderService {
     }
     return newtime
   }
+  async loadEconomicCsv(){
+    let lines = await d3.csv("/assets/data/EconomicData/Swimming.csv")
+    let economicDict = this.processEconomicData(lines)
+    this.economicDict = economicDict
+
+    return economicDict
+
+  }
   
   async loadPerformanceCsv(){
     let lines = await d3.csv("/assets/data/Backup/Swimming/100mfreestyleM.csv")
     let yearDict = this.processData(lines)
-    console.log("test", yearDict)
     this.performanceDict = yearDict
 
     return yearDict
 
+  }
+
+  processEconomicData(data){
+    let economicDict: any = {}
+    for (let year = 2005; year <= 2016; year++) { 
+      economicDict[year] = {}
+    }
+    data.forEach(line => {
+      let currentNoc = line.NOC
+      Object.keys(economicDict).forEach(year=>{
+        economicDict[year][currentNoc]= line[year]
+      })
+    });
+    return economicDict
   }
 
   processData(data){
@@ -99,19 +121,28 @@ export class AnalyticsLoaderService {
 
   firstLoad(){
     this.loadPerformanceCsv().then(d => {
-      this.calculateBoxPlots()
-      this.calculateMedals()
-      this.dataService.updateAnalyticsData("updated")
-      this.unloaded = false
+      this.loadEconomicCsv().then(d =>{
+        this.calculateBoxPlots()
+        this.calculateEconomicBoxPlots()
+        this.calculateMedals()
+        this.dataService.updateAnalyticsData("updated")
+        this.unloaded = false
+      })
     })
   }
 
   mainLoad(q){
     this.q = q
     this.calculateBoxPlots()
+    this.calculateEconomicBoxPlots()
     this.calculateMedals()
     if(this.q.selectedCountry){
-      this.calculateMostSimilar5(this.q.selectedCountry)
+      if(this.q.similarityThreshold){
+        this.calculateThresholdSimilar(this.q.selectedCountry, this.q.similarityThreshold)
+      }
+      else{
+        this.calculateMostSimilar5(this.q.selectedCountry)
+      }
     }
     if(this.q.areasSelected){
       this.calculateAreacountries(this.q.areasSelected)
@@ -165,12 +196,7 @@ export class AnalyticsLoaderService {
           if (index > -1) {
             tempYearArray.splice(index, 1)
           }
-          min = Math.min.apply(Math,tempYearArray) 
-          firstQuartile = this.getPercentiles(tempYearArray, 25)
-          median = this.getPercentiles(tempYearArray, 50)
-          thirdQuartile = this.getPercentiles(tempYearArray, 75)
           max = Math.max.apply(Math,tempYearArray)
-          iqr = thirdQuartile-firstQuartile
         }
 
         boxPlotsDict[year]=[min ,firstQuartile, median, thirdQuartile, max]
@@ -179,6 +205,40 @@ export class AnalyticsLoaderService {
     })
     this.boxPlotDict = boxPlotsDict
     this.boxPlotOutliers = boxPlotsOutliers
+  }
+
+  calculateEconomicBoxPlots(){
+    let boxPlotsDict = {}
+    let boxPlotsOutliers = {}
+    Object.keys(this.economicDict).forEach(year => {
+      if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        let tempYearArray = []
+        Object.keys(this.economicDict[year]).forEach(country => {
+          if (!isNaN(this.economicDict[year][country])){
+            tempYearArray.push(Number(this.economicDict[year][country]))
+          }
+        })
+        let min = Math.min.apply(Math,tempYearArray) 
+        let firstQuartile = this.getPercentiles(tempYearArray, 25)
+        let median = this.getPercentiles(tempYearArray, 50)
+        let thirdQuartile = this.getPercentiles(tempYearArray, 75)
+        let max = Math.max.apply(Math,tempYearArray)
+        let iqr = thirdQuartile-firstQuartile
+        let outliers =[]
+        while (max > thirdQuartile + 1.5*iqr){
+          outliers.push(max)
+          let index = tempYearArray.indexOf(max);
+          if (index > -1) {
+            tempYearArray.splice(index, 1)
+          }
+          max = Math.max.apply(Math,tempYearArray)
+        }
+        boxPlotsDict[year]=[min ,firstQuartile, median, thirdQuartile, max]
+        boxPlotsOutliers[year]=outliers
+      }
+    })
+    this.economicBoxPlotDict = boxPlotsDict
+    this.economicBoxPlotOutliers = boxPlotsOutliers
   }
 
   calculateMedals(){
@@ -257,7 +317,6 @@ export class AnalyticsLoaderService {
             }
           }
         }
-        console.log("test", max)
       })
       Object.keys(max).forEach(country =>{
         this.q.areaCountries.push(country)
@@ -298,16 +357,15 @@ export class AnalyticsLoaderService {
       }
     })
 
-    console.log("test", countryDifferences, selCountrypoints)
 
     Object.keys(countryDifferences).forEach(country =>{
       if (Object.keys(closestDict).length<4){
-        if (countryDifferences[country].pairs>=Math.floor(selCountrypoints*30/100)){
+        if (countryDifferences[country].pairs>=Math.floor(selCountrypoints*40/100)){
           closestDict[country] = Math.abs(countryDifferences[country].distance)
         }
       }
       else{
-        if (countryDifferences[country].pairs>=Math.floor(selCountrypoints*60/100)){
+        if (countryDifferences[country].pairs>=Math.floor(selCountrypoints*40/100)){
           if (Math.abs(countryDifferences[country].distance )<Math.max.apply(Math, Object.values(closestDict))){
             let mymax = Object.keys(closestDict).reduce((a, b) => closestDict[a] > closestDict[b] ? a : b)
             delete closestDict[mymax]
@@ -317,9 +375,56 @@ export class AnalyticsLoaderService {
       }      
     })
     selectedCountries5 = Object.keys(closestDict)
-    console.log("test", selectedCountries5)
     this.q.countries = selectedCountries5
     this.q.countries.push(selectedCountry)
+  }
+  calculateThresholdSimilar(selectedCountry, selectedThreshold){
+    let thresholdCountries = []
+    let thresholdDict = {
+      "hits": number,
+      "miss": number
+    }
+    let presenceCount = 0
+
+    Object.keys(this.performanceDict).forEach(year =>{
+      if (this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        if (Object.keys(this.performanceDict[year]).includes(selectedCountry)){
+          if (!isNaN(this.performanceDict[year][selectedCountry])){
+            let yearPerf = this.performanceDict[year][selectedCountry]
+            let yearMargin = yearPerf*selectedThreshold/100
+            presenceCount += 1
+            Object.keys(this.performanceDict[year]).forEach(country =>{
+              if(country != selectedCountry && this.NocsList.includes(country)){
+                if (!isNaN(this.performanceDict[year][country])){
+                  if(!thresholdDict[country]){
+                    thresholdDict[country] = {}
+                    thresholdDict[country].hits = 0
+                    thresholdDict[country].miss = 0
+                  }
+                  if((yearPerf-yearMargin) < this.performanceDict[year][country] && this.performanceDict[year][country] < (yearPerf + yearMargin)){
+                    thresholdDict[country].hits += 1
+                  }
+                  else{
+                    thresholdDict[country].miss += 1    
+                  }
+                }
+              }
+            })
+          }
+        }
+      }
+    })
+
+    
+    Object.keys(thresholdDict).forEach(country =>{
+      if (thresholdDict[country].miss == 0){
+        if (thresholdDict[country].hits > 40*presenceCount/100){
+          thresholdCountries.push(country)
+        }
+      }
+    })
+    this.q.countries = thresholdCountries
+    this.q.countries.push(selectedCountry) 
   }
 
 }

@@ -371,6 +371,7 @@ export class AnalyticsMapComponent implements OnInit {
           this.selectedCountries.splice(indexOfNoc, 1)
         }
         this.dataService.CountryFromMapReady(this.selectedCountries)
+        this.doNotHighlight(e, d, context)
       }
    },250)
   }
@@ -387,6 +388,19 @@ export class AnalyticsMapComponent implements OnInit {
       this.mostSimilarSelected = undefined
       this.dataService.CountryFromMapReady(this.selectedCountries)
     } 
+
+    let selectedCountry = d.properties.NOC 
+      if(selectedCountry!==this.lastSelected){
+        this.highlightToggle = true
+        this.lastSelected = selectedCountry
+        this.doNotHighlight(e, d, context)
+        this.highlight(e,d,context)
+        this.highlightToggle = false
+      }else{
+        this.highlightToggle = true
+        this.doNotHighlight(e, d, context)
+        this.lastSelected = undefined
+      }
   }
 
 

@@ -69,29 +69,16 @@
        
 
         <div class="col-md-4">
-
-            <div class="row pt-2">
-                <div>
-                    <mat-slide-toggle [(ngModel)]="isSummer" (change)=updateSeason($event)>Summer &nbsp;
-                    </mat-slide-toggle>
-
-                    <mat-slide-toggle [(ngModel)]="isWinter" (change)=updateSeason($event)>Winter
-                    </mat-slide-toggle>                 
-
-                </div>                
-            </div>
-            <div class="row">
-                <mat-slide-toggle [(ngModel)]="isMaleChecked">
-                    Male</mat-slide-toggle>
-
-                <mat-slide-toggle [(ngModel)]="isFemaleChecked">
-                    Female</mat-slide-toggle>
-                <br>
-            </div>
+                
             <div class="row">
                 <mat-slide-toggle [(ngModel)]="showoutliers">
                     Outliers</mat-slide-toggle>
                 <br>
+                <mat-form-field appearance="fill" style="width: 18vh;">
+                    <input (keypress)="numberOnlyInteger($event, similarityThreshold, 0, 100)"
+                        [(ngModel)]="similarityThreshold" [ngModelOptions]="{standalone: true}" type="text" matInput
+                        placeholder="Similarity Threshold..." autocomplete="off">
+                </mat-form-field>
             </div>
 
 

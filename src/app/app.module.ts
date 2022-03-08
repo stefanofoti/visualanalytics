@@ -36,6 +36,7 @@ import { AnalyticsConfComponent } from './analytics-conf/analytics-conf.componen
 import { AnalyticsMapComponent } from './analytics-map/analytics-map.component';
 import { AnalyticsLoaderService } from './analytics-loader.service';
 import { OtherChartComponent } from './other-chart/other-chart.component';
+import { RatioComponent } from './ratio/ratio.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { OtherChartComponent } from './other-chart/other-chart.component';
     AnalyticsConfComponent,
     AnalyticsMapComponent,
     OtherChartComponent,
+    RatioComponent,
   ],
   imports: [
     BrowserModule,

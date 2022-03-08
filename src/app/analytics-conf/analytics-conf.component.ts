@@ -48,6 +48,7 @@ export class AnalyticsConfComponent implements OnInit {
   topNationsAmount: number
   traditionCountriesNumber: number
   traditionPastWeight: number
+  similarityThreshold: number 
   @Input() @BooleanInput()
   isMedalsByPop: any
 
@@ -144,6 +145,7 @@ export class AnalyticsConfComponent implements OnInit {
     })
 
     data.changedYearRangeMessage.subscribe(message => {
+      console.log("test", message)
       this.onYearSliderChange(message)
     })
 
@@ -401,7 +403,8 @@ export class AnalyticsConfComponent implements OnInit {
         "yearEnd": this.yearRange[1],
         "countries": selCountries,
         "selectedCountry": this.similarNoc,
-        "areasSelected": this.areasSelected
+        "areasSelected": this.areasSelected,
+        "similarityThreshold": this.similarityThreshold
       }
       this.analyticsLoaderService.mainLoad(this.analyticsConf)
       this.actionsEnabled = true

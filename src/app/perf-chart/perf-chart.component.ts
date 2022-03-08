@@ -98,7 +98,6 @@ export class PerfChartComponent implements OnInit {
       this.medalsDict = this.analyticsLoaderService.medalsDict
       this.boxPlotOutliers = this.analyticsLoaderService.boxPlotOutliers
       this.q = this.analyticsLoaderService.q
-      console.log("test", this.q)
       this.arrayFormData = []
       this.areaObjToDraw = {}
       this.lineObjToDraw = {}
@@ -744,6 +743,7 @@ export class PerfChartComponent implements OnInit {
 
   selectionToRange(c){
 
+    console.log("test", d3.select("#brush"))
     let start = +d3.select("#brush").select(".selection").attr("x")
     let end = start + +d3.select("#brush").select(".selection").attr("width")
     let yearStart = Math.floor(c.x.invert(start))
