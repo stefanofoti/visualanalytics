@@ -24,6 +24,9 @@ export class DataService {
   private yearRangeSource = new BehaviorSubject(requiredYearRange);
   changedYearRangeMessage = this.yearRangeSource.asObservable();
 
+  private investmentSource = new BehaviorSubject(undefined);
+  changedInvestmentMessage = this.investmentSource
+
   private selectedSportSource = new BehaviorSubject(Sports);
   selectedSportsMessage = this.selectedSportSource.asObservable();
 
@@ -98,6 +101,10 @@ export class DataService {
 
   changeYearRange(message: number[]) {
     this.yearRangeSource.next(message)
+  }
+
+  changeInvestment(message: number) {
+    this.investmentSource.next(message)
   }
 
   changeSelectedMedals(message: Medal[]) {

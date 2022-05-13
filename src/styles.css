@@ -105,8 +105,12 @@ text {
     .heightLegend { height:20vh; margin-bottom: 1vh;}
     .heightLine2 { height: 36vh; margin-top: 1vh}
     .heightLine3 { height: 46vh;}
+    .heightLinePerf {height: 30vh; margin-top:1vh}
+    .heightLineRatio {height: 25vh; margin-top:1vh;}
+    .heightLineEcon {height: 30vh; margin-top:1vh;}
     .heightLineBr { height:10vh;}
     .heightFooter { height:10vh;}
+    .margin {margin-top:1vh}
   
   }
   

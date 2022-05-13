@@ -11,13 +11,25 @@ import { NocsList } from 'src/data/data';
 })
 export class AnalyticsLoaderService {
 
+  private completePerformanceDict: any = {}
+  private completeEconDict: any = {}
+  private completeboxPlotDict: any = {}
+  private completeeconomicBoxPlotDict: any = {}
+  public completeinterpolatedPerfDict: any = {}
+  public interpolatedPerfDict: any = {}
   public performanceDict: any = {}
   public economicDict: any = {}
+  public ratioDict: any = {}
   public medalsDict: any = {}
   public boxPlotDict: any = {}
   public boxPlotOutliers: any = {}
+  public interpolatedBoxPlotDict: any = {}
   public economicBoxPlotDict: any = {}
   public economicBoxPlotOutliers: any = {}
+  public ratioBoxPlotDict: any = {}
+  public ratioBoxPlotOutliers: any = {}
+  public efficiencyDict: any = {}
+  public investmentDict: any = {}
   public q: any = {}
   public NocsList = NocsList
 
@@ -70,6 +82,9 @@ export class AnalyticsLoaderService {
     let lines = await d3.csv("/assets/data/EconomicData/Swimming.csv")
     let economicDict = this.processEconomicData(lines)
     this.economicDict = economicDict
+    if (this.unloaded){
+      this.completeEconDict = economicDict
+    }
 
     return economicDict
 
@@ -79,9 +94,64 @@ export class AnalyticsLoaderService {
     let lines = await d3.csv("/assets/data/Backup/Swimming/100mfreestyleM.csv")
     let yearDict = this.processData(lines)
     this.performanceDict = yearDict
+    if (this.unloaded){
+      this.completePerformanceDict = yearDict
+    }
 
     return yearDict
 
+  }
+
+  async loadRatioPrediction(){
+    let lines = await d3.csv("/assets/data/ratioResults.csv")
+    let efficiencyDict = this.processRatioPrediction(lines)
+    this.efficiencyDict = efficiencyDict
+
+    return efficiencyDict
+
+  }
+
+  async loadInvPrediction(){
+    let lines = await d3.csv("/assets/data/investmentsResults.csv")
+    let invDict = this.processInvestmentPrediction(lines)
+    this.investmentDict = invDict
+    return invDict
+  }
+
+  processRatioPrediction(data) {
+    let ratioDict: any = {}
+    for (let year = 2008; year <= 2024; year++) {
+      ratioDict[year] = {}
+    }
+
+    data.forEach(line => {
+      let currentNoc = line.NOC
+      let currentYear = line.Year
+      if (Object.keys(ratioDict).includes(currentYear)) {
+        ratioDict[currentYear][currentNoc]=parseFloat(line.Efficiency)
+      }      
+    });
+
+    console.log("newDicts", ratioDict)
+    return ratioDict
+  }
+
+  processInvestmentPrediction(data) {
+    let invDict: any = {}
+    for (let year = 2005; year <= 2024; year++) {
+      invDict[year] = {}
+    }
+
+    data.forEach(line => {
+      let currentNoc = line.NOC
+      let currentYear = line.Year
+      if (Object.keys(invDict).includes(currentYear)) {
+        invDict[currentYear][currentNoc]=parseFloat(line.Investment)
+      }      
+    });
+
+    console.log("newDicts", invDict)
+    return invDict
   }
 
   processEconomicData(data){
@@ -92,7 +162,7 @@ export class AnalyticsLoaderService {
     data.forEach(line => {
       let currentNoc = line.NOC
       Object.keys(economicDict).forEach(year=>{
-        economicDict[year][currentNoc]= line[year]
+        economicDict[year][currentNoc]= line[year] /1000000
       })
     });
     return economicDict
@@ -122,32 +192,44 @@ export class AnalyticsLoaderService {
   firstLoad(){
     this.loadPerformanceCsv().then(d => {
       this.loadEconomicCsv().then(d =>{
-        this.calculateBoxPlots()
-        this.calculateEconomicBoxPlots()
-        this.calculateMedals()
-        this.dataService.updateAnalyticsData("updated")
-        this.unloaded = false
+        this.loadInvPrediction().then(d =>{
+          this.loadRatioPrediction().then(d =>{
+            this.calculateBoxPlots()
+            this.calculateEconomicBoxPlots()
+            this.interpolatePerformance()
+            this.calculateRatio()
+            this.calculateRatioBoxPlot()
+            this.calculateMedals()
+            this.dataService.updateAnalyticsData("updated")
+            this.unloaded = false
+          })
+        })
       })
     })
   }
 
   mainLoad(q){
-    this.q = q
-    this.calculateBoxPlots()
-    this.calculateEconomicBoxPlots()
-    this.calculateMedals()
-    if(this.q.selectedCountry){
-      if(this.q.similarityThreshold){
-        this.calculateThresholdSimilar(this.q.selectedCountry, this.q.similarityThreshold)
+    if (!this.unloaded){
+      this.q = q
+      console.log("testnew", "from loader", this.q)
+      this.calculateBoxPlots()
+      this.calculateEconomicBoxPlots()
+      this.calculateRatio()
+      this.calculateRatioBoxPlot()
+      this.calculateMedals()
+      if(this.q.selectedCountry){
+        if(this.q.similarityThreshold){
+          this.calculateThresholdSimilar(this.q.selectedCountry, this.q.similarityThreshold)
+        }
+        else{
+          this.calculateMostSimilar5(this.q.selectedCountry)
+        }
       }
-      else{
-        this.calculateMostSimilar5(this.q.selectedCountry)
+      if(this.q.areasSelected){
+        this.calculateAreacountries(this.q.areasSelected)
       }
+      this.dataService.updateAnalyticsData("updated")
     }
-    if(this.q.areasSelected){
-      this.calculateAreacountries(this.q.areasSelected)
-    }
-    this.dataService.updateAnalyticsData("updated")
   }
 
   numSort(a,b) { 
@@ -172,15 +254,156 @@ export class AnalyticsLoaderService {
     }
   }
 
+  calculateRatio(){
+    let ratioDict = {}
+    for (let year = 2005; year <= 2016; year++){
+      if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        if(Object.keys(this.interpolatedPerfDict).includes(String(year))){
+          Object.keys(this.economicDict[year]).forEach(noc =>{
+            if(Object.keys(this.interpolatedPerfDict[year]).includes(noc)){
+              let perf = this.interpolatedPerfDict[year][noc]
+              let econ = this.economicDict[year][noc]
+              let invertedPerf = 1/perf
+              let ratio = (invertedPerf/econ)
+              if(!ratioDict[year]){
+                ratioDict[year] = {}
+              }
+              ratioDict[year][noc] = ratio
+            }
+          })
+        }
+      }
+    }
+    this.ratioDict = ratioDict
+
+  }
+
+  calculateRatioBoxPlot(){
+    let ratioBoxPlotsDict = {}
+    let ratioBoxPlotsOutliers = {}
+    Object.keys(this.ratioDict).forEach(year => {
+      if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
+        let tempYearArray = []
+        Object.keys(this.ratioDict[year]).forEach(country => {
+          if (!isNaN(this.ratioDict[year][country])){
+            tempYearArray.push(this.ratioDict[year][country])
+          }
+        })
+        let min = Math.min.apply(Math,tempYearArray) 
+        let firstQuartile = this.getPercentiles(tempYearArray, 25)
+        let median = this.getPercentiles(tempYearArray, 50)
+        let thirdQuartile = this.getPercentiles(tempYearArray, 75)
+        let max = Math.max.apply(Math,tempYearArray)
+        let iqr = thirdQuartile-firstQuartile
+        let outliers =[]
+        while (max > thirdQuartile + 1.5*iqr){
+          outliers.push(max)
+          let index = tempYearArray.indexOf(max);
+          if (index > -1) {
+            tempYearArray.splice(index, 1)
+          }
+          max = Math.max.apply(Math,tempYearArray)
+        }
+        while (min < firstQuartile - 1.5*iqr){
+          outliers.push(min)
+          let index = tempYearArray.indexOf(min);
+          if (index > -1) {
+            tempYearArray.splice(index, 1)
+          }
+          min = Math.min.apply(Math,tempYearArray)
+        }
+
+        ratioBoxPlotsDict[year]=[min ,firstQuartile, median, thirdQuartile, max]
+        ratioBoxPlotsOutliers[year]=outliers
+      }
+    })
+    this.ratioBoxPlotDict = ratioBoxPlotsDict
+    this.ratioBoxPlotOutliers = ratioBoxPlotsOutliers
+    console.log("ratio", this.ratioBoxPlotOutliers)
+
+  }
+
+  findAllNocs(){
+    let nocs = []
+    Object.keys(this.completePerformanceDict).forEach(year =>{
+      Object.keys(this.completePerformanceDict[year]).forEach(noc => {
+        if(!nocs.includes(noc)){
+          nocs.push(noc)
+        }
+      })
+    })
+    return nocs
+  }
+
+  interpolatePerformance(){
+    let interpolatedDict = {}
+    let allNocs = this.findAllNocs()
+    for(let year = 1896; year<2021; year++){
+      allNocs.forEach(noc =>{
+        if(Object.keys(this.completePerformanceDict).includes(String(year)) && Object.keys(this.completePerformanceDict[year]).includes(noc)){
+          if(!interpolatedDict[year]){
+            interpolatedDict[year] = {}
+          }
+          interpolatedDict[year][noc] = this.completePerformanceDict[year][noc]
+        }
+        else{
+          let bottom
+          let top
+          let bottomDist = Infinity
+          let topDist = Infinity
+          let olympicsYears = Object.keys(this.completePerformanceDict).map(Number)
+          for (let i = 0; i < olympicsYears.length; i++){
+            let olYear = olympicsYears[i]
+            if (olYear < Number(year)){
+              if (Object.keys(this.completePerformanceDict[olYear]).includes(noc) && !isNaN(this.completePerformanceDict[olYear][noc])){
+                bottomDist = Number(year) - olYear
+                bottom = olYear                
+              }
+            }else{
+              if (Object.keys(this.completePerformanceDict[olYear]).includes(noc) && !isNaN(this.completePerformanceDict[olYear][noc])){
+                topDist = olYear - Number(year)
+                top = olYear
+                break    
+              }        
+            }
+          }
+          if(bottomDist != Infinity && topDist != Infinity){
+            let bottomVal = this.completePerformanceDict[bottom][noc]
+            let topVal = this.completePerformanceDict[top][noc]
+            let incrementRatio = bottomDist/(bottomDist + topDist)
+            let increment = incrementRatio*(topVal - bottomVal)
+            if(!interpolatedDict[year]){
+              interpolatedDict[year] = {}              
+            }
+            interpolatedDict[year][noc] = bottomVal + increment
+          }
+        }
+      })
+    }
+    this.completeinterpolatedPerfDict = interpolatedDict
+
+    Object.keys(this.completeinterpolatedPerfDict).forEach(year =>{
+      Object.keys(this.completeinterpolatedPerfDict[year]).forEach(noc =>{
+        if(Object.keys(this.completeEconDict).includes(year) && Object.keys(this.completeEconDict[year]).includes(noc)){
+          if(!this.interpolatedPerfDict[year]){
+            this.interpolatedPerfDict[year] = {}
+          }
+          this.interpolatedPerfDict[year][noc] = this.completeinterpolatedPerfDict[year][noc]
+        }
+      })
+    })
+    console.log("interpolated test", this.completeinterpolatedPerfDict, this.interpolatedPerfDict)
+  }
+
   calculateBoxPlots(){
     let boxPlotsDict = {}
     let boxPlotsOutliers = {}
-    Object.keys(this.performanceDict).forEach(year => {
+    Object.keys(this.completeinterpolatedPerfDict).forEach(year => {
       if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
         let tempYearArray = []
-        Object.keys(this.performanceDict[year]).forEach(country => {
-          if (!isNaN(this.performanceDict[year][country])){
-            tempYearArray.push(this.performanceDict[year][country])
+        Object.keys(this.completeinterpolatedPerfDict[year]).forEach(country => {
+          if (!isNaN(this.completeinterpolatedPerfDict[year][country])){
+            tempYearArray.push(this.completeinterpolatedPerfDict[year][country])
           }
         })
         let min = Math.min.apply(Math,tempYearArray) 
@@ -205,6 +428,9 @@ export class AnalyticsLoaderService {
     })
     this.boxPlotDict = boxPlotsDict
     this.boxPlotOutliers = boxPlotsOutliers
+    if (this.unloaded){
+      this.completeboxPlotDict = boxPlotsDict
+    }
   }
 
   calculateEconomicBoxPlots(){
@@ -233,23 +459,35 @@ export class AnalyticsLoaderService {
           }
           max = Math.max.apply(Math,tempYearArray)
         }
+        while (min < firstQuartile - 1.5*iqr){
+          outliers.push(min)
+          console.log("outliers", min)
+          let index = tempYearArray.indexOf(min);
+          if (index > -1) {
+            tempYearArray.splice(index, 1)
+          }
+          min = Math.min.apply(Math,tempYearArray)
+        }
         boxPlotsDict[year]=[min ,firstQuartile, median, thirdQuartile, max]
         boxPlotsOutliers[year]=outliers
       }
     })
     this.economicBoxPlotDict = boxPlotsDict
     this.economicBoxPlotOutliers = boxPlotsOutliers
+    if (this.unloaded){
+      this.completeeconomicBoxPlotDict = boxPlotsDict
+    }
   }
 
   calculateMedals(){
     let medalsDict = {}
-    Object.keys(this.performanceDict).forEach(year => {
+    Object.keys(this.completeinterpolatedPerfDict).forEach(year => {
       if (this.unloaded || this.q.yearStart<= Number(year) && Number(year)<=this.q.yearEnd){
         let tempYearArray = Array()
         medalsDict[year] = Array()
-        Object.keys(this.performanceDict[year]).forEach(country => {
-          if (!isNaN(this.performanceDict[year][country])){
-            tempYearArray.push(this.performanceDict[year][country])
+        Object.keys(this.completeinterpolatedPerfDict[year]).forEach(country => {
+          if (!isNaN(this.completeinterpolatedPerfDict[year][country])){
+            tempYearArray.push(this.completeinterpolatedPerfDict[year][country])
           }
         })
         if (tempYearArray.length ==1){

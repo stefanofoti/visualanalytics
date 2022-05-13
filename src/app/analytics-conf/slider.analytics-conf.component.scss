@@ -26,6 +26,24 @@
     .custom-ngx-slider2 .ngx-slider .ngx-slider-tick.ngx-slider-selected {
       background: #ff408190;
     }
+
+    .custom-ngx-slider2 {
+      margin-left: 4vh;
+      width: 95%;
+    }
+
+    .custom-ngx-slider3 .ngx-slider .ngx-slider-bar{
+      background: #ff408164;
+      height: 5px;      
+    }
+
+    .custom-ngx-slider3 .ngx-slider .ngx-slider-selection {
+      background:#ff4081;
+    }
+
+    .custom-ngx-slider3 .ngx-slider .ngx-slider-pointer {
+      background-color: #ff4081;
+    }
   }
   
   ::ng-deep.mat-form-field-ripple {

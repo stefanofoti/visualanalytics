@@ -37,6 +37,7 @@ import { AnalyticsMapComponent } from './analytics-map/analytics-map.component';
 import { AnalyticsLoaderService } from './analytics-loader.service';
 import { OtherChartComponent } from './other-chart/other-chart.component';
 import { RatioComponent } from './ratio/ratio.component';
+import { TimeBarComponent } from './time-bar/time-bar.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { RatioComponent } from './ratio/ratio.component';
     AnalyticsMapComponent,
     OtherChartComponent,
     RatioComponent,
+    TimeBarComponent,
   ],
   imports: [
     BrowserModule,

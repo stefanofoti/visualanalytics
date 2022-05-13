@@ -60,11 +60,20 @@ export class AnalyticsMapComponent implements OnInit {
     dataService.pcaDataReadyMessage.subscribe(message => message && (this.actionsEnabled = true))
     dataService.updateReadinessMessage.subscribe(message => message && message.length > 0 && (this.actionsEnabled = false))
     dataService.countryReadinessMessage.subscribe(message => this.countryList = message)
+    dataService.analyticsReadinessMessage.subscribe(message => this.analyticsDataReady(message))
 
   }
 
   ngOnInit(): void {
     this.initMap()
+  }
+
+  analyticsDataReady(message){
+    if(this.analyticsLoaderService.q.countries){
+      this.selectedCountries = this.analyticsLoaderService.q.countries
+      console.log("map-test", this.selectedCountries)
+      this.updateSelection()
+    }
   }
 
   onMouseSelection(message: MouseSelection) {
@@ -86,8 +95,6 @@ export class AnalyticsMapComponent implements OnInit {
     }
 
   }
-
-
 
   onSelectedSportsChanged(message: Sport[]) {
     this.selectedSports = message.map(s => s.name)
@@ -326,8 +333,7 @@ export class AnalyticsMapComponent implements OnInit {
       //selection.attr("fill", "#0000ff")
       //this.selectedColor = selection.attr("stroke-width")
       selection
-        .style("stroke", "#000000")
-        .style("stroke-width", "0.5px")
+        .style("stroke-width", "1px")
         .style("opacity", "1")
     }
   }
@@ -356,6 +362,29 @@ export class AnalyticsMapComponent implements OnInit {
     
     d3.selectAll(".map-item")
       .style("opacity", "1")
+
+    this.updateSelection()
+  }
+
+  updateSelection(){
+    if (this.selectedCountries){
+      d3.selectAll(".map-item")
+        .style("stroke", "#000000")
+        .style("stroke-width", "0.2px")
+
+      let colors: string[] = ["#ff7f0e", "#2ca02c", "#9467bd", "#e377c2", "#bcbd22"]
+      let i = -1
+      this.selectedCountries.forEach(noc =>{
+        i++
+        d3.select("#map-" + noc)
+        .style("stroke", d =>{
+          console.log("map-test", noc, i, colors[i])
+          return (colors[i])
+        })
+        .style("stroke-width", "2.5px")
+        .style("opacity", "1")
+      })
+    }
   }
 
   onClick(e, d, context){
@@ -364,7 +393,7 @@ export class AnalyticsMapComponent implements OnInit {
       if(this.dblClickFlag == true){
         this.mostSimilarSelected = undefined
         let selectedNoc = d.properties.NOC
-        if(!this.selectedCountries.includes(selectedNoc)){
+        if(!this.selectedCountries || !this.selectedCountries.includes(selectedNoc)){
           this.selectedCountries.push(selectedNoc)
         }else{
           let indexOfNoc = this.selectedCountries.indexOf(selectedNoc)

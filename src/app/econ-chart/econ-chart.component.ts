@@ -62,8 +62,8 @@ export class EconChartComponent implements OnInit {
   private sizes = {
     "circle": 2,
     "circle-width": 1,
-    "country-line": 3,
-    "country-border": 4,
+    "country-line": 4,
+    "country-border": 5,
     "medal-line": 2,
     "circle-outlier": 1
   }
@@ -119,7 +119,7 @@ export class EconChartComponent implements OnInit {
   }
 
   private getLabel(): string {
-    let labelText = ''
+    let labelText = 'Investment'
     return labelText
   }
 
@@ -265,7 +265,7 @@ export class EconChartComponent implements OnInit {
         .attr("id", "svg_econChart")
         .attr('width', '100%')
         .attr('height', '100%')
-        .attr('viewBox', '0 0 1200 420')
+        .attr('viewBox', '0 0 1900 400')
         .append("g")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
     }
@@ -290,13 +290,10 @@ export class EconChartComponent implements OnInit {
       }
     }
 
-    let yearsDomain: number[] = []
-
-    Object.keys(this.boxPlotDict).forEach(year =>{
-      yearsDomain.push(Number(year))
-    })
-
-    let xDomain = [Math.min.apply(Math, yearsDomain),Math.max.apply(Math, yearsDomain)]
+    let xDomain = [2004, 2020]
+    if( this.q.yearStart && this.q.yearEnd){
+      xDomain = [this.q.yearStart, this.q.yearEnd]
+    } 
     
     this.x = d3.scaleLinear()
       .range([0, this.width])
@@ -310,34 +307,36 @@ export class EconChartComponent implements OnInit {
     let XaxisLabelX = this.width / 2;
     let XaxisLabelY = this.height + 35
     let YaxisLabelX = -40;
-    let YaxisLabelY = this.height / 2
+    let YaxisLabelY = -10
     let labelText = this.getLabel()
 
     this.svg.select("#EconChartLabelX").remove()
-    // this.svg.append("g")
-    //   .attr('id', "EconChartLabelX")
-    //   .attr('transform', 'translate(' + XaxisLabelX + ', ' + XaxisLabelY + ')')
-    //   .append('text')
-    //   .attr('text-anchor', 'middle')
-    //   .text("Year")
-    //   .style("fill", "white");
+    this.svg.append("g")
+      .attr('id', "EconChartLabelX")
+      .attr('transform', 'translate(' + XaxisLabelX + ', ' + XaxisLabelY + ')')
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .text("Year")
+      .style("fill", "white")
+      .style("font-size", "large");
 
     this.svg.select("#EconChartLabelY").remove()
     this.svg.append("g")
       .attr('id', "EconChartLabelY")
       .attr('transform', 'translate(' + YaxisLabelX + ', ' + YaxisLabelY + ')')
       .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('transform', 'rotate(-90)')
+      .attr('text-anchor', 'top')
+      //.attr('transform', 'rotate(-90)')
       .text(labelText)
-      .style("fill", "white");
+      .style("fill", "white")
+      .style("font-size", "large");
 
     // Configure the X Axis
     this.svg.select("#Xaxis").remove()
     this.svg.select("#yAxis").remove()
     this.svg.append('g')
       .attr('id', "Xaxis")
-      //.attr('transform', 'translate(0,' + this.height + ')')
+      .attr('transform', 'translate(0,' + this.height + ')')
       .call(d3Axis.axisBottom(this.x).ticks(ticks));
     // Configure the Y Axis
     this.svg.append('g')
@@ -375,7 +374,7 @@ export class EconChartComponent implements OnInit {
       list.push(afd)
     })
 
-    let areaColors = ["#7aa6c2", "#5886a5", "#346888","#004c6d"]
+    let areaColors = ["#cceaca", "#a4d1a2", "#7cb87c","#529f56"]
     let counter = 0
 
     ///// BRUSHING
@@ -432,8 +431,8 @@ export class EconChartComponent implements OnInit {
           for (let val of this.economicBoxPlotOutliers[year]){
             this.svg.append("circle")
             .datum(this.economicBoxPlotOutliers[year])
-            .attr("stroke", "lightblue")
-            .attr("fill", "lightblue")  
+            .attr("stroke", "#529f56")
+            .attr("fill", "#529f56")  
             .attr("r", this.sizes["circle-outlier"])
             .attr("cx", this.x(year))
             .attr("cy", this.y(val))
@@ -559,31 +558,6 @@ export class EconChartComponent implements OnInit {
 
         }
       }
-      
-      /// DRAW LEGEND
-      // this.svg.append("rect")
-      //   .datum(this.lineObjToDraw[k])
-      //   .attr("x", 1050)
-      //   .attr("y", index*(rectsize+7))
-      //   .attr("width", rectsize)
-      //   .attr("height", rectsize)
-      //   .style("fill", function(d){ return colorScaleD3(d)})
-      //   .on("mouseover", _ => this.highlight(k, this, this.ECONFCHART_COMPONENT_TAG))
-      //   .on("mouseleave", _ => this.doNotHighlight(k, this, this.ECONFCHART_COMPONENT_TAG))
-      
-      // this.svg.append("text")
-      //   .datum(this.lineObjToDraw[k])
-      //   .attr("x", 1050 + rectsize*1.5)
-      //   .attr("y", function(d,i){ return index*(rectsize+7) + (rectsize/2)})
-      //   .style("fill", function(d){ return colorScaleD3(d)})
-      //   .text(function(d){ return k})
-      //   .style("font-size", "smaller")
-      //   .attr("text-anchor", "left")
-      //   .style("alignment-baseline", "middle")
-      //   .on("mouseover", _ => this.highlight(k, this, this.ECONFCHART_COMPONENT_TAG))
-      //   .on("mouseleave", _ => this.doNotHighlight(k, this, this.ECONFCHART_COMPONENT_TAG))
-      
-      // index += 1
     })
 
     ////// ZOOM
@@ -685,14 +659,13 @@ export class EconChartComponent implements OnInit {
 
   selectionToRange(c){
 
-    console.log("test", d3.select("#brush"))
     let start = +d3.select("#brush").select(".selection").attr("x")
     let end = start + +d3.select("#brush").select(".selection").attr("width")
     let yearStart = Math.floor(c.x.invert(start))
     let yearEnd = Math.floor(c.x.invert(end))
     if (yearStart == yearEnd){
-      yearStart = 1896
-      yearEnd = 2021
+      yearStart = 2004
+      yearEnd = 2018
     }
     c.dataService.changeYearRange([yearStart, yearEnd])
   }

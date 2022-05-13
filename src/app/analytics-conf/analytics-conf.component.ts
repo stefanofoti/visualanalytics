@@ -49,6 +49,7 @@ export class AnalyticsConfComponent implements OnInit {
   traditionCountriesNumber: number
   traditionPastWeight: number
   similarityThreshold: number 
+  desiredPlacing: number
   @Input() @BooleanInput()
   isMedalsByPop: any
 
@@ -90,10 +91,18 @@ export class AnalyticsConfComponent implements OnInit {
   //----
 
 
-  yearRange =  [1896,2021]
+  yearRange =  [2004,2020]
   sliderOptions2: Options = {
     floor: requiredAnalyticsYearRange[0],
     ceil: requiredAnalyticsYearRange[1]
+  };
+
+  investmentRange =  [6000000,10000000]
+  desiredInvestment = 0
+  sliderOptions3: Options = {
+    floor: this.investmentRange[0],
+    ceil: this.investmentRange[1],
+    step: 1000
   };
 
   actionsEnabled: boolean = false
@@ -149,6 +158,11 @@ export class AnalyticsConfComponent implements OnInit {
       this.onYearSliderChange(message)
     })
 
+    data.changedInvestmentMessage.subscribe(message => {
+      console.log("test", message)
+      this.onChangedInvestment(message)
+    })
+
     data.mostSimilarCountryMessage.subscribe(message => {
       this.onMostSimilarCountry(message)
     })
@@ -193,9 +207,18 @@ export class AnalyticsConfComponent implements OnInit {
   }
 
   onYearSliderChange(message) {
+    console.log("test", "conf message when slider changed", message)
     if(this.actionsEnabled == true){
       this.yearRange = message
       //document.getElementById("updateButton").click()
+      this.updateData()
+    }
+  }
+
+  onChangedInvestment(message) {
+    if(this.actionsEnabled == true){
+      this.desiredInvestment = message.value
+      console.log("investment", this.desiredInvestment)
       this.updateData()
     }
   }
@@ -375,6 +398,7 @@ export class AnalyticsConfComponent implements OnInit {
       isFemale: this.isFemaleChecked,
       is3D: true
     }
+
     let tradCount = this.traditionCountriesNumber ? this.traditionCountriesNumber : 5
     let tradWeight = this.traditionPastWeight ? this.traditionPastWeight : 100
     let topAmount = this.topNationsAmount ? this.topNationsAmount : 40
@@ -404,8 +428,11 @@ export class AnalyticsConfComponent implements OnInit {
         "countries": selCountries,
         "selectedCountry": this.similarNoc,
         "areasSelected": this.areasSelected,
-        "similarityThreshold": this.similarityThreshold
+        "similarityThreshold": this.similarityThreshold,
+        "desiredPlacing": this.desiredPlacing,
+        "desiredInvestment": this.desiredInvestment
       }
+      console.log("test", this.analyticsConf)
       this.analyticsLoaderService.mainLoad(this.analyticsConf)
       this.actionsEnabled = true
     })

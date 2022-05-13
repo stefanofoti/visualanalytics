@@ -182,8 +182,12 @@ export var ScatterConf = {
 }
 
 export var PerformanceConf = {
-    width: 1100,
+    width: 1800,
     height: 350
+}
+export var RatioConf = {
+    width: 1800,
+    height: 250
 }
 
 export const Countries: Country[] = [

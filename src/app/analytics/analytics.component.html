@@ -1,9 +1,32 @@
 <div class="container-fluid">
-    <div class="row autoHeight heightLine3">
+    <div class="row">
         <div class="col-md-8">
-            <div class="col-md-12">
-                <div class="rounded items-bg">
-                    <app-perf-chart></app-perf-chart>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="rounded items-bg">
+                        <app-time-bar></app-time-bar>
+                    </div>
+                </div>
+            </div>
+            <div class="row heightLinePerf">
+                <div class="col-md-12">
+                    <div class="rounded items-bg">
+                        <app-perf-chart></app-perf-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="row heightLineRatio">
+                <div class="col-md-12">
+                    <div class="rounded items-bg">
+                        <app-ratio></app-ratio>
+                    </div>
+                </div>
+            </div>
+            <div class="row heightLineEcon">
+                <div class="col-md-12">
+                    <div class="rounded items-bg">
+                        <app-econ-chart></app-econ-chart>
+                    </div>
                 </div>
             </div>
         </div>
@@ -17,25 +40,14 @@
                 <div class="col-md-12">
                     <div style="background-color: #607f97!important" class="rounded bg-light">
                         <app-analytics-map></app-analytics-map>
+                    </div>        
+                </div>    
+            </div>
+            <div class="row margin">
+                <div class="col-md-12">
+                    <div class="rounded items-bg">
+                        <app-predict-chart></app-predict-chart>
                     </div>
-        
-                </div>
-    
-            </div>
-        </div>
-    </div>
-    <div class="row autoHeight heightLine2">
-        <div class="col-md-8">
-            <div class="col-md-12">
-                <div class="rounded items-bg">
-                    <app-econ-chart></app-econ-chart>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-12">
-                <div class="rounded items-bg">
-                    <app-other-chart></app-other-chart>
                 </div>
             </div>
         </div>

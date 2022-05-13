@@ -62,8 +62,8 @@ export class PerfChartComponent implements OnInit {
   private sizes = {
     "circle": 2,
     "circle-width": 1,
-    "country-line": 3,
-    "country-border": 4,
+    "country-line": 4,
+    "country-border": 5,
     "medal-line": 2,
     "circle-outlier": 1
   }
@@ -93,7 +93,7 @@ export class PerfChartComponent implements OnInit {
 
   analyticsDataReady(message: any){
     if (message == "updated"){
-      this.performanceDict = this.analyticsLoaderService.performanceDict
+      this.performanceDict = this.analyticsLoaderService.completeinterpolatedPerfDict
       this.boxPlotDict = this.analyticsLoaderService.boxPlotDict
       this.medalsDict = this.analyticsLoaderService.medalsDict
       this.boxPlotOutliers = this.analyticsLoaderService.boxPlotOutliers
@@ -121,7 +121,7 @@ export class PerfChartComponent implements OnInit {
   }
 
   private getLabel(): string {
-    let labelText = 'Time (seconds)'
+    let labelText = 'Performance'
     return labelText
   }
 
@@ -290,7 +290,7 @@ export class PerfChartComponent implements OnInit {
         .attr("id", "svg_performanceChart")
         .attr('width', '100%')
         .attr('height', '100%')
-        .attr('viewBox', '0 0 1200 420')
+        .attr('viewBox', '0 0 1900 400')
         .append("g")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
     }
@@ -314,10 +314,15 @@ export class PerfChartComponent implements OnInit {
         domain[1]=outliersDomainMax
       }
     }
+
+    let xDomain = [2004, 2020]
+    if( this.q.yearStart && this.q.yearEnd){
+      xDomain = [this.q.yearStart, this.q.yearEnd]
+    } 
     
     this.x = d3.scaleLinear()
       .range([0, this.width])
-      .domain(d3Array.extent(this.arrayFormData, (d) => d.date));
+      .domain(xDomain);
 
     this.y = d3.scalePow()
       .exponent(0.2)
@@ -325,9 +330,9 @@ export class PerfChartComponent implements OnInit {
       .domain(domain);
 
     let XaxisLabelX = this.width / 2;
-    let XaxisLabelY = this.height + 35
+    let XaxisLabelY = this.height
     let YaxisLabelX = -40;
-    let YaxisLabelY = this.height / 2
+    let YaxisLabelY = -10
     let labelText = this.getLabel()
 
     this.svg.select("#ProgressionChartLabelX").remove()
@@ -336,7 +341,7 @@ export class PerfChartComponent implements OnInit {
       .attr('transform', 'translate(' + XaxisLabelX + ', ' + XaxisLabelY + ')')
       .append('text')
       .attr('text-anchor', 'middle')
-      .text("Year")
+      //.text("Seconds")
       .style("fill", "white");
 
     this.svg.select("#ProgressionChartLabelY").remove()
@@ -344,10 +349,11 @@ export class PerfChartComponent implements OnInit {
       .attr('id', "ProgressionChartLabelY")
       .attr('transform', 'translate(' + YaxisLabelX + ', ' + YaxisLabelY + ')')
       .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('transform', 'rotate(-90)')
+      .attr('text-anchor', 'top')
+      //.attr('transform', 'rotate(-90)')
       .text(labelText)
-      .style("fill", "white");
+      .style("fill", "white")
+      .style("font-size", "large");
 
     // Configure the X Axis
     this.svg.select("#Xaxis").remove()
@@ -575,7 +581,7 @@ export class PerfChartComponent implements OnInit {
     })
 
     let index = 0
-    let rectsize = 7
+    let rectsize = 10
 
      Object.keys(this.lineObjToDraw).forEach(k => {
       this.svg.append('path')
@@ -621,8 +627,8 @@ export class PerfChartComponent implements OnInit {
       /// DRAW LEGEND
       this.svg.append("rect")
         .datum(this.lineObjToDraw[k])
-        .attr("x", 1050)
-        .attr("y", index*(rectsize+7))
+        .attr("x", 1500 + index*(40 + rectsize))
+        .attr("y", 0)
         .attr("width", rectsize)
         .attr("height", rectsize)
         .style("fill", function(d){ return colorScaleD3(d)})
@@ -631,11 +637,11 @@ export class PerfChartComponent implements OnInit {
       
       this.svg.append("text")
         .datum(this.lineObjToDraw[k])
-        .attr("x", 1050 + rectsize*1.5)
-        .attr("y", function(d,i){ return index*(rectsize+7) + (rectsize/2)})
+        .attr("x", 1500 + index*(40 + rectsize) + rectsize/2 + 10)
+        .attr("y", rectsize/2)
         .style("fill", function(d){ return colorScaleD3(d)})
         .text(function(d){ return k})
-        .style("font-size", "smaller")
+        //.style("font-size", "small")
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
         .on("mouseover", _ => this.highlight(k, this, this.PERFCHART_COMPONENT_TAG))
@@ -743,27 +749,29 @@ export class PerfChartComponent implements OnInit {
 
   selectionToRange(c){
 
-    console.log("test", d3.select("#brush"))
     let start = +d3.select("#brush").select(".selection").attr("x")
     let end = start + +d3.select("#brush").select(".selection").attr("width")
     let yearStart = Math.floor(c.x.invert(start))
     let yearEnd = Math.floor(c.x.invert(end))
     if (yearStart == yearEnd){
-      yearStart = 1896
-      yearEnd = 2021
+      yearStart = 2004
+      yearEnd = 2020
     }
     c.dataService.changeYearRange([yearStart, yearEnd])
   }
 
   update() {
+    console.log("test", "update would be called with params: ", this.q, "if this true:", this.initialized)
     if (this.initialized) {
+      //if (Object.keys(this.q).length != 0){
 
-      this.width = this.doc.getElementById("div_performanceChart").clientWidth;
-      this.height = this.doc.getElementById("div_performanceChart").clientHeight;
-      this.pushData();
-      this.buildSvg();
-      this.addXandYAxis();
-      this.drawLineAndPath(this);
+        this.width = this.doc.getElementById("div_performanceChart").clientWidth;
+        this.height = this.doc.getElementById("div_performanceChart").clientHeight;
+        this.pushData();
+        this.buildSvg();
+        this.addXandYAxis();
+        this.drawLineAndPath(this);
+      //}
     }
   }
 
